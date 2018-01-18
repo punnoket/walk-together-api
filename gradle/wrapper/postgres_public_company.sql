@@ -1,0 +1,13 @@
+INSERT INTO public.company (id, company_other, date_create, namestaff, districts_id, sub_districts_id, code, created, modified, name) VALUES (1, null, null, 'aot', null, null, null, null, null, null);
+INSERT INTO public.company (id, company_other, date_create, namestaff, districts_id, sub_districts_id, code, created, modified, name) VALUES (2, null, null, 'aot', null, null, null, null, null, null);
+INSERT INTO public.company (id, company_other, date_create, namestaff, districts_id, sub_districts_id, code, created, modified, name) VALUES (3, null, null, 'aot', null, null, null, null, null, null);
+INSERT INTO public.company (id, company_other, date_create, namestaff, districts_id, sub_districts_id, code, created, modified, name) VALUES (4, null, null, 'aot', null, null, null, null, null, null);
+INSERT INTO public.company (id, company_other, date_create, namestaff, districts_id, sub_districts_id, code, created, modified, name) VALUES (5, null, null, 'aot', null, null, null, null, null, null);
+INSERT INTO public.company (id, company_other, date_create, namestaff, districts_id, sub_districts_id, code, created, modified, name) VALUES (6, null, null, 'aot', null, null, null, null, null, null);
+INSERT INTO public.company (id, company_other, date_create, namestaff, districts_id, sub_districts_id, code, created, modified, name) VALUES (7, null, null, 'aot', 1, null, null, null, null, null);
+INSERT INTO public.company (id, company_other, date_create, namestaff, districts_id, sub_districts_id, code, created, modified, name) VALUES (8, null, null, null, null, null, '001', '2017-10-04 11:51:41.517000', '2017-10-04 11:51:41.517000', 'อโศก');
+INSERT INTO public.company (id, company_other, date_create, namestaff, districts_id, sub_districts_id, code, created, modified, name) VALUES (9, null, null, null, null, null, '002', '2017-10-04 11:52:19.515000', '2017-10-04 11:52:19.515000', 'คลองหลวง');
+INSERT INTO public.company (id, company_other, date_create, namestaff, districts_id, sub_districts_id, code, created, modified, name) VALUES (10, null, null, null, null, null, '003', null, null, 'asok');
+INSERT INTO public.company (id, company_other, date_create, namestaff, districts_id, sub_districts_id, code, created, modified, name) VALUES (11, null, null, null, null, null, '004', null, null, 'asok2');
+INSERT INTO public.company (id, company_other, date_create, namestaff, districts_id, sub_districts_id, code, created, modified, name) VALUES (12, null, null, null, null, null, '005', null, null, 'klonglung');
+INSERT INTO public.company (id, company_other, date_create, namestaff, districts_id, sub_districts_id, code, created, modified, name) VALUES (13, null, null, null, null, null, null, null, null, 'klonnueng');

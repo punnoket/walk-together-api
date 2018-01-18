@@ -1,0 +1,3 @@
+INSERT INTO public.sex (id, code, created, modified, name) VALUES (2, 's02', '2017-09-25 19:50:33.234000', '2017-09-25 19:50:33.234000', 'หญิง');
+INSERT INTO public.sex (id, code, created, modified, name) VALUES (3, 's02', '2017-09-25 20:58:15.873000', '2017-09-25 20:58:15.873000', 'หญิง');
+INSERT INTO public.sex (id, code, created, modified, name) VALUES (1, 's03', null, '2017-10-05 01:58:13.978000', 'ชาย');

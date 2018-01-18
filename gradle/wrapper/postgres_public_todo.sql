@@ -1,0 +1,1 @@
+INSERT INTO public.todo (id, detail, title, user_own, user_own_id) VALUES (1, 'aaa', 'bbb', 2, 2);

@@ -1,0 +1,1 @@
+INSERT INTO public.tattoo_scar (id, code, created, modified, name, category) VALUES (1, 'TC00001', null, null, 'คำว่า รัก', 'แผลเป็น');

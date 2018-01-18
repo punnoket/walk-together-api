@@ -1,0 +1,2 @@
+INSERT INTO public.about_role (id, about_index, created, description, locate, modified, title) VALUES (1, 99, '2017-09-26 15:17:29.580000', 'qaqazwswsxwsscsece', 'th', '2017-09-26 15:19:00.377000', null);
+INSERT INTO public.about_role (id, about_index, created, description, locate, modified, title) VALUES (2, 0, '2017-09-26 15:19:25.590000', 'qaqazwswsxwsscsece', 'en', '2017-09-26 15:19:25.590000', null);

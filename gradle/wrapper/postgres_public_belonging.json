@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "brand": "adfa",
+    "color": "แดง",
+    "description": null,
+    "material": "sdasdsa",
+    "material_size": "description",
+    "pattern": "adfa",
+    "category_id": 1,
+    "type_id": 2,
+    "missingprofile_id": 8
+  },
+  {
+    "id": 2,
+    "brand": "adfa",
+    "color": "แดง",
+    "description": null,
+    "material": "sdasdsa",
+    "material_size": "description",
+    "pattern": "adfa",
+    "category_id": 1,
+    "type_id": 2,
+    "missingprofile_id": 8
+  }
+]

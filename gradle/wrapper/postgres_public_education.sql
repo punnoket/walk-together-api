@@ -1,0 +1,2 @@
+INSERT INTO public.education (id, education_code, education_name, code, name) VALUES (5, 'ed2', 'adfadsf', null, null);
+INSERT INTO public.education (id, education_code, education_name, code, name) VALUES (1, 'ed1', 'ss', null, null);

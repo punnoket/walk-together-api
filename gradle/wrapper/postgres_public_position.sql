@@ -1,0 +1,1 @@
+INSERT INTO public.position (id, code, created, modified, name, zone_id) VALUES (1, null, null, null, 'Zone1', 1);

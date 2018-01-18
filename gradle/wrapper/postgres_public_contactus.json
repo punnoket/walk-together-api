@@ -1,0 +1,22 @@
+[
+  {
+    "id": 3,
+    "address": "อโศก ราม ลาดพร้าว ดินแดง",
+    "created": "2017-09-26 11:01:03.273000",
+    "facebook_url": "www.facebook.com/cifs",
+    "lineid": "linemark",
+    "modified": "2017-09-26 11:01:03.273000",
+    "phone": "089999999",
+    "locate": "en"
+  },
+  {
+    "id": 2,
+    "address": "อโศก ราม ลาดพร้าว ดินแดง",
+    "created": "2017-09-26 11:00:21.877000",
+    "facebook_url": "www.facebook.com/cifs",
+    "lineid": "linemarkss",
+    "modified": "2017-09-26 11:01:40.162000",
+    "phone": "089999999",
+    "locate": "th"
+  }
+]

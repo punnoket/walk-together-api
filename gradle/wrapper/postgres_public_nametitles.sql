@@ -1,0 +1,1 @@
+INSERT INTO public.nametitles (id, created, modified, nametitle_code, nametitle_name, code, name) VALUES (1, null, null, 'n1', 'นาย', null, null);

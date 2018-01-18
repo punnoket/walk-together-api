@@ -1,0 +1,2 @@
+INSERT INTO public.missperson (id, created, informer_id) VALUES (1, '2017-09-09 07:00:00.000000', 3);
+INSERT INTO public.missperson (id, created, informer_id) VALUES (4, '2017-09-09 07:00:00.000000', null);

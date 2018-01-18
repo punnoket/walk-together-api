@@ -1,0 +1,1 @@
+INSERT INTO public.belonging_category (id, code, created, modified, name) VALUES (1, 'aa1', '2017-10-07 17:19:57.272000', '2017-10-08 17:41:47.090000', 'เสื้อ');

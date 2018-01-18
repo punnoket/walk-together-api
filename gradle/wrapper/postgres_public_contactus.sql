@@ -1,0 +1,2 @@
+INSERT INTO public.contactus (id, address, created, facebook_url, lineid, modified, phone, locate) VALUES (3, 'อโศก ราม ลาดพร้าว ดินแดง', '2017-09-26 11:01:03.273000', 'www.facebook.com/cifs', 'linemark', '2017-09-26 11:01:03.273000', '089999999', 'en');
+INSERT INTO public.contactus (id, address, created, facebook_url, lineid, modified, phone, locate) VALUES (2, 'อโศก ราม ลาดพร้าว ดินแดง', '2017-09-26 11:00:21.877000', 'www.facebook.com/cifs', 'linemarkss', '2017-09-26 11:01:40.162000', '089999999', 'th');

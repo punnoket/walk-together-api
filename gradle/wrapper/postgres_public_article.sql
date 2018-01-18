@@ -1,0 +1,1 @@
+INSERT INTO public.article (id, announcement_index, created, description_en, description_th, image_url, modified, title_en, title_th, article_index) VALUES (1, 0, '2017-09-28 15:44:13.035000', 'desciption', 'desciption', '/image/news/3ed.jpg', '2017-09-28 15:44:19.711000', 'news', 'news', 99);

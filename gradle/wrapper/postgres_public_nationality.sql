@@ -1,0 +1,1 @@
+INSERT INTO public.nationality (id, nationality_code, nationality_name, code, name) VALUES (1, 'th', 'thai', 'th', 'thai');

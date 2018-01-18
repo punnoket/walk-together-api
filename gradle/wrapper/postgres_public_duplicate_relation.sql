@@ -1,0 +1,3 @@
+INSERT INTO public.duplicate_relation (id, created, missing_id, modified, relation_missing) VALUES (2, '2017-09-30 12:12:59.368000', 1, '2017-09-30 12:12:59.368000', 2);
+INSERT INTO public.duplicate_relation (id, created, missing_id, modified, relation_missing) VALUES (3, '2017-09-30 15:53:33.395000', 1, '2017-09-30 15:53:33.395000', 2);
+INSERT INTO public.duplicate_relation (id, created, missing_id, modified, relation_missing) VALUES (4, '2017-09-30 15:53:35.328000', 1, '2017-09-30 15:53:35.328000', 3);

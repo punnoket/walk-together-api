@@ -1,0 +1,2 @@
+INSERT INTO public.about_mission (id, about_index, created, description, locate, modified, title) VALUES (1, 0, '2017-09-26 15:39:42.076000', 'asdasdasdasdasd', 'en', '2017-09-26 15:40:28.562000', 'asdf');
+INSERT INTO public.about_mission (id, about_index, created, description, locate, modified, title) VALUES (2, 0, '2017-09-26 15:41:43.891000', 'asdasdasdasdasd', 'en', '2017-09-26 15:41:43.891000', 'asdf');

@@ -1,0 +1,1 @@
+INSERT INTO public.master_bodystyle_skin (id, code, name) VALUES (1, 'ss', 'cccc');

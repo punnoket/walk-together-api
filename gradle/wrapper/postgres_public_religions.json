@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "religions_code": "r1",
+    "religions_name": "thai",
+    "code": null,
+    "name": null
+  },
+  {
+    "id": 2,
+    "religions_code": null,
+    "religions_name": null,
+    "code": null,
+    "name": null
+  }
+]

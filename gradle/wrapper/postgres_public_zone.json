@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "code": "z1",
+    "created": null,
+    "modified": null,
+    "name": "Zone1"
+  },
+  {
+    "id": 2,
+    "code": "z2",
+    "created": null,
+    "modified": null,
+    "name": "Zone2"
+  },
+  {
+    "id": 3,
+    "code": "z3",
+    "created": null,
+    "modified": null,
+    "name": "Zone3"
+  }
+]

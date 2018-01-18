@@ -1,0 +1,1 @@
+INSERT INTO public.news (id, created, description, image_url, modified, news_index, title, description_en, description_th, title_en, title_th, descriptionsssssss_th) VALUES (7, '2017-10-08 21:48:01.338000', null, '/image/news/3ed.jpg', '2017-10-08 21:48:01.338000', 99, null, 'desciption', 'desciption', 'news', 'news', null);

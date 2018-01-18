@@ -1,0 +1,1 @@
+INSERT INTO public.officer (id, first_name, last_name, password, username) VALUES (33, null, null, 'pandapanda', 'nart');

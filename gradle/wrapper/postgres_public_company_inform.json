@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "company_other": "123423412424",
+    "date_create": null,
+    "namestaff": null,
+    "districts_id": 1,
+    "sub_districts_id": null,
+    "created": "2017-10-03 16:58:02.161000",
+    "date_inform": null,
+    "modified": "2017-10-03 16:58:02.161000",
+    "name_staff": "aot",
+    "company_id": null,
+    "provinces_id": null
+  },
+  {
+    "id": 2,
+    "company_other": "123423412424",
+    "date_create": null,
+    "namestaff": null,
+    "districts_id": 1,
+    "sub_districts_id": null,
+    "created": "2017-10-03 16:59:48.508000",
+    "date_inform": "2017-10-03 16:59:25.000000",
+    "modified": "2017-10-03 16:59:48.508000",
+    "name_staff": "aot",
+    "company_id": null,
+    "provinces_id": null
+  }
+]

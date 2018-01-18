@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "code": "sadsd",
+    "created": "2017-10-07 17:36:55.603000",
+    "modified": "2017-10-07 17:36:55.603000",
+    "name": "เสื้อสีขาว",
+    "belonging_category_id": 1
+  },
+  {
+    "id": 2,
+    "code": "sadsd",
+    "created": "2017-10-08 12:05:56.843000",
+    "modified": "2017-10-08 12:05:56.843000",
+    "name": "เสื้อสีดำ",
+    "belonging_category_id": 1
+  },
+  {
+    "id": 3,
+    "code": "sadsd",
+    "created": "2017-10-08 17:38:51.059000",
+    "modified": "2017-10-08 17:38:51.059000",
+    "name": "คอกลม",
+    "belonging_category_id": 1
+  },
+  {
+    "id": 4,
+    "code": "sadsd",
+    "created": "2017-10-08 17:39:33.011000",
+    "modified": "2017-10-08 17:39:33.011000",
+    "name": "คอกระเช้า",
+    "belonging_category_id": 1
+  },
+  {
+    "id": 5,
+    "code": "sadsd",
+    "created": "2017-10-08 17:41:16.445000",
+    "modified": "2017-10-08 17:41:16.445000",
+    "name": "แจ็คเก็ต",
+    "belonging_category_id": 1
+  }
+]

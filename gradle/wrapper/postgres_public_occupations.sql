@@ -1,0 +1,1 @@
+INSERT INTO public.occupations (id, occupations_code, occupations_name, code, name) VALUES (1, 'o1', 'นักเรียน', 'o1', 'นักเรียน');

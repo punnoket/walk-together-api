@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "created": "2017-10-04 19:51:28.861000",
+    "modified": "2017-10-04 19:51:28.861000",
+    "more_information": null,
+    "missing_body_style_id": null,
+    "position_id": null,
+    "tattoo_scar_id": 1,
+    "zone_id": 1,
+    "missing_bodystyle_id": null,
+    "category": null
+  },
+  {
+    "id": 2,
+    "created": "2017-10-04 19:51:29.956000",
+    "modified": "2017-10-04 19:51:29.956000",
+    "more_information": null,
+    "missing_body_style_id": null,
+    "position_id": null,
+    "tattoo_scar_id": 1,
+    "zone_id": 1,
+    "missing_bodystyle_id": null,
+    "category": null
+  },
+  {
+    "id": 3,
+    "created": "2017-10-04 22:41:50.697000",
+    "modified": "2017-10-04 22:41:50.697000",
+    "more_information": null,
+    "missing_body_style_id": null,
+    "position_id": null,
+    "tattoo_scar_id": 1,
+    "zone_id": 1,
+    "missing_bodystyle_id": 28,
+    "category": "แผลเป็น"
+  },
+  {
+    "id": 4,
+    "created": "2017-10-04 23:21:13.720000",
+    "modified": "2017-10-04 23:21:13.720000",
+    "more_information": null,
+    "missing_body_style_id": null,
+    "position_id": null,
+    "tattoo_scar_id": 1,
+    "zone_id": 1,
+    "missing_bodystyle_id": 34,
+    "category": "แผลเป็น"
+  },
+  {
+    "id": 5,
+    "created": "2017-10-05 03:48:46.025000",
+    "modified": "2017-10-05 03:48:46.025000",
+    "more_information": null,
+    "missing_body_style_id": 45,
+    "position_id": null,
+    "tattoo_scar_id": 1,
+    "zone_id": 1,
+    "missing_bodystyle_id": 45,
+    "category": "แผลเป็น"
+  },
+  {
+    "id": 6,
+    "created": "2017-10-05 03:48:47.208000",
+    "modified": "2017-10-05 03:48:47.208000",
+    "more_information": null,
+    "missing_body_style_id": 45,
+    "position_id": null,
+    "tattoo_scar_id": 1,
+    "zone_id": 2,
+    "missing_bodystyle_id": 45,
+    "category": "แผลเป็น"
+  },
+  {
+    "id": 7,
+    "created": "2017-10-05 03:48:48.567000",
+    "modified": "2017-10-05 03:48:48.567000",
+    "more_information": null,
+    "missing_body_style_id": 45,
+    "position_id": null,
+    "tattoo_scar_id": 1,
+    "zone_id": 3,
+    "missing_bodystyle_id": 45,
+    "category": "แผลเป็น"
+  },
+  {
+    "id": 8,
+    "created": "2017-10-05 03:48:49.922000",
+    "modified": "2017-10-05 03:48:49.922000",
+    "more_information": null,
+    "missing_body_style_id": 45,
+    "position_id": null,
+    "tattoo_scar_id": 1,
+    "zone_id": 2,
+    "missing_bodystyle_id": 45,
+    "category": "แผลเป็น"
+  }
+]

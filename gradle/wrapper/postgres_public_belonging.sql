@@ -1,0 +1,2 @@
+INSERT INTO public.belonging (id, brand, color, description, material, material_size, pattern, category_id, type_id, missingprofile_id) VALUES (1, 'adfa', 'แดง', null, 'sdasdsa', 'description', 'adfa', 1, 2, 8);
+INSERT INTO public.belonging (id, brand, color, description, material, material_size, pattern, category_id, type_id, missingprofile_id) VALUES (2, 'adfa', 'แดง', null, 'sdasdsa', 'description', 'adfa', 1, 2, 8);

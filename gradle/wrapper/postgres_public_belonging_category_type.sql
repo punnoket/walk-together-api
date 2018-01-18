@@ -1,0 +1,5 @@
+INSERT INTO public.belonging_category_type (id, code, created, modified, name, belonging_category_id) VALUES (1, 'sadsd', '2017-10-07 17:36:55.603000', '2017-10-07 17:36:55.603000', 'เสื้อสีขาว', 1);
+INSERT INTO public.belonging_category_type (id, code, created, modified, name, belonging_category_id) VALUES (2, 'sadsd', '2017-10-08 12:05:56.843000', '2017-10-08 12:05:56.843000', 'เสื้อสีดำ', 1);
+INSERT INTO public.belonging_category_type (id, code, created, modified, name, belonging_category_id) VALUES (3, 'sadsd', '2017-10-08 17:38:51.059000', '2017-10-08 17:38:51.059000', 'คอกลม', 1);
+INSERT INTO public.belonging_category_type (id, code, created, modified, name, belonging_category_id) VALUES (4, 'sadsd', '2017-10-08 17:39:33.011000', '2017-10-08 17:39:33.011000', 'คอกระเช้า', 1);
+INSERT INTO public.belonging_category_type (id, code, created, modified, name, belonging_category_id) VALUES (5, 'sadsd', '2017-10-08 17:41:16.445000', '2017-10-08 17:41:16.445000', 'แจ็คเก็ต', 1);

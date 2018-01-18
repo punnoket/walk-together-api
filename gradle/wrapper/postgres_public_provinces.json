@@ -1,0 +1,20 @@
+[
+  {
+    "id": 4,
+    "created": null,
+    "modified": null,
+    "provinces_code": null,
+    "provinces_name": null,
+    "code": "p001",
+    "name": "asdfasf"
+  },
+  {
+    "id": 1,
+    "created": null,
+    "modified": null,
+    "provinces_code": null,
+    "provinces_name": null,
+    "code": "p001",
+    "name": "1"
+  }
+]

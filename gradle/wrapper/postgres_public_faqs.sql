@@ -1,0 +1,1 @@
+INSERT INTO public.faqs (id, faq_index, created, description, locate, modified, title, file) VALUES (1, 2, '2017-09-26 12:00:05.933000', 'ไม่บอก', 'th', '2017-09-28 14:41:37.059000', 'ถามมาทำไม', null);

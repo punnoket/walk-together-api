@@ -1,0 +1,1 @@
+INSERT INTO public.master_bodystyle_beard (id, code, name) VALUES (1, 'dfd', 'asdasd');

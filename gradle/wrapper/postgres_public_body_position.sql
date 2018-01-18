@@ -1,0 +1,1 @@
+INSERT INTO public.body_position (id, code, created, modified, name, zone_id, body_zone_id) VALUES (1, null, null, null, 'Zone1', 1, null);

@@ -1,0 +1,1 @@
+INSERT INTO public.patients (hospital_number, first_name, last_name, column_4) VALUES (1, 'oat', 'adsfafasdf', null);

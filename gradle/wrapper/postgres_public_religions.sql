@@ -1,0 +1,2 @@
+INSERT INTO public.religions (id, religions_code, religions_name, code, name) VALUES (1, 'r1', 'thai', null, null);
+INSERT INTO public.religions (id, religions_code, religions_name, code, name) VALUES (2, null, null, null, null);

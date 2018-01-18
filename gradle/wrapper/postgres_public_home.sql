@@ -1,0 +1,1 @@
+INSERT INTO public.home (id, created, file, modified) VALUES (1, null, '/image/home/img_lights.jpg', '2017-09-29 19:28:27.800000');

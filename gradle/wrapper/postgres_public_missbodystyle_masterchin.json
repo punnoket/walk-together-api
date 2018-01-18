@@ -1,0 +1,230 @@
+[
+  {
+    "id": 1,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 33
+  },
+  {
+    "id": 2,
+    "other": "sdsddwd",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 33
+  },
+  {
+    "id": 3,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 34
+  },
+  {
+    "id": 4,
+    "other": "sdsddwd",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 34
+  },
+  {
+    "id": 5,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 35
+  },
+  {
+    "id": 6,
+    "other": "sdsddwd",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 35
+  },
+  {
+    "id": 7,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 40
+  },
+  {
+    "id": 8,
+    "other": "sdsddwd",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 40
+  },
+  {
+    "id": 9,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 41
+  },
+  {
+    "id": 10,
+    "other": "sdsddwd",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 41
+  },
+  {
+    "id": 11,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 44
+  },
+  {
+    "id": 12,
+    "other": "sdsddwd",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 44
+  },
+  {
+    "id": 13,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 45
+  },
+  {
+    "id": 14,
+    "other": "sdsddwd",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 45
+  },
+  {
+    "id": 15,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 46
+  },
+  {
+    "id": 16,
+    "other": "sdsddwd",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 46
+  },
+  {
+    "id": 17,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 47
+  },
+  {
+    "id": 18,
+    "other": "sdsddwd",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 47
+  },
+  {
+    "id": 19,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 48
+  },
+  {
+    "id": 20,
+    "other": "sdsddwd",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 48
+  },
+  {
+    "id": 22,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 50
+  },
+  {
+    "id": 23,
+    "other": "sdsddwd",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 50
+  },
+  {
+    "id": 24,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 51
+  },
+  {
+    "id": 25,
+    "other": "sdsddwd",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 51
+  },
+  {
+    "id": 26,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 52
+  },
+  {
+    "id": 27,
+    "other": "sdsddwd",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 52
+  },
+  {
+    "id": 28,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 53
+  },
+  {
+    "id": 29,
+    "other": "แหลม",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 53
+  },
+  {
+    "id": 30,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 54
+  },
+  {
+    "id": 31,
+    "other": "แหลม",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 54
+  },
+  {
+    "id": 32,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 55
+  },
+  {
+    "id": 33,
+    "other": "แหลม",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 55
+  },
+  {
+    "id": 34,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 56
+  },
+  {
+    "id": 35,
+    "other": "sdsddwd",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 56
+  },
+  {
+    "id": 36,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 59
+  },
+  {
+    "id": 37,
+    "other": "sdsddwd",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 59
+  },
+  {
+    "id": 38,
+    "other": null,
+    "master_bodystyle_chin_id": 1,
+    "missing_bodystyle_id": 59
+  },
+  {
+    "id": 39,
+    "other": "sdsddwd",
+    "master_bodystyle_chin_id": null,
+    "missing_bodystyle_id": 59
+  }
+]

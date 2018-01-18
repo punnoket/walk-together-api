@@ -1,0 +1,5 @@
+db:
+  image: postgres:9.4
+  container_name: wt_db
+  ports:
+    - "5432:5432"

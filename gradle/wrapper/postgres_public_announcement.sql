@@ -1,0 +1,1 @@
+INSERT INTO public.announcement (id, announcement_index, created, description, image_url, modified, title, descrintion_en, description_th, title_en, title_th, description_en) VALUES (1, 0, '2017-09-27 18:53:05.741000', null, '/image/news/3ed.jpg', '2017-09-27 18:53:05.741000', null, null, 'desciption', 'news', 'news', null);
