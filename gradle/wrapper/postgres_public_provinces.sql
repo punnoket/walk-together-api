@@ -1,2 +1,2 @@
-INSERT INTO public.provinces (id, created, modified, provinces_code, provinces_name, code, name) VALUES (4, null, null, null, null, 'p001', 'asdfasf');
-INSERT INTO public.provinces (id, created, modified, provinces_code, provinces_name, code, name) VALUES (1, null, null, null, null, 'p001', '1');
+INSERT INTO public.province (id, created, modified, provinces_code, provinces_name, code, name) VALUES (4, null, null, null, null, 'p001', 'asdfasf');
+INSERT INTO public.province (id, created, modified, provinces_code, provinces_name, code, name) VALUES (1, null, null, null, null, 'p001', '1');

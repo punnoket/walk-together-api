@@ -1,13 +1,8 @@
 package com.finalproject.walktogetherapi.controller;
 
-import com.finalproject.walktogetherapi.entities.AnswerEvaluation;
-import com.finalproject.walktogetherapi.entities.EvaluationCategory;
-import com.finalproject.walktogetherapi.entities.NumberEvaluation;
-import com.finalproject.walktogetherapi.entities.QuestionEvaluation;
-import com.finalproject.walktogetherapi.service.AnswerEvaluationService;
+import com.finalproject.walktogetherapi.entities.evaluation.NumberEvaluation;
 import com.finalproject.walktogetherapi.service.EvaluationCategoryService;
 import com.finalproject.walktogetherapi.service.NumberEvaluationService;
-import com.finalproject.walktogetherapi.service.QuestionEvaluationService;
 import com.finalproject.walktogetherapi.util.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

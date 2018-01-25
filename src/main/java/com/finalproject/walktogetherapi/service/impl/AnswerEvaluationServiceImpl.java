@@ -1,11 +1,8 @@
 package com.finalproject.walktogetherapi.service.impl;
 
-import com.finalproject.walktogetherapi.entities.AnswerEvaluation;
-import com.finalproject.walktogetherapi.entities.EvaluationCategory;
+import com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation;
 import com.finalproject.walktogetherapi.repository.AnswerEvaluationRepository;
-import com.finalproject.walktogetherapi.repository.EvaluationCategoryRepository;
 import com.finalproject.walktogetherapi.service.AnswerEvaluationService;
-import com.finalproject.walktogetherapi.service.EvaluationCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

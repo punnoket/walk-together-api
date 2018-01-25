@@ -1,1 +1,1 @@
-INSERT INTO public.districts (id, created, districts_code, districts_name, modified, code, name, zipcode, provinces_id) VALUES (1, null, 'd1', 'บ้านใหญ่', null, null, null, null, null);
+INSERT INTO public.district (id, created, districts_code, districts_name, modified, code, name, zipcode, provinces_id) VALUES (1, null, 'd1', 'บ้านใหญ่', null, null, null, null, null);

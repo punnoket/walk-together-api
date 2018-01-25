@@ -1,6 +1,6 @@
 package com.finalproject.walktogetherapi.service;
 
-import com.finalproject.walktogetherapi.entities.QuestionEvaluation;
+import com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

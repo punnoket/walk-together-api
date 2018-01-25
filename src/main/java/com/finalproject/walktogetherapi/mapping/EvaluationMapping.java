@@ -1,8 +1,8 @@
 package com.finalproject.walktogetherapi.mapping;
 
-import com.finalproject.walktogetherapi.entities.EvaluationCategory;
-import com.finalproject.walktogetherapi.entities.NumberEvaluation;
-import com.finalproject.walktogetherapi.entities.QuestionEvaluation;
+import com.finalproject.walktogetherapi.entities.evaluation.EvaluationCategory;
+import com.finalproject.walktogetherapi.entities.evaluation.NumberEvaluation;
+import com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,12 +20,15 @@ public class EvaluationMapping {
         return instance;
     }
 
-    public HashMap<String, Object> getEvaluationByIdUser(List<EvaluationCategory> evaluationCategoryList) {
-        HashMap<String, Object> data = new HashMap<>();
+    public List<HashMap<String, Object>> getEvaluationByIdUser(List<EvaluationCategory> evaluationCategoryList) {
+        List<HashMap<String, Object>> mapList = new ArrayList<>();
         for (EvaluationCategory category : evaluationCategoryList) {
-            data.put(category.getEvaluationCategoryName().toLowerCase(), getResultQuestion(category.getNumberEvaluations()));
+            HashMap<String, Object> data = new HashMap<>();
+            data.put("partName", category.getEvaluationCategoryName().toLowerCase());
+            data.put("question", getResultQuestion(category.getNumberEvaluations()));
+            mapList.add(data);
         }
-        return data;
+        return mapList;
     }
 
     private QuestionEvaluation randomQuestion(List<QuestionEvaluation> questionEvaluations) {

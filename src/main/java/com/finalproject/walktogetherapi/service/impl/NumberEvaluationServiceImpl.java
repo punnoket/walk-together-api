@@ -1,9 +1,7 @@
 package com.finalproject.walktogetherapi.service.impl;
 
-import com.finalproject.walktogetherapi.entities.NumberEvaluation;
-import com.finalproject.walktogetherapi.entities.QuestionEvaluation;
+import com.finalproject.walktogetherapi.entities.evaluation.NumberEvaluation;
 import com.finalproject.walktogetherapi.repository.NumberEvaluationRepository;
-import com.finalproject.walktogetherapi.repository.QuestionEvaluationRepository;
 import com.finalproject.walktogetherapi.service.NumberEvaluationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,4 @@
-package com.finalproject.walktogetherapi.entities;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+package com.finalproject.walktogetherapi.entities.evaluation;
 
 import javax.persistence.*;
 import java.util.List;

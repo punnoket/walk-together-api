@@ -1,6 +1,6 @@
 package com.finalproject.walktogetherapi.service.impl;
 
-import com.finalproject.walktogetherapi.entities.QuestionEvaluation;
+import com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation;
 import com.finalproject.walktogetherapi.repository.QuestionEvaluationRepository;
 import com.finalproject.walktogetherapi.service.QuestionEvaluationService;
 import org.springframework.beans.factory.annotation.Autowired;

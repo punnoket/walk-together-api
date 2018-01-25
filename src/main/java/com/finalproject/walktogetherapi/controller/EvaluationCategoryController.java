@@ -1,6 +1,6 @@
 package com.finalproject.walktogetherapi.controller;
 
-import com.finalproject.walktogetherapi.entities.EvaluationCategory;
+import com.finalproject.walktogetherapi.entities.evaluation.EvaluationCategory;
 import com.finalproject.walktogetherapi.service.EvaluationCategoryService;
 import com.finalproject.walktogetherapi.util.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
