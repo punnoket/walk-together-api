@@ -19,7 +19,12 @@ public interface MatchingService {
 
     Matching delete(Long id);
 
-    List<Matching> findByPatientNumber(String patientNumber);
+    List<Matching> findByPatientId(Long id);
 
-    List<Matching> findByCaretakerNumber(String caretakerNumber);
+    List<Matching> findByCaretakerId(Long id);
+
+    Matching findByCaretakerIdAndPatientNumber(Long caretakerId, String patientNumber);
+
+    Matching findByPatientIdAndCaretakerNumber(Long patientId, String caretakerNumber);
+
 }

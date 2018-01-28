@@ -47,13 +47,23 @@ public class MatchingServiceImpl implements MatchingService {
     }
 
     @Override
-    public List<Matching> findByPatientNumber(String patientNumber) {
-        return matchingRepository.findByPatientNumber(patientNumber);
+    public List<Matching> findByPatientId(Long id) {
+        return matchingRepository.findByPatientId(id);
     }
 
     @Override
-    public List<Matching> findByCaretakerNumber(String caretakerNumber) {
-        return matchingRepository.findByCaretakerNumber(caretakerNumber);
+    public List<Matching> findByCaretakerId(Long id) {
+        return matchingRepository.findByCaretakerId(id);
+    }
+
+    @Override
+    public Matching findByCaretakerIdAndPatientNumber(Long caretakerId, String patientNumber) {
+        return matchingRepository.findByCaretakerIdAndPatientNumber(caretakerId, patientNumber);
+    }
+
+    @Override
+    public Matching findByPatientIdAndCaretakerNumber(Long patientId, String caretakerNumber) {
+        return matchingRepository.findByPatientIdAndCaretakerNumber(patientId, caretakerNumber);
     }
 
 }

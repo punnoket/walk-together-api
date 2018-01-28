@@ -1,13 +1,11 @@
 package com.finalproject.walktogetherapi.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalproject.walktogetherapi.entities.master.District;
 import com.finalproject.walktogetherapi.entities.master.Province;
 import com.finalproject.walktogetherapi.entities.master.Sex;
 import com.finalproject.walktogetherapi.entities.master.SubDistrict;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "Patient")

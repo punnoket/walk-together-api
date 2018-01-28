@@ -3,6 +3,7 @@ package com.finalproject.walktogetherapi.util;
 public class MessageUtil {
 
     public static final String DUPLICATE_USERNAME = "ชื่อบัญชีผู้ใช้ซ้ำ";
+    public static final String DUPLICATE_EMAIL = "อีเมลล์ผู้ใช้ซ้ำ";
     public static final String INCORRECT_USERNAME = "ชื่อบัญชีผู้ใช้ผิดพลาด";
     public static final String INCORRECT_PASSWORD = "รหัสผ่านผิดพลาด";
     public static final String INCORRECT_EMAIL = "อีเมลล์ไม่ถูกต้อง";
@@ -17,6 +18,9 @@ public class MessageUtil {
     public static final String NOT_FOUND_PATIENT = "ไม่พบผู้ป่วย";
     public static final String SUCCESS_CARETAKER = "เพิ่มผู้ดูแลสำเร็จ";
     public static final String SUCCESS_PATIENT = "เพิ่มผู้ป่วยสำเร็จ";
+    public static final String DUPLICATE_CARETAKER = "คุณมีผู้ดูแลคนนี้อยู่แล้ว";
+    public static final String DUPLICATE_PATIENT = "คุณมีผู้ป่วยคนนี้อยู่แล้ว";
+
 
 
 }

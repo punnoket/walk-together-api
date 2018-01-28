@@ -19,6 +19,6 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
     @Query("select p from Patient p WHERE  p.tell = ?1")
     Patient findByTell(String tell);
 
-    @Query("select p from Patient p WHERE  p.tell = ?1")
+    @Query("select p from Patient p WHERE  p.patientNumber = ?1")
     Patient findByNumberPatient(String number);
 }

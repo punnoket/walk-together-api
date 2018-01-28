@@ -1,9 +1,7 @@
 package com.finalproject.walktogetherapi.mapping;
 
 import com.finalproject.walktogetherapi.entities.Caretaker;
-import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.service.CaretakerService;
-import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.master.DistrictServices;
 import com.finalproject.walktogetherapi.service.master.ProvinceServices;
 import com.finalproject.walktogetherapi.service.master.SexServices;
@@ -35,10 +33,12 @@ public class CaretakerMapping {
         if (isCreate)
             caretaker.setCaretakerNumber(RandomNumberUser.getInstance().getNumberCaretaker());
         if (data.get("userName") != null)
-            if (caretakerService.findByUserName(data.get("userName").toString()) == null)
+            if (caretakerService.findByUserName(data.get("userName").toString()) == null) {
                 caretaker.setUserName(data.get("userName").toString());
-            else
-                return null;
+            } else {
+                caretaker.setUserName(null);
+                return caretaker;
+            }
         if (data.get("password") != null)
             caretaker.setPassword(data.get("password").toString());
         if (data.get("titleName") != null)
@@ -64,8 +64,12 @@ public class CaretakerMapping {
         if (data.get("occupation") != null)
             caretaker.setOccupation(data.get("occupation").toString());
         if (data.get("email") != null)
-            caretaker.setEmail(data.get("email").toString());
-
+            if (caretakerService.findByEmail(data.get("email").toString()) == null) {
+                caretaker.setEmail(data.get("email").toString());
+            } else {
+                caretaker.setEmail(null);
+                return caretaker;
+            }
         return caretaker;
 
     }

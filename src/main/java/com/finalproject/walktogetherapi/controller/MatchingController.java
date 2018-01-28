@@ -42,6 +42,16 @@ public class MatchingController {
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, matchingService.findById(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
+    @GetMapping("caretaker-by-patient{id}")
+    public ResponseEntity getCaretakerByIdPatient(@PathVariable Long id) {
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, matchingService.findByPatientId(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+    }
+
+    @GetMapping("patient-by-caretaker{id}")
+    public ResponseEntity getPatientByIdCaretaker(@PathVariable Long id) {
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, matchingService.findByCaretakerId(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+    }
+
     @PostMapping("")
     public ResponseEntity create(@RequestBody HashMap<String, Object> data) {
         Matching matching = new Matching();
@@ -57,40 +67,58 @@ public class MatchingController {
 
     @PostMapping("add-caretaker")
     public ResponseEntity addCaretaker(@RequestBody HashMap<String, Object> data) {
-        Patient patient = patientService.findById(Long.parseLong(data.get("idPatient").toString()));
-        if (patient == null)
-            return new ResponseEntity<>(ApiResponse.getInstance()
-                    .response(HttpStatus.NOT_FOUND, null,
-                            MessageUtil.NOT_FOUND_PATIENT), HttpStatus.NOT_FOUND);
+        Matching matching = matchingService.findByPatientIdAndCaretakerNumber(Long.parseLong(data.get("idPatient").toString()),
+                data.get("caretakerNumber").toString());
 
-        Caretaker caretaker = caretakerService.findByNumberCaretaker(data.get("caretakerNumber").toString());
-        if (caretaker == null)
+        if (matching == null) {
+            Patient patient = patientService.findById(Long.parseLong(data.get("idPatient").toString()));
+            if (patient == null)
+                return new ResponseEntity<>(ApiResponse.getInstance()
+                        .response(HttpStatus.NOT_FOUND, null,
+                                MessageUtil.NOT_FOUND_PATIENT), HttpStatus.NOT_FOUND);
+
+            Caretaker caretaker = caretakerService.findByNumberCaretaker(data.get("caretakerNumber").toString());
+            if (caretaker == null)
+                return new ResponseEntity<>(ApiResponse.getInstance()
+                        .response(HttpStatus.NOT_FOUND, null,
+                                MessageUtil.NOT_FOUND_CARETAKER), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ApiResponse.getInstance()
+                    .response(HttpStatus.CREATED,
+                            matchingService.create(MatchingMapping.getInstance().acceptMatching(caretaker, patient)),
+                            MessageUtil.SUCCESS_CARETAKER), HttpStatus.CREATED);
+        } else {
             return new ResponseEntity<>(ApiResponse.getInstance()
                     .response(HttpStatus.NOT_FOUND, null,
-                            MessageUtil.NOT_FOUND_CARETAKER), HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(ApiResponse.getInstance()
-                .response(HttpStatus.CREATED,
-                        matchingService.create(MatchingMapping.getInstance().acceptMatching(caretaker, patient)),
-                        HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
+                            MessageUtil.DUPLICATE_CARETAKER), HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("add-patient")
     public ResponseEntity addPatient(@RequestBody HashMap<String, Object> data) {
-        Caretaker caretaker = caretakerService.findById(Long.parseLong(data.get("idCaretaker").toString()));
-        if (caretaker == null)
-            return new ResponseEntity<>(ApiResponse.getInstance()
-                    .response(HttpStatus.NOT_FOUND, null,
-                            MessageUtil.NOT_FOUND_CARETAKER), HttpStatus.NOT_FOUND);
-        Patient patient = patientService.findByNumberPatient(data.get("patientNumber").toString());
-        if (patient == null)
-            return new ResponseEntity<>(ApiResponse.getInstance()
-                    .response(HttpStatus.NOT_FOUND, null,
-                            MessageUtil.NOT_FOUND_PATIENT), HttpStatus.NOT_FOUND);
+        Matching matching = matchingService.findByCaretakerIdAndPatientNumber(Long.parseLong(data.get("idCaretaker").toString()),
+                data.get("patientNumber").toString());
 
-        return new ResponseEntity<>(ApiResponse.getInstance()
-                .response(HttpStatus.OK,
-                        matchingService.create(MatchingMapping.getInstance().acceptMatching(caretaker, patient)),
-                        MessageUtil.SUCCESS_PATIENT), HttpStatus.OK);
+        if (matching == null) {
+            Caretaker caretaker = caretakerService.findById(Long.parseLong(data.get("idCaretaker").toString()));
+            if (caretaker == null)
+                return new ResponseEntity<>(ApiResponse.getInstance()
+                        .response(HttpStatus.NOT_FOUND, null,
+                                MessageUtil.NOT_FOUND_CARETAKER), HttpStatus.NOT_FOUND);
+            Patient patient = patientService.findByNumberPatient(data.get("patientNumber").toString());
+            if (patient == null)
+                return new ResponseEntity<>(ApiResponse.getInstance()
+                        .response(HttpStatus.NOT_FOUND, null,
+                                MessageUtil.NOT_FOUND_PATIENT), HttpStatus.NOT_FOUND);
+
+            return new ResponseEntity<>(ApiResponse.getInstance()
+                    .response(HttpStatus.OK,
+                            matchingService.create(MatchingMapping.getInstance().acceptMatching(caretaker, patient)),
+                            MessageUtil.SUCCESS_PATIENT), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(ApiResponse.getInstance()
+                    .response(HttpStatus.NOT_FOUND, null,
+                            MessageUtil.DUPLICATE_PATIENT), HttpStatus.NOT_FOUND);
+        }
     }
 
     @PatchMapping("{id}")

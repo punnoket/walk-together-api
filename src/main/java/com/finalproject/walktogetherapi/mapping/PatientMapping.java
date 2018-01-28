@@ -35,8 +35,10 @@ public class PatientMapping {
         if (data.get("userName") != null)
             if (patientService.findByUserName(data.get("userName").toString()) == null)
                 patient.setUserName(data.get("userName").toString());
-            else
-                return null;
+            else {
+                patient.setUserName(null);
+                return patient;
+            }
         if (data.get("password") != null)
             patient.setPassword(data.get("password").toString());
         if (data.get("titleName") != null)
@@ -62,7 +64,12 @@ public class PatientMapping {
         if (data.get("occupation") != null)
             patient.setOccupation(data.get("occupation").toString());
         if (data.get("email") != null)
-            patient.setEmail(data.get("email").toString());
+            if (patientService.findByEmail(data.get("email").toString()) == null)
+                patient.setEmail(data.get("email").toString());
+            else {
+                patient.setEmail(null);
+                return patient;
+            }
 
         return patient;
 
