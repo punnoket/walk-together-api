@@ -12,8 +12,11 @@ public interface CaretakerRepository extends JpaRepository<Caretaker, Long> {
     Caretaker findByUserName(String username);
 
     @Query("select c from Caretaker c WHERE  c.email = ?1")
-    Caretaker findByEmail(String  email);
+    Caretaker findByEmail(String email);
 
     @Query("select c from Caretaker c WHERE  c.tell = ?1")
-    Caretaker findByTell(String  tell);
+    Caretaker findByTell(String tell);
+
+    @Query("select c from Caretaker c WHERE  c.caretakerNumber = ?1")
+    Caretaker findByNumberCaretaker(String number);
 }

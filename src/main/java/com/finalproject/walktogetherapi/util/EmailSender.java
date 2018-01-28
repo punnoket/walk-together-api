@@ -28,7 +28,7 @@ public class EmailSender {
             MimeMessageHelper helper = new MimeMessageHelper(message);
 
             helper.setTo(email);
-            helper.setText(MessageUtil.YOUR_PASSWORD+ password);
+            helper.setText(MessageUtil.YOUR_PASSWORD + password);
             helper.setSubject(MessageUtil.SUBJECT_EMAIL);
             sender.send(message);
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, null, MessageUtil.EMAIL_SEND_SUCCESS), HttpStatus.OK);

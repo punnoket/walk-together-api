@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class WalkTogetherApiApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WalkTogetherApiApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(WalkTogetherApiApplication.class, args);
+    }
 }

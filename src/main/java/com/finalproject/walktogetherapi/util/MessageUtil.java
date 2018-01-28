@@ -11,6 +11,12 @@ public class MessageUtil {
     public static final String EMAIL_SEND_SUCCESS = "รหัสผ่านส่งไปถึงอีเมลล์ของท่าน";
     public static final String SMS_SEND_SUCCESS = "รหัสผ่านส่งไปถึงเบอร์โทรศัพท์ของท่าน";
     public static final String YOUR_PASSWORD = "รหัสผ่านของคุณคือ ";
-    public static final String SUBJECT_EMAIL= "Walk Together";
+    public static final String SUBJECT_EMAIL = "Walk Together";
+
+    public static final String NOT_FOUND_CARETAKER = "ไม่พบผู้ดูแล";
+    public static final String NOT_FOUND_PATIENT = "ไม่พบผู้ป่วย";
+    public static final String SUCCESS_CARETAKER = "เพิ่มผู้ดูแลสำเร็จ";
+    public static final String SUCCESS_PATIENT = "เพิ่มผู้ป่วยสำเร็จ";
+
 
 }

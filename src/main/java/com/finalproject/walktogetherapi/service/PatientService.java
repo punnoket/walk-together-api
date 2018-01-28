@@ -24,4 +24,7 @@ public interface PatientService {
     Patient findByEmail(String email);
 
     Patient findByTell(String tell);
+
+    Patient findByNumberPatient(String number);
+
 }

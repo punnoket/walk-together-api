@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -23,9 +24,9 @@ public class SubDistrictController {
     public ResponseEntity getByDistrictId(@PathVariable Long id) {
         List<SubDistrict> subDistricts = subDistrictServices.findByDistrictId(id);
         if (subDistricts != null) {
-            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,subDistricts,HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, subDistricts, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND,null,HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.OK);
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.OK);
         }
 
     }

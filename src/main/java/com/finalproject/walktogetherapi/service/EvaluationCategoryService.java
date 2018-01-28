@@ -18,5 +18,5 @@ public interface EvaluationCategoryService {
 
     EvaluationCategory delete(Long id);
 
-    List<EvaluationCategory>  findAllByOrderByIdAsc();
+    List<EvaluationCategory> findAllByOrderByIdAsc();
 }

@@ -60,4 +60,9 @@ public class PatientServiceImpl implements PatientService {
         return patientRepository.findByTell(tell);
     }
 
+    @Override
+    public Patient findByNumberPatient(String number) {
+        return patientRepository.findByNumberPatient(number);
+    }
+
 }

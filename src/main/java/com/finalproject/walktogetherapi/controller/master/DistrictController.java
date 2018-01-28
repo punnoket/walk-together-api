@@ -25,9 +25,9 @@ public class DistrictController {
     public ResponseEntity getByDistrictId(@PathVariable Long id) {
         List<District> districtList = districtServices.findByProvinceId(id);
         if (districtList != null) {
-            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,districtList,HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, districtList, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND,null,HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.OK);
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.OK);
         }
 
     }

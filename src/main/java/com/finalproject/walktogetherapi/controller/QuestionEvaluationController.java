@@ -44,7 +44,7 @@ public class QuestionEvaluationController {
         NumberEvaluation numberEvaluation = numberEvaluationService.findById(Long.parseLong(questionEvaluation.get("numberEvaluationServiceId").toString()));
         result.setTitle(questionEvaluation.get("title").toString());
         result.setDescription(questionEvaluation.get("description").toString());
-        result.setNumberEvaluation(numberEvaluation  );
+        result.setNumberEvaluation(numberEvaluation);
         return new ResponseEntity<>(ApiResponse.getInstance()
                 .response(HttpStatus.CREATED,
                         questionEvaluationService.create(result),

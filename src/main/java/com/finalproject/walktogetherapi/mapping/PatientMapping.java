@@ -32,36 +32,36 @@ public class PatientMapping {
 
         if (isCreate)
             patient.setPatientNumber(RandomNumberUser.getInstance().getNumberPatient());
-        if (data.get("userName")!=null)
-            if(patientService.findByUserName(data.get("userName").toString())==null)
+        if (data.get("userName") != null)
+            if (patientService.findByUserName(data.get("userName").toString()) == null)
                 patient.setUserName(data.get("userName").toString());
             else
                 return null;
-        if (data.get("password")!=null)
+        if (data.get("password") != null)
             patient.setPassword(data.get("password").toString());
-        if (data.get("titleName")!=null)
+        if (data.get("titleName") != null)
             patient.setTitleName(data.get("titleName").toString());
-        if (data.get("firstName")!=null)
+        if (data.get("firstName") != null)
             patient.setFirstName(data.get("firstName").toString());
-        if (data.get("lastName")!=null)
+        if (data.get("lastName") != null)
             patient.setLastName(data.get("lastName").toString());
-        if (data.get("sexId")!=null)
+        if (data.get("sexId") != null)
             patient.setSex(sexServices.findById(Long.parseLong(data.get("sexId").toString())));
-        if (data.get("dob")!=null)
+        if (data.get("dob") != null)
             patient.setDob(data.get("dob").toString());
-        if (data.get("address")!=null)
+        if (data.get("address") != null)
             patient.setAddress(data.get("address").toString());
-        if (data.get("provinceId")!=null)
+        if (data.get("provinceId") != null)
             patient.setProvince(provinceServices.findById(Long.parseLong(data.get("provinceId").toString())));
-        if (data.get("districtId")!=null)
+        if (data.get("districtId") != null)
             patient.setDistrict(districtServices.findById(Long.parseLong(data.get("districtId").toString())));
-        if (data.get("subDistrictId")!=null)
+        if (data.get("subDistrictId") != null)
             patient.setSubDistrict(subDistrictServices.findById(Long.parseLong(data.get("subDistrictId").toString())));
-        if (data.get("tell")!=null)
+        if (data.get("tell") != null)
             patient.setTell(data.get("tell").toString());
-        if (data.get("occupation")!=null)
+        if (data.get("occupation") != null)
             patient.setOccupation(data.get("occupation").toString());
-        if (data.get("email")!=null)
+        if (data.get("email") != null)
             patient.setEmail(data.get("email").toString());
 
         return patient;

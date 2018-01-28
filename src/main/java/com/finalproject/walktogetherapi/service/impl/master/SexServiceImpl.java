@@ -1,4 +1,5 @@
 package com.finalproject.walktogetherapi.service.impl.master;
+
 import com.finalproject.walktogetherapi.entities.master.Sex;
 import com.finalproject.walktogetherapi.repository.master.SexRepository;
 import com.finalproject.walktogetherapi.service.master.SexServices;

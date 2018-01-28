@@ -53,10 +53,17 @@ public class CaretakerServiceImpl implements CaretakerService {
 
     @Override
     public Caretaker findByEmail(String email) {
-        return caretakerRepository.findByEmail(email);    }
+        return caretakerRepository.findByEmail(email);
+    }
 
     @Override
     public Caretaker findByTell(String tell) {
-        return caretakerRepository.findByTell(tell);    }
+        return caretakerRepository.findByTell(tell);
+    }
+
+    @Override
+    public Caretaker findByNumberCaretaker(String number) {
+        return caretakerRepository.findByNumberCaretaker(number);
+    }
 
 }

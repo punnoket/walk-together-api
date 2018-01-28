@@ -51,6 +51,7 @@ public class AnswerEvaluationController {
                         answerEvaluationService.create(result),
                         HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
     }
+
     @PatchMapping("{id}")
     public ResponseEntity update(@PathVariable Long id, @RequestBody AnswerEvaluation answerEvaluation) {
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, answerEvaluationService.update(id, answerEvaluation), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);

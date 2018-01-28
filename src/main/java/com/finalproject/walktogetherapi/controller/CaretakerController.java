@@ -63,21 +63,21 @@ public class CaretakerController {
     @PostMapping("")
     public ResponseEntity create(@RequestBody HashMap<String, Object> data) {
         Caretaker caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, sexServices, provinceServices, districtServices, subDistrictServices, new Caretaker(), true);
-       if (caretaker!=null) {
-           return new ResponseEntity<>(ApiResponse.getInstance()
-                   .response(HttpStatus.CREATED,
-                           caretakerService.create(caretaker),
-                           HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
-       } else {
-           return new ResponseEntity<>(ApiResponse.getInstance()
-                   .response(HttpStatus.NOT_FOUND,
-                           null,
-                           MessageUtil.DUPLICATE_USERNAME), HttpStatus.NOT_FOUND);
-       }
+        if (caretaker != null) {
+            return new ResponseEntity<>(ApiResponse.getInstance()
+                    .response(HttpStatus.CREATED,
+                            caretakerService.create(caretaker),
+                            HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(ApiResponse.getInstance()
+                    .response(HttpStatus.NOT_FOUND,
+                            null,
+                            MessageUtil.DUPLICATE_USERNAME), HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("forget-password-email")
-    public ResponseEntity forgetPasswordEmail(@RequestBody HashMap < String, Object > data) {
+    public ResponseEntity forgetPasswordEmail(@RequestBody HashMap<String, Object> data) {
         Caretaker caretaker = caretakerService.findByEmail(data.get("email").toString());
         if (caretaker == null) {
             return new ResponseEntity<>(ApiResponse.getInstance()
@@ -91,7 +91,7 @@ public class CaretakerController {
     }
 
     @PostMapping("forget-password-tell")
-    public ResponseEntity forgetPasswordPhone(@RequestBody HashMap < String, Object > data) {
+    public ResponseEntity forgetPasswordPhone(@RequestBody HashMap<String, Object> data) {
         Caretaker caretaker = caretakerService.findByTell(data.get("tell").toString());
         if (caretaker == null) {
             return new ResponseEntity<>(ApiResponse.getInstance()

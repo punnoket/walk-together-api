@@ -25,7 +25,7 @@ public class RandomNumberUser {
             result.append(characters.charAt(rand.nextInt(characters.length())));
             length--;
         }
-        return "P"+result.toString();
+        return "P" + result.toString();
 
     }
 
@@ -38,7 +38,7 @@ public class RandomNumberUser {
             result.append(characters.charAt(rand.nextInt(characters.length())));
             length--;
         }
-        return "C"+result.toString();
+        return "C" + result.toString();
 
     }
 }

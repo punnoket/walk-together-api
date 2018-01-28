@@ -49,7 +49,7 @@ public class EvaluationCategoryServiceImpl implements EvaluationCategoryService 
     }
 
     @Override
-    public List<EvaluationCategory>  findAllByOrderByIdAsc() {
+    public List<EvaluationCategory> findAllByOrderByIdAsc() {
         return evaluationCategoryRepository.findAllByOrderByIdAsc();
     }
 }

@@ -63,7 +63,7 @@ public class PatientController {
     }
 
     @PostMapping("forget-password-email")
-    public ResponseEntity forgetPasswordEmail(@RequestBody HashMap < String, Object > data) {
+    public ResponseEntity forgetPasswordEmail(@RequestBody HashMap<String, Object> data) {
         Patient patient = patientService.findByEmail(data.get("email").toString());
         if (patient == null) {
             return new ResponseEntity<>(ApiResponse.getInstance()
@@ -77,7 +77,7 @@ public class PatientController {
     }
 
     @PostMapping("forget-password-tell")
-    public ResponseEntity forgetPasswordPhone(@RequestBody HashMap < String, Object > data) {
+    public ResponseEntity forgetPasswordPhone(@RequestBody HashMap<String, Object> data) {
         Patient patient = patientService.findByTell(data.get("tell").toString());
         if (patient == null) {
             return new ResponseEntity<>(ApiResponse.getInstance()
@@ -90,35 +90,35 @@ public class PatientController {
         }
     }
 
-        @PostMapping("")
-        public ResponseEntity create (@RequestBody HashMap < String, Object > data){
-            Patient patient = PatientMapping.getInstance().getPatient(data, patientService, sexServices, provinceServices, districtServices, subDistrictServices, new Patient(), true);
-            if (patient != null) {
-                return new ResponseEntity<>(ApiResponse.getInstance()
-                        .response(HttpStatus.CREATED,
-                                patientService.create(patient),
-                                MessageUtil.EMAIL_SEND_SUCCESS), HttpStatus.CREATED);
-            } else {
-                return new ResponseEntity<>(ApiResponse.getInstance()
-                        .response(HttpStatus.NOT_FOUND,
-                                null,
-                                MessageUtil.DUPLICATE_USERNAME), HttpStatus.NOT_FOUND);
-            }
-        }
-
-        @PatchMapping("{id}")
-        public ResponseEntity update (@PathVariable Long id, @RequestBody HashMap < String, Object > data){
-            Patient patient = PatientMapping.getInstance().getPatient(data, patientService, sexServices, provinceServices, districtServices, subDistrictServices, patientService.findById(id), false);
+    @PostMapping("")
+    public ResponseEntity create(@RequestBody HashMap<String, Object> data) {
+        Patient patient = PatientMapping.getInstance().getPatient(data, patientService, sexServices, provinceServices, districtServices, subDistrictServices, new Patient(), true);
+        if (patient != null) {
             return new ResponseEntity<>(ApiResponse.getInstance()
                     .response(HttpStatus.CREATED,
-                            patientService.update(id, patient),
+                            patientService.create(patient),
                             HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(ApiResponse.getInstance()
+                    .response(HttpStatus.NOT_FOUND,
+                            null,
+                            MessageUtil.DUPLICATE_USERNAME), HttpStatus.NOT_FOUND);
         }
-
-        @DeleteMapping("{id}")
-        public ResponseEntity delete (@PathVariable Long id){
-            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, patientService.delete(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
-        }
-
-
     }
+
+    @PatchMapping("{id}")
+    public ResponseEntity update(@PathVariable Long id, @RequestBody HashMap<String, Object> data) {
+        Patient patient = PatientMapping.getInstance().getPatient(data, patientService, sexServices, provinceServices, districtServices, subDistrictServices, patientService.findById(id), false);
+        return new ResponseEntity<>(ApiResponse.getInstance()
+                .response(HttpStatus.CREATED,
+                        patientService.update(id, patient),
+                        HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity delete(@PathVariable Long id) {
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, patientService.delete(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+    }
+
+
+}

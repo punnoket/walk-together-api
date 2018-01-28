@@ -25,4 +25,6 @@ public interface CaretakerService {
 
     Caretaker findByTell(String tell);
 
+    Caretaker findByNumberCaretaker(String number);
+
 }
