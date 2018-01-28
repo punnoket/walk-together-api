@@ -1,7 +1,5 @@
 package com.finalproject.walktogetherapi.util;
 
-import java.sql.Timestamp;
-import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,19 +17,18 @@ public class DateTHFormat {
         return instance;
     }
 
-
     public String normalDateFormat(Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy", new Locale("th", "TH"));
         formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
         return formatter.format(date);
     }
 
-    public String reportInformDateFormat(Date date) {
+    public String slashDateFormat(Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy", new Locale("th", "TH"));
         return formatter.format(date);
     }
 
-    public String reportInformTimeFormat(Date date) {
+    public String timeFormat(Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm", new Locale("th", "TH"));
         return formatter.format(date);
     }
@@ -44,19 +41,12 @@ public class DateTHFormat {
         return String.valueOf(year / 365);
     }
 
-    public String birthDayMissingDayToAgeMissing(Date birthDay, Date missingDate) {
-        Long dateTime = missingDate.getTime() - birthDay.getTime();
-        Long year = Math.abs(dateTime / 1000 / 60 / 60 / 24);
-        return String.valueOf(year / 365);
-    }
-
     private Date stringToDate(String dateString) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy", new Locale("th", "TH"));
         try {
             return formatter.parse(dateString);
         } catch (ParseException e) {
-            e.printStackTrace();
+            return new Date();
         }
-        return new Date();
     }
 }
