@@ -30,5 +30,5 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile('org.springframework.boot:spring-boot-starter-mail')
-
+	compile group: 'com.twilio.sdk', name: 'twilio-java-sdk', version: '3.4.5'
 }

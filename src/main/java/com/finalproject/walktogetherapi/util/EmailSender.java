@@ -22,16 +22,16 @@ public class EmailSender {
         return instance;
     }
 
-    public ResponseEntity sendMail(Patient patient, JavaMailSender sender) {
+    public ResponseEntity sendMail(String email, String password, JavaMailSender sender) {
         try {
             MimeMessage message = sender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message);
 
-            helper.setTo(patient.getEmail());
-            helper.setText("รหัสผ่านของคุณคือ "+ patient.getPassword());
-            helper.setSubject("Walk Together ");
+            helper.setTo(email);
+            helper.setText(MessageUtil.YOUR_PASSWORD+ password);
+            helper.setSubject(MessageUtil.SUBJECT_EMAIL);
             sender.send(message);
-            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, null, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, null, MessageUtil.EMAIL_SEND_SUCCESS), HttpStatus.OK);
 
         } catch (MessagingException e) {
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);

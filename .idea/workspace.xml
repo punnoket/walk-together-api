@@ -2,34 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53ffd90e-ebd3-4731-a447-dcbd43974762" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_sun_mail_javax_mail_1_5_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_activation_activation_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_mail_1_5_7_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_context_support_4_3_11_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/CaretakerController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/LoginController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/PatientController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Caretaker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Patient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/CaretakerMapping.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/PatientMapping.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/CaretakerRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/PatientRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/CaretakerService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/PatientService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/impl/CaretakerServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/impl/PatientServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/DateTHFormat.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/EmailSender.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/MessageUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/RandomNumberUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/366c8d21-661e-42b1-a013-e4ae438ba65c/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/366c8d21-661e-42b1-a013-e4ae438ba65c/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/366c8d21-661e-42b1-a013-e4ae438ba65c/_metadata_/metadata.values.at" afterPath="$PROJECT_DIR$/.idea/dataSources/366c8d21-661e-42b1-a013-e4ae438ba65c/_metadata_/metadata.values.at" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_googlecode_json_simple_json_simple_1_1_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_twilio_sdk_twilio_java_sdk_3_4_5.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__commons_codec_commons_codec_1_10.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__commons_lang_commons_lang_2_6.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_httpcomponents_httpclient_4_5_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_httpcomponents_httpcore_4_4_6.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_codehaus_jackson_jackson_core_asl_1_9_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_codehaus_jackson_jackson_mapper_asl_1_9_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Matching.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/MatchingRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/MatchingService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/impl/MatchingServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/Constant.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/SmsSender.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/classes/com/finalproject/walktogetherapi/WalkTogetherApiApplicationTests.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/CaretakerController.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/CaretakerController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/PatientController.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/PatientController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/entities/Caretaker.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/entities/Caretaker.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/entities/Patient.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/entities/Patient.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/util/EmailSender.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/util/EmailSender.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/util/MessageUtil.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/util/MessageUtil.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/366c8d21-661e-42b1-a013-e4ae438ba65c.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/366c8d21-661e-42b1-a013-e4ae438ba65c.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/walk-together-api_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/walk-together-api_main.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/walk-together-api_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/walk-together-api_test.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/resources/application.properties" afterPath="$PROJECT_DIR$/out/production/resources/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/CaretakerController.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/CaretakerController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/PatientController.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/PatientController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Caretaker.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Caretaker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Patient.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Patient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/EmailSender.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/EmailSender.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/MessageUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/MessageUtil.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -73,14 +78,6 @@
         <item name="public" type="e3449647:DbNodeDescriptor" />
         <item name="" type="fce03ad6:DatabaseStructure$GroupNode" />
       </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="postgres@localhost [2]" type="e3449647:DbNodeDescriptor" />
-        <item name="postgres" type="e3449647:DbNodeDescriptor" />
-        <item name="public" type="e3449647:DbNodeDescriptor" />
-        <item name="" type="fce03ad6:DatabaseStructure$GroupNode" />
-        <item name="caretaker" type="e3449647:DbNodeDescriptor" />
-      </path>
     </expand>
     <select />
   </component>
@@ -90,50 +87,7 @@
     </projectState>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="PatientController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/PatientController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="67" column="69" lean-forward="false" selection-start-line="67" selection-start-column="69" selection-end-line="67" selection-end-column="69" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessageUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/MessageUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="72" lean-forward="false" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EmailSender.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/EmailSender.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="43" column="50" lean-forward="false" selection-start-line="43" selection-start-column="50" selection-end-line="43" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -146,6 +100,7 @@
     <findStrings>
       <find>404</find>
       <find>du</find>
+      <find>EMAIL_SEND_SUCCESS</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -385,8 +340,8 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="3033213653000" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="4197946042" />
+        <entry key="$PROJECT_DIR$" value="3033259117000" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="1996186699" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="3442123891" />
       </map>
     </option>
@@ -575,14 +530,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/master/SexRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/master/ProvincesRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/master/DistrictsRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/master/SubDistrictsRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/master/DistrictsServices.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/master/SexServices.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/master/SubDistrictsServices.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/master/ProvincesServices.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/master/DristrictServices.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/impl/master/DistrictsServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/master/DistrictServices.java" />
@@ -609,23 +556,31 @@
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/PatientServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/DateTHFormat.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/RandomNumberUser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/CaretakerController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Caretaker.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Patient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/CaretakerMapping.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/PatientMapping.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/PatientRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/PatientService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/impl/PatientServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/CaretakerService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/impl/CaretakerServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/CaretakerRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/TwilioMessageCreator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/Client.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/MessageUtil.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/EmailSender.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/Constant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/CaretakerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/SmsSender.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Caretaker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Patient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/PatientController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Matching.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/MatchingRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/MatchingService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/impl/MatchingServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -656,8 +611,6 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -811,6 +764,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -830,11 +785,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.finalproject.walktogetherapi.util" />
-      <recent name="com.finalproject.walktogetherapi.controller" />
-      <recent name="com.finalproject.walktogetherapi.mapping" />
       <recent name="com.finalproject.walktogetherapi.service.impl" />
       <recent name="com.finalproject.walktogetherapi.service" />
+      <recent name="com.finalproject.walktogetherapi.repository" />
+      <recent name="com.finalproject.walktogetherapi.entities" />
+      <recent name="com.finalproject.walktogetherapi.util" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/master" />
@@ -972,46 +927,46 @@
       <workItem from="1516907092383" duration="4237000" />
       <workItem from="1516916019810" duration="1524000" />
       <workItem from="1517068614458" duration="10272000" />
+      <workItem from="1517130102790" duration="8292000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44484000" />
+    <option name="totallyTimeSpent" value="52776000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28612304" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39903265" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24391988" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28612304" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39903265" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1035,83 +990,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.province">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.province">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.province">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.provinces">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.province">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.province">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.province">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.province">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.province">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.province">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.province">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.district">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1151,7 +1029,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-59">
           <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1181,10 +1058,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="62" column="9" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding>
-            <element signature="e#1277#1278#0" expanded="false" />
-            <element signature="e#1317#1318#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1222,7 +1095,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1250,25 +1122,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.patient">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/AnswerEvaluationRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.caretaker">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1288,47 +1146,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Caretaker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="160" column="8" lean-forward="false" selection-start-line="160" selection-start-column="8" selection-end-line="160" selection-end-column="27" />
-          <folding>
-            <element signature="e#3288#3289#0" expanded="true" />
-            <element signature="e#3316#3317#0" expanded="true" />
-            <element signature="e#3358#3359#0" expanded="true" />
-            <element signature="e#3392#3393#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Patient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="178" column="8" lean-forward="false" selection-start-line="178" selection-start-column="8" selection-end-line="178" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3554#3555#0" expanded="true" />
-            <element signature="e#3590#3591#0" expanded="true" />
-            <element signature="e#3622#3623#0" expanded="true" />
-            <element signature="e#3650#3651#0" expanded="true" />
-            <element signature="e#3692#3693#0" expanded="true" />
-            <element signature="e#3726#3727#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="412">
           <caret line="55" column="109" lean-forward="false" selection-start-line="55" selection-start-column="109" selection-end-line="55" selection-end-column="109" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/CaretakerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49">
-          <caret line="56" column="45" lean-forward="true" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -1354,7 +1175,7 @@
         <state relative-caret-position="314">
           <caret line="64" column="29" lean-forward="false" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1375,14 +1196,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/CaretakerService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -1396,12 +1209,12 @@
         <state relative-caret-position="344">
           <caret line="59" column="48" lean-forward="false" selection-start-line="59" selection-start-column="48" selection-end-line="59" selection-end-column="48" />
           <folding>
-            <element signature="e#1431#1432#0" expanded="true" />
-            <element signature="e#1496#1497#0" expanded="true" />
-            <element signature="e#1558#1559#0" expanded="true" />
-            <element signature="e#1617#1618#0" expanded="true" />
-            <element signature="e#1677#1678#0" expanded="true" />
-            <element signature="e#1734#1735#0" expanded="true" />
+            <element signature="e#1431#1432#0" expanded="false" />
+            <element signature="e#1496#1497#0" expanded="false" />
+            <element signature="e#1558#1559#0" expanded="false" />
+            <element signature="e#1617#1618#0" expanded="false" />
+            <element signature="e#1677#1678#0" expanded="false" />
+            <element signature="e#1734#1735#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1422,36 +1235,293 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="37" column="29" lean-forward="false" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/TwilioMessageCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="8" column="31" lean-forward="false" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="32" column="77" lean-forward="false" selection-start-line="32" selection-start-column="77" selection-end-line="32" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/MessageUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="72" lean-forward="false" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
+        <state relative-caret-position="150">
+          <caret line="10" column="49" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="49" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="60" lean-forward="false" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/EmailSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="33" column="126" lean-forward="false" selection-start-line="33" selection-start-column="126" selection-end-line="33" selection-end-column="126" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/SmsSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="50" column="141" lean-forward="false" selection-start-line="50" selection-start-column="141" selection-end-line="50" selection-end-column="141" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/CaretakerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="101" column="49" lean-forward="false" selection-start-line="101" selection-start-column="49" selection-end-line="101" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.matching">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.matching</OriginalElement>
+          <nodes>
+            <node x="318.08482142857144" y="435.0">366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.sex</node>
+            <node x="211.89732142857144" y="1134.0">366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.matching</node>
+            <node x="105.08482142857144" y="402.0">366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.subdistrict</node>
+            <node x="163.7008928571429" y="190.0">366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.district</node>
+            <node x="29.602678571428584" y="658.0">366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.patient</node>
+            <node x="114.20089285714289" y="0.0">366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.province</node>
+            <node x="332.5580357142857" y="680.0">366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.caretaker</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.patient" target="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.sex">
+              <point x="89.24999999999997" y="-213.0" />
+              <point x="237.85267857142856" y="638.0" />
+              <point x="362.33482142857144" y="638.0" />
+              <point x="-44.25" y="70.0" />
+            </edge>
+            <edge source="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.caretaker" target="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.province">
+              <point x="96.37500000000006" y="-191.0" />
+              <point x="557.4330357142858" y="638.0" />
+              <point x="563.6651785714287" y="638.0" />
+              <point x="563.6651785714287" y="170.0" />
+              <point x="269.0758928571429" y="170.0" />
+              <point x="66.37500000000003" y="70.0" />
+            </edge>
+            <edge source="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.subdistrict" target="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.province">
+              <point x="-48.25" y="-103.0" />
+              <point x="153.33482142857144" y="372.0" />
+              <point x="106.12053571428572" y="372.0" />
+              <point x="106.12053571428572" y="170.0" />
+              <point x="180.5758928571429" y="170.0" />
+              <point x="-22.125" y="70.0" />
+            </edge>
+            <edge source="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.matching" target="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.caretaker">
+              <point x="43.5" y="-36.5" />
+              <point x="342.39732142857144" y="1109.0" />
+              <point x="461.0580357142857" y="1109.0" />
+              <point x="0.0" y="191.0" />
+            </edge>
+            <edge source="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.caretaker" target="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.district">
+              <point x="32.12500000000006" y="-191.0" />
+              <point x="493.1830357142858" y="628.0" />
+              <point x="552.6651785714287" y="628.0" />
+              <point x="552.6651785714287" y="382.0" />
+              <point x="311.2008928571429" y="382.0" />
+              <point x="59.00000000000003" y="81.0" />
+            </edge>
+            <edge source="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.patient" target="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.subdistrict">
+              <point x="29.74999999999997" y="-213.0" />
+              <point x="178.35267857142856" y="638.0" />
+              <point x="153.33482142857144" y="638.0" />
+              <point x="-48.25" y="103.0" />
+            </edge>
+            <edge source="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.patient" target="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.province">
+              <point x="-89.25000000000003" y="-213.0" />
+              <point x="59.352678571428555" y="638.0" />
+              <point x="42.5" y="638.0" />
+              <point x="42.5" y="160.0" />
+              <point x="136.3258928571429" y="160.0" />
+              <point x="-66.375" y="70.0" />
+            </edge>
+            <edge source="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.district" target="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.province">
+              <point x="2.8421709430404007E-14" y="-81.0" />
+              <point x="252.20089285714292" y="170.0" />
+              <point x="224.8258928571429" y="170.0" />
+              <point x="22.125" y="70.0" />
+            </edge>
+            <edge source="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.subdistrict" target="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.district">
+              <point x="48.25" y="-103.0" />
+              <point x="249.83482142857144" y="382.0" />
+              <point x="252.2008928571429" y="382.0" />
+              <point x="0.0" y="81.0" />
+            </edge>
+            <edge source="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.caretaker" target="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.sex">
+              <point x="-32.12499999999994" y="-191.0" />
+              <point x="428.9330357142858" y="638.0" />
+              <point x="450.83482142857144" y="638.0" />
+              <point x="44.25" y="70.0" />
+            </edge>
+            <edge source="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.patient" target="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.district">
+              <point x="-29.75000000000003" y="-213.0" />
+              <point x="118.85267857142856" y="628.0" />
+              <point x="53.5" y="628.0" />
+              <point x="53.5" y="382.0" />
+              <point x="193.2008928571429" y="382.0" />
+              <point x="-59.0" y="81.0" />
+            </edge>
+            <edge source="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.caretaker" target="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.subdistrict">
+              <point x="-96.37499999999994" y="-191.0" />
+              <point x="364.6830357142858" y="628.0" />
+              <point x="249.83482142857144" y="628.0" />
+              <point x="48.25" y="103.0" />
+            </edge>
+            <edge source="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.matching" target="366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.patient">
+              <point x="-43.5" y="-36.5" />
+              <point x="255.39732142857144" y="1109.0" />
+              <point x="148.60267857142858" y="1109.0" />
+              <point x="0.0" y="213.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.6869872201237138" x="288.351476955831" y="1043.351476955831" />
+          <SelectedNodes>
+            <node>366c8d21-661e-42b1-a013-e4ae438ba65c.TABLE:postgres.public.matching</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.caretaker">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/1.5.7.RELEASE/2cf2cfec18d5ab88d9a6c57a2ce1c4e6e8232ff0/spring-boot-autoconfigure-1.5.7.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/web/WebMvcAutoConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="401" column="44" lean-forward="false" selection-start-line="401" selection-start-column="44" selection-end-line="401" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Matching.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+          <folding>
+            <element signature="e#625#626#0" expanded="true" />
+            <element signature="e#659#660#0" expanded="true" />
+            <element signature="e#687#688#0" expanded="true" />
+            <element signature="e#722#723#0" expanded="true" />
+            <element signature="e#752#753#0" expanded="true" />
+            <element signature="e#799#800#0" expanded="true" />
+            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#876#877#0" expanded="true" />
+            <element signature="e#908#909#0" expanded="true" />
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#1003#1004#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/PatientController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="67" column="69" lean-forward="false" selection-start-line="67" selection-start-column="69" selection-end-line="67" selection-end-column="69" />
+        <state relative-caret-position="363">
+          <caret line="59" column="17" lean-forward="true" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/EmailSender.java">
+    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.patient">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Caretaker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state relative-caret-position="374">
+          <caret line="164" column="0" lean-forward="false" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Patient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="43" column="50" lean-forward="false" selection-start-line="43" selection-start-column="50" selection-end-line="43" selection-end-column="50" />
+        <state relative-caret-position="255">
+          <caret line="17" column="32" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/impl/MatchingServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="55" column="71" lean-forward="false" selection-start-line="55" selection-start-column="71" selection-end-line="55" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.matching">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/MatchingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="17" column="46" lean-forward="false" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/MatchingRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>

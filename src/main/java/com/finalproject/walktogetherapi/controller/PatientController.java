@@ -10,6 +10,7 @@ import com.finalproject.walktogetherapi.service.master.SubDistrictServices;
 import com.finalproject.walktogetherapi.util.ApiResponse;
 import com.finalproject.walktogetherapi.util.EmailSender;
 import com.finalproject.walktogetherapi.util.MessageUtil;
+import com.finalproject.walktogetherapi.util.SmsSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -56,8 +57,13 @@ public class PatientController {
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, patientService.findById(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
-    @PostMapping("forget-password")
-    public ResponseEntity forgetPassword(@RequestBody HashMap < String, Object > data) {
+    @GetMapping("caretaker/{id}")
+    public ResponseEntity getCaretakerById(@PathVariable Long id) {
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, patientService.findById(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+    }
+
+    @PostMapping("forget-password-email")
+    public ResponseEntity forgetPasswordEmail(@RequestBody HashMap < String, Object > data) {
         Patient patient = patientService.findByEmail(data.get("email").toString());
         if (patient == null) {
             return new ResponseEntity<>(ApiResponse.getInstance()
@@ -65,7 +71,21 @@ public class PatientController {
                             null,
                             MessageUtil.INCORRECT_EMAIL), HttpStatus.NOT_FOUND);
         } else {
-            return EmailSender.getInstance().sendMail(patient, sender);
+            return EmailSender.getInstance().sendMail(patient.getEmail(), patient.getPassword(), sender);
+
+        }
+    }
+
+    @PostMapping("forget-password-tell")
+    public ResponseEntity forgetPasswordPhone(@RequestBody HashMap < String, Object > data) {
+        Patient patient = patientService.findByTell(data.get("tell").toString());
+        if (patient == null) {
+            return new ResponseEntity<>(ApiResponse.getInstance()
+                    .response(HttpStatus.NOT_FOUND,
+                            null,
+                            MessageUtil.INCORRECT_TELL), HttpStatus.NOT_FOUND);
+        } else {
+            return SmsSender.getInstance().sendSMSSimple(patient.getTell(), patient.getPassword());
 
         }
     }
@@ -77,7 +97,7 @@ public class PatientController {
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.CREATED,
                                 patientService.create(patient),
-                                HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
+                                MessageUtil.EMAIL_SEND_SUCCESS), HttpStatus.CREATED);
             } else {
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.NOT_FOUND,

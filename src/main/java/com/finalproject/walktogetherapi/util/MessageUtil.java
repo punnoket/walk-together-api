@@ -10,5 +10,7 @@ public class MessageUtil {
 
     public static final String EMAIL_SEND_SUCCESS = "รหัสผ่านส่งไปถึงอีเมลล์ของท่าน";
     public static final String SMS_SEND_SUCCESS = "รหัสผ่านส่งไปถึงเบอร์โทรศัพท์ของท่าน";
+    public static final String YOUR_PASSWORD = "รหัสผ่านของคุณคือ ";
+    public static final String SUBJECT_EMAIL= "Walk Together";
 
 }
