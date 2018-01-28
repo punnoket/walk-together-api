@@ -3,6 +3,7 @@ package com.finalproject.walktogetherapi.util;
 import org.springframework.http.HttpStatus;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class ApiResponse {
 

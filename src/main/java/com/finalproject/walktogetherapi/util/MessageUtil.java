@@ -20,7 +20,4 @@ public class MessageUtil {
     public static final String SUCCESS_PATIENT = "เพิ่มผู้ป่วยสำเร็จ";
     public static final String DUPLICATE_CARETAKER = "คุณมีผู้ดูแลคนนี้อยู่แล้ว";
     public static final String DUPLICATE_PATIENT = "คุณมีผู้ป่วยคนนี้อยู่แล้ว";
-
-
-
 }

@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 
 @CrossOrigin
@@ -34,22 +35,47 @@ public class MatchingController {
 
     @GetMapping("")
     public ResponseEntity getAll() {
-        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, matchingService.findAll(), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
+                matchingService.findAll(),
+                HttpStatus.OK.getReasonPhrase()),
+                HttpStatus.OK);
     }
 
     @GetMapping("{id}")
     public ResponseEntity getById(@PathVariable Long id) {
-        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, matchingService.findById(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
+                matchingService.findById(id),
+                HttpStatus.OK.getReasonPhrase()),
+                HttpStatus.OK);
     }
 
-    @GetMapping("caretaker-by-patient{id}")
+    @GetMapping("caretaker-by-patient/{id}")
     public ResponseEntity getCaretakerByIdPatient(@PathVariable Long id) {
-        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, matchingService.findByPatientId(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
-    }
+        List<Matching> matchingList = matchingService.findByCaretakerId(id);
+        if (matchingList != null)
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
+                    MatchingMapping.getInstance().getCaretakerList(matchingService.findByPatientId(id)),
+                    HttpStatus.OK.getReasonPhrase()),
+                    HttpStatus.OK);
+        else
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
+                    null,
+                    MessageUtil.NOT_FOUND_CARETAKER),
+                    HttpStatus.OK);    }
 
-    @GetMapping("patient-by-caretaker{id}")
+    @GetMapping("patient-by-caretaker/{id}")
     public ResponseEntity getPatientByIdCaretaker(@PathVariable Long id) {
-        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, matchingService.findByCaretakerId(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+        List<Matching> matchingList = matchingService.findByCaretakerId(id);
+        if (matchingList != null)
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
+                    MatchingMapping.getInstance().getPatientList(matchingService.findByCaretakerId(id)),
+                    HttpStatus.OK.getReasonPhrase()),
+                    HttpStatus.OK);
+        else
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
+                    null,
+                    MessageUtil.NOT_FOUND_PATIENT),
+                    HttpStatus.OK);
     }
 
     @PostMapping("")

@@ -5,6 +5,7 @@ import com.finalproject.walktogetherapi.entities.master.District;
 import com.finalproject.walktogetherapi.entities.master.Province;
 import com.finalproject.walktogetherapi.entities.master.Sex;
 import com.finalproject.walktogetherapi.entities.master.SubDistrict;
+import com.finalproject.walktogetherapi.util.DateTHFormat;
 
 import javax.persistence.*;
 import java.util.List;
@@ -24,6 +25,7 @@ public class Caretaker {
     @ManyToOne
     private Sex sex;
     private String dob;
+    private String age;
     private String address;
     @ManyToOne
     private Province province;
@@ -161,6 +163,11 @@ public class Caretaker {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAge() {
+        age =  DateTHFormat.getInstance().birthDayToAge(getDob());
+        return age;
     }
 
 }
