@@ -65,24 +65,28 @@ public class CaretakerController {
         Caretaker caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, sexServices, provinceServices, districtServices, subDistrictServices, new Caretaker(), true);
         if (caretaker.getUserName() != null) {
             if (caretaker.getEmail() != null)
-                return new ResponseEntity<>(ApiResponse.getInstance()
-                        .response(HttpStatus.CREATED,
-                                caretakerService.create(caretaker),
-                                HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
+                if (caretaker.getTell() != null)
+                    return new ResponseEntity<>(ApiResponse.getInstance()
+                            .response(HttpStatus.CREATED,
+                                    caretakerService.create(caretaker),
+                                    HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
+                else
+                    return new ResponseEntity<>(ApiResponse.getInstance()
+                            .response(HttpStatus.NOT_FOUND,
+                                    null,
+                                    MessageUtil.DUPLICATE_TELL), HttpStatus.NOT_FOUND);
 
-             else {
+            else
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.NOT_FOUND,
                                 null,
                                 MessageUtil.DUPLICATE_EMAIL), HttpStatus.NOT_FOUND);
-            }
 
-        } else {
+        } else
             return new ResponseEntity<>(ApiResponse.getInstance()
                     .response(HttpStatus.NOT_FOUND,
                             null,
                             MessageUtil.DUPLICATE_USERNAME), HttpStatus.NOT_FOUND);
-        }
     }
 
     @PostMapping("forget-password-email")

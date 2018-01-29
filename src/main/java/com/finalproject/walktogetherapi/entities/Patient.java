@@ -36,6 +36,7 @@ public class Patient {
     private String level;
     private String frequency;
     private String email;
+    private String image;
 
     public Long getId() {
         return id;
@@ -184,5 +185,13 @@ public class Patient {
     public String getAge() {
         age =  DateTHFormat.getInstance().birthDayToAge(getDob());
         return age;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

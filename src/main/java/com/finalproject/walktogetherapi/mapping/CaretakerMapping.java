@@ -59,8 +59,6 @@ public class CaretakerMapping {
             caretaker.setDistrict(districtServices.findById(Long.parseLong(data.get("districtId").toString())));
         if (data.get("subDistrictId") != null)
             caretaker.setSubDistrict(subDistrictServices.findById(Long.parseLong(data.get("subDistrictId").toString())));
-        if (data.get("tell") != null)
-            caretaker.setTell(data.get("tell").toString());
         if (data.get("occupation") != null)
             caretaker.setOccupation(data.get("occupation").toString());
         if (data.get("email") != null)
@@ -70,9 +68,14 @@ public class CaretakerMapping {
                 caretaker.setEmail(null);
                 return caretaker;
             }
+        if (data.get("tell") != null)
+            if (caretakerService.findByTell(data.get("tell").toString()) == null) {
+                caretaker.setTell(data.get("tell").toString());
+            } else {
+                caretaker.setTell(null);
+                return caretaker;
+            }
         return caretaker;
-
     }
-
 
 }

@@ -59,8 +59,6 @@ public class PatientMapping {
             patient.setDistrict(districtServices.findById(Long.parseLong(data.get("districtId").toString())));
         if (data.get("subDistrictId") != null)
             patient.setSubDistrict(subDistrictServices.findById(Long.parseLong(data.get("subDistrictId").toString())));
-        if (data.get("tell") != null)
-            patient.setTell(data.get("tell").toString());
         if (data.get("occupation") != null)
             patient.setOccupation(data.get("occupation").toString());
         if (data.get("email") != null)
@@ -70,10 +68,14 @@ public class PatientMapping {
                 patient.setEmail(null);
                 return patient;
             }
-
+        if (data.get("tell") != null)
+            if (patientService.findByTell(data.get("tell").toString()) == null)
+                patient.setTell(data.get("tell").toString());
+            else {
+                patient.setTell(null);
+                return patient;
+            }
         return patient;
-
     }
-
 
 }

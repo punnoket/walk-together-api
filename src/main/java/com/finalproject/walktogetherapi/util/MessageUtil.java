@@ -4,6 +4,7 @@ public class MessageUtil {
 
     public static final String DUPLICATE_USERNAME = "ชื่อบัญชีผู้ใช้ซ้ำ";
     public static final String DUPLICATE_EMAIL = "อีเมลล์ผู้ใช้ซ้ำ";
+    public static final String DUPLICATE_TELL = "เบอร์โทรศัพท์มือถือผู้ใช้ซ้ำ";
     public static final String INCORRECT_USERNAME = "ชื่อบัญชีผู้ใช้ผิดพลาด";
     public static final String INCORRECT_PASSWORD = "รหัสผ่านผิดพลาด";
     public static final String INCORRECT_EMAIL = "อีเมลล์ไม่ถูกต้อง";

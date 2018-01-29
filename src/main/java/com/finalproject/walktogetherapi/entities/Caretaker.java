@@ -36,6 +36,7 @@ public class Caretaker {
     private String tell;
     private String occupation;
     private String email;
+    private String image;
 
     public Long getId() {
         return id;
@@ -170,4 +171,11 @@ public class Caretaker {
         return age;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

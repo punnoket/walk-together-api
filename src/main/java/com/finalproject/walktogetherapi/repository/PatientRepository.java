@@ -10,15 +10,15 @@ import java.util.List;
 
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Long> {
-    @Query("select p from Patient p WHERE  p.userName = ?1")
+    @Query("select p from Patient p where p.userName = ?1")
     Patient findByUserName(String username);
 
-    @Query("select p from Patient p WHERE  p.email = ?1")
+    @Query("select p from Patient p where p.email = ?1")
     Patient findByEmail(String email);
 
-    @Query("select p from Patient p WHERE  p.tell = ?1")
+    @Query("select p from Patient p where p.tell = ?1")
     Patient findByTell(String tell);
 
-    @Query("select p from Patient p WHERE  p.patientNumber = ?1")
+    @Query("select p from Patient p where p.patientNumber = ?1")
     Patient findByNumberPatient(String number);
 }

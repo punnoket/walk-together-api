@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface QuestionEvaluationRepository extends JpaRepository<QuestionEvaluation, Long> {
 
-    @Query("select q from QuestionEvaluation q WHERE  q.numberEvaluation.id = ?1")
+    @Query("select q from QuestionEvaluation q where q.numberEvaluation.id = ?1")
     List<QuestionEvaluation> findByNumberCategoryId(Long id);
 }

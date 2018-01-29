@@ -8,15 +8,15 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CaretakerRepository extends JpaRepository<Caretaker, Long> {
-    @Query("select c from Caretaker c WHERE  c.userName = ?1")
+    @Query("select c from Caretaker c where c.userName = ?1")
     Caretaker findByUserName(String username);
 
-    @Query("select c from Caretaker c WHERE  c.email = ?1")
+    @Query("select c from Caretaker c where c.email = ?1")
     Caretaker findByEmail(String email);
 
-    @Query("select c from Caretaker c WHERE  c.tell = ?1")
+    @Query("select c from Caretaker c where c.tell = ?1")
     Caretaker findByTell(String tell);
 
-    @Query("select c from Caretaker c WHERE  c.caretakerNumber = ?1")
+    @Query("select c from Caretaker c where c.caretakerNumber = ?1")
     Caretaker findByNumberCaretaker(String number);
 }

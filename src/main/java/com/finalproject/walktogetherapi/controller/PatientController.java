@@ -95,10 +95,18 @@ public class PatientController {
         Patient patient = PatientMapping.getInstance().getPatient(data, patientService, sexServices, provinceServices, districtServices, subDistrictServices, new Patient(), true);
         if (patient.getUserName() != null) {
             if (patient.getEmail() != null) {
-                return new ResponseEntity<>(ApiResponse.getInstance()
-                        .response(HttpStatus.CREATED,
-                                patientService.create(patient),
-                                HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
+                if (patient.getTell() != null) {
+                    return new ResponseEntity<>(ApiResponse.getInstance()
+                            .response(HttpStatus.CREATED,
+                                    patientService.create(patient),
+                                    HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
+                } else {
+                    return new ResponseEntity<>(ApiResponse.getInstance()
+                            .response(HttpStatus.NOT_FOUND,
+                                    null,
+                                    MessageUtil.DUPLICATE_TELL), HttpStatus.NOT_FOUND);
+                }
+
             } else {
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.NOT_FOUND,
