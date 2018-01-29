@@ -66,6 +66,7 @@ public class ViewImageController {
                                                    @PathVariable String fileName) throws IOException {
 
         String pathString = "image"
+                + "/"
                 + type
                 + "/"
                 + id

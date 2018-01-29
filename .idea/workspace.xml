@@ -2,43 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53ffd90e-ebd3-4731-a447-dcbd43974762" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__commons_io_commons_io_2_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/ImageController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/ViewImageController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/evaluation/ImageQuestionEvaluation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/ImageQuestionEvaluationRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/ImageQuestionEvaluationService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/impl/ImageQuestionEvaluationServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/ImageUpload.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/366c8d21-661e-42b1-a013-e4ae438ba65c/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/366c8d21-661e-42b1-a013-e4ae438ba65c/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/366c8d21-661e-42b1-a013-e4ae438ba65c/_metadata_/metadata.values.at" afterPath="$PROJECT_DIR$/.idea/dataSources/366c8d21-661e-42b1-a013-e4ae438ba65c/_metadata_/metadata.values.at" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/CaretakerController.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/CaretakerController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/PatientController.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/PatientController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/mapping/CaretakerMapping.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/mapping/CaretakerMapping.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/mapping/PatientMapping.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/mapping/PatientMapping.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/repository/CaretakerRepository.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/repository/CaretakerRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/repository/MatchingRepository.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/repository/MatchingRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/repository/PatientRepository.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/repository/PatientRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/repository/QuestionEvaluationRepository.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/repository/QuestionEvaluationRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/util/Constant.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/util/Constant.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/util/DateTHFormat.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/util/DateTHFormat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/util/MessageUtil.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/util/MessageUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/walk-together-api_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/walk-together-api_main.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/walk-together-api_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/walk-together-api_test.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/CaretakerController.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/CaretakerController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/PatientController.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/PatientController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Caretaker.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Caretaker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Patient.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Patient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/CaretakerMapping.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/CaretakerMapping.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/PatientMapping.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/PatientMapping.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/CaretakerRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/CaretakerRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/MatchingRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/MatchingRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/PatientRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/PatientRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/QuestionEvaluationRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/QuestionEvaluationRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/Constant.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/Constant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/MessageUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/MessageUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/ViewImageController.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/ViewImageController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -110,7 +74,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/ViewImageController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="223">
-              <caret line="68" column="16" lean-forward="false" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
+              <caret line="68" column="21" lean-forward="false" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -1089,7 +1053,7 @@
       <workItem from="1517130102790" duration="8292000" />
       <workItem from="1517150038208" duration="78000" />
       <workItem from="1517153537872" duration="10856000" />
-      <workItem from="1517239448580" duration="8869000" />
+      <workItem from="1517239448580" duration="9040000" />
     </task>
     <servers />
   </component>
@@ -1105,7 +1069,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72579000" />
+    <option name="totallyTimeSpent" value="72750000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1135,7 +1099,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1619,7 +1583,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/ViewImageController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
-          <caret line="68" column="16" lean-forward="false" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
+          <caret line="68" column="21" lean-forward="false" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
           <folding />
         </state>
       </provider>
