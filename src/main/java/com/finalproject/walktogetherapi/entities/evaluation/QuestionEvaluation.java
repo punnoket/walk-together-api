@@ -54,6 +54,7 @@ public class QuestionEvaluation {
         this.image = image;
     }
 
+    @JsonIgnore
     public List<AnswerEvaluation> getAnswerEvaluations() {
         return answerEvaluations;
     }

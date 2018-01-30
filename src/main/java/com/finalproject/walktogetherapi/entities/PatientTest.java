@@ -16,6 +16,7 @@ public class PatientTest {
     private QuestionEvaluation questionEvaluation;
     @ManyToOne
     private AnswerEvaluation answerEvaluation;
+    private String answer;
     private String score;
 
     @ManyToOne
@@ -39,6 +40,7 @@ public class PatientTest {
         this.questionEvaluation = questionEvaluation;
     }
 
+    @JsonIgnore
     public AnswerEvaluation getAnswerEvaluation() {
         return answerEvaluation;
     }
@@ -62,5 +64,13 @@ public class PatientTest {
 
     public void setEvaluationTest(EvaluationTest evaluationTest) {
         this.evaluationTest = evaluationTest;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public String getAnswer() {
+        return answer;
     }
 }

@@ -58,7 +58,7 @@ public class EvaluationController {
     public ResponseEntity checkEvaluation(@RequestBody HashMap<String, HashMap<String, Object>> data, @PathVariable Long id) {
         int score = 0;
         List<PatientTest> patientTestList = new ArrayList<>();
-        EvaluationTest evaluationTest = new EvaluationTest();
+        EvaluationTest evaluationTest =  evaluationTestService.create(new EvaluationTest());
         HistoryEvaluationTest historyEvaluationTest = new HistoryEvaluationTest();
         for (int i = 1; i < 14; i++) {
             HashMap<String, Object> map = data.get("no" + i);
@@ -66,19 +66,23 @@ public class EvaluationController {
 
             List<AnswerEvaluation> answerEvaluationList = questionEvaluation.getAnswerEvaluations();
             patientTestList = new ArrayList<>();
+            PatientTest patientTest = new PatientTest();
 
             for (AnswerEvaluation answerEvaluation : answerEvaluationList) {
                 if (map.get("answer").toString().contains(answerEvaluation.getAnswer())) {
-
-                    PatientTest patientTest = new PatientTest();
-                    patientTest.setQuestionEvaluation(questionEvaluation);
-                    patientTest.setAnswerEvaluation(answerEvaluation);
-
                     score += Integer.parseInt(questionEvaluation.getNumberEvaluation().getScore());
-                    patientTestList.add(patientTestService.create(patientTest));
+                    patientTest.setScore(String.valueOf(score));
                     break;
+                } else {
+                    patientTest.setScore(String.valueOf(0));
                 }
+
             }
+            patientTest.setQuestionEvaluation(questionEvaluation);
+            patientTest.setAnswer(map.get("answer").toString());
+            patientTest.setEvaluationTest(evaluationTest);
+            patientTestList.add(patientTestService.create(patientTest));
+
         }
         Patient patient = patientService.findById(id);
 
@@ -87,7 +91,8 @@ public class EvaluationController {
         evaluationTest.setTestDate(new Date());
         evaluationTest.setFrequencyPatient(patient.getFrequency());
 
-        historyEvaluationTest.setEvaluationTest(evaluationTestService.create(evaluationTest));
+        historyEvaluationTest.setEvaluationTest(evaluationTestService.update(evaluationTest.getId(), evaluationTest));
+        historyEvaluationTest.setPatient(patient);
 
         if(patient.getHistoryEvaluationTests()!=null) {
             List<HistoryEvaluationTest> historyEvaluationTestList = patient.getHistoryEvaluationTests();
