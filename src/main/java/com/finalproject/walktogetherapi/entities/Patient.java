@@ -7,6 +7,7 @@ import com.finalproject.walktogetherapi.entities.master.SubDistrict;
 import com.finalproject.walktogetherapi.util.DateTHFormat;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Patient")
@@ -23,7 +24,6 @@ public class Patient {
     @ManyToOne
     private Sex sex;
     private String dob;
-    private String age;
     private String address;
     @ManyToOne
     private Province province;
@@ -37,6 +37,9 @@ public class Patient {
     private String frequency;
     private String email;
     private String image;
+
+    @OneToMany(mappedBy = "patient", cascade = {CascadeType.ALL})
+    private List<HistoryEvaluationTest> historyEvaluationTests;
 
     public Long getId() {
         return id;
@@ -183,7 +186,7 @@ public class Patient {
     }
 
     public String getAge() {
-        age =  DateTHFormat.getInstance().birthDayToAge(getDob());
+        String age = DateTHFormat.getInstance().birthDayToAge(getDob());
         return age;
     }
 
@@ -193,5 +196,13 @@ public class Patient {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public List<HistoryEvaluationTest> getHistoryEvaluationTests() {
+        return historyEvaluationTests;
+    }
+
+    public void setHistoryEvaluationTests(List<HistoryEvaluationTest> historyEvaluationTests) {
+        this.historyEvaluationTests = historyEvaluationTests;
     }
 }

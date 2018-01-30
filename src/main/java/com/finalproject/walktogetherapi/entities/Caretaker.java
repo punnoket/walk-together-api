@@ -1,6 +1,5 @@
 package com.finalproject.walktogetherapi.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalproject.walktogetherapi.entities.master.District;
 import com.finalproject.walktogetherapi.entities.master.Province;
 import com.finalproject.walktogetherapi.entities.master.Sex;
@@ -8,7 +7,6 @@ import com.finalproject.walktogetherapi.entities.master.SubDistrict;
 import com.finalproject.walktogetherapi.util.DateTHFormat;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "Caretaker")
@@ -25,7 +23,6 @@ public class Caretaker {
     @ManyToOne
     private Sex sex;
     private String dob;
-    private String age;
     private String address;
     @ManyToOne
     private Province province;
@@ -167,7 +164,7 @@ public class Caretaker {
     }
 
     public String getAge() {
-        age =  DateTHFormat.getInstance().birthDayToAge(getDob());
+        String age = DateTHFormat.getInstance().birthDayToAge(getDob());
         return age;
     }
 

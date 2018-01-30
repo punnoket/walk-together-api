@@ -2,6 +2,7 @@ package com.finalproject.walktogetherapi.controller;
 
 import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.mapping.PatientMapping;
+import com.finalproject.walktogetherapi.service.HistoryEvaluationTestService;
 import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.master.DistrictServices;
 import com.finalproject.walktogetherapi.service.master.ProvinceServices;
@@ -29,6 +30,7 @@ public class PatientController {
     private ProvinceServices provinceServices;
     private DistrictServices districtServices;
     private SubDistrictServices subDistrictServices;
+    private HistoryEvaluationTestService historyEvaluationTestService;
     @Autowired
     private JavaMailSender sender;
 
@@ -38,12 +40,14 @@ public class PatientController {
                              ProvinceServices provinceServices,
                              DistrictServices districtServices,
                              SubDistrictServices subDistrictServices,
+                             HistoryEvaluationTestService historyEvaluationTestService,
                              JavaMailSender sender) {
         this.patientService = patientService;
         this.sexServices = sexServices;
         this.provinceServices = provinceServices;
         this.districtServices = districtServices;
         this.subDistrictServices = subDistrictServices;
+        this.historyEvaluationTestService = historyEvaluationTestService;
         this.sender = sender;
     }
 
@@ -60,6 +64,11 @@ public class PatientController {
     @GetMapping("caretaker/{id}")
     public ResponseEntity getCaretakerById(@PathVariable Long id) {
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, patientService.findById(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+    }
+
+    @GetMapping("history-evaluation/{id}")
+    public ResponseEntity getHistoryEvaluationById(@PathVariable Long id) {
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, historyEvaluationTestService.findByPatientId(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
     @PostMapping("forget-password-email")
