@@ -152,10 +152,18 @@ public class MatchingController {
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, matchingService.update(id, matching), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
-    @DeleteMapping("{id}")
-    public ResponseEntity delete(@PathVariable Long id) {
-        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, matchingService.delete(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+    @DeleteMapping("remove-patient/{id}")
+    public ResponseEntity removePatient(@PathVariable Long id,
+                                 @RequestParam(value = "patientNumber") String patientNumber) {
+
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, matchingService.delete(matchingService.findByCaretakerIdAndPatientNumber(id, patientNumber).getId()), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
+    @DeleteMapping("remove-caretaker/{id}")
+    public ResponseEntity removeCaretaker(@PathVariable Long id,
+                                 @RequestParam(value = "caretakerNumber") String caretakerNumber) {
+
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, matchingService.delete(matchingService.findByPatientIdAndCaretakerNumber(id, caretakerNumber).getId()), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+    }
 
 }
