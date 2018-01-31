@@ -48,9 +48,9 @@ public class EvaluationController {
         this.patientTestService = patientTestService;
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity getEvaluationByIdUser(@PathVariable Long id) {
-        List<HashMap<String, Object>> data = EvaluationMapping.getInstance().getEvaluationByIdUser(evaluationCategoryService.findAllByOrderByIdAsc());
+    @GetMapping("random")
+    public ResponseEntity getEvaluationByIdUser() {
+        List<HashMap<String, Object>> data = EvaluationMapping.getInstance().getEvaluation(evaluationCategoryService.findAllByOrderByIdAsc());
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, data, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 

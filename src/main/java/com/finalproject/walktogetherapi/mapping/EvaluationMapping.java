@@ -20,12 +20,12 @@ public class EvaluationMapping {
         return instance;
     }
 
-    public List<HashMap<String, Object>> getEvaluationByIdUser(List<EvaluationCategory> evaluationCategoryList) {
+    public List<HashMap<String, Object>> getEvaluation(List<EvaluationCategory> evaluationCategoryList) {
         List<HashMap<String, Object>> mapList = new ArrayList<>();
         for (EvaluationCategory category : evaluationCategoryList) {
             HashMap<String, Object> data = new HashMap<>();
-            data.put("partName", category.getEvaluationCategoryName().toLowerCase());
-            data.put("question", getResultQuestion(category.getNumberEvaluations()));
+            data.put("category", category.getEvaluationCategoryName().toLowerCase());
+            data.put("questions", getResultQuestion(category.getNumberEvaluations()));
             mapList.add(data);
         }
         return mapList;
@@ -42,7 +42,9 @@ public class EvaluationMapping {
             HashMap<String, Object> data = new HashMap<>();
             if (numberEvaluation.getQuestionEvaluations().size() > 0) {
                 data.put("no", numberEvaluation.getNo());
-                data.put("question", randomQuestion(numberEvaluation.getQuestionEvaluations()));
+                QuestionEvaluation question = randomQuestion(numberEvaluation.getQuestionEvaluations());
+                data.put("question", question);
+                data.put("answer", question.getAnswerEvaluations());
                 mapList.add(data);
             }
         }
