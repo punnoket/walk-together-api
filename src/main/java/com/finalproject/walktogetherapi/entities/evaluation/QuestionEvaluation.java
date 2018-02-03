@@ -14,6 +14,7 @@ public class QuestionEvaluation {
     private String title;
     private String description;
     private String image;
+    private String audio;
 
     @OneToMany(mappedBy = "questionEvaluation", cascade = {CascadeType.ALL})
     private List<AnswerEvaluation> answerEvaluations;
@@ -61,6 +62,14 @@ public class QuestionEvaluation {
 
     public void setAnswerEvaluations(List<AnswerEvaluation> answerEvaluations) {
         this.answerEvaluations = answerEvaluations;
+    }
+
+    public String getAudio() {
+        return audio;
+    }
+
+    public void setAudio(String audio) {
+        this.audio = audio;
     }
 
     @JsonIgnore

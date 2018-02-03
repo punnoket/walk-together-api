@@ -1,6 +1,5 @@
 package com.finalproject.walktogetherapi.util;
 
-import com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -10,18 +9,18 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
 
-public class ImageUpload {
+public class UploadUtil {
 
-    private static ImageUpload instance;
+    private static UploadUtil instance;
 
-    public static ImageUpload getInstance() {
+    public static UploadUtil getInstance() {
         if (instance == null) {
-            instance = new ImageUpload();
+            instance = new UploadUtil();
         }
         return instance;
     }
 
-    public String uploadImage(String pathString, MultipartFile file) {
+    public String upload(String pathString, MultipartFile file) {
         try {
             Files.createDirectories(Paths.get(pathString));
             byte[] bytes = file.getBytes();

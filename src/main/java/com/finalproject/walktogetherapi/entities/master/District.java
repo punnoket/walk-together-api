@@ -36,6 +36,7 @@ public class District {
         this.name = name;
     }
 
+    @JsonIgnore
     public String getCode() {
         return code;
     }
@@ -44,6 +45,7 @@ public class District {
         this.code = code;
     }
 
+    @JsonIgnore
     public Date getCreated() {
         return created;
     }
@@ -52,6 +54,7 @@ public class District {
         this.created = created;
     }
 
+    @JsonIgnore
     public Date getModified() {
         return modified;
     }

@@ -1,5 +1,6 @@
 package com.finalproject.walktogetherapi.entities.master;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -39,6 +40,7 @@ public class Sex {
         this.name = name;
     }
 
+    @JsonIgnore
     public String getCode() {
         return code;
     }
@@ -47,6 +49,7 @@ public class Sex {
         this.code = code;
     }
 
+    @JsonIgnore
     public Date getCreated() {
         return created;
     }
@@ -55,6 +58,7 @@ public class Sex {
         this.created = new Date();
     }
 
+    @JsonIgnore
     public Date getModified() {
         return modified;
     }

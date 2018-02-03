@@ -24,7 +24,7 @@ public class EvaluationMapping {
         List<HashMap<String, Object>> mapList = new ArrayList<>();
         for (EvaluationCategory category : evaluationCategoryList) {
             HashMap<String, Object> data = new HashMap<>();
-            data.put("category", category.getEvaluationCategoryName().toLowerCase());
+            data.put("category", category.getEvaluationCategoryName());
             data.put("questions", getResultQuestion(category.getNumberEvaluations()));
             mapList.add(data);
         }

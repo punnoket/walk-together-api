@@ -8,6 +8,7 @@ public class Constant {
     public static final String THAILAND_PHONE = "+66";
 
     public static final String PATH_IMAGE_QUESTION = "image/question";
+    public static final String PATH_AUDIO_QUESTION = "audio/question";
     public static final String PATH_IMAGE_PATIENT = "image/patient";
     public static final String PATH_IMAGE_CARETAKER = "image/caretaker";
 

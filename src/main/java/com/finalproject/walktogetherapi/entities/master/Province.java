@@ -1,5 +1,7 @@
 package com.finalproject.walktogetherapi.entities.master;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -32,6 +34,7 @@ public class Province {
         this.name = name;
     }
 
+    @JsonIgnore
     public String getCode() {
         return code;
     }
@@ -40,6 +43,7 @@ public class Province {
         this.code = code;
     }
 
+    @JsonIgnore
     public Date getCreated() {
         return created;
     }
@@ -48,6 +52,7 @@ public class Province {
         this.created = created;
     }
 
+    @JsonIgnore
     public Date getModified() {
         return modified;
     }

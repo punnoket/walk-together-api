@@ -7,7 +7,7 @@ import com.finalproject.walktogetherapi.service.CaretakerService;
 import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.QuestionEvaluationService;
 import com.finalproject.walktogetherapi.util.ApiResponse;
-import com.finalproject.walktogetherapi.util.ImageUpload;
+import com.finalproject.walktogetherapi.util.UploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,7 +54,7 @@ public class ImageController {
         if (file.isEmpty())
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
 
-        String resultPathImage = ImageUpload.getInstance().uploadImage(pathString, file);
+        String resultPathImage = UploadUtil.getInstance().upload(pathString, file);
         if (resultPathImage != null) {
             questionEvaluation.setImage(resultPathImage);
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.CREATED, questionEvaluationService.update(id, questionEvaluation), HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
@@ -77,7 +77,7 @@ public class ImageController {
         if (file.isEmpty())
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
 
-        String resultPathImage = ImageUpload.getInstance().uploadImage(pathString, file);
+        String resultPathImage = UploadUtil.getInstance().upload(pathString, file);
         if (resultPathImage != null) {
             patient.setImage(resultPathImage);
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.CREATED, patientService.update(id, patient), HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
@@ -100,7 +100,7 @@ public class ImageController {
         if (file.isEmpty())
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
 
-        String resultPathImage = ImageUpload.getInstance().uploadImage(pathString, file);
+        String resultPathImage = UploadUtil.getInstance().upload(pathString, file);
         if (resultPathImage != null) {
             caretaker.setImage(resultPathImage);
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.CREATED, caretakerService.update(id, caretaker), HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
