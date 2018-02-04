@@ -33,7 +33,7 @@ public class PlayAudioController {
     public PlayAudioController() {
     }
 
-    @GetMapping("/question/{category}/{number}/{id}/{fileName:.+}")
+    /*@GetMapping("/question/{category}/{number}/{id}/{fileName:.+}")
     public ResponseEntity<InputStreamResource> viewImageQuestion(@PathVariable String category,
                                                                  @PathVariable String number,
                                                                  @PathVariable String id,
@@ -57,5 +57,32 @@ public class PlayAudioController {
                 .contentType(
                         MediaType.parseMediaType("audio/mpeg"))
                 .body(new InputStreamResource(file.getInputStream()));
+    }*/
+
+    @GetMapping("/question/{category}/{number}/{id}/{fileName:.+}")
+    public ResponseEntity<byte[]>  viewImageQuestion(@PathVariable String category,
+                                                                 @PathVariable String number,
+                                                                 @PathVariable String id,
+                                                                 @PathVariable String fileName) throws IOException {
+
+        String pathString = PATH_AUDIO_QUESTION
+                + "/"
+                + category
+                + "/"
+                + number
+                + "/"
+                + id
+                + "/"
+                + fileName;
+
+        Path pathXLS = Paths.get(pathString);
+        byte[] dataBytes = Files.readAllBytes(pathXLS);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("charset", "utf-8");
+        headers.setContentType(MediaType.valueOf("audio/wave"));
+        headers.setContentLength(dataBytes.length);
+        headers.set("Content-disposition", "attachment; filename=" + id + ".wav");
+
+        return new ResponseEntity<>(dataBytes, headers, HttpStatus.OK);
     }
 }
