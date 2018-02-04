@@ -28,6 +28,7 @@ import java.util.HashMap;
 @RequestMapping("/api/v1/caretaker")
 public class CaretakerController {
     private CaretakerService caretakerService;
+    private PatientService patientService;
     private SexServices sexServices;
     private ProvinceServices provinceServices;
     private DistrictServices districtServices;
@@ -37,12 +38,14 @@ public class CaretakerController {
 
     @Autowired
     public CaretakerController(CaretakerService caretakerService,
+                               PatientService patientService,
                                SexServices sexServices,
                                ProvinceServices provinceServices,
                                DistrictServices districtServices,
                                SubDistrictServices subDistrictServices,
                                JavaMailSender sender) {
         this.caretakerService = caretakerService;
+        this.patientService = patientService;
         this.sexServices = sexServices;
         this.provinceServices = provinceServices;
         this.districtServices = districtServices;
@@ -62,7 +65,7 @@ public class CaretakerController {
 
     @PostMapping("")
     public ResponseEntity create(@RequestBody HashMap<String, Object> data) {
-        Caretaker caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, sexServices, provinceServices, districtServices, subDistrictServices, new Caretaker(), true);
+        Caretaker caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, new Caretaker(), true);
         if (caretaker.getUserName() != null) {
             if (caretaker.getEmail() != null)
                 if (caretaker.getTell() != null)
@@ -119,7 +122,7 @@ public class CaretakerController {
 
     @PatchMapping("{id}")
     public ResponseEntity update(@PathVariable Long id, @RequestBody HashMap<String, Object> data) {
-        Caretaker caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, sexServices, provinceServices, districtServices, subDistrictServices, new Caretaker(), false);
+        Caretaker caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, new Caretaker(), false);
         return new ResponseEntity<>(ApiResponse.getInstance()
                 .response(HttpStatus.CREATED,
                         caretakerService.update(id, caretaker),

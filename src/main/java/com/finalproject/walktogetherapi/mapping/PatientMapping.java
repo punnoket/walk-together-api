@@ -1,6 +1,7 @@
 package com.finalproject.walktogetherapi.mapping;
 
 import com.finalproject.walktogetherapi.entities.Patient;
+import com.finalproject.walktogetherapi.service.CaretakerService;
 import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.master.DistrictServices;
 import com.finalproject.walktogetherapi.service.master.ProvinceServices;
@@ -22,6 +23,7 @@ public class PatientMapping {
     }
 
     public Patient getPatient(HashMap<String, Object> data,
+                              CaretakerService caretakerService,
                               PatientService patientService,
                               SexServices sexServices,
                               ProvinceServices provinceServices,
@@ -33,7 +35,8 @@ public class PatientMapping {
         if (isCreate)
             patient.setPatientNumber(RandomNumberUser.getInstance().getNumberPatient());
         if (data.get("userName") != null)
-            if (patientService.findByUserName(data.get("userName").toString()) == null)
+            if (patientService.findByUserName(data.get("userName").toString()) == null &&
+                    caretakerService.findByUserName(data.get("userName").toString()) == null)
                 patient.setUserName(data.get("userName").toString());
             else {
                 patient.setUserName(null);
@@ -62,14 +65,16 @@ public class PatientMapping {
         if (data.get("occupation") != null)
             patient.setOccupation(data.get("occupation").toString());
         if (data.get("email") != null)
-            if (patientService.findByEmail(data.get("email").toString()) == null)
+            if (patientService.findByEmail(data.get("email").toString()) == null &&
+                    caretakerService.findByEmail(data.get("email").toString()) == null)
                 patient.setEmail(data.get("email").toString());
             else {
                 patient.setEmail(null);
                 return patient;
             }
         if (data.get("tell") != null)
-            if (patientService.findByTell(data.get("tell").toString()) == null)
+            if (patientService.findByTell(data.get("tell").toString()) == null &&
+                    caretakerService.findByTell(data.get("tell").toString()) == null)
                 patient.setTell(data.get("tell").toString());
             else {
                 patient.setTell(null);

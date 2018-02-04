@@ -12,5 +12,9 @@ public class Constant {
     public static final String PATH_IMAGE_PATIENT = "image/patient";
     public static final String PATH_IMAGE_CARETAKER = "image/caretaker";
 
+    public static final String TYPE_PATIENT = "patient";
+    public static final String TYPE_CARETAKER = "caretaker";
+
+
 
 }

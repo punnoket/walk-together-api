@@ -2,6 +2,7 @@ package com.finalproject.walktogetherapi.mapping;
 
 import com.finalproject.walktogetherapi.entities.Caretaker;
 import com.finalproject.walktogetherapi.service.CaretakerService;
+import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.master.DistrictServices;
 import com.finalproject.walktogetherapi.service.master.ProvinceServices;
 import com.finalproject.walktogetherapi.service.master.SexServices;
@@ -23,6 +24,7 @@ public class CaretakerMapping {
 
     public Caretaker getCaretaker(HashMap<String, Object> data,
                                   CaretakerService caretakerService,
+                                  PatientService patientService,
                                   SexServices sexServices,
                                   ProvinceServices provinceServices,
                                   DistrictServices districtServices,
@@ -33,7 +35,8 @@ public class CaretakerMapping {
         if (isCreate)
             caretaker.setCaretakerNumber(RandomNumberUser.getInstance().getNumberCaretaker());
         if (data.get("userName") != null)
-            if (caretakerService.findByUserName(data.get("userName").toString()) == null) {
+            if (caretakerService.findByUserName(data.get("userName").toString()) == null
+                    && patientService.findByUserName(data.get("userName").toString()) == null) {
                 caretaker.setUserName(data.get("userName").toString());
             } else {
                 caretaker.setUserName(null);
@@ -62,14 +65,16 @@ public class CaretakerMapping {
         if (data.get("occupation") != null)
             caretaker.setOccupation(data.get("occupation").toString());
         if (data.get("email") != null)
-            if (caretakerService.findByEmail(data.get("email").toString()) == null) {
+            if (caretakerService.findByEmail(data.get("email").toString()) == null &&
+                    patientService.findByEmail(data.get("email").toString()) == null) {
                 caretaker.setEmail(data.get("email").toString());
             } else {
                 caretaker.setEmail(null);
                 return caretaker;
             }
         if (data.get("tell") != null)
-            if (caretakerService.findByTell(data.get("tell").toString()) == null) {
+            if (caretakerService.findByTell(data.get("tell").toString()) == null
+                    && patientService.findByTell(data.get("tell").toString()) == null) {
                 caretaker.setTell(data.get("tell").toString());
             } else {
                 caretaker.setTell(null);

@@ -6,6 +6,7 @@ import com.finalproject.walktogetherapi.service.CaretakerService;
 import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.master.SexServices;
 import com.finalproject.walktogetherapi.util.ApiResponse;
+import com.finalproject.walktogetherapi.util.Constant;
 import com.finalproject.walktogetherapi.util.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,39 +28,39 @@ public class LoginController {
         this.patientService = patientService;
     }
 
-    @PostMapping("patient")
+    @PostMapping("")
     public ResponseEntity loginPatient(@RequestBody HashMap<String, Object> data) {
         if (data.get("userName").toString() != null && data.get("password").toString() != null) {
             Patient patient = patientService.findByUserName(data.get("userName").toString());
             if (patient != null) {
-                if (patient.getPassword().equals(data.get("password").toString()))
-                    return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, patient, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
-                else
+                if (patient.getPassword().equals(data.get("password").toString())) {
+                    HashMap<String, Object> responseMap = ApiResponse
+                            .getInstance()
+                            .response(HttpStatus.OK, patient, HttpStatus.OK.getReasonPhrase());
+                    responseMap.put("type", Constant.TYPE_PATIENT);
+                    return new ResponseEntity<>(responseMap, HttpStatus.OK);
+
+                } else
                     return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, MessageUtil.INCORRECT_PASSWORD), HttpStatus.NOT_FOUND);
 
             } else {
-                return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, MessageUtil.INCORRECT_USERNAME), HttpStatus.NOT_FOUND);
-
+                Caretaker caretaker = caretakerService.findByUserName(data.get("userName").toString());
+                if (caretaker != null) {
+                    if (caretaker.getPassword().equals(data.get("password").toString())) {
+                        HashMap<String, Object> responseMap = ApiResponse
+                                .getInstance()
+                                .response(HttpStatus.OK, caretaker, HttpStatus.OK.getReasonPhrase());
+                        responseMap.put("type", Constant.TYPE_CARETAKER);
+                        return new ResponseEntity<>(responseMap, HttpStatus.OK);
+                    } else
+                        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, MessageUtil.INCORRECT_PASSWORD), HttpStatus.NOT_FOUND);
+                } else {
+                    return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, MessageUtil.INCORRECT_USERNAME), HttpStatus.NOT_FOUND);
+                }
             }
-        }
-        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
+        } else
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("caretaker")
-    public ResponseEntity loginCaretaker(@RequestBody HashMap<String, Object> data) {
-        if (data.get("userName").toString() != null && data.get("password").toString() != null) {
-            Caretaker caretaker = caretakerService.findByUserName(data.get("userName").toString());
-            if (caretaker != null) {
-                if (caretaker.getPassword().equals(data.get("password").toString()))
-                    return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, caretaker, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
-                else
-                    return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, MessageUtil.INCORRECT_PASSWORD), HttpStatus.NOT_FOUND);
-
-            } else {
-                return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, MessageUtil.INCORRECT_USERNAME), HttpStatus.NOT_FOUND);
-
-            }
-        }
-        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
-    }
 }
+

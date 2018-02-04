@@ -2,6 +2,7 @@ package com.finalproject.walktogetherapi.controller;
 
 import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.mapping.PatientMapping;
+import com.finalproject.walktogetherapi.service.CaretakerService;
 import com.finalproject.walktogetherapi.service.HistoryEvaluationTestService;
 import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.master.DistrictServices;
@@ -26,6 +27,7 @@ import java.util.HashMap;
 @RequestMapping("/api/v1/patient")
 public class PatientController {
     private PatientService patientService;
+    private CaretakerService caretakerService;
     private SexServices sexServices;
     private ProvinceServices provinceServices;
     private DistrictServices districtServices;
@@ -36,6 +38,7 @@ public class PatientController {
 
     @Autowired
     public PatientController(PatientService patientService,
+                             CaretakerService caretakerService,
                              SexServices sexServices,
                              ProvinceServices provinceServices,
                              DistrictServices districtServices,
@@ -44,6 +47,7 @@ public class PatientController {
                              JavaMailSender sender) {
         this.patientService = patientService;
         this.sexServices = sexServices;
+        this.caretakerService = caretakerService;
         this.provinceServices = provinceServices;
         this.districtServices = districtServices;
         this.subDistrictServices = subDistrictServices;
@@ -101,7 +105,7 @@ public class PatientController {
 
     @PostMapping("")
     public ResponseEntity create(@RequestBody HashMap<String, Object> data) {
-        Patient patient = PatientMapping.getInstance().getPatient(data, patientService, sexServices, provinceServices, districtServices, subDistrictServices, new Patient(), true);
+        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, new Patient(), true);
         if (patient.getUserName() != null) {
             if (patient.getEmail() != null) {
                 if (patient.getTell() != null) {
@@ -133,7 +137,7 @@ public class PatientController {
 
     @PatchMapping("{id}")
     public ResponseEntity update(@PathVariable Long id, @RequestBody HashMap<String, Object> data) {
-        Patient patient = PatientMapping.getInstance().getPatient(data, patientService, sexServices, provinceServices, districtServices, subDistrictServices, patientService.findById(id), false);
+        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, patientService.findById(id), false);
         return new ResponseEntity<>(ApiResponse.getInstance()
                 .response(HttpStatus.CREATED,
                         patientService.update(id, patient),
