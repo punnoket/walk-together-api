@@ -33,32 +33,6 @@ public class PlayAudioController {
     public PlayAudioController() {
     }
 
-    @GetMapping("/question/{category}/{number}/{id}/{fileName:.+}")
-    public ResponseEntity<InputStreamResource> viewImageQuestion(@PathVariable String category,
-                                                                 @PathVariable String number,
-                                                                 @PathVariable String id,
-                                                                 @PathVariable String fileName,
-                                                                 HttpServletResponse response) throws IOException {
-
-        String pathString = PATH_AUDIO_QUESTION
-                + "/"
-                + category
-                + "/"
-                + number
-                + "/"
-                + id
-                + "/"
-                + fileName;
-
-        FileSystemResource file = new FileSystemResource(pathString);
-        return ResponseEntity
-                .ok()
-                .contentLength(file.contentLength())
-                .contentType(
-                        MediaType.parseMediaType("audio/mpeg"))
-                .body(new InputStreamResource(file.getInputStream()));
-    }
-
    /* @GetMapping("/question/{category}/{number}/{id}/{fileName:.+}")
     public ResponseEntity<byte[]>  viewImageQuestion(@PathVariable String category,
                                                                  @PathVariable String number,
@@ -85,4 +59,25 @@ public class PlayAudioController {
 
         return new ResponseEntity<>(dataBytes, headers, HttpStatus.OK);
     }*/
+
+    @GetMapping("/question/{category}/{number}/{id}/{fileName:.+}")
+    public ResponseEntity<byte[]> viewImageQuestion(@PathVariable String category,
+                                                    @PathVariable String number,
+                                                    @PathVariable String id,
+                                                    @PathVariable String fileName) throws IOException {
+
+        String pathString = PATH_AUDIO_QUESTION
+                + "/"
+                + category
+                + "/"
+                + number
+                + "/"
+                + id
+                + "/"
+                + fileName;
+
+        Path path = Paths.get(pathString);
+        byte[] data = Files.readAllBytes(path);
+        return ResponseEntity.ok().contentType(MediaType.parseMediaType("audio/wav")).body(data);
+    }
 }
