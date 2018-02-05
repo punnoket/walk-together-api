@@ -41,7 +41,7 @@ public class LoginController {
                     return new ResponseEntity<>(responseMap, HttpStatus.OK);
 
                 } else
-                    return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, MessageUtil.INCORRECT_PASSWORD), HttpStatus.NOT_FOUND);
+                    return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, MessageUtil.INCORRECT_PASSWORD), HttpStatus.OK);
 
             } else {
                 Caretaker caretaker = caretakerService.findByUserName(data.get("userName").toString());
@@ -53,13 +53,13 @@ public class LoginController {
                         responseMap.put("type", Constant.TYPE_CARETAKER);
                         return new ResponseEntity<>(responseMap, HttpStatus.OK);
                     } else
-                        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, MessageUtil.INCORRECT_PASSWORD), HttpStatus.NOT_FOUND);
+                        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, MessageUtil.INCORRECT_PASSWORD), HttpStatus.OK);
                 } else {
-                    return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, MessageUtil.INCORRECT_USERNAME), HttpStatus.NOT_FOUND);
+                    return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, MessageUtil.INCORRECT_USERNAME), HttpStatus.OK);
                 }
             }
         } else
-            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.OK);
     }
 
 }

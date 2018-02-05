@@ -117,21 +117,21 @@ public class PatientController {
                     return new ResponseEntity<>(ApiResponse.getInstance()
                             .response(HttpStatus.NOT_FOUND,
                                     null,
-                                    MessageUtil.DUPLICATE_TELL), HttpStatus.NOT_FOUND);
+                                    MessageUtil.DUPLICATE_TELL), HttpStatus.CREATED);
                 }
 
             } else {
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.NOT_FOUND,
                                 null,
-                                MessageUtil.DUPLICATE_EMAIL), HttpStatus.NOT_FOUND);
+                                MessageUtil.DUPLICATE_EMAIL), HttpStatus.CREATED);
             }
 
         } else {
             return new ResponseEntity<>(ApiResponse.getInstance()
                     .response(HttpStatus.NOT_FOUND,
                             null,
-                            MessageUtil.DUPLICATE_USERNAME), HttpStatus.NOT_FOUND);
+                            MessageUtil.DUPLICATE_USERNAME), HttpStatus.CREATED);
         }
     }
 
