@@ -310,71 +310,6 @@ ALTER TABLE ONLY sex ALTER COLUMN id SET DEFAULT nextval('sex_id_seq'::regclass)
 --
 
 COPY answer_evaluation (id, answer, question_evaluation_id) FROM stdin;
-100	aaa	67
-101	bbb	67
-102	bbb	68
-103	bbb	68
-104	bbb	68
-105	bbb	69
-106	dddd	69
-107	dddd	69
-108	dddd	69
-109	dddd	70
-110	rr	70
-111	rr	71
-112	r22r	72
-113	r22r	73
-114	34234	74
-115	34234	76
-116	34234	77
-117	rtb	99
-118	ferrf	98
-119	ferrf	98
-120	rfe	97
-121	rfe	96
-122	2342	97
-123	2342	96
-124	ewff	96
-125	ewff	96
-126	ewff	95
-127	ewff	94
-128	ewff	94
-129	ewff	93
-130	ewfeff	92
-131	ewfeff	91
-132	ewfeff	91
-133	ewfeff	91
-134	efve	90
-135	efve	90
-136	ervvev	89
-137	ervvev	89
-138	ervvev	89
-139	rgevr	87
-140	rgevr	87
-141	rgevr	86
-142	rgevr	85
-143	rgevr	85
-144	rgevr	85
-145	rgevr	84
-146	rgevr	84
-147	rgevr	84
-148	rgevr	83
-149	rgevr	83
-150	rgevr	83
-151	rgevr	82
-152	rgevr	82
-153	rgevr	82
-154	rgevr	81
-155	rgevr	81
-156	rgevr	81
-157	rvrrr	80
-158	rvrrr	80
-159	rverv	79
-160	rverv	79
-161	rvvvverv	78
-162	rvvvverv	88
-163	rvvvverv	88
-164	rvvvverv	88
 \.
 
 
@@ -383,13 +318,6 @@ COPY answer_evaluation (id, answer, question_evaluation_id) FROM stdin;
 --
 
 COPY caretaker (id, address, caretaker_number, dob, email, first_name, image, last_name, occupation, password, tell, title_name, user_name, district_id, province_id, sex_id, sub_district_id) FROM stdin;
-39	60 หมู่ 8	C962395	21 กุมภาพันธ์ 2539	noe@gddfmail.com	ปัณวรรธน์	\N	นกเกตุ	นศ	1234	098270494858	นาย	CWddfWD	64	212	1	270
-40	60 หมู่ 8	C168690	21 กุมภาพันธ์ 2539	noe@gdedfmail.com	ปัณวรรธน์	\N	นกเกตุ	นศ	1234	0982794858	นาย	CWdedfWD	64	212	1	270
-41	60 หมู่ 8	C917690	21 กุมภาพันธ์ 2539	lnw@gdedfmail.com	พยาบาล	\N	นกเกตุ	นศ	1234	098272858	นาย	nuse	64	224	1	270
-211	60 หมู่ 8	C205190	21 กุมภาพันธ์ 2539	lnw@gdemail.com	พยาบาล	\N	นกเกตุ	นศ	1234	09827283458	นาย	testcaretaker	64	\N	1	270
-213	60 หมู่ 8	C768575	21 กุมภาพันธ์ 2539	lnwd@gdemail.com	พยาบาล	\N	นกเกตุ	นศ	1234	0983283458	นาย	testtaker	64	\N	1	270
-216	60 หมู่ 8	C919401	21 กุมภาพันธ์ 2539	lnddssdwd@gdemail.com	พยาบาล	\N	นกเกตุ	นศ	1234	0983283434358	นาย	testpasadstyienr	64	\N	1	270
-218	dsfdsf	C238788	04 กุมภาพันธ์ 2018		psf	\N	sdfds	sdf	qqqq	0885224525	mr	qsfsdfdsf	802	517	1	6376
 219	60 mu 8	C537570	21 กุมภาพันธ์ 2539	ggg@zz.com	dev	\N	android	sale	1234	0834249027	Mr	android	64	212	1	270
 220	213	C847823	22 กุมภาพันธ์ 2561	ddd@ddd.com	d	\N	d		1234	0982709825	ddd	punnokety	802	517	2	6376
 \.
@@ -1349,10 +1277,6 @@ COPY evaluation_category (id, evaluation_category_name) FROM stdin;
 --
 
 COPY evaluation_test (id, frequency_patient, result_score, test_date) FROM stdin;
-165	\N	\N	\N
-166	\N	\N	\N
-180	\N	\N	\N
-194	\N	0	2018-01-31 17:02:18.755
 \.
 
 
@@ -1361,7 +1285,6 @@ COPY evaluation_test (id, frequency_patient, result_score, test_date) FROM stdin
 --
 
 COPY history_evaluation_test (id, evaluation_test_id, patient) FROM stdin;
-208	194	35
 \.
 
 
@@ -1378,11 +1301,6 @@ COPY image_question_evaluation (id, path) FROM stdin;
 --
 
 COPY matching (id, caretaker_id, patient_id) FROM stdin;
-42	39	35
-43	39	36
-44	40	36
-45	41	36
-46	40	34
 \.
 
 
@@ -1391,20 +1309,6 @@ COPY matching (id, caretaker_id, patient_id) FROM stdin;
 --
 
 COPY number_evaluation (id, no, score, evaluation_category) FROM stdin;
-53	1	3	47
-54	2	1	47
-55	3	1	47
-56	4	1	47
-57	5	3	48
-58	6	5	49
-59	7	3	50
-60	8	2	51
-61	9	1	51
-62	10	1	51
-63	11	1	51
-64	12	1	51
-65	13	1	51
-66	14	3	52
 \.
 
 
@@ -1413,17 +1317,6 @@ COPY number_evaluation (id, no, score, evaluation_category) FROM stdin;
 --
 
 COPY patient (id, address, dob, email, first_name, frequency, image, last_name, level, occupation, password, patient_number, tell, title_name, user_name, district_id, province_id, sex_id, sub_district_id) FROM stdin;
-35	60	21 กุมภาพันธ์ 2489	nogkwt@gmail.com	สมชาย	\N	\N	นกเกตุ	\N	นศ	1234	P952641	0981709858	นาย	qwer	64	231	1	270
-36	60	22 สิงหาคม 2510	nogt@gmail.com	สมศักดิ์	\N	\N	เจียมสิน	\N	นศ	1234	P139175	0981709358	นาย	Somsak	64	231	1	270
-34	60	21 กุมภาพันธ์ 2489	nogket@gmail.com	สมชาย	\N	\N	นกเกตุ	\N	นศ	1234	P334386	0982709858	นาย	punnoket	64	231	1	270
-37	60	22 ตุลาคม 2499	nogt@gmfail.com	สิวิมล	\N	\N	รักดี	\N	นศ	1234	P787440	0981709458	นาง	siwimon	64	231	2	270
-38	60	3 มีนาคม 2499	nogt@3mfail.com	เสาวลัก	\N	\N	สินชัย	\N	นศ	1234	P775039	0981709438	นาง	soawaluk	34	222	2	344
-209	60	3 มีนาคม 2499	nogt@3mกfail.com	เสาวลัก	\N	\N	สินชัย	\N	นศ	1234	P459503	09817094438	นาง	soaกwaluk	34	222	2	344
-210	60	3 มีนาคม 2499	nogt@3mกfaeeil.com	เสาวลัก	\N	\N	สินชัย	\N	นศ	1234	P489835	09894438	นาง	soawqewqwaluk	34	222	2	344
-212	60	3 มีนาคม 2499	lnw@gdemail.com	เสาวลัก	\N	\N	สินชัย	\N	นศ	1234	P093575	09827283458	นาง	testcaeeretaker	34	222	2	344
-214	60	3 มีนาคม 2499	lnwd@gdemail.com	เสาวลัก	\N	\N	สินชัย	\N	นศ	1234	P336145	0983283458	นาง	testeetaker	34	222	2	344
-215	60	3 มีนาคม 2499	lndddwd@gdemail.com	เสาวลัก	\N	\N	สินชัย	\N	นศ	1234	P311956	0983280903458	นาง	testpatyienr	34	222	2	344
-217	60	3 มีนาคม 2499	lnddssdwfd@gdemail.com	เสาวลัก	\N	\N	สินชัย	\N	นศ	1234	P945660	0983283434ff358	นาง	testpasadsftyienr	34	222	2	344
 \.
 
 
@@ -1432,45 +1325,6 @@ COPY patient (id, address, dob, email, first_name, frequency, image, last_name, 
 --
 
 COPY patient_test (id, answer, score, answer_evaluation_id, evaluation_test, question_evaluation_id) FROM stdin;
-167	abcd	0	\N	166	67
-168	asc	0	\N	166	70
-169	a	0	\N	166	73
-170		\N	\N	166	75
-171		0	\N	166	80
-172		0	\N	166	83
-173		0	\N	166	87
-174		0	\N	166	88
-175		0	\N	166	90
-176		0	\N	166	92
-177		0	\N	166	93
-178		0	\N	166	94
-179		0	\N	166	99
-181	abcd	0	\N	180	67
-182	asc	0	\N	180	70
-183	a	0	\N	180	73
-184		\N	\N	180	75
-185		0	\N	180	80
-186		0	\N	180	83
-187		0	\N	180	87
-188		0	\N	180	88
-189		0	\N	180	90
-190		0	\N	180	92
-191		0	\N	180	93
-192		0	\N	180	94
-193		0	\N	180	99
-195	abcd	0	\N	194	67
-196	asc	0	\N	194	70
-197	a	0	\N	194	73
-198		\N	\N	194	75
-199		0	\N	194	80
-200		0	\N	194	83
-201		0	\N	194	87
-202		0	\N	194	88
-203		0	\N	194	90
-204		0	\N	194	92
-205		0	\N	194	93
-206		0	\N	194	94
-207		0	\N	194	99
 \.
 
 
@@ -1564,39 +1418,6 @@ COPY province (id, code, created, modified, name) FROM stdin;
 --
 
 COPY question_evaluation (id, description, image, title, number_evaluation, audio) FROM stdin;
-68		\N	คำถาม 2	53	\N
-69		\N	คำถาม 3	53	\N
-70		\N	คำถาม 4	54	\N
-71	คำอธิบาย	\N	คำถาม 5	54	\N
-72	คำอธิบาย	\N	คำถาม 6	55	\N
-73	คำอธิบาย	\N	คำถาม 6	56	\N
-74	คำอธิบาย	\N	คำถาม 7	56	\N
-75	คำอธิบาย	\N	คำถาม 8	57	\N
-76	คำอธิบาย	\N	คำถาม 8	57	\N
-77	คำอธิบาย	\N	คำถาม 8	57	\N
-78	คำอธิบาย	\N	คำถาม 8	57	\N
-79	คำอธิบาย	\N	คำถาม 34324	57	\N
-80	คำอธิบาย	\N	คำถาม 34324	58	\N
-81	คำอธิบาย	\N	คำถาม 33r23rfd	58	\N
-82	คำอธิบาย	\N	ferfe	58	\N
-83	คำอธิบาย	\N	ferfe	59	\N
-84	gfddfg	\N	fefgdfgrfe	59	\N
-85	gfddfg	\N	question	60	\N
-86	gfddfg	\N	question	60	\N
-87	gfddfg	\N	question22	60	\N
-88	gfddfg	\N	question22	61	\N
-89	gfddfg	\N	question44	61	\N
-90	gfddfg	\N	qu2e24	62	\N
-91	gfddfg	\N	qu2e24	63	\N
-92	gfddfg	\N	qu2e24	63	\N
-93	gfddfg	\N	qu2err23r24	64	\N
-94	gfddfg	\N	qu2erefewfr24	65	\N
-95	gfddfg	\N	qu2erefewfr24	65	\N
-96	gfdffdfg	\N	qu2erefff##ewfr24	65	\N
-97	gfdffdfg	\N	qu2erefff##ewfr24	65	\N
-98	gfdffdfg	\N	qu2erefff##ewfr24	65	\N
-99	gfdffdfg	\N	recal	66	\N
-67		image/question/orientation/1/67/1517685774367.m4a	คำถาม 1	53	audio/question/orientation/1/67/1517735978883.wav
 \.
 
 
