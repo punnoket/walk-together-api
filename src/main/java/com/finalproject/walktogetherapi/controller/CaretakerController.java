@@ -63,6 +63,15 @@ public class CaretakerController {
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, caretakerService.findById(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
+    @GetMapping("by-caretaker-number/{caretakerNumber}")
+    public ResponseEntity getByCaretakerNumber(@PathVariable String caretakerNumber) {
+        Caretaker caretaker = caretakerService.findByNumberCaretaker(caretakerNumber);
+        if (caretaker != null)
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, caretaker, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, null, MessageUtil.NOT_FOUND_CARETAKER), HttpStatus.OK);
+    }
+
     @PostMapping("")
     public ResponseEntity create(@RequestBody HashMap<String, Object> data) {
         Caretaker caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, new Caretaker(), true);
@@ -99,7 +108,7 @@ public class CaretakerController {
             return new ResponseEntity<>(ApiResponse.getInstance()
                     .response(HttpStatus.NOT_FOUND,
                             null,
-                            MessageUtil.INCORRECT_EMAIL), HttpStatus.NOT_FOUND);
+                            MessageUtil.INCORRECT_EMAIL), HttpStatus.OK);
         } else {
             return EmailSender.getInstance().sendMail(caretaker.getEmail(), caretaker.getPassword(), sender);
 
@@ -113,7 +122,7 @@ public class CaretakerController {
             return new ResponseEntity<>(ApiResponse.getInstance()
                     .response(HttpStatus.NOT_FOUND,
                             null,
-                            MessageUtil.INCORRECT_TELL), HttpStatus.NOT_FOUND);
+                            MessageUtil.INCORRECT_TELL), HttpStatus.OK);
         } else {
             return SmsSender.getInstance().sendSMSSimple(caretaker.getTell(), caretaker.getPassword());
 
@@ -126,7 +135,7 @@ public class CaretakerController {
         return new ResponseEntity<>(ApiResponse.getInstance()
                 .response(HttpStatus.CREATED,
                         caretakerService.update(id, caretaker),
-                        HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
+                        HttpStatus.CREATED.getReasonPhrase()), HttpStatus.OK);
     }
 
     @DeleteMapping("{id}")

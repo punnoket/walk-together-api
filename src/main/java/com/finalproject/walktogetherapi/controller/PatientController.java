@@ -65,9 +65,13 @@ public class PatientController {
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, patientService.findById(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
-    @GetMapping("caretaker/{id}")
-    public ResponseEntity getCaretakerById(@PathVariable Long id) {
-        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, patientService.findById(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+    @GetMapping("by-patient-number/{patientNumber}")
+    public ResponseEntity getByPatientNumber(@PathVariable String patientNumber) {
+        Patient patient = patientService.findByNumberPatient(patientNumber);
+        if (patient != null)
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, patient, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, null, MessageUtil.NOT_FOUND_PATIENT), HttpStatus.OK);
     }
 
     @GetMapping("history-evaluation/{id}")
@@ -82,7 +86,7 @@ public class PatientController {
             return new ResponseEntity<>(ApiResponse.getInstance()
                     .response(HttpStatus.NOT_FOUND,
                             null,
-                            MessageUtil.INCORRECT_EMAIL), HttpStatus.NOT_FOUND);
+                            MessageUtil.INCORRECT_EMAIL), HttpStatus.OK);
         } else {
             return EmailSender.getInstance().sendMail(patient.getEmail(), patient.getPassword(), sender);
 
@@ -96,7 +100,7 @@ public class PatientController {
             return new ResponseEntity<>(ApiResponse.getInstance()
                     .response(HttpStatus.NOT_FOUND,
                             null,
-                            MessageUtil.INCORRECT_TELL), HttpStatus.NOT_FOUND);
+                            MessageUtil.INCORRECT_TELL), HttpStatus.OK);
         } else {
             return SmsSender.getInstance().sendSMSSimple(patient.getTell(), patient.getPassword());
 
@@ -141,7 +145,7 @@ public class PatientController {
         return new ResponseEntity<>(ApiResponse.getInstance()
                 .response(HttpStatus.CREATED,
                         patientService.update(id, patient),
-                        HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
+                        HttpStatus.CREATED.getReasonPhrase()), HttpStatus.OK);
     }
 
     @DeleteMapping("{id}")
