@@ -86,9 +86,9 @@ public class MatchingController {
         matching.setPatient(patient);
         matching.setCaretaker(caretaker);
         return new ResponseEntity<>(ApiResponse.getInstance()
-                .response(HttpStatus.CREATED,
+                .response(HttpStatus.OK,
                         matchingService.create(matching),
-                        HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
+                        HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
     @PostMapping("add-caretaker")
@@ -101,21 +101,21 @@ public class MatchingController {
             if (patient == null)
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.NOT_FOUND, null,
-                                MessageUtil.NOT_FOUND_PATIENT), HttpStatus.NOT_FOUND);
+                                MessageUtil.NOT_FOUND_PATIENT), HttpStatus.OK);
 
             Caretaker caretaker = caretakerService.findByNumberCaretaker(data.get("caretakerNumber").toString());
             if (caretaker == null)
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.NOT_FOUND, null,
-                                MessageUtil.NOT_FOUND_CARETAKER), HttpStatus.NOT_FOUND);
+                                MessageUtil.NOT_FOUND_CARETAKER), HttpStatus.OK);
             return new ResponseEntity<>(ApiResponse.getInstance()
-                    .response(HttpStatus.CREATED,
+                    .response(HttpStatus.OK,
                             matchingService.create(MatchingMapping.getInstance().acceptMatching(caretaker, patient)),
-                            MessageUtil.SUCCESS_CARETAKER), HttpStatus.CREATED);
+                            MessageUtil.SUCCESS_CARETAKER), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(ApiResponse.getInstance()
                     .response(HttpStatus.NOT_FOUND, null,
-                            MessageUtil.DUPLICATE_CARETAKER), HttpStatus.NOT_FOUND);
+                            MessageUtil.DUPLICATE_CARETAKER), HttpStatus.OK);
         }
     }
 
@@ -129,12 +129,12 @@ public class MatchingController {
             if (caretaker == null)
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.NOT_FOUND, null,
-                                MessageUtil.NOT_FOUND_CARETAKER), HttpStatus.NOT_FOUND);
+                                MessageUtil.NOT_FOUND_CARETAKER), HttpStatus.OK);
             Patient patient = patientService.findByNumberPatient(data.get("patientNumber").toString());
             if (patient == null)
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.NOT_FOUND, null,
-                                MessageUtil.NOT_FOUND_PATIENT), HttpStatus.NOT_FOUND);
+                                MessageUtil.NOT_FOUND_PATIENT), HttpStatus.OK);
 
             return new ResponseEntity<>(ApiResponse.getInstance()
                     .response(HttpStatus.OK,
@@ -143,7 +143,7 @@ public class MatchingController {
         } else {
             return new ResponseEntity<>(ApiResponse.getInstance()
                     .response(HttpStatus.NOT_FOUND, null,
-                            MessageUtil.DUPLICATE_PATIENT), HttpStatus.NOT_FOUND);
+                            MessageUtil.DUPLICATE_PATIENT), HttpStatus.OK);
         }
     }
 
