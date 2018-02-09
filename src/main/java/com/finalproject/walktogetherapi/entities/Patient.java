@@ -37,6 +37,7 @@ public class Patient {
     private String frequency;
     private String email;
     private String image;
+    private String qrCode;
 
     @OneToMany(mappedBy = "patient", cascade = {CascadeType.ALL})
     private List<HistoryEvaluationTest> historyEvaluationTests;
@@ -204,5 +205,13 @@ public class Patient {
 
     public void setHistoryEvaluationTests(List<HistoryEvaluationTest> historyEvaluationTests) {
         this.historyEvaluationTests = historyEvaluationTests;
+    }
+
+    public String getQrCode() {
+        return qrCode;
+    }
+
+    public void setQrCode(String qrCode) {
+        this.qrCode = qrCode;
     }
 }

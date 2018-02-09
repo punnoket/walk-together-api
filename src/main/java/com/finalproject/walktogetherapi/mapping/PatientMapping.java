@@ -7,9 +7,13 @@ import com.finalproject.walktogetherapi.service.master.DistrictServices;
 import com.finalproject.walktogetherapi.service.master.ProvinceServices;
 import com.finalproject.walktogetherapi.service.master.SexServices;
 import com.finalproject.walktogetherapi.service.master.SubDistrictServices;
+import com.finalproject.walktogetherapi.util.QrCodeGenerator;
 import com.finalproject.walktogetherapi.util.RandomNumberUser;
 
 import java.util.HashMap;
+
+import static com.finalproject.walktogetherapi.util.Constant.PATH_QR_CODE_CARETAKER;
+import static com.finalproject.walktogetherapi.util.Constant.PATH_QR_CODE_PATIENT;
 
 public class PatientMapping {
 
@@ -32,8 +36,7 @@ public class PatientMapping {
                               Patient patient,
                               Boolean isCreate) {
 
-        if (isCreate)
-            patient.setPatientNumber(RandomNumberUser.getInstance().getNumberPatient());
+
         if (data.get("userName") != null)
             if (patientService.findByUserName(data.get("userName").toString()) == null &&
                     caretakerService.findByUserName(data.get("userName").toString()) == null)
@@ -80,7 +83,19 @@ public class PatientMapping {
                 patient.setTell(null);
                 return patient;
             }
+        if (isCreate) {
+            patient.setPatientNumber(RandomNumberUser.getInstance().getNumberPatient());
+            patient = generatorQrCode(patient);
+        }
         return patient;
     }
 
+    private Patient generatorQrCode(Patient patient) {
+        String pathString = PATH_QR_CODE_PATIENT
+                + "/"
+                + patient.getPatientNumber()
+                + "/";
+        patient.setQrCode(QrCodeGenerator.getInstance().generatorQrCode(pathString, patient.getPatientNumber()));
+        return patient;
+    }
 }

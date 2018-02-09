@@ -34,6 +34,7 @@ public class Caretaker {
     private String occupation;
     private String email;
     private String image;
+    private String qrCode;
 
     public Long getId() {
         return id;
@@ -174,5 +175,13 @@ public class Caretaker {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getQrCode() {
+        return qrCode;
+    }
+
+    public void setQrCode(String qrCode) {
+        this.qrCode = qrCode;
     }
 }

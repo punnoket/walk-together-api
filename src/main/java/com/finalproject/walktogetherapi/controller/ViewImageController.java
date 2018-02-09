@@ -60,7 +60,26 @@ public class ViewImageController {
         Path path = Paths.get(pathString);
         byte[] data = Files.readAllBytes(path);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(data);
+    }
 
+    @GetMapping("/{type}/qrcode/{number}/{fileName:.+}")
+    public ResponseEntity<byte[]> viewQrCode(@PathVariable String type,
+                                                   @PathVariable String number,
+                                                   @PathVariable String fileName) throws IOException {
+
+        String pathString = "image"
+                + "/"
+                + type
+                + "/"
+                + "qrcode"
+                + "/"
+                + number
+                + "/"
+                + fileName;
+
+        Path path = Paths.get(pathString);
+        byte[] data = Files.readAllBytes(path);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(data);
     }
 
 }

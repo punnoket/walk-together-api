@@ -7,9 +7,13 @@ import com.finalproject.walktogetherapi.service.master.DistrictServices;
 import com.finalproject.walktogetherapi.service.master.ProvinceServices;
 import com.finalproject.walktogetherapi.service.master.SexServices;
 import com.finalproject.walktogetherapi.service.master.SubDistrictServices;
+import com.finalproject.walktogetherapi.util.QrCodeGenerator;
 import com.finalproject.walktogetherapi.util.RandomNumberUser;
 
 import java.util.HashMap;
+
+import static com.finalproject.walktogetherapi.util.Constant.PATH_IMAGE_QUESTION;
+import static com.finalproject.walktogetherapi.util.Constant.PATH_QR_CODE_CARETAKER;
 
 public class CaretakerMapping {
 
@@ -32,8 +36,6 @@ public class CaretakerMapping {
                                   Caretaker caretaker,
                                   Boolean isCreate) {
 
-        if (isCreate)
-            caretaker.setCaretakerNumber(RandomNumberUser.getInstance().getNumberCaretaker());
         if (data.get("userName") != null)
             if (caretakerService.findByUserName(data.get("userName").toString()) == null
                     && patientService.findByUserName(data.get("userName").toString()) == null) {
@@ -80,7 +82,19 @@ public class CaretakerMapping {
                 caretaker.setTell(null);
                 return caretaker;
             }
+        if (isCreate) {
+            caretaker.setCaretakerNumber(RandomNumberUser.getInstance().getNumberCaretaker());
+            caretaker = generatorQrCode(caretaker);
+        }
         return caretaker;
     }
 
+    private Caretaker generatorQrCode(Caretaker caretaker) {
+        String pathString = PATH_QR_CODE_CARETAKER
+                + "/"
+                + caretaker.getCaretakerNumber()
+                + "/";
+        caretaker.setQrCode(QrCodeGenerator.getInstance().generatorQrCode(pathString, caretaker.getCaretakerNumber()));
+        return caretaker;
+    }
 }
