@@ -10,14 +10,11 @@ import com.finalproject.walktogetherapi.service.master.ProvinceServices;
 import com.finalproject.walktogetherapi.service.master.SexServices;
 import com.finalproject.walktogetherapi.service.master.SubDistrictServices;
 import com.finalproject.walktogetherapi.util.ApiResponse;
-import com.finalproject.walktogetherapi.util.EmailSender;
 import com.finalproject.walktogetherapi.util.MessageUtil;
-import com.finalproject.walktogetherapi.util.SmsSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.mail.javamail.JavaMailSender;
 
 import java.util.HashMap;
 
@@ -33,8 +30,6 @@ public class PatientController {
     private DistrictServices districtServices;
     private SubDistrictServices subDistrictServices;
     private HistoryEvaluationTestService historyEvaluationTestService;
-    @Autowired
-    private JavaMailSender sender;
 
     @Autowired
     public PatientController(PatientService patientService,
@@ -43,8 +38,7 @@ public class PatientController {
                              ProvinceServices provinceServices,
                              DistrictServices districtServices,
                              SubDistrictServices subDistrictServices,
-                             HistoryEvaluationTestService historyEvaluationTestService,
-                             JavaMailSender sender) {
+                             HistoryEvaluationTestService historyEvaluationTestService) {
         this.patientService = patientService;
         this.sexServices = sexServices;
         this.caretakerService = caretakerService;
@@ -52,7 +46,6 @@ public class PatientController {
         this.districtServices = districtServices;
         this.subDistrictServices = subDistrictServices;
         this.historyEvaluationTestService = historyEvaluationTestService;
-        this.sender = sender;
     }
 
     @GetMapping("")
@@ -77,34 +70,6 @@ public class PatientController {
     @GetMapping("history-evaluation/{id}")
     public ResponseEntity getHistoryEvaluationById(@PathVariable Long id) {
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, historyEvaluationTestService.findByPatientId(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
-    }
-
-    @PostMapping("forget-password-email")
-    public ResponseEntity forgetPasswordEmail(@RequestBody HashMap<String, Object> data) {
-        Patient patient = patientService.findByEmail(data.get("email").toString());
-        if (patient == null) {
-            return new ResponseEntity<>(ApiResponse.getInstance()
-                    .response(HttpStatus.NOT_FOUND,
-                            null,
-                            MessageUtil.INCORRECT_EMAIL), HttpStatus.OK);
-        } else {
-            return EmailSender.getInstance().sendMail(patient.getEmail(), patient.getPassword(), sender);
-
-        }
-    }
-
-    @PostMapping("forget-password-tell")
-    public ResponseEntity forgetPasswordPhone(@RequestBody HashMap<String, Object> data) {
-        Patient patient = patientService.findByTell(data.get("tell").toString());
-        if (patient == null) {
-            return new ResponseEntity<>(ApiResponse.getInstance()
-                    .response(HttpStatus.NOT_FOUND,
-                            null,
-                            MessageUtil.INCORRECT_TELL), HttpStatus.OK);
-        } else {
-            return SmsSender.getInstance().sendSMSSimple(patient.getTell(), patient.getPassword());
-
-        }
     }
 
     @PostMapping("")
