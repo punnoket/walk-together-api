@@ -49,4 +49,24 @@ public class DateTHFormat {
             return new Date();
         }
     }
+
+    public String getDayName() {
+        SimpleDateFormat formatter = new SimpleDateFormat("EEEE", new Locale("th", "TH"));
+        return returnResult(formatter.format(new Date()));
+    }
+
+    public String getDay() {
+        SimpleDateFormat formatter = new SimpleDateFormat("d", new Locale("th", "TH"));
+        return returnResult(formatter.format(new Date()));
+    }
+
+    public String getMonth() {
+        SimpleDateFormat formatter = new SimpleDateFormat("MMMM", new Locale("th", "TH"));
+        return returnResult(formatter.format(new Date()));
+    }
+
+    private String returnResult(String date) {
+        System.out.print(date);
+        return date;
+    }
 }

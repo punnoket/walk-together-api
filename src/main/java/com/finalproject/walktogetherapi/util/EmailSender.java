@@ -1,7 +1,5 @@
 package com.finalproject.walktogetherapi.util;
 
-import com.finalproject.walktogetherapi.entities.Patient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -9,7 +7,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.util.HashMap;
 
 public class EmailSender {
 
