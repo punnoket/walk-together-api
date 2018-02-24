@@ -43,25 +43,23 @@ public class DateTHFormat {
     }
 
     private Date timeStringFormat(String input) {
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+7"));
         String[] date = input.split(":");
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY,Integer.parseInt(date[0]));
-        cal.set(Calendar.MINUTE,0);
-        cal.set(Calendar.SECOND,0);
-        cal.set(Calendar.MILLISECOND,0);
-
-        return cal.getTime();
+        calendar.set(Calendar.HOUR_OF_DAY,Integer.parseInt(date[0]));
+        calendar.set(Calendar.MINUTE,0);
+        calendar.set(Calendar.SECOND,0);
+        calendar.set(Calendar.MILLISECOND,0);
+        return calendar.getTime();
     }
 
     public Date timeStringFormatTest(String input) {
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+7"));
         String[] date = input.split(":");
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY,Integer.parseInt(date[0]));
-        cal.set(Calendar.MINUTE,0);
-        cal.set(Calendar.SECOND,0);
-        cal.set(Calendar.MILLISECOND,0);
-
-        return cal.getTime();
+        calendar.set(Calendar.HOUR_OF_DAY,Integer.parseInt(date[0]));
+        calendar.set(Calendar.MINUTE,0);
+        calendar.set(Calendar.SECOND,0);
+        calendar.set(Calendar.MILLISECOND,0);
+        return calendar.getTime();
     }
 
     public String birthDayToAge(String input) {

@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53ffd90e-ebd3-4731-a447-dcbd43974762" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/TestDateController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/DateTHFormat.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/DateTHFormat.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -99,8 +97,8 @@
           <file leaf-file-name="DateTHFormat.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/DateTHFormat.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-13">
-                  <caret line="99" column="8" lean-forward="false" selection-start-line="99" selection-start-column="8" selection-end-line="99" selection-end-column="8" />
+                <state relative-caret-position="335">
+                  <caret line="61" column="34" lean-forward="false" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
                   <folding />
                 </state>
               </provider>
@@ -1074,7 +1072,7 @@
       <workItem from="1518191334923" duration="1743000" />
       <workItem from="1518196469065" duration="500000" />
       <workItem from="1518889531939" duration="1327000" />
-      <workItem from="1519466205456" duration="15659000" />
+      <workItem from="1519466205456" duration="16036000" />
     </task>
     <servers />
   </component>
@@ -1090,7 +1088,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121992000" />
+    <option name="totallyTimeSpent" value="122369000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1573,8 +1571,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/DateTHFormat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="99" column="8" lean-forward="false" selection-start-line="99" selection-start-column="8" selection-end-line="99" selection-end-column="8" />
+        <state relative-caret-position="335">
+          <caret line="61" column="34" lean-forward="false" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
           <folding />
         </state>
       </provider>
