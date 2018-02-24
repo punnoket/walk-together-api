@@ -2,6 +2,7 @@ package com.finalproject.walktogetherapi.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -31,6 +32,17 @@ public class DateTHFormat {
     public String timeFormat(Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm", new Locale("th", "TH"));
         return formatter.format(date);
+    }
+
+    private Date timeStringFormat(String input) {
+        String[] date = input.split(":");
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY,Integer.parseInt(date[0]));
+        cal.set(Calendar.MINUTE,0);
+        cal.set(Calendar.SECOND,0);
+        cal.set(Calendar.MILLISECOND,0);
+
+        return cal.getTime();
     }
 
     public String birthDayToAge(String input) {
@@ -68,5 +80,52 @@ public class DateTHFormat {
     private String returnResult(String date) {
         System.out.print(date);
         return date;
+    }
+
+    public boolean isDurationDay(String duration) {
+        if (duration.equalsIgnoreCase("เช้ามืด")) {
+            if (new Date().after(timeStringFormat("04:00")) &&
+                    new Date().before(timeStringFormat("06:00"))) {
+                return true;
+            }
+        } else if (duration.equalsIgnoreCase("เช้า")) {
+            if (new Date().after(timeStringFormat("06:00")) &&
+                    new Date().before(timeStringFormat("09:00"))) {
+                return true;
+            }
+        } else if (duration.equalsIgnoreCase("สาย")) {
+            if (new Date().after(timeStringFormat("09:00")) &&
+                    new Date().before(timeStringFormat("12:00"))) {
+                return true;
+            }
+        } else if (duration.equalsIgnoreCase("เที่ยง")) {
+            if (new Date().after(timeStringFormat("12:00")) &&
+                    new Date().before(timeStringFormat("13:00"))) {
+                return true;
+            }
+        } else if (duration.equalsIgnoreCase("บ่าย")) {
+            if (new Date().after(timeStringFormat("13:00")) &&
+                    new Date().before(timeStringFormat("16:00"))) {
+                return true;
+            }
+        } else if (duration.equalsIgnoreCase("เย็น")) {
+            if (new Date().after(timeStringFormat("16:00")) &&
+                    new Date().before(timeStringFormat("18:00"))) {
+                return true;
+            }
+        } else if (duration.equalsIgnoreCase("หัวค่ำ")) {
+            if (new Date().after(timeStringFormat("18:00")) &&
+                    new Date().before(timeStringFormat("20:00"))) {
+                return true;
+            }
+        } else if (duration.equalsIgnoreCase("กลางคืน")) {
+            if (new Date().after(timeStringFormat("20:00")) &&
+                    new Date().before(timeStringFormat("04:00"))) {
+                return true;
+            }
+        } else {
+            return false;
+        }
+        return false;
     }
 }

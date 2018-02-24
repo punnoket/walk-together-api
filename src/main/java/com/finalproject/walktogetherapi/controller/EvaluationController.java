@@ -63,7 +63,7 @@ public class EvaluationController {
         HistoryEvaluationTest historyEvaluationTest = new HistoryEvaluationTest();
         QuestionEvaluation questionEvaluation = new QuestionEvaluation();
         HashMap<String, Object> map ;
-        for (int i = 1; i < 4; i++) {
+        for (int i = 1; i < 5; i++) {
 
             PatientTest patientTest = new PatientTest();
 
@@ -101,6 +101,21 @@ public class EvaluationController {
                 map = data.get("no3");
                 questionEvaluation = questionEvaluationService.findById(Long.parseLong(map.get("id").toString()));
                 if (map.get("answer").toString().equalsIgnoreCase(DateTHFormat.getInstance().getMonth())) {
+                    score += Integer.parseInt(questionEvaluation.getNumberEvaluation().getScore());
+                    patientTest.setScore(String.valueOf(score));
+                } else {
+                    patientTest.setScore(String.valueOf(0));
+                }
+                patientTest.setQuestionEvaluation(questionEvaluation);
+                patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationTest(evaluationTest);
+                patientTestList.add(patientTestService.create(patientTest));
+            }
+
+            if (i == 4) {
+                map = data.get("no4");
+                questionEvaluation = questionEvaluationService.findById(Long.parseLong(map.get("id").toString()));
+                if (DateTHFormat.getInstance().isDurationDay(map.get("answer").toString())) {
                     score += Integer.parseInt(questionEvaluation.getNumberEvaluation().getScore());
                     patientTest.setScore(String.valueOf(score));
                 } else {
