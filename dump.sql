@@ -54,7 +54,8 @@ CREATE TABLE caretaker (
     district_id bigint,
     province_id bigint,
     sex_id bigint,
-    sub_district_id bigint
+    sub_district_id bigint,
+    qr_code character varying(255)
 );
 
 
@@ -191,7 +192,8 @@ CREATE TABLE patient (
     district_id bigint,
     province_id bigint,
     sex_id bigint,
-    sub_district_id bigint
+    sub_district_id bigint,
+    qr_code character varying(255)
 );
 
 
@@ -310,6 +312,59 @@ ALTER TABLE ONLY sex ALTER COLUMN id SET DEFAULT nextval('sex_id_seq'::regclass)
 --
 
 COPY answer_evaluation (id, answer, question_evaluation_id) FROM stdin;
+1	เช้ามืด	4
+2	เช้า	4
+3	สาย	4
+4	เที่ยง	4
+5	บ่าย	4
+6	เย็น	4
+7	หัวค่ำ	4
+8	กลางคืน	4
+9	พยาบาล	6
+10	นางพยาบาล	6
+11	คุณพยาบาล	6
+12	ตำรวจ	7
+13	คุณตำรวจ	7
+14	หมอ	8
+15	คุณหมอ	8
+16	แพทย์	8
+17	นายแพทย์	8
+18	เชฟ	9
+19	กุ๊ก	9
+20	พ่อครัว	9
+21	คนทำอาหาร	9
+22	ครู	10
+23	อาจารย์	10
+24	คุณครู	10
+25	ทหาร	11
+26	นาฬิกา	18
+27	เสื้อ	19
+28	หมวก	20
+29	รองเท้า	21
+30	กางเกง	22
+31	แว่นตา	23
+32	1	26
+33	2	27
+34	3	28
+35	4	29
+36	ผลไม้	31
+37	สัตว์เลี้ยง	32
+38	สัตว์	32
+39	สัตว์เลี้ยงลูกด้วยนม	32
+40	สิ่งมีชีวิต	32
+41	เฟอร์นิเจอร์	33
+42	เครื่องเรือน	33
+43	พาหนะ	34
+44	ยานพาหนะ	34
+45	ใช้เดินทาง	34
+46	ผัก	35
+47	ผักสวนครัว	35
+48	พืชผัก	35
+49	ต้นไม้,รถยนต์,มือ	12
+50	รถยนต์,มือ,คอมพิวเตอร์	13
+51	มือ,คอมพิวเตอร์,โทรศัพท์	14
+52	ยายพาหลานไปซื้อขนมที่ตลาด	24
+53	หลานพายายไปวิ่งออกกำลังกาย	36
 \.
 
 
@@ -317,9 +372,10 @@ COPY answer_evaluation (id, answer, question_evaluation_id) FROM stdin;
 -- Data for Name: caretaker; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY caretaker (id, address, caretaker_number, dob, email, first_name, image, last_name, occupation, password, tell, title_name, user_name, district_id, province_id, sex_id, sub_district_id) FROM stdin;
-219	60 mu 8	C537570	21 กุมภาพันธ์ 2539	ggg@zz.com	dev	\N	android	sale	1234	0834249027	Mr	android	64	212	1	270
-220	213	C847823	22 กุมภาพันธ์ 2561	ddd@ddd.com	d	\N	d		1234	0982709825	ddd	punnokety	802	517	2	6376
+COPY caretaker (id, address, caretaker_number, dob, email, first_name, image, last_name, occupation, password, tell, title_name, user_name, district_id, province_id, sex_id, sub_district_id, qr_code) FROM stdin;
+219	60 mu 8	C537570	21 กุมภาพันธ์ 2539	ggg@zz.com	dev	\N	android	sale	1234	0834249027	Mr	android	64	212	1	270	\N
+220	213	C847823	22 กุมภาพันธ์ 2561	ddd@ddd.com	d	\N	d		1234	0982709825	ddd	punnokety	802	517	2	6376	\N
+226	60 หมู่ 8	C518514	21 กุมภาพันธ์ 2539	FEfe	พยาบาล	\N	นกเกตุ	นศ	1234	098344358	นาย	testpassfftyienr	64	\N	1	270	image/caretaker/qrcode/C518514/C518514.png
 \.
 
 
@@ -1277,6 +1333,8 @@ COPY evaluation_category (id, evaluation_category_name) FROM stdin;
 --
 
 COPY evaluation_test (id, frequency_patient, result_score, test_date) FROM stdin;
+399	\N	27	2018-02-25 03:27:45.072
+419	\N	28	2018-02-25 03:29:34.372
 \.
 
 
@@ -1285,6 +1343,8 @@ COPY evaluation_test (id, frequency_patient, result_score, test_date) FROM stdin
 --
 
 COPY history_evaluation_test (id, evaluation_test_id, patient) FROM stdin;
+418	399	400
+437	419	400
 \.
 
 
@@ -1309,6 +1369,23 @@ COPY matching (id, caretaker_id, patient_id) FROM stdin;
 --
 
 COPY number_evaluation (id, no, score, evaluation_category) FROM stdin;
+1	1	1	47
+2	2	1	47
+3	3	1	47
+4	4	1	47
+5	5	1	47
+6	6	1	47
+7	7	3	48
+8	8	5	49
+12	12	1	51
+13	13	1	51
+14	14	1	51
+15	15	2	51
+16	16	2	51
+17	17	2	51
+18	18	1	51
+19	19	3	52
+9	9	3	50
 \.
 
 
@@ -1316,7 +1393,8 @@ COPY number_evaluation (id, no, score, evaluation_category) FROM stdin;
 -- Data for Name: patient; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY patient (id, address, dob, email, first_name, frequency, image, last_name, level, occupation, password, patient_number, tell, title_name, user_name, district_id, province_id, sex_id, sub_district_id) FROM stdin;
+COPY patient (id, address, dob, email, first_name, frequency, image, last_name, level, occupation, password, patient_number, tell, title_name, user_name, district_id, province_id, sex_id, sub_district_id, qr_code) FROM stdin;
+400	\N	21 กุมภาพันธ์ 2539	nogket@gmail.com	สมหมาย	\N	\N	นกเกตุ	\N	นศ	1234	P912054	0982709858	นาย	testpatiet6	\N	\N	2	\N	image/patient/qrcode/P912054/P912054.png
 \.
 
 
@@ -1325,6 +1403,40 @@ COPY patient (id, address, dob, email, first_name, frequency, image, last_name, 
 --
 
 COPY patient_test (id, answer, score, answer_evaluation_id, evaluation_test, question_evaluation_id) FROM stdin;
+401	วันเสาร์	0	\N	399	1
+402	24	0	\N	399	2
+403	กุมภาพันธ์	1	\N	399	3
+404	หัวค่ำ	0	\N	399	4
+405	true	1	\N	399	5
+406	พยาบาล	1	\N	399	6
+407	ต้นไม้,รถยนต์,มือ	3	\N	399	12
+408	true	5	\N	399	15
+409	3	3	\N	399	16
+410	นาฬิกา	1	\N	399	18
+411	รองเท้า	1	\N	399	21
+412	ยายพาหลานไปซื้อขนมที่ตลาด	1	\N	399	24
+413	true	2	\N	399	25
+414	1	2	\N	399	26
+415	true	2	\N	399	30
+416	ผลไม้	1	\N	399	31
+417	ต้นไม้,รถยนต์,มือ	3	\N	399	12
+420	วันเสาร์	0	\N	419	1
+421	25	1	\N	419	2
+422	กุมภาพันธ์	1	\N	419	3
+423	หัวค่ำ	0	\N	419	4
+424	true	1	\N	419	5
+425	พยาบาล	1	\N	419	6
+426	ต้นไม้,รถยนต์,มือ	3	\N	419	12
+427	true	5	\N	419	15
+428	3	3	\N	419	16
+429	นาฬิกา	1	\N	419	18
+430	รองเท้า	1	\N	419	21
+431	ยายพาหลานไปซื้อขนมที่ตลาด	1	\N	419	24
+432	true	2	\N	419	25
+433	1	2	\N	419	26
+434	true	2	\N	419	30
+435	ผลไม้	1	\N	419	31
+436	ต้นไม้,รถยนต์,มือ	3	\N	419	12
 \.
 
 
@@ -1418,6 +1530,42 @@ COPY province (id, code, created, modified, name) FROM stdin;
 --
 
 COPY question_evaluation (id, description, image, title, number_evaluation, audio) FROM stdin;
+22	\N	\N	เราเรียกสิ่งนี้ว่าอะไร	13	\N
+23	\N	\N	เราเรียกสิ่งนี้ว่าอะไร	13	\N
+24	\N	\N	เสียงที่ได้ยินต่อไปนี้คือประโยคว่าอะไร	14	\N
+25	\N	\N	แตะหน้าจอค้าง 3 วิ	15	\N
+26	\N	\N	จงแตะภาพด้านขวาบน	16	\N
+27	\N	\N	จงแตะภาพด้านซ้ายบน	16	\N
+28	\N	\N	จงแตะภาพด้านขวาล่าง	16	\N
+29	\N	\N	จงแตะภาพด้านซ้ายล่าง	16	\N
+30	\N	\N	วาดภาพให้เหมือนตัวอย่างให้มากที่สุด	17	\N
+31	\N	\N	กล้วยกับส้มเหมือนกันคือ	18	\N
+1		\N	วันนี้เป็นวันอะไรของสัปดาห์	1	\N
+3	\N	\N	เดือนนี้เดือนอะไร	3	\N
+4	\N	\N	ขณะนี้เป็นช่วงเวลาใดของวัน	4	\N
+2	\N	\N	วันนี้เป็นวันที่เท่าไร	2	\N
+5	\N	\N	ตอนนี้คุณอยู่ในจังหวัดใด	5	\N
+6	\N	\N	คนที่เห็นในภาพนี้มีอาชีพอะไร	6	\N
+7	\N	\N	คนที่เห็นในภาพนี้มีอาชีพอะไร	6	\N
+8	\N	\N	คนที่เห็นในภาพนี้มีอาชีพอะไร	6	\N
+9	\N	\N	คนที่เห็นในภาพนี้มีอาชีพอะไร	6	\N
+10	\N	\N	คนที่เห็นในภาพนี้มีอาชีพอะไร	6	\N
+11	\N	\N	คนที่เห็นในภาพนี้มีอาชีพอะไร	6	\N
+12	\N	\N	จงบอกสิ่งของ 3 อย่างที่ได้ยิน	7	\N
+13	\N	\N	จงบอกสิ่งของ 3 อย่างที่ได้ยิน	7	\N
+14	\N	\N	จงบอกสิ่งของ 3 อย่างที่ได้ยิน	7	\N
+15	เริ่มจากวันอาทิตย์ จนถึงวันจันทร์	\N	สัปดาห์หนึ่งมีเจ็ดวัน จงไล่ชื่อวันย้อนหลัง 	8	\N
+16	7	\N	จงคำนวนเลข	9	\N
+17	9	\N	จงคำนวนเลข	9	\N
+18	\N	\N	เราเรียกสิ่งนี้ว่าอะไร	12	\N
+19	\N	\N	เราเรียกสิ่งนี้ว่าอะไร	12	\N
+20	\N	\N	เราเรียกสิ่งนี้ว่าอะไร	12	\N
+21	\N	\N	เราเรียกสิ่งนี้ว่าอะไร	13	\N
+32	\N	\N	แมวกับสุนัขเหมือนกันคือ	18	\N
+33	\N	\N	โต๊ะกับตู้เหมือนกันคือ	18	\N
+34	\N	\N	เรือกับรถไฟ	18	\N
+35	\N	\N	กะหล่ำกับคะน้า	18	\N
+36	\N	\N	เสียงที่ได้ยินต่อไปนี้คือประโยคว่าอะไร	14	\N
 \.
 
 
@@ -8919,7 +9067,7 @@ COPY subdistrict (id, code, created, modified, name, zip_code, district_id, prov
 -- Name: hibernate_sequence; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('hibernate_sequence', 220, true);
+SELECT pg_catalog.setval('hibernate_sequence', 437, true);
 
 
 --
