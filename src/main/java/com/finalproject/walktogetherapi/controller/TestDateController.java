@@ -28,13 +28,15 @@ public class TestDateController {
 
     @GetMapping("")
     public ResponseEntity uploadImageQuestion() {
-        HashMap<String, String> date = new HashMap<>();
+        HashMap<String, Object> date = new HashMap<>();
         date.put("full",DateTHFormat.getInstance().fullDateFormat(new Date()));
         date.put("day",DateTHFormat.getInstance().getDay());
         date.put("month",DateTHFormat.getInstance().getMonth());
         date.put("dayOfWeek",DateTHFormat.getInstance().getDayName());
         date.put("date",new Date().toString());
-        date.put("time",DateTHFormat.getInstance().timeStringFormatTest("16:00").toString());
+        date.put("time",DateTHFormat.getInstance().timeStringFormat("16:00").toString());
+        date.put("currentTime",DateTHFormat.getInstance().getCurrentTime().toString());
+        date.put("isDuration",DateTHFormat.getInstance().isDurationDay("เช้ามืด"));
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, date, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
     }
 

@@ -42,17 +42,7 @@ public class DateTHFormat {
         return formatter.format(date);
     }
 
-    private Date timeStringFormat(String input) {
-        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+7"));
-        String[] date = input.split(":");
-        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(date[0]));
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-        return calendar.getTime();
-    }
-
-    public Date timeStringFormatTest(String input) {
+    public Date timeStringFormat(String input) {
         Calendar currentTime = Calendar.getInstance(TimeZone.getTimeZone("GMT+7"));
         currentTime.set(Calendar.ZONE_OFFSET, TimeZone.getTimeZone("GMT+7").getRawOffset());
         Calendar calendar = Calendar.getInstance();
@@ -60,6 +50,19 @@ public class DateTHFormat {
         calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(date[0]));
         calendar.set(Calendar.MINUTE, Integer.parseInt(date[1]));
         calendar.set(Calendar.MILLISECOND, 0);
+        calendar.set(Calendar.DATE, currentTime.get(Calendar.DATE));
+        calendar.set(Calendar.MONTH, currentTime.get(Calendar.MONTH));
+        calendar.set(Calendar.YEAR, currentTime.get(Calendar.YEAR));
+        return calendar.getTime();
+    }
+
+    public Date getCurrentTime() {
+        Calendar currentTime = Calendar.getInstance(TimeZone.getTimeZone("GMT+7"));
+        currentTime.set(Calendar.ZONE_OFFSET, TimeZone.getTimeZone("GMT+7").getRawOffset());
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, currentTime.get(Calendar.HOUR_OF_DAY));
+        calendar.set(Calendar.MINUTE, currentTime.get(Calendar.MINUTE));
+        calendar.set(Calendar.MILLISECOND, currentTime.get(Calendar.MILLISECOND));
         calendar.set(Calendar.DATE, currentTime.get(Calendar.DATE));
         calendar.set(Calendar.MONTH, currentTime.get(Calendar.MONTH));
         calendar.set(Calendar.YEAR, currentTime.get(Calendar.YEAR));
@@ -108,43 +111,43 @@ public class DateTHFormat {
 
     public boolean isDurationDay(String duration) {
         if (duration.equalsIgnoreCase("เช้ามืด")) {
-            if (new Date().after(timeStringFormat("04:00")) &&
-                    new Date().before(timeStringFormat("06:00"))) {
+            if (getCurrentTime().after(timeStringFormat("04:00")) &&
+                    getCurrentTime().before(timeStringFormat("06:00"))) {
                 return true;
             }
         } else if (duration.equalsIgnoreCase("เช้า")) {
-            if (new Date().after(timeStringFormat("06:00")) &&
-                    new Date().before(timeStringFormat("09:00"))) {
+            if (getCurrentTime().after(timeStringFormat("06:00")) &&
+                    getCurrentTime().before(timeStringFormat("09:00"))) {
                 return true;
             }
         } else if (duration.equalsIgnoreCase("สาย")) {
-            if (new Date().after(timeStringFormat("09:00")) &&
-                    new Date().before(timeStringFormat("12:00"))) {
+            if (getCurrentTime().after(timeStringFormat("09:00")) &&
+                    getCurrentTime().before(timeStringFormat("12:00"))) {
                 return true;
             }
         } else if (duration.equalsIgnoreCase("เที่ยง")) {
-            if (new Date().after(timeStringFormat("12:00")) &&
-                    new Date().before(timeStringFormat("13:00"))) {
+            if (getCurrentTime().after(timeStringFormat("12:00")) &&
+                    getCurrentTime().before(timeStringFormat("13:00"))) {
                 return true;
             }
         } else if (duration.equalsIgnoreCase("บ่าย")) {
-            if (new Date().after(timeStringFormat("13:00")) &&
-                    new Date().before(timeStringFormat("16:00"))) {
+            if (getCurrentTime().after(timeStringFormat("13:00")) &&
+                    getCurrentTime().before(timeStringFormat("16:00"))) {
                 return true;
             }
         } else if (duration.equalsIgnoreCase("เย็น")) {
-            if (new Date().after(timeStringFormat("16:00")) &&
-                    new Date().before(timeStringFormat("18:00"))) {
+            if (getCurrentTime().after(timeStringFormat("16:00")) &&
+                    getCurrentTime().before(timeStringFormat("18:00"))) {
                 return true;
             }
         } else if (duration.equalsIgnoreCase("หัวค่ำ")) {
-            if (new Date().after(timeStringFormat("18:00")) &&
-                    new Date().before(timeStringFormat("20:00"))) {
+            if (getCurrentTime().after(timeStringFormat("18:00")) &&
+                    getCurrentTime().before(timeStringFormat("20:00"))) {
                 return true;
             }
         } else if (duration.equalsIgnoreCase("กลางคืน")) {
-            if (new Date().after(timeStringFormat("20:00")) &&
-                    new Date().before(timeStringFormat("04:00"))) {
+            if (getCurrentTime().after(timeStringFormat("20:00")) &&
+                    getCurrentTime().before(timeStringFormat("04:00"))) {
                 return true;
             }
         } else {
