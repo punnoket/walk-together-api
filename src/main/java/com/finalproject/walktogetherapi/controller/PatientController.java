@@ -74,13 +74,13 @@ public class PatientController {
 
     @PostMapping("")
     public ResponseEntity create(@RequestBody HashMap<String, Object> data) {
-        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, new Patient(), true);
+        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, patientService.findById(Long.parseLong(data.get("idPatient").toString())),false);
         if (patient.getUserName() != null) {
             if (patient.getEmail() != null) {
                 if (patient.getTell() != null) {
                     return new ResponseEntity<>(ApiResponse.getInstance()
                             .response(HttpStatus.CREATED,
-                                    patientService.create(patient),
+                                    patientService.update(Long.parseLong(data.get("idPatient").toString()), patient),
                                     HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
                 } else {
                     return new ResponseEntity<>(ApiResponse.getInstance()

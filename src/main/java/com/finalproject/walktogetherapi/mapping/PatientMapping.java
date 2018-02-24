@@ -83,10 +83,12 @@ public class PatientMapping {
                 patient.setTell(null);
                 return patient;
             }
-        if (isCreate) {
-            patient.setPatientNumber(RandomNumberUser.getInstance().getNumberPatient());
-            patient = generatorQrCode(patient);
-        }
+        return patient;
+    }
+
+    public Patient createPatient(Patient patient) {
+        patient.setPatientNumber(RandomNumberUser.getInstance().getNumberPatient());
+        patient = generatorQrCode(patient);
         return patient;
     }
 
