@@ -45,20 +45,24 @@ public class DateTHFormat {
     private Date timeStringFormat(String input) {
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+7"));
         String[] date = input.split(":");
-        calendar.set(Calendar.HOUR_OF_DAY,Integer.parseInt(date[0]));
-        calendar.set(Calendar.MINUTE,0);
-        calendar.set(Calendar.SECOND,0);
-        calendar.set(Calendar.MILLISECOND,0);
+        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(date[0]));
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
         return calendar.getTime();
     }
 
     public Date timeStringFormatTest(String input) {
-        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+7"));
+        Calendar currentTime = Calendar.getInstance(TimeZone.getTimeZone("GMT+7"));
+        currentTime.set(Calendar.ZONE_OFFSET, TimeZone.getTimeZone("GMT+7").getRawOffset());
+        Calendar calendar = Calendar.getInstance();
         String[] date = input.split(":");
-        calendar.set(Calendar.HOUR_OF_DAY,Integer.parseInt(date[0]));
-        calendar.set(Calendar.MINUTE,0);
-        calendar.set(Calendar.SECOND,0);
-        calendar.set(Calendar.MILLISECOND,0);
+        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(date[0]));
+        calendar.set(Calendar.MINUTE, Integer.parseInt(date[1]));
+        calendar.set(Calendar.MILLISECOND, 0);
+        calendar.set(Calendar.DATE, currentTime.get(Calendar.DATE));
+        calendar.set(Calendar.MONTH, currentTime.get(Calendar.MONTH));
+        calendar.set(Calendar.YEAR, currentTime.get(Calendar.YEAR));
         return calendar.getTime();
     }
 
@@ -99,7 +103,6 @@ public class DateTHFormat {
     }
 
     private String returnResult(String date) {
-        System.out.print(date);
         return date;
     }
 

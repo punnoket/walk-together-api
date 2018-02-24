@@ -33,6 +33,7 @@ public class TestDateController {
         date.put("day",DateTHFormat.getInstance().getDay());
         date.put("month",DateTHFormat.getInstance().getMonth());
         date.put("dayOfWeek",DateTHFormat.getInstance().getDayName());
+        date.put("date",new Date().toString());
         date.put("time",DateTHFormat.getInstance().timeStringFormatTest("16:00").toString());
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, date, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
     }

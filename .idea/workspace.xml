@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53ffd90e-ebd3-4731-a447-dcbd43974762" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/util/DateTHFormat.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/TestDateController.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/TestDateController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/TestDateController.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/TestDateController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/DateTHFormat.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/DateTHFormat.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -59,137 +63,113 @@
     </projectState>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.694075">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="PatientController.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/PatientController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="257">
-                  <caret line="134" column="74" lean-forward="false" selection-start-line="134" selection-start-column="74" selection-end-line="134" selection-end-column="74" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="AudioController.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/AudioController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="132">
-                  <caret line="42" column="29" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="TestDateController.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/TestDateController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="173">
-                  <caret line="34" column="58" lean-forward="false" selection-start-line="34" selection-start-column="58" selection-end-line="34" selection-end-column="58" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="DateTHFormat.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/DateTHFormat.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="335">
-                  <caret line="61" column="34" lean-forward="false" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="TimeZone.java" pinned="false" current-in-tab="false">
-            <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/util/TimeZone.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="217">
-                  <caret line="531" column="23" lean-forward="false" selection-start-line="531" selection-start-column="20" selection-end-line="531" selection-end-column="23" />
-                  <folding>
-                    <element signature="e#19556#19557#0" expanded="true" />
-                    <element signature="e#19600#19601#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="patient" pinned="false" current-in-tab="false">
-            <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.patient">
-              <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-                <state>
-                  <filtering enabled="true" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="patient_test" pinned="false" current-in-tab="false">
-            <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.patient_test">
-              <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-                <state>
-                  <filtering enabled="true" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="history_evaluation_test" pinned="false" current-in-tab="false">
-            <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.history_evaluation_test">
-              <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-                <state>
-                  <filtering enabled="true" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="evaluation_test" pinned="false" current-in-tab="false">
-            <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.evaluation_test">
-              <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-                <state>
-                  <filtering enabled="true" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PatientServiceImpl.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/impl/PatientServiceImpl.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#1188#1189#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="question_evaluation" pinned="false" current-in-tab="true">
-            <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.question_evaluation">
-              <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-                <state>
-                  <filtering enabled="true" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="answer_evaluation" pinned="false" current-in-tab="false">
-            <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.answer_evaluation">
-              <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-                <state>
-                  <filtering enabled="true" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="PatientController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/PatientController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="134" column="74" lean-forward="false" selection-start-line="134" selection-start-column="74" selection-end-line="134" selection-end-column="74" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AudioController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/AudioController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="42" column="29" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestDateController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/TestDateController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="35" column="45" lean-forward="false" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DateTHFormat.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/DateTHFormat.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+              <folding>
+                <element signature="e#4129#4130#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TimeZone.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/util/TimeZone.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="531" column="23" lean-forward="false" selection-start-line="531" selection-start-column="20" selection-end-line="531" selection-end-column="23" />
+              <folding>
+                <element signature="e#19556#19557#0" expanded="true" />
+                <element signature="e#19600#19601#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="patient" pinned="false" current-in-tab="false">
+        <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.patient">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="patient_test" pinned="false" current-in-tab="false">
+        <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.patient_test">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="history_evaluation_test" pinned="false" current-in-tab="false">
+        <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.history_evaluation_test">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="evaluation_test" pinned="false" current-in-tab="false">
+        <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.evaluation_test">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PatientServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/impl/PatientServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <folding>
+                <element signature="e#1188#1189#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -207,6 +187,7 @@
       <find>evaluationTest</find>
       <find>isCreate</find>
       <find>stringToDate</find>
+      <find>returnResult</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -1072,7 +1053,7 @@
       <workItem from="1518191334923" duration="1743000" />
       <workItem from="1518196469065" duration="500000" />
       <workItem from="1518889531939" duration="1327000" />
-      <workItem from="1519466205456" duration="16036000" />
+      <workItem from="1519466205456" duration="16864000" />
     </task>
     <servers />
   </component>
@@ -1088,7 +1069,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122369000" />
+    <option name="totallyTimeSpent" value="123197000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1112,7 +1093,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32769045" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32769045" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1440,13 +1421,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.answer_evaluation">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.question_evaluation">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1532,24 +1506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/PatientController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="134" column="74" lean-forward="false" selection-start-line="134" selection-start-column="74" selection-end-line="134" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/AudioController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="42" column="29" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/util/TimeZone.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
@@ -1561,19 +1517,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="das://table:/3623bc9c/366c8d21-661e-42b1-a013-e4ae438ba65c/postgres.public.answer_evaluation">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/TestDateController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="34" column="58" lean-forward="false" selection-start-line="34" selection-start-column="58" selection-end-line="34" selection-end-column="58" />
+        <state relative-caret-position="315">
+          <caret line="35" column="45" lean-forward="false" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/AudioController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="42" column="29" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/PatientController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="134" column="74" lean-forward="false" selection-start-line="134" selection-start-column="74" selection-end-line="134" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/DateTHFormat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="61" column="34" lean-forward="false" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
-          <folding />
+        <state relative-caret-position="243">
+          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+          <folding>
+            <element signature="e#4129#4130#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
