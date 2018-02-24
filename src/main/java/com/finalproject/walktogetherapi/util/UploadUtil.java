@@ -24,7 +24,7 @@ public class UploadUtil {
         try {
             Files.createDirectories(Paths.get(pathString));
             byte[] bytes = file.getBytes();
-            Path path = Paths.get(pathString + new Date().getTime() + "." + FilenameUtils.getExtension(file.getOriginalFilename()));
+            Path path = Paths.get(pathString + "file" + "." + FilenameUtils.getExtension(file.getOriginalFilename()));
             Files.write(path, bytes);
             return path.toString();
 
