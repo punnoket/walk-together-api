@@ -106,11 +106,34 @@ public class PatientController {
 
     @PatchMapping("{id}")
     public ResponseEntity update(@PathVariable Long id, @RequestBody HashMap<String, Object> data) {
-        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, patientService.findById(id), false);
-        return new ResponseEntity<>(ApiResponse.getInstance()
-                .response(HttpStatus.CREATED,
-                        patientService.update(id, patient),
-                        HttpStatus.CREATED.getReasonPhrase()), HttpStatus.OK);
+        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, patientService.findById(id),false);
+        if (patient.getUserName() != null) {
+            if (patient.getEmail() != null) {
+                if (patient.getTell() != null) {
+                    return new ResponseEntity<>(ApiResponse.getInstance()
+                            .response(HttpStatus.CREATED,
+                                    patientService.update(id, patient),
+                                    HttpStatus.CREATED.getReasonPhrase()), HttpStatus.OK);
+                } else {
+                    return new ResponseEntity<>(ApiResponse.getInstance()
+                            .response(HttpStatus.NOT_FOUND,
+                                    null,
+                                    MessageUtil.DUPLICATE_TELL), HttpStatus.OK);
+                }
+
+            } else {
+                return new ResponseEntity<>(ApiResponse.getInstance()
+                        .response(HttpStatus.NOT_FOUND,
+                                null,
+                                MessageUtil.DUPLICATE_EMAIL), HttpStatus.OK);
+            }
+
+        } else {
+            return new ResponseEntity<>(ApiResponse.getInstance()
+                    .response(HttpStatus.NOT_FOUND,
+                            null,
+                            MessageUtil.DUPLICATE_USERNAME), HttpStatus.OK);
+        }
     }
 
     @DeleteMapping("{id}")
