@@ -10,7 +10,7 @@ import com.finalproject.walktogetherapi.mapping.EvaluationMapping;
 import com.finalproject.walktogetherapi.mapping.PatientMapping;
 import com.finalproject.walktogetherapi.service.*;
 import com.finalproject.walktogetherapi.util.ApiResponse;
-import com.finalproject.walktogetherapi.util.DateTHFormat;
+import com.finalproject.walktogetherapi.util.DateTimeManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -79,7 +79,7 @@ public class EvaluationController {
             if (i == 1) {
                 map = data.get("no1");
                 questionEvaluation = questionEvaluationService.findById(Long.parseLong(map.get("id").toString()));
-                if (map.get("answer").toString().equalsIgnoreCase(DateTHFormat.getInstance().getDayName())) {
+                if (map.get("answer").toString().equalsIgnoreCase(DateTimeManager.getInstance().getDayName())) {
                     score += Integer.parseInt(questionEvaluation.getNumberEvaluation().getScore());
                     patientTest.setScore(questionEvaluation.getNumberEvaluation().getScore());
                 } else {
@@ -94,7 +94,7 @@ public class EvaluationController {
             if (i == 2) {
                 map = data.get("no2");
                 questionEvaluation = questionEvaluationService.findById(Long.parseLong(map.get("id").toString()));
-                if (map.get("answer").toString().equalsIgnoreCase(DateTHFormat.getInstance().getDay())) {
+                if (map.get("answer").toString().equalsIgnoreCase(DateTimeManager.getInstance().getDay())) {
                     score += Integer.parseInt(questionEvaluation.getNumberEvaluation().getScore());
                     patientTest.setScore(questionEvaluation.getNumberEvaluation().getScore());
                 } else {
@@ -109,7 +109,7 @@ public class EvaluationController {
             if (i == 3) {
                 map = data.get("no3");
                 questionEvaluation = questionEvaluationService.findById(Long.parseLong(map.get("id").toString()));
-                if (map.get("answer").toString().equalsIgnoreCase(DateTHFormat.getInstance().getMonth())) {
+                if (map.get("answer").toString().equalsIgnoreCase(DateTimeManager.getInstance().getMonth())) {
                     score += Integer.parseInt(questionEvaluation.getNumberEvaluation().getScore());
                     patientTest.setScore(questionEvaluation.getNumberEvaluation().getScore());
                 } else {
@@ -124,7 +124,7 @@ public class EvaluationController {
             if (i == 4) {
                 map = data.get("no4");
                 questionEvaluation = questionEvaluationService.findById(Long.parseLong(map.get("id").toString()));
-                if (DateTHFormat.getInstance().isDurationDay(map.get("answer").toString())) {
+                if (DateTimeManager.getInstance().isDurationDay(map.get("answer").toString())) {
                     score += Integer.parseInt(questionEvaluation.getNumberEvaluation().getScore());
                     patientTest.setScore(questionEvaluation.getNumberEvaluation().getScore());
                 } else {
@@ -396,7 +396,7 @@ public class EvaluationController {
 
         evaluationTest.setPatientTests(patientTestList);
         evaluationTest.setResultScore(String.valueOf(score));
-        evaluationTest.setTestDate(new Date());
+        evaluationTest.setTestDate(DateTimeManager.getInstance().getCurrentTime());
         evaluationTest.setFrequencyPatient(patient.getFrequency());
 
         historyEvaluationTest.setEvaluationTest(evaluationTestService.update(evaluationTest.getId(), evaluationTest));

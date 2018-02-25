@@ -1,20 +1,14 @@
 package com.finalproject.walktogetherapi.controller;
 
-import com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation;
-import com.finalproject.walktogetherapi.service.QuestionEvaluationService;
 import com.finalproject.walktogetherapi.util.ApiResponse;
-import com.finalproject.walktogetherapi.util.DateTHFormat;
-import com.finalproject.walktogetherapi.util.UploadUtil;
+import com.finalproject.walktogetherapi.util.DateTimeManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.HashMap;
-
-import static com.finalproject.walktogetherapi.util.Constant.PATH_AUDIO_QUESTION;
 
 
 @CrossOrigin
@@ -29,14 +23,15 @@ public class TestDateController {
     @GetMapping("")
     public ResponseEntity uploadImageQuestion() {
         HashMap<String, Object> date = new HashMap<>();
-        date.put("full",DateTHFormat.getInstance().fullDateFormat(new Date()));
-        date.put("day",DateTHFormat.getInstance().getDay());
-        date.put("month",DateTHFormat.getInstance().getMonth());
-        date.put("dayOfWeek",DateTHFormat.getInstance().getDayName());
+        date.put("full", DateTimeManager.getInstance().fullDateFormat(new Date()));
+        date.put("day", DateTimeManager.getInstance().getDay());
+        date.put("month", DateTimeManager.getInstance().getMonth());
+        date.put("dayOfWeek", DateTimeManager.getInstance().getDayName());
         date.put("date",new Date().toString());
-        date.put("time",DateTHFormat.getInstance().timeStringFormat("16:00").toString());
-        date.put("currentTime",DateTHFormat.getInstance().getCurrentTime().toString());
-        date.put("isDuration",DateTHFormat.getInstance().isDurationDay("เช้ามืด"));
+        date.put("time", DateTimeManager.getInstance().timeStringFormat("16:00").toString());
+        date.put("currentTime", DateTimeManager.getInstance().getCurrentTime().toString());
+        date.put("isDuration", DateTimeManager.getInstance().isDurationDay("เช้ามืด"));
+        date.put("isTest", DateTimeManager.getInstance().isTestEvaluation(DateTimeManager.getInstance().getCurrentTime()));
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, date, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
     }
 

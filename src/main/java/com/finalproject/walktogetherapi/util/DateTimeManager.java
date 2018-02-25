@@ -7,13 +7,13 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class DateTHFormat {
+public class DateTimeManager {
 
-    private static DateTHFormat instance;
+    private static DateTimeManager instance;
 
-    public static DateTHFormat getInstance() {
+    public static DateTimeManager getInstance() {
         if (instance == null) {
-            instance = new DateTHFormat();
+            instance = new DateTimeManager();
         }
         return instance;
     }
@@ -154,5 +154,15 @@ public class DateTHFormat {
             return false;
         }
         return false;
+    }
+
+    public boolean isTestEvaluation(Date lastDate) {
+        Calendar currentTime = Calendar.getInstance(TimeZone.getTimeZone("GMT+7"));
+        currentTime.set(Calendar.ZONE_OFFSET, TimeZone.getTimeZone("GMT+7").getRawOffset());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(lastDate);
+        calendar.add(Calendar.DATE, 3);
+        System.out.print(fullDateFormat(calendar.getTime())+" "+fullDateFormat(getCurrentTime()));
+        return calendar.after(getCurrentTime());
     }
 }

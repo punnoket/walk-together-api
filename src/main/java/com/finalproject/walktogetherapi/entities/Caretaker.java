@@ -1,10 +1,8 @@
 package com.finalproject.walktogetherapi.entities;
 
-import com.finalproject.walktogetherapi.entities.master.District;
-import com.finalproject.walktogetherapi.entities.master.Province;
-import com.finalproject.walktogetherapi.entities.master.Sex;
-import com.finalproject.walktogetherapi.entities.master.SubDistrict;
-import com.finalproject.walktogetherapi.util.DateTHFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.finalproject.walktogetherapi.entities.master.*;
+import com.finalproject.walktogetherapi.util.DateTimeManager;
 
 import javax.persistence.*;
 
@@ -22,6 +20,8 @@ public class Caretaker {
     private String lastName;
     @ManyToOne
     private Sex sex;
+    @ManyToOne
+    private Education education;
     private String dob;
     private String address;
     @ManyToOne
@@ -100,6 +100,7 @@ public class Caretaker {
         this.dob = dob;
     }
 
+    @JsonIgnore
     public String getAddress() {
         return address;
     }
@@ -108,6 +109,7 @@ public class Caretaker {
         this.address = address;
     }
 
+    @JsonIgnore
     public Province getProvince() {
         return province;
     }
@@ -116,6 +118,7 @@ public class Caretaker {
         this.province = province;
     }
 
+    @JsonIgnore
     public District getDistrict() {
         return district;
     }
@@ -124,6 +127,7 @@ public class Caretaker {
         this.district = district;
     }
 
+    @JsonIgnore
     public SubDistrict getSubDistrict() {
         return subDistrict;
     }
@@ -165,7 +169,7 @@ public class Caretaker {
     }
 
     public String getAge() {
-        String age = DateTHFormat.getInstance().birthDayToAge(getDob());
+        String age = DateTimeManager.getInstance().birthDayToAge(getDob());
         return age;
     }
 
@@ -183,5 +187,13 @@ public class Caretaker {
 
     public void setQrCode(String qrCode) {
         this.qrCode = qrCode;
+    }
+
+    public Education getEducation() {
+        return education;
+    }
+
+    public void setEducation(Education education) {
+        this.education = education;
     }
 }

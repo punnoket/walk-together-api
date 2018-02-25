@@ -3,10 +3,7 @@ package com.finalproject.walktogetherapi.mapping;
 import com.finalproject.walktogetherapi.entities.Caretaker;
 import com.finalproject.walktogetherapi.service.CaretakerService;
 import com.finalproject.walktogetherapi.service.PatientService;
-import com.finalproject.walktogetherapi.service.master.DistrictServices;
-import com.finalproject.walktogetherapi.service.master.ProvinceServices;
-import com.finalproject.walktogetherapi.service.master.SexServices;
-import com.finalproject.walktogetherapi.service.master.SubDistrictServices;
+import com.finalproject.walktogetherapi.service.master.*;
 import com.finalproject.walktogetherapi.util.QrCodeGenerator;
 import com.finalproject.walktogetherapi.util.RandomNumberUser;
 
@@ -34,6 +31,7 @@ public class CaretakerMapping {
                                   DistrictServices districtServices,
                                   SubDistrictServices subDistrictServices,
                                   Caretaker caretaker,
+                                  EducationServices educationServices,
                                   Boolean isCreate) {
 
         if (data.get("userName") != null)
@@ -66,6 +64,8 @@ public class CaretakerMapping {
             caretaker.setSubDistrict(subDistrictServices.findById(Long.parseLong(data.get("subDistrictId").toString())));
         if (data.get("occupation") != null)
             caretaker.setOccupation(data.get("occupation").toString());
+        if (data.get("educationId") != null)
+            caretaker.setEducation(educationServices.findById(Long.parseLong(data.get("educationId").toString())));
         if (data.get("email") != null)
             if (caretakerService.findByEmail(data.get("email").toString()) == null &&
                     patientService.findByEmail(data.get("email").toString()) == null) {

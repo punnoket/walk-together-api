@@ -17,6 +17,7 @@ public class Constant {
     public static final String TYPE_PATIENT = "patient";
     public static final String TYPE_CARETAKER = "caretaker";
 
-
+    public static final int TREE_MOUNT = 3;
+    public static final int TEST_DAY = 3;
 
 }

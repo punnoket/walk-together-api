@@ -7,6 +7,7 @@ import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.master.SexServices;
 import com.finalproject.walktogetherapi.util.ApiResponse;
 import com.finalproject.walktogetherapi.util.Constant;
+import com.finalproject.walktogetherapi.util.DateTimeManager;
 import com.finalproject.walktogetherapi.util.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,6 +39,14 @@ public class LoginController {
                             .getInstance()
                             .response(HttpStatus.OK, patient, HttpStatus.OK.getReasonPhrase());
                     responseMap.put("type", Constant.TYPE_PATIENT);
+                    responseMap.put("isTestEvaluation", DateTimeManager.getInstance().
+                            isTestEvaluation(patient
+                                    .getHistoryEvaluationTests()
+                                    .get(patient
+                                            .getHistoryEvaluationTests()
+                                            .size() - 1)
+                                    .getEvaluationTest()
+                                    .getTestDate()));
                     return new ResponseEntity<>(responseMap, HttpStatus.OK);
 
                 } else

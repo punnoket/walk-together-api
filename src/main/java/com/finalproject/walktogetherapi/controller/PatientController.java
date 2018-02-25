@@ -1,14 +1,12 @@
 package com.finalproject.walktogetherapi.controller;
 
 import com.finalproject.walktogetherapi.entities.Patient;
+import com.finalproject.walktogetherapi.entities.master.Education;
 import com.finalproject.walktogetherapi.mapping.PatientMapping;
 import com.finalproject.walktogetherapi.service.CaretakerService;
 import com.finalproject.walktogetherapi.service.HistoryEvaluationTestService;
 import com.finalproject.walktogetherapi.service.PatientService;
-import com.finalproject.walktogetherapi.service.master.DistrictServices;
-import com.finalproject.walktogetherapi.service.master.ProvinceServices;
-import com.finalproject.walktogetherapi.service.master.SexServices;
-import com.finalproject.walktogetherapi.service.master.SubDistrictServices;
+import com.finalproject.walktogetherapi.service.master.*;
 import com.finalproject.walktogetherapi.util.ApiResponse;
 import com.finalproject.walktogetherapi.util.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +28,7 @@ public class PatientController {
     private DistrictServices districtServices;
     private SubDistrictServices subDistrictServices;
     private HistoryEvaluationTestService historyEvaluationTestService;
+    private EducationServices educationServices;
 
     @Autowired
     public PatientController(PatientService patientService,
@@ -38,6 +37,7 @@ public class PatientController {
                              ProvinceServices provinceServices,
                              DistrictServices districtServices,
                              SubDistrictServices subDistrictServices,
+                             EducationServices educationServices,
                              HistoryEvaluationTestService historyEvaluationTestService) {
         this.patientService = patientService;
         this.sexServices = sexServices;
@@ -46,6 +46,7 @@ public class PatientController {
         this.districtServices = districtServices;
         this.subDistrictServices = subDistrictServices;
         this.historyEvaluationTestService = historyEvaluationTestService;
+        this.educationServices = educationServices;
     }
 
     @GetMapping("")
@@ -74,7 +75,7 @@ public class PatientController {
 
     @PostMapping("")
     public ResponseEntity create(@RequestBody HashMap<String, Object> data) {
-        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, patientService.findById(Long.parseLong(data.get("idPatient").toString())),false);
+        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, educationServices, patientService.findById(Long.parseLong(data.get("idPatient").toString())),false);
         if (patient.getUserName() != null) {
             if (patient.getEmail() != null) {
                 if (patient.getTell() != null) {
@@ -106,7 +107,7 @@ public class PatientController {
 
     @PatchMapping("{id}")
     public ResponseEntity update(@PathVariable Long id, @RequestBody HashMap<String, Object> data) {
-        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, patientService.findById(id),false);
+        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, educationServices, patientService.findById(id),false);
         if (patient.getUserName() != null) {
             if (patient.getEmail() != null) {
                 if (patient.getTell() != null) {

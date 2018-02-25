@@ -4,10 +4,7 @@ import com.finalproject.walktogetherapi.entities.Caretaker;
 import com.finalproject.walktogetherapi.mapping.CaretakerMapping;
 import com.finalproject.walktogetherapi.service.CaretakerService;
 import com.finalproject.walktogetherapi.service.PatientService;
-import com.finalproject.walktogetherapi.service.master.DistrictServices;
-import com.finalproject.walktogetherapi.service.master.ProvinceServices;
-import com.finalproject.walktogetherapi.service.master.SexServices;
-import com.finalproject.walktogetherapi.service.master.SubDistrictServices;
+import com.finalproject.walktogetherapi.service.master.*;
 import com.finalproject.walktogetherapi.util.ApiResponse;
 import com.finalproject.walktogetherapi.util.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +25,7 @@ public class CaretakerController {
     private ProvinceServices provinceServices;
     private DistrictServices districtServices;
     private SubDistrictServices subDistrictServices;
+    private EducationServices educationServices;
 
     @Autowired
     public CaretakerController(CaretakerService caretakerService,
@@ -35,6 +33,7 @@ public class CaretakerController {
                                SexServices sexServices,
                                ProvinceServices provinceServices,
                                DistrictServices districtServices,
+                               EducationServices educationServices,
                                SubDistrictServices subDistrictServices) {
         this.caretakerService = caretakerService;
         this.patientService = patientService;
@@ -42,6 +41,7 @@ public class CaretakerController {
         this.provinceServices = provinceServices;
         this.districtServices = districtServices;
         this.subDistrictServices = subDistrictServices;
+        this.educationServices = educationServices;
     }
 
     @GetMapping("")
@@ -65,7 +65,7 @@ public class CaretakerController {
 
     @PostMapping("")
     public ResponseEntity create(@RequestBody HashMap<String, Object> data) {
-        Caretaker caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, new Caretaker(), true);
+        Caretaker caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, new Caretaker(), educationServices, true);
         if (caretaker.getUserName() != null) {
             if (caretaker.getEmail() != null) {
                 if (caretaker.getTell() != null)
@@ -94,7 +94,7 @@ public class CaretakerController {
 
     @PatchMapping("{id}")
     public ResponseEntity update(@PathVariable Long id, @RequestBody HashMap<String, Object> data) {
-        Caretaker caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, new Caretaker(), false);
+        Caretaker caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, new Caretaker(), educationServices, false);
         return new ResponseEntity<>(ApiResponse.getInstance()
                 .response(HttpStatus.CREATED,
                         caretakerService.update(id, caretaker),

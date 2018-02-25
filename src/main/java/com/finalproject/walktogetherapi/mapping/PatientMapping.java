@@ -3,10 +3,7 @@ package com.finalproject.walktogetherapi.mapping;
 import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.service.CaretakerService;
 import com.finalproject.walktogetherapi.service.PatientService;
-import com.finalproject.walktogetherapi.service.master.DistrictServices;
-import com.finalproject.walktogetherapi.service.master.ProvinceServices;
-import com.finalproject.walktogetherapi.service.master.SexServices;
-import com.finalproject.walktogetherapi.service.master.SubDistrictServices;
+import com.finalproject.walktogetherapi.service.master.*;
 import com.finalproject.walktogetherapi.util.QrCodeGenerator;
 import com.finalproject.walktogetherapi.util.RandomNumberUser;
 
@@ -33,6 +30,7 @@ public class PatientMapping {
                               ProvinceServices provinceServices,
                               DistrictServices districtServices,
                               SubDistrictServices subDistrictServices,
+                              EducationServices educationServices,
                               Patient patient,
                               Boolean isCreate) {
 
@@ -67,6 +65,8 @@ public class PatientMapping {
             patient.setSubDistrict(subDistrictServices.findById(Long.parseLong(data.get("subDistrictId").toString())));
         if (data.get("occupation") != null)
             patient.setOccupation(data.get("occupation").toString());
+        if (data.get("educationId") != null)
+            patient.setEducation(educationServices.findById(Long.parseLong(data.get("educationId").toString())));
         if (data.get("email") != null)
             if (patientService.findByEmail(data.get("email").toString()) == null &&
                     caretakerService.findByEmail(data.get("email").toString()) == null)
