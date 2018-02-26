@@ -157,12 +157,11 @@ public class DateTimeManager {
     }
 
     public boolean isTestEvaluation(Date lastDate) {
-        Calendar currentTime = Calendar.getInstance(TimeZone.getTimeZone("GMT+7"));
-        currentTime.set(Calendar.ZONE_OFFSET, TimeZone.getTimeZone("GMT+7").getRawOffset());
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(lastDate);
-        calendar.add(Calendar.DATE, 3);
-        System.out.print(fullDateFormat(calendar.getTime())+" "+fullDateFormat(getCurrentTime()));
-        return calendar.after(getCurrentTime());
+        Calendar lastDateCalendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+7"));
+        lastDateCalendar.set(Calendar.ZONE_OFFSET, TimeZone.getTimeZone("GMT+7").getRawOffset());
+        lastDateCalendar.setTime(lastDate);
+        lastDateCalendar.add(Calendar.DATE, 3);
+        System.out.println(fullDateFormat(getCurrentTime())+" "+fullDateFormat(lastDateCalendar.getTime()));
+        return getCurrentTime().after(lastDateCalendar.getTime());
     }
 }

@@ -191,8 +191,11 @@ public class Patient {
     }
 
     public String getAge() {
-        String age = DateTimeManager.getInstance().birthDayToAge(getDob());
-        return age;
+        if (getDob()!=null) {
+            String age = DateTimeManager.getInstance().birthDayToAge(getDob());
+            return age;
+        }
+        return "";
     }
 
     public String getImage() {
