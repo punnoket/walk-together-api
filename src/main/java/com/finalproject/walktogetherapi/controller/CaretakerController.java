@@ -3,15 +3,18 @@ package com.finalproject.walktogetherapi.controller;
 import com.finalproject.walktogetherapi.entities.Caretaker;
 import com.finalproject.walktogetherapi.mapping.CaretakerMapping;
 import com.finalproject.walktogetherapi.service.CaretakerService;
+import com.finalproject.walktogetherapi.service.LogService;
 import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.master.*;
 import com.finalproject.walktogetherapi.util.ApiResponse;
+import com.finalproject.walktogetherapi.util.LogUtil;
 import com.finalproject.walktogetherapi.util.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 
@@ -26,6 +29,7 @@ public class CaretakerController {
     private DistrictServices districtServices;
     private SubDistrictServices subDistrictServices;
     private EducationServices educationServices;
+    private LogService logService;
 
     @Autowired
     public CaretakerController(CaretakerService caretakerService,
@@ -33,6 +37,7 @@ public class CaretakerController {
                                SexServices sexServices,
                                ProvinceServices provinceServices,
                                DistrictServices districtServices,
+                               LogService logService,
                                EducationServices educationServices,
                                SubDistrictServices subDistrictServices) {
         this.caretakerService = caretakerService;
@@ -42,6 +47,7 @@ public class CaretakerController {
         this.districtServices = districtServices;
         this.subDistrictServices = subDistrictServices;
         this.educationServices = educationServices;
+        this.logService = logService;
     }
 
     @GetMapping("")
@@ -64,7 +70,8 @@ public class CaretakerController {
     }
 
     @PostMapping("")
-    public ResponseEntity create(@RequestBody HashMap<String, Object> data) {
+    public ResponseEntity create(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
+        LogUtil.getInstance().saveLog(request, data.toString(), logService);
         Caretaker caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, new Caretaker(), educationServices, true);
         if (caretaker.getUserName() != null) {
             if (caretaker.getEmail() != null) {

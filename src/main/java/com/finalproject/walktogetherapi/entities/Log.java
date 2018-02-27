@@ -42,11 +42,11 @@ public class Log {
     }
 
     public String getDateCreate() {
-        return DateTimeManager.getInstance().fullDateFormat(getDate());
+        return DateTimeManager.getInstance().logDateFormat(getDate());
     }
 
     public void setDateCreate(String dateCreate) {
-        dateCreate = DateTimeManager.getInstance().fullDateFormat(getDate());
+        dateCreate = DateTimeManager.getInstance().logDateFormat(getDate());
     }
 
     public void setDate(Date date) {

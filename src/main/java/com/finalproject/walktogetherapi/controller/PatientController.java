@@ -5,15 +5,18 @@ import com.finalproject.walktogetherapi.entities.master.Education;
 import com.finalproject.walktogetherapi.mapping.PatientMapping;
 import com.finalproject.walktogetherapi.service.CaretakerService;
 import com.finalproject.walktogetherapi.service.HistoryEvaluationTestService;
+import com.finalproject.walktogetherapi.service.LogService;
 import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.master.*;
 import com.finalproject.walktogetherapi.util.ApiResponse;
+import com.finalproject.walktogetherapi.util.LogUtil;
 import com.finalproject.walktogetherapi.util.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 
@@ -29,6 +32,7 @@ public class PatientController {
     private SubDistrictServices subDistrictServices;
     private HistoryEvaluationTestService historyEvaluationTestService;
     private EducationServices educationServices;
+    private LogService logService;
 
     @Autowired
     public PatientController(PatientService patientService,
@@ -37,6 +41,7 @@ public class PatientController {
                              ProvinceServices provinceServices,
                              DistrictServices districtServices,
                              SubDistrictServices subDistrictServices,
+                             LogService logService,
                              EducationServices educationServices,
                              HistoryEvaluationTestService historyEvaluationTestService) {
         this.patientService = patientService;
@@ -47,6 +52,7 @@ public class PatientController {
         this.subDistrictServices = subDistrictServices;
         this.historyEvaluationTestService = historyEvaluationTestService;
         this.educationServices = educationServices;
+        this.logService = logService;
     }
 
     @GetMapping("")
@@ -74,8 +80,9 @@ public class PatientController {
     }
 
     @PostMapping("")
-    public ResponseEntity create(@RequestBody HashMap<String, Object> data) {
-        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, educationServices, patientService.findById(Long.parseLong(data.get("idPatient").toString())),false);
+    public ResponseEntity create(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
+        LogUtil.getInstance().saveLog(request, data.toString(), logService);
+        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, educationServices, patientService.findById(Long.parseLong(data.get("idPatient").toString())), false);
         if (patient.getUserName() != null) {
             if (patient.getEmail() != null) {
                 if (patient.getTell() != null) {
@@ -107,7 +114,7 @@ public class PatientController {
 
     @PatchMapping("{id}")
     public ResponseEntity update(@PathVariable Long id, @RequestBody HashMap<String, Object> data) {
-        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, educationServices, patientService.findById(id),false);
+        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, educationServices, patientService.findById(id), false);
         if (patient.getUserName() != null) {
             if (patient.getEmail() != null) {
                 if (patient.getTell() != null) {

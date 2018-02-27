@@ -14,8 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static com.finalproject.walktogetherapi.util.Constant.PATH_IMAGE_QUESTION;
-
 @CrossOrigin
 @RestController
 @RequestMapping("/api/v1/log")
@@ -38,7 +36,7 @@ public class LogController {
     @GetMapping("/web/log.html")
     public ResponseEntity<byte[]> web() throws IOException {
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("templates/login.html").getFile());
+        File file = new File(classLoader.getResource("templates/log.html").getFile());
         Path path = Paths.get(file.getPath());
         byte[] data = Files.readAllBytes(path);
         return ResponseEntity.ok().contentType(MediaType.TEXT_HTML).body(data);
