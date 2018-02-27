@@ -86,7 +86,7 @@
     app.controller('myCtrl', function ($scope, $http, $location, $window) {
         $scope.myFunc = function () {
 
-            $http.get("http://127.0.0.1:8181/api/v1/log")
+            $http.get("http://159.65.128.189:8181/api/v1/log")
                 .then(function (response) {
 
                     console.log(response.data);
