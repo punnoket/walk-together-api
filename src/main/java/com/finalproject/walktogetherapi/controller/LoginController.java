@@ -1,19 +1,19 @@
 package com.finalproject.walktogetherapi.controller;
 
 import com.finalproject.walktogetherapi.entities.Caretaker;
+import com.finalproject.walktogetherapi.entities.Log;
 import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.service.CaretakerService;
+import com.finalproject.walktogetherapi.service.LogService;
 import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.master.SexServices;
-import com.finalproject.walktogetherapi.util.ApiResponse;
-import com.finalproject.walktogetherapi.util.Constant;
-import com.finalproject.walktogetherapi.util.DateTimeManager;
-import com.finalproject.walktogetherapi.util.MessageUtil;
+import com.finalproject.walktogetherapi.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 @RestController
@@ -21,16 +21,20 @@ import java.util.HashMap;
 public class LoginController {
     private CaretakerService caretakerService;
     private PatientService patientService;
+    private LogService logService;
 
     @Autowired
     public LoginController(CaretakerService caretakerService,
-                           PatientService patientService) {
+                           PatientService patientService,
+                           LogService logService) {
         this.caretakerService = caretakerService;
         this.patientService = patientService;
+        this.logService = logService;
     }
 
     @PostMapping("")
-    public ResponseEntity loginPatient(@RequestBody HashMap<String, Object> data) {
+    public ResponseEntity loginPatient(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
+        LogUtil.getInstance().saveLog(request,data.toString(), logService);
         if (data.get("userName").toString() != null && data.get("password").toString() != null) {
             Patient patient = patientService.findByUserName(data.get("userName").toString());
             if (patient != null) {
