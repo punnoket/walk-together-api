@@ -12,4 +12,6 @@ public interface LogService {
     List<Log> findAll();
 
     Log create(Log log);
+
+    List<Log> findLogLimit();
 }

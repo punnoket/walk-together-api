@@ -31,7 +31,7 @@ public class DateTimeManager {
     }
 
     public String logDateFormat(Date date) {
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm d-MM-yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm d-MM-yyyy", new Locale("th", "TH"));
         formatter.setTimeZone(TimeZone.getTimeZone("GMT+7"));
         return formatter.format(date);
     }

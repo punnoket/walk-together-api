@@ -1,5 +1,6 @@
 package com.finalproject.walktogetherapi.controller;
 
+import com.finalproject.walktogetherapi.entities.Log;
 import com.finalproject.walktogetherapi.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
@@ -13,23 +14,23 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api/v1/log")
 public class LogController {
     private LogService logService;
-    private ResourceLoader resourceLoader;
 
     @Autowired
-    public LogController(LogService logService, ResourceLoader resourceLoader) {
+    public LogController(LogService logService) {
         this.logService = logService;
-        this.resourceLoader = resourceLoader;
     }
 
     @GetMapping("")
     public ResponseEntity loginPatient() {
-        return new ResponseEntity<>(logService.findAll(), HttpStatus.OK);
+        List<Log> logList = logService.findLogLimit();
+        return new ResponseEntity<>(logList, HttpStatus.OK);
 
     }
 

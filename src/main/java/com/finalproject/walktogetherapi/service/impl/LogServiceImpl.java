@@ -29,4 +29,9 @@ public class LogServiceImpl implements LogService {
     public Log create(Log log) {
         return logRepository.saveAndFlush(log);
     }
+
+    @Override
+    public List<Log> findLogLimit() {
+        return logRepository.findLogLimit();
+    }
 }

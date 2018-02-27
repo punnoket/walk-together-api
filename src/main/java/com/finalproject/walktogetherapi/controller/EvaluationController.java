@@ -11,11 +11,13 @@ import com.finalproject.walktogetherapi.mapping.PatientMapping;
 import com.finalproject.walktogetherapi.service.*;
 import com.finalproject.walktogetherapi.util.ApiResponse;
 import com.finalproject.walktogetherapi.util.DateTimeManager;
+import com.finalproject.walktogetherapi.util.LogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -32,13 +34,14 @@ public class EvaluationController {
     private HistoryEvaluationTestService historyEvaluationTestService;
     private EvaluationTestService evaluationTestService;
     private PatientTestService patientTestService;
-
+    private LogService logService;
 
     @Autowired
     public EvaluationController(EvaluationCategoryService evaluationCategoryService,
                                 PatientService patientService,
                                 QuestionEvaluationService questionEvaluationService,
                                 HistoryEvaluationTestService historyEvaluationTestService,
+                                LogService logService,
                                 EvaluationTestService evaluationTestService,
                                 PatientTestService patientTestService) {
 
@@ -48,21 +51,24 @@ public class EvaluationController {
         this.historyEvaluationTestService = historyEvaluationTestService;
         this.evaluationTestService = evaluationTestService;
         this.patientTestService = patientTestService;
+        this.logService = logService;
     }
 
     @GetMapping("random")
-    public ResponseEntity getEvaluationByIdUser() {
+    public ResponseEntity getEvaluationByIdUser(HttpServletRequest request) {
         List<HashMap<String, Object>> data = EvaluationMapping.getInstance().getEvaluation(evaluationCategoryService.findAllByOrderByIdAsc());
+        LogUtil.getInstance().saveLog(request, data.toString(), logService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, data, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
     @PostMapping("check-evaluation/{id}")
-    public ResponseEntity checkEvaluation(@RequestBody HashMap<String, HashMap<String, Object>> data, @PathVariable Long id) {
+    public ResponseEntity checkEvaluation(HttpServletRequest request, @RequestBody HashMap<String, HashMap<String, Object>> data, @PathVariable Long id) {
+        LogUtil.getInstance().saveLog(request, data.toString(), logService);
         int score = 0;
         List<PatientTest> patientTestList = new ArrayList<>();
         EvaluationTest evaluationTest = evaluationTestService.create(new EvaluationTest());
         HistoryEvaluationTest historyEvaluationTest = new HistoryEvaluationTest();
-        QuestionEvaluation questionEvaluation ;
+        QuestionEvaluation questionEvaluation;
         Patient patient;
 
         if (id == 0) {
@@ -402,21 +408,21 @@ public class EvaluationController {
         historyEvaluationTest.setEvaluationTest(evaluationTestService.update(evaluationTest.getId(), evaluationTest));
         historyEvaluationTest.setPatient(patient);
 
-            if (patient.getHistoryEvaluationTests() != null) {
-                List<HistoryEvaluationTest> historyEvaluationTestList = patient.getHistoryEvaluationTests();
-                historyEvaluationTestList.add(historyEvaluationTestService.create(historyEvaluationTest));
-                patient.setHistoryEvaluationTests(historyEvaluationTestList);
-            } else {
-                List<HistoryEvaluationTest> historyEvaluationTestList = new ArrayList<>();
-                historyEvaluationTestList.add(historyEvaluationTestService.create(historyEvaluationTest));
-                patient.setHistoryEvaluationTests(historyEvaluationTestList);
-            }
+        if (patient.getHistoryEvaluationTests() != null) {
+            List<HistoryEvaluationTest> historyEvaluationTestList = patient.getHistoryEvaluationTests();
+            historyEvaluationTestList.add(historyEvaluationTestService.create(historyEvaluationTest));
+            patient.setHistoryEvaluationTests(historyEvaluationTestList);
+        } else {
+            List<HistoryEvaluationTest> historyEvaluationTestList = new ArrayList<>();
+            historyEvaluationTestList.add(historyEvaluationTestService.create(historyEvaluationTest));
+            patient.setHistoryEvaluationTests(historyEvaluationTestList);
+        }
 
 
         patientService.update(id, patient);
 
         if (score < 23) {
-            if (patient.getPatientNumber()==null) {
+            if (patient.getPatientNumber() == null) {
                 patientService.delete(patient.getId());
             }
         }

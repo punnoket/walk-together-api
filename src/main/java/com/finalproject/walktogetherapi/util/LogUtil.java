@@ -22,6 +22,7 @@ public class LogUtil {
         log.setData(request);
         log.setUrl(httpServletRequest.getRequestURL().toString());
         log.setMethod(httpServletRequest.getMethod());
+        log.setChanel(httpServletRequest.getHeader("user-agent"));
         logService.create(log);
     }
 }

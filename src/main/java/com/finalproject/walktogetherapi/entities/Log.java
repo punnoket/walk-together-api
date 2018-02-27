@@ -11,9 +11,12 @@ public class Log {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(columnDefinition = "TEXT")
     private String data;
     private String method;
     private String url;
+    @Column(columnDefinition = "TEXT")
+    private String chanel;
     private String dateCreate;
     private Date date;
 
@@ -63,5 +66,13 @@ public class Log {
 
     public void setMethod(String method) {
         this.method = method;
+    }
+
+    public String getChanel() {
+        return chanel;
+    }
+
+    public void setChanel(String chanel) {
+        this.chanel = chanel;
     }
 }

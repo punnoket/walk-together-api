@@ -6,12 +6,14 @@ import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.mapping.MatchingMapping;
 import com.finalproject.walktogetherapi.service.*;
 import com.finalproject.walktogetherapi.util.ApiResponse;
+import com.finalproject.walktogetherapi.util.LogUtil;
 import com.finalproject.walktogetherapi.util.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,14 +25,16 @@ public class MatchingController {
     private PatientService patientService;
     private CaretakerService caretakerService;
     private MatchingService matchingService;
+    private LogService logService;
 
     @Autowired
     public MatchingController(CaretakerService caretakerService,
                               PatientService patientService,
-                              MatchingService matchingService) {
+                              LogService logService, MatchingService matchingService) {
         this.patientService = patientService;
         this.caretakerService = caretakerService;
         this.matchingService = matchingService;
+        this.logService = logService;
     }
 
     @GetMapping("")
@@ -50,7 +54,8 @@ public class MatchingController {
     }
 
     @GetMapping("caretaker-by-patient/{id}")
-    public ResponseEntity getCaretakerByIdPatient(@PathVariable Long id) {
+    public ResponseEntity getCaretakerByIdPatient(HttpServletRequest request, @PathVariable Long id) {
+        LogUtil.getInstance().saveLog(request, matchingService.findByCaretakerId(id).toString(), logService);
         List<Matching> matchingList = matchingService.findByCaretakerId(id);
         if (matchingList != null)
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
@@ -61,10 +66,12 @@ public class MatchingController {
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
                     null,
                     MessageUtil.NOT_FOUND_CARETAKER),
-                    HttpStatus.OK);    }
+                    HttpStatus.OK);
+    }
 
     @GetMapping("patient-by-caretaker/{id}")
-    public ResponseEntity getPatientByIdCaretaker(@PathVariable Long id) {
+    public ResponseEntity getPatientByIdCaretaker(HttpServletRequest request, @PathVariable Long id) {
+        LogUtil.getInstance().saveLog(request, matchingService.findByCaretakerId(id).toString(), logService);
         List<Matching> matchingList = matchingService.findByCaretakerId(id);
         if (matchingList != null)
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
@@ -92,7 +99,8 @@ public class MatchingController {
     }
 
     @PostMapping("add-caretaker")
-    public ResponseEntity addCaretaker(@RequestBody HashMap<String, Object> data) {
+    public ResponseEntity addCaretaker(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
+        LogUtil.getInstance().saveLog(request, data.toString(), logService);
         Matching matching = matchingService.findByPatientIdAndCaretakerNumber(Long.parseLong(data.get("idPatient").toString()),
                 data.get("caretakerNumber").toString());
 
@@ -101,7 +109,7 @@ public class MatchingController {
             if (patient == null)
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.NOT_FOUND, null,
-                                MessageUtil.NOT_FOUND_PATIENT), HttpStatus.OK);
+                                MessageUtil.NOT_FOUND_CARETAKER), HttpStatus.OK);
 
             Caretaker caretaker = caretakerService.findByNumberCaretaker(data.get("caretakerNumber").toString());
             if (caretaker == null)
@@ -120,7 +128,8 @@ public class MatchingController {
     }
 
     @PostMapping("add-patient")
-    public ResponseEntity addPatient(@RequestBody HashMap<String, Object> data) {
+    public ResponseEntity addPatient(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
+        LogUtil.getInstance().saveLog(request, data.toString(), logService);
         Matching matching = matchingService.findByCaretakerIdAndPatientNumber(Long.parseLong(data.get("idCaretaker").toString()),
                 data.get("patientNumber").toString());
 
@@ -153,16 +162,18 @@ public class MatchingController {
     }
 
     @DeleteMapping("remove-patient/{id}")
-    public ResponseEntity removePatient(@PathVariable Long id,
-                                 @RequestParam(value = "patientNumber") String patientNumber) {
-
+    public ResponseEntity removePatient(HttpServletRequest request,
+                                        @PathVariable Long id,
+                                        @RequestParam(value = "patientNumber") String patientNumber) {
+        LogUtil.getInstance().saveLog(request, "", logService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, matchingService.delete(matchingService.findByCaretakerIdAndPatientNumber(id, patientNumber).getId()), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
     @DeleteMapping("remove-caretaker/{id}")
-    public ResponseEntity removeCaretaker(@PathVariable Long id,
-                                 @RequestParam(value = "caretakerNumber") String caretakerNumber) {
-
+    public ResponseEntity removeCaretaker(HttpServletRequest request,
+                                          @PathVariable Long id,
+                                          @RequestParam(value = "caretakerNumber") String caretakerNumber) {
+        LogUtil.getInstance().saveLog(request, "", logService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, matchingService.delete(matchingService.findByPatientIdAndCaretakerNumber(id, caretakerNumber).getId()), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
