@@ -26,7 +26,6 @@ public class DateTimeManager {
 
     public String fullDateFormat(Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat("เวลา HH:mm EEEE ที่ d MMMM yyyy", new Locale("th", "TH"));
-        formatter.setTimeZone(TimeZone.getTimeZone("GMT+7"));
         return formatter.format(date);
     }
 

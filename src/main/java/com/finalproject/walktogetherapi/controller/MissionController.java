@@ -1,6 +1,8 @@
 package com.finalproject.walktogetherapi.controller;
 
-import com.finalproject.walktogetherapi.entities.Log;
+import com.finalproject.walktogetherapi.entities.Patient;
+import com.finalproject.walktogetherapi.entities.evaluation.HistoryEvaluationTest;
+import com.finalproject.walktogetherapi.entities.mission.HistoryMission;
 import com.finalproject.walktogetherapi.entities.mission.Mission;
 import com.finalproject.walktogetherapi.mapping.MissionMapping;
 import com.finalproject.walktogetherapi.service.LogService;
@@ -14,7 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -69,6 +73,25 @@ public class MissionController {
         LogUtil.getInstance().saveLog(request, data.toString(), logService);
         Mission mission = MissionMapping.getInstance().createMission(data, mapService, cognitiveCategoryService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, missionService.create(mission), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+    }
+
+    @PostMapping("send/{id}")
+    public ResponseEntity sendMission(HttpServletRequest request, @RequestBody HashMap<String, Object> data, @PathVariable Long id) {
+        LogUtil.getInstance().saveLog(request, data.toString(), logService);
+        Patient patient = patientService.findById(id);
+        HistoryMission historyMission = MissionMapping.getInstance().createHistory(data, historyMissionService, missionService, patientMissionService, patientGameService, mapService, patient);
+
+        if (patient.getHistoryMissions() != null) {
+            List<HistoryMission> patientHistoryMissions = patient.getHistoryMissions();
+            patientHistoryMissions.add(historyMissionService.create(historyMission));
+            patient.setHistoryMissions(patientHistoryMissions);
+        } else {
+            List<HistoryMission> patientHistoryMissions = new ArrayList<>();
+            patientHistoryMissions.add(historyMissionService.create(historyMission));
+            patient.setHistoryMissions(patientHistoryMissions);
+        }
+        patientService.update(patient.getId(), patient);
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, historyMission, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
 }

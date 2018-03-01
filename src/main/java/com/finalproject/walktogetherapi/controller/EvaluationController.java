@@ -417,7 +417,6 @@ public class EvaluationController {
             patient.setHistoryEvaluationTests(historyEvaluationTestList);
         }
 
-
         patientService.update(id, patient);
 
         if (score < 23) {

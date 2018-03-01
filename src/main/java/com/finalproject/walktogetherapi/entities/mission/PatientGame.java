@@ -16,6 +16,9 @@ public class PatientGame {
     @OneToMany(mappedBy = "patientGame", cascade = {CascadeType.ALL})
     private List<PatientMission> patientMissionList;
 
+    @Column(columnDefinition = "TEXT")
+    private String route;
+
     public Long getId() {
         return id;
     }
@@ -46,5 +49,13 @@ public class PatientGame {
 
     public void setPatientMissionList(List<PatientMission> patientMissionList) {
         this.patientMissionList = patientMissionList;
+    }
+
+    public String getRoute() {
+        return route;
+    }
+
+    public void setRoute(String route) {
+        this.route = route;
     }
 }
