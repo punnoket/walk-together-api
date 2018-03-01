@@ -55,11 +55,24 @@ CREATE TABLE caretaker (
     province_id bigint,
     sex_id bigint,
     sub_district_id bigint,
-    qr_code character varying(255)
+    qr_code character varying(255),
+    education_id bigint
 );
 
 
 ALTER TABLE caretaker OWNER TO postgres;
+
+--
+-- Name: cognitive_category; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE cognitive_category (
+    id bigint NOT NULL,
+    cognitive_category_name character varying(255)
+);
+
+
+ALTER TABLE cognitive_category OWNER TO postgres;
 
 --
 -- Name: district; Type: TABLE; Schema: public; Owner: postgres
@@ -76,6 +89,18 @@ CREATE TABLE district (
 
 
 ALTER TABLE district OWNER TO postgres;
+
+--
+-- Name: education; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE education (
+    id bigint NOT NULL,
+    name character varying(255)
+);
+
+
+ALTER TABLE education OWNER TO postgres;
 
 --
 -- Name: evaluation_category; Type: TABLE; Schema: public; Owner: postgres
@@ -131,16 +156,51 @@ CREATE TABLE history_evaluation_test (
 ALTER TABLE history_evaluation_test OWNER TO postgres;
 
 --
--- Name: image_question_evaluation; Type: TABLE; Schema: public; Owner: postgres
+-- Name: history_mission; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE image_question_evaluation (
+CREATE TABLE history_mission (
     id bigint NOT NULL,
-    path character varying(255)
+    history_date character varying(255),
+    score integer NOT NULL,
+    patient bigint,
+    patient_game_id bigint
 );
 
 
-ALTER TABLE image_question_evaluation OWNER TO postgres;
+ALTER TABLE history_mission OWNER TO postgres;
+
+--
+-- Name: log; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE log (
+    id bigint NOT NULL,
+    data text,
+    date timestamp without time zone,
+    date_create character varying(255),
+    method character varying(255),
+    url character varying(255),
+    chanel text
+);
+
+
+ALTER TABLE log OWNER TO postgres;
+
+--
+-- Name: map; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE map (
+    id bigint NOT NULL,
+    image character varying(255),
+    latitude double precision NOT NULL,
+    longitude double precision NOT NULL,
+    name_place character varying(255)
+);
+
+
+ALTER TABLE map OWNER TO postgres;
 
 --
 -- Name: matching; Type: TABLE; Schema: public; Owner: postgres
@@ -154,6 +214,22 @@ CREATE TABLE matching (
 
 
 ALTER TABLE matching OWNER TO postgres;
+
+--
+-- Name: mission; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE mission (
+    id bigint NOT NULL,
+    latitude double precision NOT NULL,
+    longitude double precision NOT NULL,
+    score integer NOT NULL,
+    cognitive_category bigint,
+    map bigint
+);
+
+
+ALTER TABLE mission OWNER TO postgres;
 
 --
 -- Name: number_evaluation; Type: TABLE; Schema: public; Owner: postgres
@@ -193,11 +269,41 @@ CREATE TABLE patient (
     province_id bigint,
     sex_id bigint,
     sub_district_id bigint,
-    qr_code character varying(255)
+    qr_code character varying(255),
+    education_id bigint
 );
 
 
 ALTER TABLE patient OWNER TO postgres;
+
+--
+-- Name: patient_game; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE patient_game (
+    id bigint NOT NULL,
+    result_score integer NOT NULL,
+    map_id bigint,
+    route text
+);
+
+
+ALTER TABLE patient_game OWNER TO postgres;
+
+--
+-- Name: patient_mission; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE patient_mission (
+    id bigint NOT NULL,
+    score integer NOT NULL,
+    map_id bigint,
+    mission_id bigint,
+    patient_game bigint
+);
+
+
+ALTER TABLE patient_mission OWNER TO postgres;
 
 --
 -- Name: patient_test; Type: TABLE; Schema: public; Owner: postgres
@@ -372,10 +478,26 @@ COPY answer_evaluation (id, answer, question_evaluation_id) FROM stdin;
 -- Data for Name: caretaker; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY caretaker (id, address, caretaker_number, dob, email, first_name, image, last_name, occupation, password, tell, title_name, user_name, district_id, province_id, sex_id, sub_district_id, qr_code) FROM stdin;
-219	60 mu 8	C537570	21 กุมภาพันธ์ 2539	ggg@zz.com	dev	\N	android	sale	1234	0834249027	Mr	android	64	212	1	270	\N
-220	213	C847823	22 กุมภาพันธ์ 2561	ddd@ddd.com	d	\N	d		1234	0982709825	ddd	punnokety	802	517	2	6376	\N
-226	60 หมู่ 8	C518514	21 กุมภาพันธ์ 2539	FEfe	พยาบาล	\N	นกเกตุ	นศ	1234	098344358	นาย	testpassfftyienr	64	\N	1	270	image/caretaker/qrcode/C518514/C518514.png
+COPY caretaker (id, address, caretaker_number, dob, email, first_name, image, last_name, occupation, password, tell, title_name, user_name, district_id, province_id, sex_id, sub_district_id, qr_code, education_id) FROM stdin;
+219	60 mu 8	C537570	21 กุมภาพันธ์ 2539	ggg@zz.com	dev	\N	android	sale	1234	0834249027	Mr	android	64	212	1	270	\N	\N
+220	213	C847823	22 กุมภาพันธ์ 2561	ddd@ddd.com	d	\N	d		1234	0982709825	ddd	punnokety	802	517	2	6376	\N	\N
+226	60 หมู่ 8	C518514	21 กุมภาพันธ์ 2539	FEfe	พยาบาล	\N	นกเกตุ	นศ	1234	098344358	นาย	testpassfftyienr	64	\N	1	270	image/caretaker/qrcode/C518514/C518514.png	\N
+458	\N	C643290	21 กุมภาพันธ์ 25	goku.pun@hotmail.com	ปัณวรรธน์	\N	นกเกตุ	นศ	1234	0982709855	นาย	caretakertest	\N	\N	1	\N	image/caretaker/qrcode/C643290/C643290.png	8
+497	\N	C439410	21 กุมภาพันธ์ 25	goku.pun@hotma2il.com	ปัณวรรธน์	\N	นกเกตุ	นศ	1234	09827092855	นาย	caretakertest2	\N	\N	1	\N	image/caretaker/qrcode/C439410/C439410.png	8
+\.
+
+
+--
+-- Data for Name: cognitive_category; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY cognitive_category (id, cognitive_category_name) FROM stdin;
+2	ความสามารถด้านการบริหารจัดการ
+1	ความใส่ใจเชิงซ้อน
+4	การใช้ภาษา
+3	การเรียนรู้และความจำ
+6	ความสามารถด้านการรับรู้เกี่ยวกับสังคมรอบตัว
+5	ความสามารถด้านการรับรู้ก่อมิติสัมพันธ์
 \.
 
 
@@ -1315,6 +1437,24 @@ COPY district (id, code, created, modified, name, province_id) FROM stdin;
 
 
 --
+-- Data for Name: education; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY education (id, name) FROM stdin;
+1	ประถมศึกษา
+2	มัธยมศึกษาตอนต้น
+3	มัธยมศึกษาตอนปลาย
+4	ปวช.
+5	ปวส.
+6	อนุปริญญา
+8	ปริญญาตรี
+9	ปริญญาโท
+10	ปริญญาเอก
+7	กสน.
+\.
+
+
+--
 -- Data for Name: evaluation_category; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1334,7 +1474,10 @@ COPY evaluation_category (id, evaluation_category_name) FROM stdin;
 
 COPY evaluation_test (id, frequency_patient, result_score, test_date) FROM stdin;
 399	\N	27	2018-02-25 03:27:45.072
+438	\N	27	2018-02-26 03:59:48.986
 419	\N	28	2018-02-25 03:29:34.372
+471	\N	27	2018-02-26 19:02:43.122
+503	\N	27	2018-02-27 19:10:10.856
 \.
 
 
@@ -1345,14 +1488,121 @@ COPY evaluation_test (id, frequency_patient, result_score, test_date) FROM stdin
 COPY history_evaluation_test (id, evaluation_test_id, patient) FROM stdin;
 418	399	400
 437	419	400
+457	438	439
+490	471	472
+522	503	504
 \.
 
 
 --
--- Data for Name: image_question_evaluation; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: history_mission; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY image_question_evaluation (id, path) FROM stdin;
+COPY history_mission (id, history_date, score, patient, patient_game_id) FROM stdin;
+650	เวลา 20:22 วันพฤหัสบดี ที่ 1 มีนาคม 2561	0	400	645
+657	เวลา 20:23 วันพฤหัสบดี ที่ 1 มีนาคม 2561	0	400	652
+\.
+
+
+--
+-- Data for Name: log; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY log (id, data, date, date_create, method, url, chanel) FROM stdin;
+501	[{questions=[{no=1, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@747943fc, answer=[]}, {no=2, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@1612eda5, answer=[]}, {no=3, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@7da32369, answer=[]}, {no=4, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@30cb7fdb, answer=[com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@22d12698, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@36d1dc67, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@3e125a9d, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@4aedd14c, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@61a3cb6f, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@592911d8, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@75437ed2, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@5180a687]}, {no=5, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@57fb449a, answer=[]}, {no=6, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@40b41add, answer=[com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@2780f99b, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@202e4c1b, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@7234984a, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@59e1cb86]}], category=Orientation}, {questions=[{no=7, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@6e0907f2, answer=[com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@7db1535e]}], category=Registration}, {questions=[{no=8, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@74329d63, answer=[]}], category=Attention}, {questions=[{no=9, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@6def40c7, answer=[]}], category=Calculation}, {questions=[{no=12, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@3a1cd5fe, answer=[com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@1dd6c68e]}, {no=13, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@67b3908b, answer=[com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@69e85f1b]}, {no=14, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@82a05e0, answer=[com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@66555a0d]}, {no=15, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@3a748368, answer=[]}, {no=16, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@4fd4d65e, answer=[com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@2c395b16]}, {no=17, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@29c3964d, answer=[]}, {no=18, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@11961ade, answer=[com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@2162d86b, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@1b45a0fe, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@ab1e4d2]}], category=Language}, {questions=[], category=Recall}]	2018-02-27 19:04:33.248	\N	GET	http://localhost:8181/api/v1/evaluation/random	\N
+502	{no2={answer=25, id=2}, no13={answer=รองเท้า, id=21}, no1={answer=วันอาทิตย์, id=1}, no12={answer=นาฬิกา, id=18}, no4={answer=เช้ามืด, id=4}, no3={answer=กุมภาพันธ์, id=3}, no6={answer=พยาบาล, id=6}, no17={answer=true, id=30}, no5={answer=true, id=5}, no16={answer=1, id=26}, no8={answer=true, id=15}, no15={answer=true, id=25}, no7={answer=ต้นไม้,รถยนต์,มือ, id=12}, no14={answer=ยายพาหลานไปซื้อขนมที่ตลาด, id=24}, no9={answer=3, id=16}, no19={answer=ต้นไม้,รถยนต์,มือ, id=12}, no18={answer=ผลไม้, id=31}}	2018-02-27 19:10:10.557	\N	POST	http://localhost:8181/api/v1/evaluation/check-evaluation/0	\N
+523	{firstName=ปัณวรรธน์, lastName=นกเกตุ, password=1234, titleName=นาย, educationId=8, occupation=นศ, sexId=2, dob=21 กุมภาพันธ์ 2539, tell=09827049358, idPatient=504, userName=patient5041, email=nogDkt@gmail.com}	2018-02-27 19:10:35.929	\N	POST	http://localhost:8181/api/v1/patient/	\N
+524	{idPatient=504, caretakerNumber=C537570}	2018-02-27 19:11:52.573	\N	POST	http://localhost:8181/api/v1/matching/add-caretaker	\N
+526	{idCaretaker=219, patientNumber=P949601}	2018-02-27 19:13:22.201	\N	POST	http://localhost:8181/api/v1/matching/add-patient	\N
+528	[com.finalproject.walktogetherapi.entities.Matching@495e7620, com.finalproject.walktogetherapi.entities.Matching@7dcc0a4b]	2018-02-27 19:13:37.704	\N	GET	http://localhost:8181/api/v1/matching/patient-by-caretaker/219	\N
+529	[]	2018-02-27 19:13:52.854	\N	GET	http://localhost:8181/api/v1/matching/caretaker-by-patient/439	\N
+530	[]	2018-02-27 19:14:25.244	\N	GET	http://localhost:8181/api/v1/matching/caretaker-by-patient/439	\N
+531	{password=1234, userName=testpatiet3}	2018-02-27 19:17:31.487	\N	POST	http://localhost:8181/api/v1/login	\N
+532	{password=1234, userName=testpatiet3}	2018-02-27 19:44:36.601	\N	POST	http://localhost:8181/api/v1/login	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+533	{password=1234, userName=patient1}	2018-02-27 19:45:18.191	\N	POST	http://localhost:8181/api/v1/login	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+534	[{questions=[{no=1, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@353fb0bb, answer=[]}, {no=2, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@30dffd0f, answer=[]}, {no=3, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@6e9f9e07, answer=[]}, {no=4, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@ea36a0b, answer=[com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@4ffeeb48, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@509002bd, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@250e241d, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@1452a9ad, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@2cceb4c4, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@7c1bce0a, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@28613358, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@297ff838]}, {no=5, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@1c99cfaf, answer=[]}, {no=6, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@4e886a18, answer=[com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@48cd765c, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@544d9314]}], category=Orientation}, {questions=[{no=7, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@23a3ccb0, answer=[com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@5438d604]}], category=Registration}, {questions=[{no=8, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@636394a0, answer=[]}], category=Attention}, {questions=[{no=9, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@548638bd, answer=[]}], category=Calculation}, {questions=[{no=12, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@40e75671, answer=[com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@1b8d1357]}, {no=13, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@6a35c567, answer=[com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@3c03f68f]}, {no=14, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@1b022e76, answer=[com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@653bb9f4]}, {no=15, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@e12f8b1, answer=[]}, {no=16, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@5631d034, answer=[com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@6ba192bd]}, {no=17, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@d341318, answer=[]}, {no=18, question=com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation@648736d6, answer=[com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@3b8708b0, com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation@254ceaef]}], category=Language}, {questions=[], category=Recall}]	2018-02-27 20:45:39.392	20:45 27-02-2561	GET	http://localhost:8181/api/v1/evaluation/random	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+535		2018-03-01 18:29:06.886	18:29 1-03-2561	GET	http://localhost:8181/api/v1/mission/1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+536	{score=10, idCognitiveCategory=1, idMap=1, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:43:36.359	18:43 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+538	{score=10, idCognitiveCategory=1, idMap=1, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:44:11.808	18:44 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+540	{score=10, idCognitiveCategory=1, idMap=1, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:44:12.389	18:44 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+542	{score=10, idCognitiveCategory=1, idMap=1, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:44:12.961	18:44 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+544	{score=10, idCognitiveCategory=2, idMap=1, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:44:24.903	18:44 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+546	{score=10, idCognitiveCategory=3, idMap=1, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:44:28.89	18:44 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+548	{score=10, idCognitiveCategory=4, idMap=1, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:44:31.974	18:44 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+550	{score=10, idCognitiveCategory=5, idMap=1, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:44:34.519	18:44 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+552	{score=10, idCognitiveCategory=5, idMap=2, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:44:38.255	18:44 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+554	{score=10, idCognitiveCategory=5, idMap=2, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:44:43.142	18:44 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+556	{score=10, idCognitiveCategory=1, idMap=2, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:44:47.326	18:44 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+558	{score=10, idCognitiveCategory=1, idMap=2, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:44:47.521	18:44 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+560	{score=10, idCognitiveCategory=1, idMap=2, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:44:47.835	18:44 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+562	{score=10, idCognitiveCategory=5, idMap=2, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:44:51.079	18:44 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+564	{score=10, idCognitiveCategory=5, idMap=3, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:44:54.541	18:44 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+566	{score=10, idCognitiveCategory=4, idMap=3, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:44:57.862	18:44 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+568	{score=10, idCognitiveCategory=5, idMap=3, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:45:02.016	18:45 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+570	{score=10, idCognitiveCategory=4, idMap=3, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:45:04.792	18:45 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+572	{score=10, idCognitiveCategory=4, idMap=4, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:45:08.056	18:45 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+574	{score=10, idCognitiveCategory=4, idMap=4, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:45:08.222	18:45 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+576	{score=10, idCognitiveCategory=4, idMap=4, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:45:08.422	18:45 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+578	{score=10, idCognitiveCategory=4, idMap=4, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:45:08.517	18:45 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+580	{score=10, idCognitiveCategory=2, idMap=4, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:45:11.27	18:45 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+582	{score=10, idCognitiveCategory=2, idMap=4, latitude=14.3542331, longitude=14.2312313}	2018-03-01 18:45:11.42	18:45 1-03-2561	POST	http://localhost:8181/api/v1/mission/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+584		2018-03-01 18:45:30.621	18:45 1-03-2561	GET	http://localhost:8181/api/v1/mission/1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+585		2018-03-01 18:45:37.168	18:45 1-03-2561	GET	http://localhost:8181/api/v1/mission/1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+586		2018-03-01 18:45:38.285	18:45 1-03-2561	GET	http://localhost:8181/api/v1/mission/1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+587		2018-03-01 18:45:39.084	18:45 1-03-2561	GET	http://localhost:8181/api/v1/mission/1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+588		2018-03-01 18:45:39.746	18:45 1-03-2561	GET	http://localhost:8181/api/v1/mission/1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+589		2018-03-01 18:45:40.349	18:45 1-03-2561	GET	http://localhost:8181/api/v1/mission/1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+590		2018-03-01 18:45:42.815	18:45 1-03-2561	GET	http://localhost:8181/api/v1/mission/1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+591		2018-03-01 18:45:43.289	18:45 1-03-2561	GET	http://localhost:8181/api/v1/mission/1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+592		2018-03-01 18:45:45.021	18:45 1-03-2561	GET	http://localhost:8181/api/v1/mission/1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+593		2018-03-01 18:45:45.577	18:45 1-03-2561	GET	http://localhost:8181/api/v1/mission/1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+594		2018-03-01 18:45:46.058	18:45 1-03-2561	GET	http://localhost:8181/api/v1/mission/1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+595		2018-03-01 18:45:46.614	18:45 1-03-2561	GET	http://localhost:8181/api/v1/mission/1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+596		2018-03-01 18:45:49.391	18:45 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+597		2018-03-01 18:45:50.115	18:45 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+598		2018-03-01 18:45:50.712	18:45 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+599		2018-03-01 18:45:51.212	18:45 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+600		2018-03-01 18:47:29.462	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+601		2018-03-01 18:47:30.826	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+602		2018-03-01 18:47:31.549	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+603		2018-03-01 18:47:32.259	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+604		2018-03-01 18:47:33.084	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+605		2018-03-01 18:47:33.78	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+606		2018-03-01 18:47:34.655	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+607		2018-03-01 18:47:35.584	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+608		2018-03-01 18:47:36.233	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+609		2018-03-01 18:47:36.941	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+610		2018-03-01 18:47:37.656	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+611		2018-03-01 18:47:38.326	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+612		2018-03-01 18:47:38.989	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+613		2018-03-01 18:47:42.935	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+614		2018-03-01 18:47:43.869	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+615		2018-03-01 18:47:44.615	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+616		2018-03-01 18:47:45.252	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+617		2018-03-01 18:47:46.236	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+618		2018-03-01 18:47:46.946	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+619		2018-03-01 18:47:47.558	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+620		2018-03-01 18:47:48.233	18:47 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+621		2018-03-01 19:27:28.332	19:27 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+622	{mission=[{id=559, score=10}, {id=553, score=10}, {id=561, score=10}, {id=562, score=10}], route=(14.53434534,14,32432423),(14.2342342,14.354442),(14.36452342,14.6576341),(14.563532,14.32425435),(14.765343,14.675643), mapId=1}	2018-03-01 20:12:21.086	20:12 1-03-2561	POST	http://localhost:8181/api/v1/mission/send/400	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+629	{mission=[{id=559, score=10}, {id=553, score=10}, {id=561, score=10}, {id=562, score=10}], route=(14.53434534,14,32432423),(14.2342342,14.354442),(14.36452342,14.6576341),(14.563532,14.32425435),(14.765343,14.675643), mapId=1}	2018-03-01 20:13:30.482	20:13 1-03-2561	POST	http://localhost:8181/api/v1/mission/send/400	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+636		2018-03-01 20:13:42.972	20:13 1-03-2561	GET	http://localhost:8181/api/v1/mission/2	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+637	{mission=[{id=559, score=10}, {id=553, score=10}, {id=561, score=10}, {id=562, score=10}], route=(14.53434534,14,32432423),(14.2342342,14.354442),(14.36452342,14.6576341),(14.563532,14.32425435),(14.765343,14.675643), mapId=1}	2018-03-01 20:17:16.019	20:17 1-03-2561	POST	http://localhost:8181/api/v1/mission/send/400	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+644	{mission=[{id=559, score=10}, {id=553, score=10}, {id=561, score=10}, {id=562, score=10}], route=(14.53434534,14,32432423),(14.2342342,14.354442),(14.36452342,14.6576341),(14.563532,14.32425435),(14.765343,14.675643), mapId=1}	2018-03-01 20:22:58.518	20:22 1-03-2561	POST	http://localhost:8181/api/v1/mission/send/400	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+651	{mission=[{id=559, score=10}, {id=553, score=10}, {id=561, score=10}, {id=549, score=10}], route=(14.53434534,14,32432423),(14.2342342,14.354442),(14.36452342,14.6576341),(14.563532,14.32425435),(14.765343,14.675643), mapId=1}	2018-03-01 20:23:42.927	20:23 1-03-2561	POST	http://localhost:8181/api/v1/mission/send/400	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+\.
+
+
+--
+-- Data for Name: map; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY map (id, image, latitude, longitude, name_place) FROM stdin;
+1	eqw	0	0	Inter Park
+2	qwe	0	0	LC 2 Thammasat
+3	wqe	0	0	สวนจตุจักร
+4	wqe	0	0	สวนเบญจสิริ
+5	wqe	0	0	สวนลุมพินี
 \.
 
 
@@ -1361,6 +1611,40 @@ COPY image_question_evaluation (id, path) FROM stdin;
 --
 
 COPY matching (id, caretaker_id, patient_id) FROM stdin;
+525	219	504
+527	219	439
+\.
+
+
+--
+-- Data for Name: mission; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY mission (id, latitude, longitude, score, cognitive_category, map) FROM stdin;
+537	14.3542331000000001	14.2312312999999993	10	1	1
+539	14.3542331000000001	14.2312312999999993	10	1	1
+541	14.3542331000000001	14.2312312999999993	10	1	1
+543	14.3542331000000001	14.2312312999999993	10	1	1
+545	14.3542331000000001	14.2312312999999993	10	2	1
+547	14.3542331000000001	14.2312312999999993	10	3	1
+549	14.3542331000000001	14.2312312999999993	10	4	1
+551	14.3542331000000001	14.2312312999999993	10	5	1
+553	14.3542331000000001	14.2312312999999993	10	5	2
+555	14.3542331000000001	14.2312312999999993	10	5	2
+557	14.3542331000000001	14.2312312999999993	10	1	2
+559	14.3542331000000001	14.2312312999999993	10	1	2
+561	14.3542331000000001	14.2312312999999993	10	1	2
+563	14.3542331000000001	14.2312312999999993	10	5	2
+565	14.3542331000000001	14.2312312999999993	10	5	3
+567	14.3542331000000001	14.2312312999999993	10	4	3
+569	14.3542331000000001	14.2312312999999993	10	5	3
+571	14.3542331000000001	14.2312312999999993	10	4	3
+573	14.3542331000000001	14.2312312999999993	10	4	4
+575	14.3542331000000001	14.2312312999999993	10	4	4
+577	14.3542331000000001	14.2312312999999993	10	4	4
+579	14.3542331000000001	14.2312312999999993	10	4	4
+581	14.3542331000000001	14.2312312999999993	10	2	4
+583	14.3542331000000001	14.2312312999999993	10	2	4
 \.
 
 
@@ -1393,8 +1677,37 @@ COPY number_evaluation (id, no, score, evaluation_category) FROM stdin;
 -- Data for Name: patient; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY patient (id, address, dob, email, first_name, frequency, image, last_name, level, occupation, password, patient_number, tell, title_name, user_name, district_id, province_id, sex_id, sub_district_id, qr_code) FROM stdin;
-400	\N	21 กุมภาพันธ์ 2539	nogket@gmail.com	สมหมาย	\N	\N	นกเกตุ	\N	นศ	1234	P912054	0982709858	นาย	testpatiet6	\N	\N	2	\N	image/patient/qrcode/P912054/P912054.png
+COPY patient (id, address, dob, email, first_name, frequency, image, last_name, level, occupation, password, patient_number, tell, title_name, user_name, district_id, province_id, sex_id, sub_district_id, qr_code, education_id) FROM stdin;
+504	\N	21 กุมภาพันธ์ 2539	nogDkt@gmail.com	ปัณวรรธน์	\N	\N	นกเกตุ	\N	นศ	1234	P357315	09827049358	นาย	patient5041	\N	\N	2	\N	image/patient/qrcode/P357315/P357315.png	8
+400	\N	21 กุมภาพันธ์ 2539	nogket@gmail.com	สมหมาย	\N	image/patient/400/file.jpg	นกเกตุ	\N	นศ	1234	P912054	0982709858	นาย	testpatiet6	\N	\N	2	\N	image/patient/qrcode/P912054/P912054.png	8
+439	\N	21 กุมภาพันธ์ 2539	nogkt@gmail.com	ปัณวรรธน์	\N	\N	นกเกตุ	\N	นศ	1234	P949601	0982709358	นาย	patient1	\N	\N	2	\N	image/patient/qrcode/P949601/P949601.png	8
+472	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	P092410	\N	\N	\N	\N	\N	\N	\N	image/patient/qrcode/P092410/P092410.png	\N
+\.
+
+
+--
+-- Data for Name: patient_game; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY patient_game (id, result_score, map_id, route) FROM stdin;
+645	40	1	(14.53434534,14,32432423),(14.2342342,14.354442),(14.36452342,14.6576341),(14.563532,14.32425435),(14.765343,14.675643)
+652	40	1	(14.53434534,14,32432423),(14.2342342,14.354442),(14.36452342,14.6576341),(14.563532,14.32425435),(14.765343,14.675643)
+\.
+
+
+--
+-- Data for Name: patient_mission; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY patient_mission (id, score, map_id, mission_id, patient_game) FROM stdin;
+646	10	\N	559	645
+647	10	\N	553	645
+648	10	\N	561	645
+649	10	\N	\N	645
+653	10	\N	559	652
+654	10	\N	553	652
+655	10	\N	561	652
+656	10	\N	549	652
 \.
 
 
@@ -1420,6 +1733,57 @@ COPY patient_test (id, answer, score, answer_evaluation_id, evaluation_test, que
 415	true	2	\N	399	30
 416	ผลไม้	1	\N	399	31
 417	ต้นไม้,รถยนต์,มือ	3	\N	399	12
+440	วันอาทิตย์	0	\N	438	1
+441	25	0	\N	438	2
+442	กุมภาพันธ์	1	\N	438	3
+443	เช้ามืด	0	\N	438	4
+444	true	1	\N	438	5
+445	พยาบาล	1	\N	438	6
+446	ต้นไม้,รถยนต์,มือ	3	\N	438	12
+447	true	5	\N	438	15
+448	3	3	\N	438	16
+449	นาฬิกา	1	\N	438	18
+450	รองเท้า	1	\N	438	21
+451	ยายพาหลานไปซื้อขนมที่ตลาด	1	\N	438	24
+452	true	2	\N	438	25
+453	1	2	\N	438	26
+454	true	2	\N	438	30
+455	ผลไม้	1	\N	438	31
+456	ต้นไม้,รถยนต์,มือ	3	\N	438	12
+473	วันอาทิตย์	0	\N	471	1
+474	25	0	\N	471	2
+475	กุมภาพันธ์	1	\N	471	3
+476	เช้ามืด	0	\N	471	4
+477	true	1	\N	471	5
+478	พยาบาล	1	\N	471	6
+479	ต้นไม้,รถยนต์,มือ	3	\N	471	12
+480	true	5	\N	471	15
+481	3	3	\N	471	16
+482	นาฬิกา	1	\N	471	18
+483	รองเท้า	1	\N	471	21
+484	ยายพาหลานไปซื้อขนมที่ตลาด	1	\N	471	24
+485	true	2	\N	471	25
+486	1	2	\N	471	26
+487	true	2	\N	471	30
+488	ผลไม้	1	\N	471	31
+489	ต้นไม้,รถยนต์,มือ	3	\N	471	12
+505	วันอาทิตย์	0	\N	503	1
+506	25	0	\N	503	2
+507	กุมภาพันธ์	1	\N	503	3
+508	เช้ามืด	0	\N	503	4
+509	true	1	\N	503	5
+510	พยาบาล	1	\N	503	6
+511	ต้นไม้,รถยนต์,มือ	3	\N	503	12
+512	true	5	\N	503	15
+513	3	3	\N	503	16
+514	นาฬิกา	1	\N	503	18
+515	รองเท้า	1	\N	503	21
+516	ยายพาหลานไปซื้อขนมที่ตลาด	1	\N	503	24
+517	true	2	\N	503	25
+518	1	2	\N	503	26
+519	true	2	\N	503	30
+520	ผลไม้	1	\N	503	31
+521	ต้นไม้,รถยนต์,มือ	3	\N	503	12
 420	วันเสาร์	0	\N	419	1
 421	25	1	\N	419	2
 422	กุมภาพันธ์	1	\N	419	3
@@ -9067,7 +9431,7 @@ COPY subdistrict (id, code, created, modified, name, zip_code, district_id, prov
 -- Name: hibernate_sequence; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('hibernate_sequence', 437, true);
+SELECT pg_catalog.setval('hibernate_sequence', 657, true);
 
 
 --
@@ -9094,11 +9458,27 @@ ALTER TABLE ONLY caretaker
 
 
 --
+-- Name: cognitive_category cognitive_category_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cognitive_category
+    ADD CONSTRAINT cognitive_category_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: district district_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY district
     ADD CONSTRAINT district_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: education education_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY education
+    ADD CONSTRAINT education_pkey PRIMARY KEY (id);
 
 
 --
@@ -9126,11 +9506,27 @@ ALTER TABLE ONLY history_evaluation_test
 
 
 --
--- Name: image_question_evaluation image_question_evaluation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: history_mission history_mission_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY image_question_evaluation
-    ADD CONSTRAINT image_question_evaluation_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY history_mission
+    ADD CONSTRAINT history_mission_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: log log_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY log
+    ADD CONSTRAINT log_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: map map_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY map
+    ADD CONSTRAINT map_pkey PRIMARY KEY (id);
 
 
 --
@@ -9142,11 +9538,35 @@ ALTER TABLE ONLY matching
 
 
 --
+-- Name: mission mission_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY mission
+    ADD CONSTRAINT mission_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: number_evaluation number_evaluation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY number_evaluation
     ADD CONSTRAINT number_evaluation_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: patient_game patient_game_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY patient_game
+    ADD CONSTRAINT patient_game_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: patient_mission patient_mission_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY patient_mission
+    ADD CONSTRAINT patient_mission_pkey PRIMARY KEY (id);
 
 
 --
@@ -9222,11 +9642,27 @@ ALTER TABLE ONLY history_evaluation_test
 
 
 --
+-- Name: patient_mission fk36t94yguymlbidt9wr7gtuckw; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY patient_mission
+    ADD CONSTRAINT fk36t94yguymlbidt9wr7gtuckw FOREIGN KEY (patient_game) REFERENCES patient_game(id);
+
+
+--
 -- Name: subdistrict fk5get31ydhcm06wnxcd8sd9juj; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY subdistrict
     ADD CONSTRAINT fk5get31ydhcm06wnxcd8sd9juj FOREIGN KEY (province_id) REFERENCES province(id);
+
+
+--
+-- Name: patient_mission fk5mqx8c7h7csprliu708roww4b; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY patient_mission
+    ADD CONSTRAINT fk5mqx8c7h7csprliu708roww4b FOREIGN KEY (map_id) REFERENCES map(id);
 
 
 --
@@ -9243,6 +9679,14 @@ ALTER TABLE ONLY matching
 
 ALTER TABLE ONLY patient
     ADD CONSTRAINT fk67ap1d4l30rq7qt0a0wj3q09t FOREIGN KEY (sex_id) REFERENCES sex(id);
+
+
+--
+-- Name: history_mission fk67n9es6nny47y81ino3gnxq4y; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY history_mission
+    ADD CONSTRAINT fk67n9es6nny47y81ino3gnxq4y FOREIGN KEY (patient_game_id) REFERENCES patient_game(id);
 
 
 --
@@ -9278,6 +9722,14 @@ ALTER TABLE ONLY caretaker
 
 
 --
+-- Name: patient_mission fkg6779mkhtsklmlf4sa2en4bjk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY patient_mission
+    ADD CONSTRAINT fkg6779mkhtsklmlf4sa2en4bjk FOREIGN KEY (mission_id) REFERENCES mission(id);
+
+
+--
 -- Name: question_evaluation fkgkvxdclc4h1l9nmn0xvldiqjo; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -9291,6 +9743,14 @@ ALTER TABLE ONLY question_evaluation
 
 ALTER TABLE ONLY patient_test
     ADD CONSTRAINT fkgpa40l7qv0pb7u275nrv8oiiu FOREIGN KEY (question_evaluation_id) REFERENCES question_evaluation(id);
+
+
+--
+-- Name: patient fkgxvmc7b1eobglsjvfraqoqfrr; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY patient
+    ADD CONSTRAINT fkgxvmc7b1eobglsjvfraqoqfrr FOREIGN KEY (education_id) REFERENCES education(id);
 
 
 --
@@ -9326,6 +9786,14 @@ ALTER TABLE ONLY patient
 
 
 --
+-- Name: patient_game fkjd4j4qdksh0k8rbykxnfcbmxd; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY patient_game
+    ADD CONSTRAINT fkjd4j4qdksh0k8rbykxnfcbmxd FOREIGN KEY (map_id) REFERENCES map(id);
+
+
+--
 -- Name: history_evaluation_test fkjn4y2yhr6vd5lbtjpbotosla6; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -9342,6 +9810,14 @@ ALTER TABLE ONLY subdistrict
 
 
 --
+-- Name: history_mission fklg32jm7jgmfdfjchdsnd7h1aa; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY history_mission
+    ADD CONSTRAINT fklg32jm7jgmfdfjchdsnd7h1aa FOREIGN KEY (patient) REFERENCES patient(id);
+
+
+--
 -- Name: patient_test fknbpfssee5lfygpjiniu41ji53; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -9350,11 +9826,35 @@ ALTER TABLE ONLY patient_test
 
 
 --
+-- Name: caretaker fkof2h2cppwmmxji8mogtxxtbe0; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY caretaker
+    ADD CONSTRAINT fkof2h2cppwmmxji8mogtxxtbe0 FOREIGN KEY (education_id) REFERENCES education(id);
+
+
+--
 -- Name: caretaker fkqts512wvfa2osk19sqta70rtv; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY caretaker
     ADD CONSTRAINT fkqts512wvfa2osk19sqta70rtv FOREIGN KEY (sub_district_id) REFERENCES subdistrict(id);
+
+
+--
+-- Name: mission fkrvvlh1u1gaxxu5tyvn0g1reeq; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY mission
+    ADD CONSTRAINT fkrvvlh1u1gaxxu5tyvn0g1reeq FOREIGN KEY (map) REFERENCES map(id);
+
+
+--
+-- Name: mission fks2dapayfndbbgylas23wkl4lk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY mission
+    ADD CONSTRAINT fks2dapayfndbbgylas23wkl4lk FOREIGN KEY (cognitive_category) REFERENCES cognitive_category(id);
 
 
 --
