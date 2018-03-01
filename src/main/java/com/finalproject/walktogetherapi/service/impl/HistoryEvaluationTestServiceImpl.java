@@ -1,6 +1,6 @@
 package com.finalproject.walktogetherapi.service.impl;
 
-import com.finalproject.walktogetherapi.entities.HistoryEvaluationTest;
+import com.finalproject.walktogetherapi.entities.evaluation.HistoryEvaluationTest;
 import com.finalproject.walktogetherapi.repository.HistoryEvaluationTestRepository;
 import com.finalproject.walktogetherapi.service.HistoryEvaluationTestService;
 import org.springframework.beans.factory.annotation.Autowired;

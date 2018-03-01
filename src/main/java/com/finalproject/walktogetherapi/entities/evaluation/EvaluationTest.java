@@ -1,4 +1,6 @@
-package com.finalproject.walktogetherapi.entities;
+package com.finalproject.walktogetherapi.entities.evaluation;
+
+import com.finalproject.walktogetherapi.entities.PatientTest;
 
 import javax.persistence.*;
 import java.util.Date;

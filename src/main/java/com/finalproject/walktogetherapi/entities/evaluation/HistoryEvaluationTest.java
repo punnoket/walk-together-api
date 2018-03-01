@@ -1,10 +1,9 @@
-package com.finalproject.walktogetherapi.entities;
+package com.finalproject.walktogetherapi.entities.evaluation;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.finalproject.walktogetherapi.entities.Patient;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "HistoryEvaluationTest")

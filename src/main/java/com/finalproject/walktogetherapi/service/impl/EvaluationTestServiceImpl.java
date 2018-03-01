@@ -1,9 +1,7 @@
 package com.finalproject.walktogetherapi.service.impl;
 
-import com.finalproject.walktogetherapi.entities.EvaluationTest;
-import com.finalproject.walktogetherapi.entities.PatientTest;
+import com.finalproject.walktogetherapi.entities.evaluation.EvaluationTest;
 import com.finalproject.walktogetherapi.repository.EvaluationTestRepository;
-import com.finalproject.walktogetherapi.repository.PatientTestRepository;
 import com.finalproject.walktogetherapi.service.EvaluationTestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

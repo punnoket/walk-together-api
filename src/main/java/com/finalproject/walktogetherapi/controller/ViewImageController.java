@@ -41,6 +41,21 @@ public class ViewImageController {
         Path path = Paths.get(pathString);
         byte[] data = Files.readAllBytes(path);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(data);
+    }
+
+    @GetMapping("/map/{placeName}/{fileName:.+}")
+    public ResponseEntity<byte[]> viewImageQuestion(@PathVariable String placeName,
+                                                    @PathVariable String fileName) throws IOException {
+
+        String pathString = PATH_IMAGE_MAP
+                + "/"
+                + placeName
+                + "/"
+                + fileName;
+
+        Path path = Paths.get(pathString);
+        byte[] data = Files.readAllBytes(path);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(data);
 
     }
 

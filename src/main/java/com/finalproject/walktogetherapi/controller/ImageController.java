@@ -3,9 +3,11 @@ package com.finalproject.walktogetherapi.controller;
 import com.finalproject.walktogetherapi.entities.Caretaker;
 import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation;
+import com.finalproject.walktogetherapi.entities.mission.Map;
 import com.finalproject.walktogetherapi.service.CaretakerService;
 import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.QuestionEvaluationService;
+import com.finalproject.walktogetherapi.service.mission.MapService;
 import com.finalproject.walktogetherapi.util.ApiResponse;
 import com.finalproject.walktogetherapi.util.UploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import static com.finalproject.walktogetherapi.util.Constant.PATH_IMAGE_CARETAKER;
-import static com.finalproject.walktogetherapi.util.Constant.PATH_IMAGE_PATIENT;
-import static com.finalproject.walktogetherapi.util.Constant.PATH_IMAGE_QUESTION;
+import static com.finalproject.walktogetherapi.util.Constant.*;
 
 
 @CrossOrigin
@@ -26,15 +26,18 @@ public class ImageController {
     private PatientService patientService;
     private CaretakerService caretakerService;
     private QuestionEvaluationService questionEvaluationService;
+    private MapService mapService;
 
 
     @Autowired
     public ImageController(PatientService patientService,
+                           MapService mapService,
                            CaretakerService caretakerService,
                            QuestionEvaluationService questionEvaluationService) {
         this.questionEvaluationService = questionEvaluationService;
         this.patientService = patientService;
         this.caretakerService = caretakerService;
+        this.mapService = mapService;
     }
 
     @PostMapping("question-evaluation")
@@ -58,6 +61,28 @@ public class ImageController {
         if (resultPathImage != null) {
             questionEvaluation.setImage(resultPathImage);
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.CREATED, questionEvaluationService.update(id, questionEvaluation), HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
+
+        } else {
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("map")
+    public ResponseEntity uploadImageMap(@RequestParam("file") MultipartFile file,
+                                         @RequestParam("id") Long id) {
+
+        Map map = mapService.findById(id);
+        String pathString = PATH_IMAGE_MAP
+                + "/"
+                + map.getNamePlace();
+
+        if (file.isEmpty())
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
+
+        String resultPathImage = UploadUtil.getInstance().upload(pathString, file);
+        if (resultPathImage != null) {
+            map.setImage(resultPathImage);
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.CREATED, mapService.update(id, map), HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
 
         } else {
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
@@ -89,7 +114,7 @@ public class ImageController {
 
     @PostMapping("caretaker")
     public ResponseEntity uploadCaretakerImage(@RequestParam("file") MultipartFile file,
-                                             @RequestParam("id") Long id) {
+                                               @RequestParam("id") Long id) {
 
         Caretaker caretaker = caretakerService.findById(id);
         String pathString = PATH_IMAGE_CARETAKER

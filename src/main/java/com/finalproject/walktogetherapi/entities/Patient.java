@@ -1,7 +1,9 @@
 package com.finalproject.walktogetherapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.finalproject.walktogetherapi.entities.evaluation.HistoryEvaluationTest;
 import com.finalproject.walktogetherapi.entities.master.*;
+import com.finalproject.walktogetherapi.entities.mission.HistoryMission;
 import com.finalproject.walktogetherapi.util.DateTimeManager;
 
 import javax.persistence.*;
@@ -41,6 +43,9 @@ public class Patient {
 
     @OneToMany(mappedBy = "patient", cascade = {CascadeType.ALL})
     private List<HistoryEvaluationTest> historyEvaluationTests;
+
+    @OneToMany(mappedBy = "patient", cascade = {CascadeType.ALL})
+    private List<HistoryMission> historyMissions;
 
     public Long getId() {
         return id;
@@ -191,7 +196,7 @@ public class Patient {
     }
 
     public String getAge() {
-        if (getDob()!=null) {
+        if (getDob() != null) {
             String age = DateTimeManager.getInstance().birthDayToAge(getDob());
             return age;
         }
@@ -229,5 +234,13 @@ public class Patient {
 
     public void setEducation(Education education) {
         this.education = education;
+    }
+
+    public List<HistoryMission> getHistoryMissions() {
+        return historyMissions;
+    }
+
+    public void setHistoryMissions(List<HistoryMission> historyMissions) {
+        this.historyMissions = historyMissions;
     }
 }

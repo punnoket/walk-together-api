@@ -2,6 +2,7 @@ package com.finalproject.walktogetherapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation;
+import com.finalproject.walktogetherapi.entities.evaluation.EvaluationTest;
 import com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation;
 
 import javax.persistence.*;

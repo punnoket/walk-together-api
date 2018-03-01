@@ -1,6 +1,6 @@
 package com.finalproject.walktogetherapi.service;
 
-import com.finalproject.walktogetherapi.entities.HistoryEvaluationTest;
+import com.finalproject.walktogetherapi.entities.evaluation.HistoryEvaluationTest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

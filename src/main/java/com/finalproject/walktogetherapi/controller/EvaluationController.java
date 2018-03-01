@@ -1,7 +1,7 @@
 package com.finalproject.walktogetherapi.controller;
 
-import com.finalproject.walktogetherapi.entities.EvaluationTest;
-import com.finalproject.walktogetherapi.entities.HistoryEvaluationTest;
+import com.finalproject.walktogetherapi.entities.evaluation.EvaluationTest;
+import com.finalproject.walktogetherapi.entities.evaluation.HistoryEvaluationTest;
 import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.entities.PatientTest;
 import com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation;
@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
