@@ -58,7 +58,8 @@ public class MissionController {
     }
 
     @GetMapping("/history-by-id/{id}")
-    public ResponseEntity getHistoryMission(@PathVariable Long id) {
+    public ResponseEntity getHistoryMission(HttpServletRequest request,@PathVariable Long id) {
+        LogUtil.getInstance().saveLog(request, "", logService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, patientService.findById(id).getHistoryMissions(), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 

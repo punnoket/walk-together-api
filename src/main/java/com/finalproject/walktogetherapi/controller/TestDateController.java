@@ -23,15 +23,16 @@ public class TestDateController {
     @GetMapping("")
     public ResponseEntity uploadImageQuestion() {
         HashMap<String, Object> date = new HashMap<>();
-        date.put("full", DateTimeManager.getInstance().fullDateFormat(new Date()));
-        date.put("day", DateTimeManager.getInstance().getDay());
-        date.put("month", DateTimeManager.getInstance().getMonth());
-        date.put("dayOfWeek", DateTimeManager.getInstance().getDayName());
-        date.put("date",new Date().toString());
-        date.put("time", DateTimeManager.getInstance().timeStringFormat("16:00").toString());
-        date.put("currentTime", DateTimeManager.getInstance().getCurrentTime().toString());
+        date.put("fullDateFormat", DateTimeManager.getInstance().fullDateFormat(new Date()));
+        date.put("getDay", DateTimeManager.getInstance().getDay());
+        date.put("getMonth", DateTimeManager.getInstance().getMonth());
+        date.put("getDayName", DateTimeManager.getInstance().getDayName());
+        date.put("newDate",new Date().toString());
+        date.put("timeStringFormat16:00", DateTimeManager.getInstance().timeStringFormat("16:00").toString());
+        date.put("getCurrentTime", DateTimeManager.getInstance().getCurrentTime().toString());
         date.put("isDuration", DateTimeManager.getInstance().isDurationDay("เช้ามืด"));
         date.put("isTest", DateTimeManager.getInstance().isTestEvaluation(DateTimeManager.getInstance().getCurrentTime()));
+        date.put("log", DateTimeManager.getInstance().logDateFormat(DateTimeManager.getInstance().getCurrentTime()));
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, date, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
     }
 

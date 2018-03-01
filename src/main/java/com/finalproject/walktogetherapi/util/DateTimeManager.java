@@ -25,13 +25,13 @@ public class DateTimeManager {
     }
 
     public String fullDateFormat(Date date) {
-        SimpleDateFormat formatter = new SimpleDateFormat("เวลา HH:mm EEEE ที่ d MMMM yyyy", new Locale("th", "TH"));
+        SimpleDateFormat formatter = new SimpleDateFormat("เวลา HH:mm EEEE ที่ dd MMMM yyyy", new Locale("th", "TH"));
+        formatter.setTimeZone(TimeZone.getTimeZone("GMT+7"));
         return formatter.format(date);
     }
 
     public String logDateFormat(Date date) {
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm d-MM-yyyy", new Locale("th", "TH"));
-        formatter.setTimeZone(TimeZone.getTimeZone("GMT+7"));
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm dd-MM-yyyy", new Locale("th", "TH"));
         return formatter.format(date);
     }
 
