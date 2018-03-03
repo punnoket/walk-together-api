@@ -391,7 +391,7 @@ public class EvaluationController {
 
             if (i == 19) {
                 map = data.get("no19");
-                questionEvaluation = questionEvaluationService.findById(Long.parseLong(map.get("id").toString()));
+                questionEvaluation = questionEvaluationService.findById(Long.parseLong(map.get("idRef").toString()));
                 String answer = map.get("answer").toString();
                 boolean isCorrect = false;
                 for (AnswerEvaluation answerEvaluation : questionEvaluation.getAnswerEvaluations()) {
@@ -406,6 +406,7 @@ public class EvaluationController {
                 } else {
                     patientTest.setScore(String.valueOf(0));
                 }
+                questionEvaluation = questionEvaluationService.findById(Long.parseLong(map.get("id").toString()));
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
                 patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
