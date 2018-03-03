@@ -19,6 +19,7 @@ public class PatientTest {
     private AnswerEvaluation answerEvaluation;
     private String answer;
     private String score;
+    private String evaluationCategory;
 
     @ManyToOne
     @JoinColumn(name = "evaluationTest")
@@ -73,5 +74,13 @@ public class PatientTest {
 
     public String getAnswer() {
         return answer;
+    }
+
+    public String getEvaluationCategory() {
+        return evaluationCategory;
+    }
+
+    public void setEvaluationCategory(String evaluationCategory) {
+        this.evaluationCategory = evaluationCategory;
     }
 }

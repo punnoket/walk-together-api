@@ -61,6 +61,36 @@ public class DateTimeManager {
         return calendar.getTime();
     }
 
+    public Date timeStringFormatLate(String input) {
+        Calendar currentTime = Calendar.getInstance(TimeZone.getTimeZone("GMT+7"));
+        currentTime.set(Calendar.ZONE_OFFSET, TimeZone.getTimeZone("GMT+7").getRawOffset());
+        Calendar calendar = Calendar.getInstance();
+        String[] date = input.split(":");
+        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(date[0]));
+        calendar.set(Calendar.MINUTE, Integer.parseInt(date[1]));
+        calendar.set(Calendar.MILLISECOND, 0);
+        calendar.set(Calendar.DATE, currentTime.get(Calendar.DATE));
+        calendar.set(Calendar.MONTH, currentTime.get(Calendar.MONTH));
+        calendar.set(Calendar.YEAR, currentTime.get(Calendar.YEAR));
+        calendar.add(Calendar.DATE, 1);
+        return calendar.getTime();
+    }
+
+    public Date timeStringFormatDown(String input) {
+        Calendar currentTime = Calendar.getInstance(TimeZone.getTimeZone("GMT+7"));
+        currentTime.set(Calendar.ZONE_OFFSET, TimeZone.getTimeZone("GMT+7").getRawOffset());
+        Calendar calendar = Calendar.getInstance();
+        String[] date = input.split(":");
+        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(date[0]));
+        calendar.set(Calendar.MINUTE, Integer.parseInt(date[1]));
+        calendar.set(Calendar.MILLISECOND, 0);
+        calendar.set(Calendar.DATE, currentTime.get(Calendar.DATE));
+        calendar.set(Calendar.MONTH, currentTime.get(Calendar.MONTH));
+        calendar.set(Calendar.YEAR, currentTime.get(Calendar.YEAR));
+        calendar.add(Calendar.DATE, -1);
+        return calendar.getTime();
+    }
+
     public Date getCurrentTime() {
         Calendar currentTime = Calendar.getInstance(TimeZone.getTimeZone("GMT+7"));
         currentTime.set(Calendar.ZONE_OFFSET, TimeZone.getTimeZone("GMT+7").getRawOffset());
@@ -151,9 +181,16 @@ public class DateTimeManager {
                 return true;
             }
         } else if (duration.equalsIgnoreCase("กลางคืน")) {
-            if (getCurrentTime().after(timeStringFormat("20:00")) &&
-                    getCurrentTime().before(timeStringFormat("04:00"))) {
-                return true;
+            if (getCurrentTime().after(timeStringFormat("00:00")) && getCurrentTime().before(timeStringFormat("04:00"))) {
+                if (getCurrentTime().after(timeStringFormatDown("20:00")) &&
+                        getCurrentTime().before(timeStringFormat("04:00"))) {
+                    return true;
+                }
+            } else {
+                if (getCurrentTime().after(timeStringFormat("20:00")) &&
+                        getCurrentTime().before(timeStringFormatLate("04:00"))) {
+                    return true;
+                }
             }
         } else {
             return false;
@@ -166,7 +203,7 @@ public class DateTimeManager {
         lastDateCalendar.set(Calendar.ZONE_OFFSET, TimeZone.getTimeZone("GMT+7").getRawOffset());
         lastDateCalendar.setTime(lastDate);
         lastDateCalendar.add(Calendar.DATE, 3);
-        System.out.println(fullDateFormat(getCurrentTime())+" "+fullDateFormat(lastDateCalendar.getTime()));
+        System.out.println(fullDateFormat(getCurrentTime()) + " " + fullDateFormat(lastDateCalendar.getTime()));
         return getCurrentTime().after(lastDateCalendar.getTime());
     }
 }

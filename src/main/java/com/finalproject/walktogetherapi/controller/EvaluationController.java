@@ -92,6 +92,7 @@ public class EvaluationController {
                 }
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
@@ -107,6 +108,7 @@ public class EvaluationController {
                 }
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
@@ -122,6 +124,7 @@ public class EvaluationController {
                 }
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
@@ -137,6 +140,7 @@ public class EvaluationController {
                 }
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
@@ -152,6 +156,7 @@ public class EvaluationController {
                 }
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
@@ -175,6 +180,7 @@ public class EvaluationController {
                 }
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
@@ -198,6 +204,7 @@ public class EvaluationController {
                 }
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
@@ -213,6 +220,7 @@ public class EvaluationController {
                 }
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
@@ -224,6 +232,7 @@ public class EvaluationController {
                 patientTest.setScore(map.get("answer").toString());
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
@@ -247,6 +256,7 @@ public class EvaluationController {
                 }
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
@@ -270,6 +280,7 @@ public class EvaluationController {
                 }
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
@@ -293,6 +304,7 @@ public class EvaluationController {
                 }
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
@@ -308,6 +320,7 @@ public class EvaluationController {
                 }
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
@@ -331,6 +344,7 @@ public class EvaluationController {
                 }
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
@@ -346,6 +360,7 @@ public class EvaluationController {
                 }
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
@@ -369,6 +384,7 @@ public class EvaluationController {
                 }
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
@@ -392,6 +408,7 @@ public class EvaluationController {
                 }
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
+                patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
