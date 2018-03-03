@@ -4,7 +4,9 @@ import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.entities.evaluation.HistoryEvaluationTest;
 import com.finalproject.walktogetherapi.entities.mission.HistoryMission;
 import com.finalproject.walktogetherapi.entities.mission.Mission;
+import com.finalproject.walktogetherapi.entities.mission.PatientMission;
 import com.finalproject.walktogetherapi.mapping.MissionMapping;
+import com.finalproject.walktogetherapi.mapping.PatientMapping;
 import com.finalproject.walktogetherapi.service.LogService;
 import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.mission.*;
@@ -81,7 +83,7 @@ public class MissionController {
         LogUtil.getInstance().saveLog(request, data.toString(), logService);
         Patient patient = patientService.findById(id);
         HistoryMission historyMission = MissionMapping.getInstance().createHistory(data, historyMissionService, missionService, patientMissionService, patientGameService, mapService, patient);
-
+        patient.setFrequency(PatientMapping.getInstance().increaseFrequency(patient.getFrequency()));
         if (patient.getHistoryMissions() != null) {
             List<HistoryMission> patientHistoryMissions = patient.getHistoryMissions();
             patientHistoryMissions.add(historyMissionService.create(historyMission));

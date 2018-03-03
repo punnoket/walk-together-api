@@ -236,6 +236,7 @@ public class Patient {
         this.education = education;
     }
 
+    @JsonIgnore
     public List<HistoryMission> getHistoryMissions() {
         return historyMissions;
     }

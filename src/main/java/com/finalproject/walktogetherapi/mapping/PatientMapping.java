@@ -88,6 +88,7 @@ public class PatientMapping {
 
     public Patient createPatient(Patient patient) {
         patient.setPatientNumber(RandomNumberUser.getInstance().getNumberPatient());
+        patient.setFrequency("0");
         patient = generatorQrCode(patient);
         return patient;
     }
@@ -99,5 +100,11 @@ public class PatientMapping {
                 + "/";
         patient.setQrCode(QrCodeGenerator.getInstance().generatorQrCode(pathString, patient.getPatientNumber()));
         return patient;
+    }
+
+    public String increaseFrequency(String input) {
+        int frequency = Integer.parseInt(input);
+        frequency++;
+        return String.valueOf(frequency);
     }
 }

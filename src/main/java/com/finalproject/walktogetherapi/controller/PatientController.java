@@ -8,9 +8,7 @@ import com.finalproject.walktogetherapi.service.HistoryEvaluationTestService;
 import com.finalproject.walktogetherapi.service.LogService;
 import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.master.*;
-import com.finalproject.walktogetherapi.util.ApiResponse;
-import com.finalproject.walktogetherapi.util.LogUtil;
-import com.finalproject.walktogetherapi.util.MessageUtil;
+import com.finalproject.walktogetherapi.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,7 +60,19 @@ public class PatientController {
 
     @GetMapping("{id}")
     public ResponseEntity getById(@PathVariable Long id) {
-        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, patientService.findById(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+        Patient patient = patientService.findById(id);
+        HashMap<String, Object> responseMap = ApiResponse
+                .getInstance()
+                .response(HttpStatus.OK, patient, HttpStatus.OK.getReasonPhrase());
+        responseMap.put("isTestEvaluation", DateTimeManager.getInstance().
+                isTestEvaluation(patient
+                        .getHistoryEvaluationTests()
+                        .get(patient
+                                .getHistoryEvaluationTests()
+                                .size() - 1)
+                        .getEvaluationTest()
+                        .getTestDate()));
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, responseMap, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
     @GetMapping("by-patient-number/{patientNumber}")
