@@ -41,8 +41,15 @@ public class LogController {
         Path path = Paths.get(file.getPath());
         byte[] data = Files.readAllBytes(path);
         return ResponseEntity.ok().contentType(MediaType.TEXT_HTML).body(data);
+    }
 
-
+    @GetMapping("/web/bubbly.html")
+    public ResponseEntity<byte[]> bubbly() throws IOException {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource("templates/Bubbly.html").getFile());
+        Path path = Paths.get(file.getPath());
+        byte[] data = Files.readAllBytes(path);
+        return ResponseEntity.ok().contentType(MediaType.TEXT_HTML).body(data);
     }
 
 }
