@@ -73,14 +73,14 @@ public class MissionController {
 
     @PostMapping("")
     public ResponseEntity create(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
-        LogUtil.getInstance().saveLog(request, data.toString(), logService);
+        LogUtil.getInstance().saveLog(request, data, logService);
         Mission mission = MissionMapping.getInstance().createMission(data, mapService, cognitiveCategoryService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, missionService.create(mission), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
     @PostMapping("send/{id}")
     public ResponseEntity sendMission(HttpServletRequest request, @RequestBody HashMap<String, Object> data, @PathVariable Long id) {
-        LogUtil.getInstance().saveLog(request, data.toString(), logService);
+        LogUtil.getInstance().saveLog(request, data, logService);
         Patient patient = patientService.findById(id);
         HistoryMission historyMission = MissionMapping.getInstance().createHistory(data, historyMissionService, missionService, patientMissionService, patientGameService, mapService, patient);
         patient.setFrequency(PatientMapping.getInstance().increaseFrequency(patient.getFrequency()));

@@ -91,7 +91,7 @@ public class PatientController {
 
     @PostMapping("")
     public ResponseEntity create(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
-        LogUtil.getInstance().saveLog(request, data.toString(), logService);
+        LogUtil.getInstance().saveLog(request, data, logService);
         Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, educationServices, patientService.findById(Long.parseLong(data.get("idPatient").toString())), false);
         if (patient.getUserName() != null) {
             if (patient.getEmail() != null) {

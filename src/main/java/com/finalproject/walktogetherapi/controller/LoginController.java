@@ -34,7 +34,7 @@ public class LoginController {
 
     @PostMapping("")
     public ResponseEntity loginPatient(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
-        LogUtil.getInstance().saveLog(request,data.toString(), logService);
+        LogUtil.getInstance().saveLog(request,data, logService);
         if (data.get("userName").toString() != null && data.get("password").toString() != null) {
             Patient patient = patientService.findByUserName(data.get("userName").toString());
             if (patient != null) {

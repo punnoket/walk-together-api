@@ -12,6 +12,7 @@ import com.finalproject.walktogetherapi.service.*;
 import com.finalproject.walktogetherapi.util.ApiResponse;
 import com.finalproject.walktogetherapi.util.DateTimeManager;
 import com.finalproject.walktogetherapi.util.LogUtil;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -56,13 +57,13 @@ public class EvaluationController {
     @GetMapping("random")
     public ResponseEntity getEvaluationByIdUser(HttpServletRequest request) {
         List<HashMap<String, Object>> data = EvaluationMapping.getInstance().getEvaluation(evaluationCategoryService.findAllByOrderByIdAsc());
-        LogUtil.getInstance().saveLog(request, data.toString(), logService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, data, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
     @PostMapping("check-evaluation/{id}")
     public ResponseEntity checkEvaluation(HttpServletRequest request, @RequestBody HashMap<String, HashMap<String, Object>> data, @PathVariable Long id) {
-        LogUtil.getInstance().saveLog(request, data.toString(), logService);
+        JSONObject jsonObject = new JSONObject(data);
+        LogUtil.getInstance().saveLogJson(request, jsonObject, logService);
         int score = 0;
         List<PatientTest> patientTestList = new ArrayList<>();
         EvaluationTest evaluationTest = evaluationTestService.create(new EvaluationTest());

@@ -8,6 +8,7 @@ import com.finalproject.walktogetherapi.service.*;
 import com.finalproject.walktogetherapi.util.ApiResponse;
 import com.finalproject.walktogetherapi.util.LogUtil;
 import com.finalproject.walktogetherapi.util.MessageUtil;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,7 +56,6 @@ public class MatchingController {
 
     @GetMapping("caretaker-by-patient/{id}")
     public ResponseEntity getCaretakerByIdPatient(HttpServletRequest request, @PathVariable Long id) {
-        LogUtil.getInstance().saveLog(request, matchingService.findByCaretakerId(id).toString(), logService);
         List<Matching> matchingList = matchingService.findByCaretakerId(id);
         if (matchingList != null)
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
@@ -71,7 +71,6 @@ public class MatchingController {
 
     @GetMapping("patient-by-caretaker/{id}")
     public ResponseEntity getPatientByIdCaretaker(HttpServletRequest request, @PathVariable Long id) {
-        LogUtil.getInstance().saveLog(request, matchingService.findByCaretakerId(id).toString(), logService);
         List<Matching> matchingList = matchingService.findByCaretakerId(id);
         if (matchingList != null)
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
@@ -100,7 +99,7 @@ public class MatchingController {
 
     @PostMapping("add-caretaker")
     public ResponseEntity addCaretaker(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
-        LogUtil.getInstance().saveLog(request, data.toString(), logService);
+        LogUtil.getInstance().saveLog(request, data, logService);
         Matching matching = matchingService.findByPatientIdAndCaretakerNumber(Long.parseLong(data.get("idPatient").toString()),
                 data.get("caretakerNumber").toString());
 
@@ -129,7 +128,7 @@ public class MatchingController {
 
     @PostMapping("add-patient")
     public ResponseEntity addPatient(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
-        LogUtil.getInstance().saveLog(request, data.toString(), logService);
+        LogUtil.getInstance().saveLog(request, data, logService);
         Matching matching = matchingService.findByCaretakerIdAndPatientNumber(Long.parseLong(data.get("idCaretaker").toString()),
                 data.get("patientNumber").toString());
 
@@ -165,7 +164,9 @@ public class MatchingController {
     public ResponseEntity removePatient(HttpServletRequest request,
                                         @PathVariable Long id,
                                         @RequestParam(value = "patientNumber") String patientNumber) {
-        LogUtil.getInstance().saveLog(request, "", logService);
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("patientNumber", patientNumber);
+        LogUtil.getInstance().saveLog(request, hashMap, logService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, matchingService.delete(matchingService.findByCaretakerIdAndPatientNumber(id, patientNumber).getId()), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
@@ -173,7 +174,9 @@ public class MatchingController {
     public ResponseEntity removeCaretaker(HttpServletRequest request,
                                           @PathVariable Long id,
                                           @RequestParam(value = "caretakerNumber") String caretakerNumber) {
-        LogUtil.getInstance().saveLog(request, "", logService);
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("caretakerNumber", caretakerNumber);
+        LogUtil.getInstance().saveLog(request, hashMap, logService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, matchingService.delete(matchingService.findByPatientIdAndCaretakerNumber(id, caretakerNumber).getId()), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 

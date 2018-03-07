@@ -71,7 +71,7 @@ public class CaretakerController {
 
     @PostMapping("")
     public ResponseEntity create(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
-        LogUtil.getInstance().saveLog(request, data.toString(), logService);
+        LogUtil.getInstance().saveLog(request, data, logService);
         Caretaker caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, new Caretaker(), educationServices, true);
         if (caretaker.getUserName() != null) {
             if (caretaker.getEmail() != null) {
