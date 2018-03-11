@@ -101,11 +101,26 @@ public class CaretakerController {
 
     @PatchMapping("{id}")
     public ResponseEntity update(@PathVariable Long id, @RequestBody HashMap<String, Object> data) {
-        Caretaker caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, new Caretaker(), educationServices, false);
-        return new ResponseEntity<>(ApiResponse.getInstance()
-                .response(HttpStatus.CREATED,
-                        caretakerService.update(id, caretaker),
-                        HttpStatus.CREATED.getReasonPhrase()), HttpStatus.OK);
+        Caretaker caretaker = caretakerService.findById(id);
+        caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, caretaker, educationServices, false);
+        if (caretaker.getEmail() != null) {
+            if (caretaker.getTell() != null)
+                return new ResponseEntity<>(ApiResponse.getInstance()
+                        .response(HttpStatus.CREATED,
+                                caretakerService.update(id, caretaker),
+                                HttpStatus.CREATED.getReasonPhrase()), HttpStatus.OK);
+            else
+                return new ResponseEntity<>(ApiResponse.getInstance()
+                        .response(HttpStatus.NOT_FOUND,
+                                null,
+                                MessageUtil.DUPLICATE_TELL), HttpStatus.OK);
+
+        } else
+            return new ResponseEntity<>(ApiResponse.getInstance()
+                    .response(HttpStatus.NOT_FOUND,
+                            null,
+                            MessageUtil.DUPLICATE_EMAIL), HttpStatus.OK);
+
     }
 
     @DeleteMapping("{id}")

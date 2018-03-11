@@ -34,7 +34,7 @@ public class CaretakerMapping {
                                   EducationServices educationServices,
                                   Boolean isCreate) {
 
-        if (data.get("userName") != null)
+        if (data.get("userName") != null) {
             if (caretakerService.findByUserName(data.get("userName").toString()) == null
                     && patientService.findByUserName(data.get("userName").toString()) == null) {
                 caretaker.setUserName(data.get("userName").toString());
@@ -42,6 +42,7 @@ public class CaretakerMapping {
                 caretaker.setUserName(null);
                 return caretaker;
             }
+        }
         if (data.get("password") != null)
             caretaker.setPassword(data.get("password").toString());
         if (data.get("titleName") != null)
