@@ -52,7 +52,7 @@ public class LoginController {
                                     .getEvaluationTest()
                                     .getTestDate()));
 
-                    LogUtil.getInstance().responseFormAPI(request, responseMap, logService);
+                    LogUtil.getInstance().responseAPI(request, responseMap, logService);
                     return new ResponseEntity<>(responseMap, HttpStatus.OK);
 
                 } else
@@ -66,7 +66,7 @@ public class LoginController {
                                 .getInstance()
                                 .response(HttpStatus.OK, caretaker, HttpStatus.OK.getReasonPhrase());
                         responseMap.put("type", Constant.TYPE_CARETAKER);
-                        LogUtil.getInstance().responseFormAPI(request, responseMap, logService);
+                        LogUtil.getInstance().responseAPI(request, responseMap, logService);
                         return new ResponseEntity<>(responseMap, HttpStatus.OK);
                     } else
                         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, MessageUtil.INCORRECT_PASSWORD), HttpStatus.OK);

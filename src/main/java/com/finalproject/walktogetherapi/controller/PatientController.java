@@ -59,7 +59,7 @@ public class PatientController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity getById(@PathVariable Long id) {
+    public ResponseEntity getById(HttpServletRequest request, @PathVariable Long id) {
         Patient patient = patientService.findById(id);
         HashMap<String, Object> responseMap = ApiResponse
                 .getInstance()
@@ -72,6 +72,7 @@ public class PatientController {
                                 .size() - 1)
                         .getEvaluationTest()
                         .getTestDate()));
+        LogUtil.getInstance().responseAPI(request, responseMap, logService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, responseMap, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
@@ -128,7 +129,7 @@ public class PatientController {
         if (patient.getUserName() != null) {
             if (patient.getEmail() != null) {
                 if (patient.getTell() != null) {
-                    LogUtil.getInstance().saveLog(request, data, logService);
+                    LogUtil.getInstance().responseAPI(request, data, logService);
                     return new ResponseEntity<>(ApiResponse.getInstance()
                             .response(HttpStatus.CREATED,
                                     patientService.update(id, patient),

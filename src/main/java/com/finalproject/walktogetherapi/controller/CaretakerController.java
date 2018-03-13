@@ -105,7 +105,7 @@ public class CaretakerController {
         caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, caretaker, educationServices, false);
         if (caretaker.getEmail() != null) {
             if (caretaker.getTell() != null) {
-                LogUtil.getInstance().saveLog(request, data, logService);
+                LogUtil.getInstance().responseAPI(request, data, logService);
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.CREATED,
                                 caretakerService.update(id, caretaker),

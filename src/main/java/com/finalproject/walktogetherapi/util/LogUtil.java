@@ -30,7 +30,7 @@ public class LogUtil {
         logService.create(log);
     }
 
-    public void responseFormAPI(HttpServletRequest httpServletRequest, HashMap<String, Object> request, LogService logService) {
+    public void responseAPI(HttpServletRequest httpServletRequest, HashMap<String, Object> request, LogService logService) {
         JSONObject jsonObject = new JSONObject(request);
         Log log = new Log();
         log.setDate(DateTimeManager.getInstance().getCurrentTime());

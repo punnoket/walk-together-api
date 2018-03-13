@@ -444,7 +444,7 @@ public class EvaluationController {
             if (patient.getUserName() == null) {
                 historyEvaluationTestService.delete(resultHistoryEvaluationTest.getId());
                 patientService.delete(patient.getId());
-                new File(patient.getQrCode()).delete();
+                System.out.println(patient.getQrCode()+" "+new File(patient.getQrCode()).delete());
             }
         }
 
@@ -452,7 +452,7 @@ public class EvaluationController {
         result.put("isPass", score >= 23);
         result.put("score", score);
         result.put("idPatient", patient.getId());
-        LogUtil.getInstance().responseFormAPI(request, result, logService);
+        LogUtil.getInstance().responseAPI(request, result, logService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, result, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
