@@ -100,16 +100,17 @@ public class CaretakerController {
     }
 
     @PatchMapping("{id}")
-    public ResponseEntity update(@PathVariable Long id, @RequestBody HashMap<String, Object> data) {
+    public ResponseEntity update(HttpServletRequest request, @PathVariable Long id, @RequestBody HashMap<String, Object> data) {
         Caretaker caretaker = caretakerService.findById(id);
         caretaker = CaretakerMapping.getInstance().getCaretaker(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, caretaker, educationServices, false);
         if (caretaker.getEmail() != null) {
-            if (caretaker.getTell() != null)
+            if (caretaker.getTell() != null) {
+                LogUtil.getInstance().saveLog(request, data, logService);
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.CREATED,
                                 caretakerService.update(id, caretaker),
                                 HttpStatus.CREATED.getReasonPhrase()), HttpStatus.OK);
-            else
+            } else
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.NOT_FOUND,
                                 null,

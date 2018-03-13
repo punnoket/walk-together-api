@@ -30,6 +30,18 @@ public class LogUtil {
         logService.create(log);
     }
 
+    public void responseFormAPI(HttpServletRequest httpServletRequest, HashMap<String, Object> request, LogService logService) {
+        JSONObject jsonObject = new JSONObject(request);
+        Log log = new Log();
+        log.setDate(DateTimeManager.getInstance().getCurrentTime());
+        log.setDateCreate(DateTimeManager.getInstance().logDateFormat(DateTimeManager.getInstance().getCurrentTime()));
+        log.setData(jsonObject.toJSONString());
+        log.setUrl(httpServletRequest.getRequestURL().toString());
+        log.setMethod("RESPONSE API");
+        log.setChanel(httpServletRequest.getHeader("user-agent"));
+        logService.create(log);
+    }
+
     public void saveLog(HttpServletRequest httpServletRequest, String request, LogService logService) {
         Log log = new Log();
         log.setDate(DateTimeManager.getInstance().getCurrentTime());

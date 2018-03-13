@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -425,22 +426,25 @@ public class EvaluationController {
 
         historyEvaluationTest.setEvaluationTest(evaluationTestService.update(evaluationTest.getId(), evaluationTest));
         historyEvaluationTest.setPatient(patient);
+        HistoryEvaluationTest resultHistoryEvaluationTest = historyEvaluationTestService.create(historyEvaluationTest);
 
         if (patient.getHistoryEvaluationTests() != null) {
             List<HistoryEvaluationTest> historyEvaluationTestList = patient.getHistoryEvaluationTests();
-            historyEvaluationTestList.add(historyEvaluationTestService.create(historyEvaluationTest));
+            historyEvaluationTestList.add(resultHistoryEvaluationTest);
             patient.setHistoryEvaluationTests(historyEvaluationTestList);
         } else {
             List<HistoryEvaluationTest> historyEvaluationTestList = new ArrayList<>();
-            historyEvaluationTestList.add(historyEvaluationTestService.create(historyEvaluationTest));
+            historyEvaluationTestList.add(resultHistoryEvaluationTest);
             patient.setHistoryEvaluationTests(historyEvaluationTestList);
         }
 
         patientService.update(id, patient);
 
         if (score < 23) {
-            if (patient.getPatientNumber() == null) {
+            if (patient.getUserName() == null) {
+                historyEvaluationTestService.delete(resultHistoryEvaluationTest.getId());
                 patientService.delete(patient.getId());
+                new File(patient.getQrCode()).delete();
             }
         }
 
@@ -448,7 +452,7 @@ public class EvaluationController {
         result.put("isPass", score >= 23);
         result.put("score", score);
         result.put("idPatient", patient.getId());
-
+        LogUtil.getInstance().responseFormAPI(request, result, logService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, result, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 

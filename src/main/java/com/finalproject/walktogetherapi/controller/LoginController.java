@@ -33,7 +33,7 @@ public class LoginController {
     }
 
     @PostMapping("")
-    public ResponseEntity loginPatient(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
+    public ResponseEntity login(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
         LogUtil.getInstance().saveLog(request,data, logService);
         if (data.get("userName").toString() != null && data.get("password").toString() != null) {
             Patient patient = patientService.findByUserName(data.get("userName").toString());
@@ -51,6 +51,8 @@ public class LoginController {
                                             .size() - 1)
                                     .getEvaluationTest()
                                     .getTestDate()));
+
+                    LogUtil.getInstance().responseFormAPI(request, responseMap, logService);
                     return new ResponseEntity<>(responseMap, HttpStatus.OK);
 
                 } else
@@ -64,6 +66,7 @@ public class LoginController {
                                 .getInstance()
                                 .response(HttpStatus.OK, caretaker, HttpStatus.OK.getReasonPhrase());
                         responseMap.put("type", Constant.TYPE_CARETAKER);
+                        LogUtil.getInstance().responseFormAPI(request, responseMap, logService);
                         return new ResponseEntity<>(responseMap, HttpStatus.OK);
                     } else
                         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, MessageUtil.INCORRECT_PASSWORD), HttpStatus.OK);

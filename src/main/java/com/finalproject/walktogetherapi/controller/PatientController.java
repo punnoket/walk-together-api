@@ -123,11 +123,12 @@ public class PatientController {
     }
 
     @PatchMapping("{id}")
-    public ResponseEntity update(@PathVariable Long id, @RequestBody HashMap<String, Object> data) {
+    public ResponseEntity update(HttpServletRequest request, @PathVariable Long id, @RequestBody HashMap<String, Object> data) {
         Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, educationServices, patientService.findById(id), false);
         if (patient.getUserName() != null) {
             if (patient.getEmail() != null) {
                 if (patient.getTell() != null) {
+                    LogUtil.getInstance().saveLog(request, data, logService);
                     return new ResponseEntity<>(ApiResponse.getInstance()
                             .response(HttpStatus.CREATED,
                                     patientService.update(id, patient),
