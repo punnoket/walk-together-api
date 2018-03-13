@@ -73,7 +73,7 @@ public class PatientController {
                         .getEvaluationTest()
                         .getTestDate()));
         LogUtil.getInstance().responseAPI(request, responseMap, logService);
-        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, responseMap, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+        return new ResponseEntity<>(responseMap, HttpStatus.OK);
     }
 
     @GetMapping("by-patient-number/{patientNumber}")
