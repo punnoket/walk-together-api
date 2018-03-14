@@ -1,6 +1,9 @@
 package com.finalproject.walktogetherapi.entities.evaluation;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.finalproject.walktogetherapi.entities.MyTypeAdapter;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import javax.persistence.*;
 
@@ -39,5 +42,13 @@ public class AnswerEvaluation {
 
     public void setQuestionEvaluation(QuestionEvaluation questionEvaluation) {
         this.questionEvaluation = questionEvaluation;
+    }
+
+    @Override
+    public String toString() {
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(AnswerEvaluation.class, new MyTypeAdapter<AnswerEvaluation>())
+                .create();
+        return gson.toJson(this.getId());
     }
 }

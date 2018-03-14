@@ -58,6 +58,7 @@ public class EvaluationController {
     @GetMapping("random")
     public ResponseEntity getEvaluationByIdUser(HttpServletRequest request) {
         List<HashMap<String, Object>> data = EvaluationMapping.getInstance().getEvaluation(evaluationCategoryService.findAllByOrderByIdAsc());
+        LogUtil.getInstance().saveLog(request, data, logService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, data, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
@@ -415,8 +416,6 @@ public class EvaluationController {
                 patientTest.setEvaluationTest(evaluationTest);
                 patientTestList.add(patientTestService.create(patientTest));
             }
-
-
         }
 
         evaluationTest.setPatientTests(patientTestList);
