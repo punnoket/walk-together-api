@@ -16,9 +16,12 @@ public class MessageUtil {
     public static final String SUBJECT_EMAIL = "Walk Together";
 
     public static final String NOT_FOUND_CARETAKER = "ไม่พบผู้ดูแล";
-    public static final String NOT_FOUND_PATIENT = "ไม่พบผู้ป่วย";
+    public static final String NOT_FOUND_PATIENT = "ไม่พบผู้สูงอายุ";
     public static final String SUCCESS_CARETAKER = "เพิ่มผู้ดูแลสำเร็จ";
-    public static final String SUCCESS_PATIENT = "เพิ่มผู้ป่วยสำเร็จ";
+    public static final String SUCCESS_PATIENT = "เพิ่มผู้สูงอายุสำเร็จ";
     public static final String DUPLICATE_CARETAKER = "คุณมีผู้ดูแลคนนี้อยู่แล้ว";
-    public static final String DUPLICATE_PATIENT = "คุณมีผู้ป่วยคนนี้อยู่แล้ว";
+    public static final String DUPLICATE_PATIENT = "คุณมีผู้สูงอายุคนนี้อยู่แล้ว";
+
+    public static final String MISS_NUMBER_CARETAKER = "หมายเลขผู้ดูแลไม่ถูกต้อง";
+    public static final String MISS_NUMBER_PATIENT = "หมายเลขผู้สูงอายุไม่ถูกต้อง";
 }

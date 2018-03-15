@@ -66,7 +66,7 @@ public class CaretakerController {
         if (caretaker != null)
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, caretaker, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
         else
-            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, null, MessageUtil.NOT_FOUND_CARETAKER), HttpStatus.OK);
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, MessageUtil.NOT_FOUND_CARETAKER), HttpStatus.OK);
     }
 
     @PostMapping("")

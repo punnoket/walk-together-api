@@ -82,7 +82,7 @@ public class PatientController {
         if (patient != null)
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, patient, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
         else
-            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, null, MessageUtil.NOT_FOUND_PATIENT), HttpStatus.OK);
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, MessageUtil.NOT_FOUND_PATIENT), HttpStatus.OK);
     }
 
     @GetMapping("history-evaluation/{id}")

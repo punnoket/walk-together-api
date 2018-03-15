@@ -100,6 +100,12 @@ public class MatchingController {
     @PostMapping("add-caretaker")
     public ResponseEntity addCaretaker(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
         LogUtil.getInstance().saveLog(request, data, logService);
+
+        if(data.get("caretakerNumber").toString().charAt(0)!='C')
+            return new ResponseEntity<>(ApiResponse.getInstance()
+                    .response(HttpStatus.NOT_FOUND, null,
+                            MessageUtil.MISS_NUMBER_CARETAKER), HttpStatus.OK);
+
         Matching matching = matchingService.findByPatientIdAndCaretakerNumber(Long.parseLong(data.get("idPatient").toString()),
                 data.get("caretakerNumber").toString());
 
@@ -129,6 +135,12 @@ public class MatchingController {
     @PostMapping("add-patient")
     public ResponseEntity addPatient(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
         LogUtil.getInstance().saveLog(request, data, logService);
+
+        if(data.get("patientNumber").toString().charAt(0)!='P')
+            return new ResponseEntity<>(ApiResponse.getInstance()
+                    .response(HttpStatus.NOT_FOUND, null,
+                            MessageUtil.MISS_NUMBER_PATIENT), HttpStatus.OK);
+
         Matching matching = matchingService.findByCaretakerIdAndPatientNumber(Long.parseLong(data.get("idCaretaker").toString()),
                 data.get("patientNumber").toString());
 
@@ -137,7 +149,7 @@ public class MatchingController {
             if (caretaker == null)
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.NOT_FOUND, null,
-                                MessageUtil.NOT_FOUND_CARETAKER), HttpStatus.OK);
+                                MessageUtil.NOT_FOUND_PATIENT), HttpStatus.OK);
             Patient patient = patientService.findByNumberPatient(data.get("patientNumber").toString());
             if (patient == null)
                 return new ResponseEntity<>(ApiResponse.getInstance()
