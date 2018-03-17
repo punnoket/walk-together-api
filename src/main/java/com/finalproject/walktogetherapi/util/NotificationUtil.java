@@ -35,6 +35,7 @@ public class NotificationUtil {
 
         json.put("data", msg);
         json.put("to", to);
+        json.put("priority", "high");
 
         try {
             HttpEntity<String> httpEntity = new HttpEntity<>(json.toString(), httpHeaders);
