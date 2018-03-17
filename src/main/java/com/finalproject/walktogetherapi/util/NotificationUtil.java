@@ -25,7 +25,7 @@ public class NotificationUtil {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("Authorization", "key=" + androidFcmKey);
-        httpHeaders.set("Content-Type", "application/json");
+        httpHeaders.set("Content-Type", "application/json;charset=UTF-8");
         JSONObject msg = new JSONObject();
         JSONObject json = new JSONObject();
 
