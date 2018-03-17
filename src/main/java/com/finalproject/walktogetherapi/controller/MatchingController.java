@@ -8,6 +8,7 @@ import com.finalproject.walktogetherapi.service.*;
 import com.finalproject.walktogetherapi.util.ApiResponse;
 import com.finalproject.walktogetherapi.util.LogUtil;
 import com.finalproject.walktogetherapi.util.MessageUtil;
+import com.finalproject.walktogetherapi.util.NotificationUtil;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -101,7 +102,7 @@ public class MatchingController {
     public ResponseEntity addCaretaker(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
         LogUtil.getInstance().saveLog(request, data, logService);
 
-        if(data.get("caretakerNumber").toString().charAt(0)!='C')
+        if (data.get("caretakerNumber").toString().charAt(0) != 'C')
             return new ResponseEntity<>(ApiResponse.getInstance()
                     .response(HttpStatus.NOT_FOUND, null,
                             MessageUtil.MISS_NUMBER_CARETAKER), HttpStatus.OK);
@@ -111,16 +112,25 @@ public class MatchingController {
 
         if (matching == null) {
             Patient patient = patientService.findById(Long.parseLong(data.get("idPatient").toString()));
-            if (patient == null)
+            if (patient == null) {
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.NOT_FOUND, null,
                                 MessageUtil.NOT_FOUND_CARETAKER), HttpStatus.OK);
+            }
 
             Caretaker caretaker = caretakerService.findByNumberCaretaker(data.get("caretakerNumber").toString());
-            if (caretaker == null)
+            if (caretaker == null) {
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.NOT_FOUND, null,
                                 MessageUtil.NOT_FOUND_CARETAKER), HttpStatus.OK);
+            }
+            if (caretaker.getDeviceToken() != null) {
+                NotificationUtil.getInstance()
+                        .sendNotification(caretaker.getDeviceToken()
+                                , patient.getFirstName() + " "
+                                        + patient.getLastName() + " "
+                                        + MessageUtil.NOTIFICATION_CARETAKER);
+            }
             return new ResponseEntity<>(ApiResponse.getInstance()
                     .response(HttpStatus.OK,
                             matchingService.create(MatchingMapping.getInstance().acceptMatching(caretaker, patient)),
@@ -136,7 +146,7 @@ public class MatchingController {
     public ResponseEntity addPatient(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
         LogUtil.getInstance().saveLog(request, data, logService);
 
-        if(data.get("patientNumber").toString().charAt(0)!='P')
+        if (data.get("patientNumber").toString().charAt(0) != 'P')
             return new ResponseEntity<>(ApiResponse.getInstance()
                     .response(HttpStatus.NOT_FOUND, null,
                             MessageUtil.MISS_NUMBER_PATIENT), HttpStatus.OK);
@@ -155,6 +165,14 @@ public class MatchingController {
                 return new ResponseEntity<>(ApiResponse.getInstance()
                         .response(HttpStatus.NOT_FOUND, null,
                                 MessageUtil.NOT_FOUND_PATIENT), HttpStatus.OK);
+
+            if (patient.getDeviceToken() != null) {
+                NotificationUtil.getInstance()
+                        .sendNotification(patient.getDeviceToken()
+                                , caretaker.getFirstName() + " "
+                                        + caretaker.getLastName() + " "
+                                        + MessageUtil.NOTIFICATION_PATIENT);
+            }
 
             return new ResponseEntity<>(ApiResponse.getInstance()
                     .response(HttpStatus.OK,

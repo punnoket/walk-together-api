@@ -2,12 +2,13 @@ package com.finalproject.walktogetherapi.controller;
 
 import com.finalproject.walktogetherapi.entities.Log;
 import com.finalproject.walktogetherapi.service.LogService;
+import org.codehaus.jettison.json.JSONException;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.io.IOException;

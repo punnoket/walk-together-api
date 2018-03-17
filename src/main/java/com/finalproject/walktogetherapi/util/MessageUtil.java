@@ -24,4 +24,8 @@ public class MessageUtil {
 
     public static final String MISS_NUMBER_CARETAKER = "หมายเลขผู้ดูแลไม่ถูกต้อง";
     public static final String MISS_NUMBER_PATIENT = "หมายเลขผู้สูงอายุไม่ถูกต้อง";
+
+    public static final String NOTIFICATION_CARETAKER = "ได้เพิ่มคุณเป็นผู้ดูแล";
+    public static final String NOTIFICATION_PATIENT = "ได้เพิ่มคุณเป็นผู้สูงอายุภายใต้การดูแล";
+
 }

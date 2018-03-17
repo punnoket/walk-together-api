@@ -20,7 +20,7 @@ public class Constant {
 
     public static final int TREE_MOUNT = 3;
     public static final int TEST_DAY = 3;
-
     public static final int SIZE_MISSION = 4;
-
+    public static final String NOTIFICATION_API_KEY = "AAAAt1XelqE:APA91bEFgM9QMvstMrdyhSHGozVV4jGu5dE6MMAXuEqxm7ayv7I9K3luF5I7Fwvfqu4tUlNmrjXe6j0qbeVHaoi6gQLbu188VI774SkxMV9kbfW0vQv-eM2UfZeOH3k21A0PaNpt4CKb";
+    public static final String FCM_URL = "https://fcm.googleapis.com/fcm/send";
 }

@@ -67,6 +67,8 @@ public class PatientMapping {
             patient.setOccupation(data.get("occupation").toString());
         if (data.get("educationId") != null)
             patient.setEducation(educationServices.findById(Long.parseLong(data.get("educationId").toString())));
+        if (data.get("deviceToken") != null)
+            patient.setDeviceToken(data.get("deviceToken").toString());
         if (data.get("email") != null)
             if (patientService.findByEmail(data.get("email").toString()) == null &&
                     caretakerService.findByEmail(data.get("email").toString()) == null)

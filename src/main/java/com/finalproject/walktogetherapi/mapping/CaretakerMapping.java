@@ -67,6 +67,8 @@ public class CaretakerMapping {
             caretaker.setOccupation(data.get("occupation").toString());
         if (data.get("educationId") != null)
             caretaker.setEducation(educationServices.findById(Long.parseLong(data.get("educationId").toString())));
+        if (data.get("deviceToken") != null)
+            caretaker.setDeviceToken(data.get("deviceToken").toString());
         if (data.get("email") != null)
             if (caretakerService.findByEmail(data.get("email").toString()) == null &&
                     patientService.findByEmail(data.get("email").toString()) == null) {

@@ -40,6 +40,8 @@ public class Patient {
     private String email;
     private String image;
     private String qrCode;
+    @Column(columnDefinition = "TEXT")
+    private String deviceToken;
 
     @OneToMany(mappedBy = "patient", cascade = {CascadeType.ALL})
     private List<HistoryEvaluationTest> historyEvaluationTests;
@@ -234,6 +236,14 @@ public class Patient {
 
     public void setEducation(Education education) {
         this.education = education;
+    }
+
+    public String getDeviceToken() {
+        return deviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
     }
 
     @JsonIgnore

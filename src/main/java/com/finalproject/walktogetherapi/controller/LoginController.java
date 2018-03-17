@@ -34,11 +34,15 @@ public class LoginController {
 
     @PostMapping("")
     public ResponseEntity login(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
-        LogUtil.getInstance().saveLog(request,data, logService);
+        LogUtil.getInstance().saveLog(request, data, logService);
         if (data.get("userName").toString() != null && data.get("password").toString() != null) {
             Patient patient = patientService.findByUserName(data.get("userName").toString());
             if (patient != null) {
                 if (patient.getPassword().equals(data.get("password").toString())) {
+                    if (data.get("deviceToken").toString() != null) {
+                        patient.setDeviceToken(data.get("deviceToken").toString());
+                        patientService.update(patient.getId(), patient);
+                    }
                     HashMap<String, Object> responseMap = ApiResponse
                             .getInstance()
                             .response(HttpStatus.OK, patient, HttpStatus.OK.getReasonPhrase());
@@ -62,6 +66,10 @@ public class LoginController {
                 Caretaker caretaker = caretakerService.findByUserName(data.get("userName").toString());
                 if (caretaker != null) {
                     if (caretaker.getPassword().equals(data.get("password").toString())) {
+                        if (data.get("deviceToken").toString() != null) {
+                            caretaker.setDeviceToken(data.get("deviceToken").toString());
+                            caretakerService.update(caretaker.getId(), caretaker);
+                        }
                         HashMap<String, Object> responseMap = ApiResponse
                                 .getInstance()
                                 .response(HttpStatus.OK, caretaker, HttpStatus.OK.getReasonPhrase());

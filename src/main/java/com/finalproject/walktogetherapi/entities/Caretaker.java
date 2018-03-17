@@ -35,6 +35,8 @@ public class Caretaker {
     private String email;
     private String image;
     private String qrCode;
+    @Column(columnDefinition = "TEXT")
+    private String deviceToken;
 
     public Long getId() {
         return id;
@@ -171,6 +173,14 @@ public class Caretaker {
     public String getAge() {
         String age = DateTimeManager.getInstance().birthDayToAge(getDob());
         return age;
+    }
+
+    public String getDeviceToken() {
+        return deviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
     }
 
     public String getImage() {
