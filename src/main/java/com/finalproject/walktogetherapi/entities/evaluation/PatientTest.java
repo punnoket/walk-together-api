@@ -1,4 +1,4 @@
-package com.finalproject.walktogetherapi.entities;
+package com.finalproject.walktogetherapi.entities.evaluation;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation;

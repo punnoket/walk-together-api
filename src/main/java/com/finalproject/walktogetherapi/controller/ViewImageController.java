@@ -97,4 +97,38 @@ public class ViewImageController {
         return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(data);
     }
 
+    @GetMapping("/mission/{id}/{fileName:.+}")
+    public ResponseEntity<byte[]> viewMission(@PathVariable String id,
+                                             @PathVariable String fileName) throws IOException {
+
+        String pathString = "image"
+                + "/"
+                + "mission"
+                + "/"
+                + id
+                + "/"
+                + fileName;
+
+        Path path = Paths.get(pathString);
+        byte[] data = Files.readAllBytes(path);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(data);
+    }
+
+    @GetMapping("/answer-mission/{id}/{fileName:.+}")
+    public ResponseEntity<byte[]> viewAnswerMission(@PathVariable String id,
+                                              @PathVariable String fileName) throws IOException {
+
+        String pathString = "image"
+                + "/"
+                + "answer-mission"
+                + "/"
+                + id
+                + "/"
+                + fileName;
+
+        Path path = Paths.get(pathString);
+        byte[] data = Files.readAllBytes(path);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(data);
+    }
+
 }

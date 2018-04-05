@@ -1,5 +1,6 @@
 package com.finalproject.walktogetherapi.entities.mission;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Mission")
@@ -10,6 +11,8 @@ public class Mission {
     private double latitude;
     private double longitude;
     private int score;
+    private String question;
+    private String image;
 
     @ManyToOne
     @JoinColumn(name = "cognitiveCategory")
@@ -18,6 +21,10 @@ public class Mission {
     @ManyToOne
     @JoinColumn(name = "map")
     private Map map;
+
+    @OneToMany(mappedBy = "mission", cascade = {CascadeType.ALL})
+    private List<AnswerMission> answerMissions;
+
 
     public Long getId() {
         return id;
@@ -65,5 +72,29 @@ public class Mission {
 
     public void setMap(Map map) {
         this.map = map;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setAnswerMissions(List<AnswerMission> answerMissions) {
+        this.answerMissions = answerMissions;
+    }
+
+    public List<AnswerMission> getAnswerMissions() {
+        return answerMissions;
     }
 }

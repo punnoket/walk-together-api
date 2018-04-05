@@ -9,6 +9,8 @@ public class Constant {
 
     public static final String PATH_IMAGE_QUESTION = "image/question";
     public static final String PATH_IMAGE_MAP = "image/map";
+    public static final String PATH_IMAGE_MISSION = "image/mission";
+    public static final String PATH_IMAGE_ANSWER_MISSION = "image/answer-mission";
     public static final String PATH_AUDIO_QUESTION = "audio/question";
     public static final String PATH_IMAGE_PATIENT = "image/patient";
     public static final String PATH_IMAGE_CARETAKER = "image/caretaker";

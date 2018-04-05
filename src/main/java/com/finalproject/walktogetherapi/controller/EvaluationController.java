@@ -3,7 +3,7 @@ package com.finalproject.walktogetherapi.controller;
 import com.finalproject.walktogetherapi.entities.evaluation.EvaluationTest;
 import com.finalproject.walktogetherapi.entities.evaluation.HistoryEvaluationTest;
 import com.finalproject.walktogetherapi.entities.Patient;
-import com.finalproject.walktogetherapi.entities.PatientTest;
+import com.finalproject.walktogetherapi.entities.evaluation.PatientTest;
 import com.finalproject.walktogetherapi.entities.evaluation.AnswerEvaluation;
 import com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation;
 import com.finalproject.walktogetherapi.mapping.EvaluationMapping;
