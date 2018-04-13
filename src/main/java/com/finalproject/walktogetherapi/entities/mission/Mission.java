@@ -11,6 +11,7 @@ public class Mission {
     private double latitude;
     private double longitude;
     private int score;
+    private String type;
     private String question;
     private String image;
 
@@ -64,6 +65,14 @@ public class Mission {
 
     public void setCognitiveCategory(CognitiveCategory cognitiveCategory) {
         this.cognitiveCategory = cognitiveCategory;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Map getMap() {

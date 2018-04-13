@@ -38,6 +38,7 @@ public class MissionMapping {
         mission.setLatitude(Double.parseDouble(data.get("latitude").toString()));
         mission.setLongitude(Double.parseDouble(data.get("longitude").toString()));
         mission.setScore(Integer.parseInt(data.get("score").toString()));
+        mission.setType(data.get("type").toString());
         return mission;
     }
 
