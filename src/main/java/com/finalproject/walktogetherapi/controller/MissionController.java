@@ -34,6 +34,7 @@ public class MissionController {
     private PatientGameService patientGameService;
     private PatientMissionService patientMissionService;
     private LogService logService;
+    private PositionService positionService;
 
     @Autowired
     public MissionController(MissionService missionService,
@@ -42,6 +43,7 @@ public class MissionController {
                              PatientService patientService,
                              MapService mapService,
                              LogService logService,
+                             PositionService positionService,
                              PatientGameService patientGameService,
                              PatientMissionService patientMissionService) {
         this.missionService = missionService;
@@ -52,6 +54,7 @@ public class MissionController {
         this.patientGameService = patientGameService;
         this.patientMissionService = patientMissionService;
         this.logService = logService;
+        this.positionService = positionService;
     }
 
     @GetMapping("/all-map")
@@ -68,7 +71,7 @@ public class MissionController {
     @GetMapping("/{id}")
     public ResponseEntity getMission(HttpServletRequest request, @PathVariable Long id) {
         LogUtil.getInstance().saveLog(request, "", logService);
-        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, MissionMapping.getInstance().getMissionByIdMap(id, missionService), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, MissionMapping.getInstance().getMissionByIdMap(id, missionService, positionService), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
     @PostMapping("")
@@ -82,7 +85,7 @@ public class MissionController {
     public ResponseEntity sendMission(HttpServletRequest request, @RequestBody HashMap<String, Object> data, @PathVariable Long id) {
         LogUtil.getInstance().saveLog(request, data, logService);
         Patient patient = patientService.findById(id);
-        HistoryMission historyMission = MissionMapping.getInstance().createHistory(data, historyMissionService, missionService, patientMissionService, patientGameService, mapService, patient);
+        HistoryMission historyMission = MissionMapping.getInstance().createHistory(data, historyMissionService, missionService, patientMissionService, patientGameService, mapService, positionService,patient);
         patient.setFrequency(PatientMapping.getInstance().increaseFrequency(patient.getFrequency()));
         if (patient.getHistoryMissions() != null) {
             List<HistoryMission> patientHistoryMissions = patient.getHistoryMissions();

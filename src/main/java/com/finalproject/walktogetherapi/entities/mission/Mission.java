@@ -1,4 +1,6 @@
 package com.finalproject.walktogetherapi.entities.mission;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,8 +10,6 @@ public class Mission {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private double latitude;
-    private double longitude;
     private int score;
     private String type;
     private String question;
@@ -33,22 +33,6 @@ public class Mission {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
     }
 
     public int getScore() {
@@ -75,6 +59,7 @@ public class Mission {
         this.type = type;
     }
 
+    @JsonIgnore
     public Map getMap() {
         return map;
     }

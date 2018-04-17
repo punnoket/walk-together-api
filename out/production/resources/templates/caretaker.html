@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>LOG</title>
+    <title>CARETAKER</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="log.css">
@@ -17,6 +17,14 @@
         body {
             font-family: "CordiaUPC";
             font-size: 20px;
+        }
+
+        img {
+            display: block;
+            max-width:400px;
+            max-height:130px;
+            width: auto;
+            height: auto;
         }
 
         #customers {
@@ -39,17 +47,6 @@
             text-align: center;
             border-bottom: 1px solid #ddd;
 
-        }
-
-        .fix_weight {
-            width: 250px;
-            text-align: center;
-        }
-
-        .chanel {
-            font-size: 17px;
-            width: 250px;
-            text-align: center;
         }
 
         .loader {
@@ -87,18 +84,27 @@
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
     <table border="2px" cellpadding="20px" id="customers">
         <tr>
-            <th>URL</th>
-            <th>METHOD</th>
-            <th>DATA</th>
-            <th>CHANEL</th>
-            <th class="fix_weight">DATE</th>
+            <th>ID</th>
+            <th>NUMBER</th>
+            <th>USERNAME</th>
+            <th>PASSWORD</th>
+            <th>NAME</th>
+            <th>IMAGE</th>
+            <th>QR CODE</th>
+            <th>INFO</th>
         </tr>
-        <tr ng-repeat="i in logList">
-            <td>[[i.url]]</td>
-            <td>[[i.method]]</td>
-            <td>[[i.data]]</td>
-            <td class="chanel">[[i.chanel]]</td>
-            <td class="fix_weight">[[i.dateCreate]]</td>
+        <tr ng-repeat="i in caretakerList">
+            <td>[[i.id]]</td>
+            <td>[[i.caretakerNumber]]</td>
+            <td>[[i.userName]]</td>
+            <td>[[i.password]]</td>
+            <td>[[i.firstName]] [[i.lastName]]</td>
+            <td><img ng-src="http://159.65.128.189:8181/[[i.image]]"
+                     onerror="this.src='https://www.logicprohelp.com/forum/styles/canvas/theme/images/no_avatar.jpg'"/></td>
+            <td><img ng-src="http://159.65.128.189:8181/[[i.qrCode]]"
+                     onerror="this.src='https://www.logicprohelp.com/forum/styles/canvas/theme/images/no_avatar.jpg'"/></td>
+            <td><a ng-href="http://159.65.128.189:8181/api/v1/caretaker/[[i.id]]">MORE</a>
+            </td>
         </tr>
     </table>
 </div>
@@ -120,10 +126,10 @@
     app.controller('myCtrl', function ($scope, $http, $location, $window) {
         $scope.myFunc = function () {
 
-            $http.get("http://159.65.128.189:8181/api/v1/log")
+            $http.get("http://159.65.128.189:8181/api/v1/caretaker")
                 .then(function (response) {
                     console.log(response.data);
-                    $scope.logList = response.data;
+                    $scope.caretakerList = response.data.data;
                     document.getElementById("loader").style.visibility = "hidden";
                 }, function (response) {
 

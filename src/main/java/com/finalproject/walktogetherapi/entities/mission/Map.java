@@ -18,6 +18,9 @@ public class Map {
     @OneToMany(mappedBy = "map", cascade = {CascadeType.ALL})
     private List<Mission> missions;
 
+    @OneToMany(mappedBy = "map", cascade = {CascadeType.ALL})
+    private List<Position> positions;
+
     public Long getId() {
         return id;
     }
@@ -65,5 +68,14 @@ public class Map {
 
     public void setMissions(List<Mission> missions) {
         this.missions = missions;
+    }
+
+    public void setPositions(List<Position> positions) {
+        this.positions = positions;
+    }
+
+    @JsonIgnore
+    public List<Position> getPositions() {
+        return positions;
     }
 }

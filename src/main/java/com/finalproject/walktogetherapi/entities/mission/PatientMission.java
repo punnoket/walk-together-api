@@ -16,11 +16,11 @@ public class PatientMission {
     private Mission mission;
 
     @ManyToOne
-    @JoinColumn(name = "patientGame")
-    private PatientGame patientGame;
+    private Position position;
 
     @ManyToOne
-    private Map map;
+    @JoinColumn(name = "patientGame")
+    private PatientGame patientGame;
 
     public Long getId() {
         return id;
@@ -44,6 +44,14 @@ public class PatientMission {
 
     public void setMission(Mission mission) {
         this.mission = mission;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
     @JsonIgnore

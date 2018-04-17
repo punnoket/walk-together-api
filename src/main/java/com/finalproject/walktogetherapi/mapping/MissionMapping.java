@@ -1,17 +1,12 @@
 package com.finalproject.walktogetherapi.mapping;
 
 import com.finalproject.walktogetherapi.entities.Patient;
-import com.finalproject.walktogetherapi.entities.mission.HistoryMission;
-import com.finalproject.walktogetherapi.entities.mission.Mission;
-import com.finalproject.walktogetherapi.entities.mission.PatientGame;
-import com.finalproject.walktogetherapi.entities.mission.PatientMission;
+import com.finalproject.walktogetherapi.entities.mission.*;
 import com.finalproject.walktogetherapi.service.mission.*;
+import com.finalproject.walktogetherapi.util.Constant;
 import com.finalproject.walktogetherapi.util.DateTimeManager;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class MissionMapping {
 
@@ -24,19 +19,76 @@ public class MissionMapping {
         return instance;
     }
 
-    public List<Mission> getMissionByIdMap(Long id, MissionService missionService) {
-        List<Mission> missions = missionService.findByMapId(id);
+    private Position randomPosition(List<Position> positions) {
+        int random = new Random().nextInt(positions.size());
+        return positions.get(random);
+    }
+
+    private List<Mission> randomMission(List<Mission> missions) {
         Collections.shuffle(missions);
         missions = missions.subList(0, 4);
         return missions;
     }
 
+    public List<HashMap<String, Object>> getMissionByIdMap(Long id, MissionService missionService, PositionService positionService) {
+        List<HashMap<String, Object>> response = new ArrayList<>();
+        List<Position> positions = positionService.findByMapId(id);
+        HashMap<String, Object> map;
+        List<Mission> missions = missionService.findByMapId(id);
+        missions = randomMission(missions);
+
+        map = new HashMap<>();
+        List<Position> positionTemp = new ArrayList<>();
+        for (Position position : positions) {
+            if (position.getPosition().equalsIgnoreCase(Constant.POSITION_1)) {
+                positionTemp.add(position);
+            }
+        }
+        map.put("position", randomPosition(positionTemp));
+        map.put("mission", missions.get(0));
+        response.add(map);
+
+        map = new HashMap<>();
+        positionTemp = new ArrayList<>();
+        for (Position position : positions) {
+            if (position.getPosition().equalsIgnoreCase(Constant.POSITION_2)) {
+                positionTemp.add(position);
+            }
+        }
+        map.put("position", randomPosition(positionTemp));
+        map.put("mission", missions.get(1));
+        response.add(map);
+
+        map = new HashMap<>();
+        positionTemp = new ArrayList<>();
+        for (Position position : positions) {
+            if (position.getPosition().equalsIgnoreCase(Constant.POSITION_3)) {
+                positionTemp.add(position);
+            }
+        }
+        map.put("position", randomPosition(positionTemp));
+        map.put("mission", missions.get(2));
+        response.add(map);
+
+        map = new HashMap<>();
+        positionTemp = new ArrayList<>();
+        for (Position position : positions) {
+            if (position.getPosition().equalsIgnoreCase(Constant.POSITION_4)) {
+                positionTemp.add(position);
+            }
+        }
+        map.put("position", randomPosition(positionTemp));
+        map.put("mission", missions.get(3));
+        response.add(map);
+
+        return response;
+    }
+
+
     public Mission createMission(HashMap<String, Object> data, MapService mapService, CognitiveCategoryService cognitiveCategoryService) {
         Mission mission = new Mission();
         mission.setCognitiveCategory(cognitiveCategoryService.findById(Long.parseLong(data.get("idCognitiveCategory").toString())));
         mission.setMap(mapService.findById(Long.parseLong(data.get("idMap").toString())));
-        mission.setLatitude(Double.parseDouble(data.get("latitude").toString()));
-        mission.setLongitude(Double.parseDouble(data.get("longitude").toString()));
         mission.setScore(Integer.parseInt(data.get("score").toString()));
         mission.setType(data.get("type").toString());
         return mission;
@@ -48,6 +100,7 @@ public class MissionMapping {
                                         PatientMissionService patientMissionService,
                                         PatientGameService patientGameService,
                                         MapService mapService,
+                                        PositionService positionService,
                                         Patient patient) {
 
         int resultScore = 0;
@@ -59,7 +112,8 @@ public class MissionMapping {
 
         for (HashMap<String, Object> mission : list) {
             PatientMission patientMission = new PatientMission();
-            patientMission.setMission(missionService.findById(Long.parseLong(mission.get("id").toString())));
+            patientMission.setMission(missionService.findById(Long.parseLong(mission.get("idMission").toString())));
+            patientMission.setPosition(positionService.findById(Long.parseLong(mission.get("idPosition").toString())));
             patientMission.setScore(Integer.parseInt(mission.get("score").toString()));
             patientMission.setPatientGame(patientGame);
             patientMissions.add(patientMissionService.create(patientMission));
