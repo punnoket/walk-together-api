@@ -16,9 +16,6 @@ public class Map {
     private String image;
 
     @OneToMany(mappedBy = "map", cascade = {CascadeType.ALL})
-    private List<Mission> missions;
-
-    @OneToMany(mappedBy = "map", cascade = {CascadeType.ALL})
     private List<Position> positions;
 
     public Long getId() {
@@ -59,15 +56,6 @@ public class Map {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    @JsonIgnore
-    public List<Mission> getMissions() {
-        return missions;
-    }
-
-    public void setMissions(List<Mission> missions) {
-        this.missions = missions;
     }
 
     public void setPositions(List<Position> positions) {

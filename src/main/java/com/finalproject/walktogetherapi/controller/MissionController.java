@@ -77,7 +77,7 @@ public class MissionController {
     @PostMapping("")
     public ResponseEntity create(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
         LogUtil.getInstance().saveLog(request, data, logService);
-        Mission mission = MissionMapping.getInstance().createMission(data, mapService, cognitiveCategoryService);
+        Mission mission = MissionMapping.getInstance().createMission(data, cognitiveCategoryService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, missionService.create(mission), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 

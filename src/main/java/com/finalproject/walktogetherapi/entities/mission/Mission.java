@@ -19,10 +19,6 @@ public class Mission {
     @JoinColumn(name = "cognitiveCategory")
     private CognitiveCategory cognitiveCategory;
 
-    @ManyToOne
-    @JoinColumn(name = "map")
-    private Map map;
-
     @OneToMany(mappedBy = "mission", cascade = {CascadeType.ALL})
     private List<AnswerMission> answerMissions;
 
@@ -57,15 +53,6 @@ public class Mission {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    @JsonIgnore
-    public Map getMap() {
-        return map;
-    }
-
-    public void setMap(Map map) {
-        this.map = map;
     }
 
     public String getQuestion() {

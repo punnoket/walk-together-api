@@ -11,6 +11,4 @@ import java.util.List;
 @Repository
 public interface MissionRepository extends JpaRepository<Mission, Long> {
 
-    @Query("select m from Mission m where m.map.id = ?1")
-    List<Mission> findByMapId(Long id);
 }

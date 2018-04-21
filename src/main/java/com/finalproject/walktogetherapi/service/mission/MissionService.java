@@ -16,6 +16,4 @@ public interface MissionService {
     Mission update(Long id, Mission mission);
 
     Mission delete(Long id);
-
-    List<Mission> findByMapId(Long id);
 }

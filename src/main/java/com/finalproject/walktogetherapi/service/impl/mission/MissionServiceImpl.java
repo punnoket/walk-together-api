@@ -45,9 +45,4 @@ public class MissionServiceImpl implements MissionService {
         return result;
     }
 
-    @Override
-    public List<Mission> findByMapId(Long id) {
-        return repository.findByMapId(id);
-    }
-
 }

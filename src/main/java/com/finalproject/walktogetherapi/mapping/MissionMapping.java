@@ -34,7 +34,7 @@ public class MissionMapping {
         List<HashMap<String, Object>> response = new ArrayList<>();
         List<Position> positions = positionService.findByMapId(id);
         HashMap<String, Object> map;
-        List<Mission> missions = missionService.findByMapId(id);
+        List<Mission> missions = missionService.findAll();
         missions = randomMission(missions);
 
         map = new HashMap<>();
@@ -45,7 +45,7 @@ public class MissionMapping {
             }
         }
         map.put("position", randomPosition(positionTemp));
-        map.put("mission", missions.get(0));
+        map.put("missionDetail", missions.get(0));
         response.add(map);
 
         map = new HashMap<>();
@@ -56,7 +56,7 @@ public class MissionMapping {
             }
         }
         map.put("position", randomPosition(positionTemp));
-        map.put("mission", missions.get(1));
+        map.put("missionDetail", missions.get(1));
         response.add(map);
 
         map = new HashMap<>();
@@ -67,7 +67,7 @@ public class MissionMapping {
             }
         }
         map.put("position", randomPosition(positionTemp));
-        map.put("mission", missions.get(2));
+        map.put("missionDetail", missions.get(2));
         response.add(map);
 
         map = new HashMap<>();
@@ -78,17 +78,16 @@ public class MissionMapping {
             }
         }
         map.put("position", randomPosition(positionTemp));
-        map.put("mission", missions.get(3));
+        map.put("missionDetail", missions.get(3));
         response.add(map);
 
         return response;
     }
 
 
-    public Mission createMission(HashMap<String, Object> data, MapService mapService, CognitiveCategoryService cognitiveCategoryService) {
+    public Mission createMission(HashMap<String, Object> data, CognitiveCategoryService cognitiveCategoryService) {
         Mission mission = new Mission();
         mission.setCognitiveCategory(cognitiveCategoryService.findById(Long.parseLong(data.get("idCognitiveCategory").toString())));
-        mission.setMap(mapService.findById(Long.parseLong(data.get("idMap").toString())));
         mission.setScore(Integer.parseInt(data.get("score").toString()));
         mission.setType(data.get("type").toString());
         return mission;
