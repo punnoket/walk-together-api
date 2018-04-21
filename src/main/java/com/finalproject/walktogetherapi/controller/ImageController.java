@@ -83,7 +83,7 @@ public class ImageController {
         Map map = mapService.findById(id);
         String pathString = PATH_IMAGE_MAP
                 + "/"
-                + map.getNamePlace().replaceAll("\\s+","")
+                + map.getId()
                 + "/";
 
         if (file.isEmpty())
