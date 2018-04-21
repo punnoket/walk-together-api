@@ -83,7 +83,8 @@ public class ImageController {
         Map map = mapService.findById(id);
         String pathString = PATH_IMAGE_MAP
                 + "/"
-                + map.getNamePlace();
+                + map.getNamePlace().replaceAll("\\s+","")
+                + "/";
 
         if (file.isEmpty())
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
