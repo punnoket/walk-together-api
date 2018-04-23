@@ -122,7 +122,7 @@ public class MissionMapping {
         patientGame.setResultScore(resultScore);
         patientGame.setRoute(data.get("route").toString());
 
-        historyMission.setHistoryDate(DateTimeManager.getInstance().fullDateFormat(DateTimeManager.getInstance().getCurrentTime()));
+        historyMission.setHistoryDate(DateTimeManager.getInstance().fullDateFormat(new Date()));
         historyMission.setPatientGame(patientGameService.update(patientGame.getId(), patientGame));
         historyMission.setPatient(patient);
         return historyMissionService.create(historyMission);
