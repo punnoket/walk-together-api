@@ -1,6 +1,7 @@
 package com.finalproject.walktogetherapi.controller;
 
 import com.finalproject.walktogetherapi.entities.*;
+import com.finalproject.walktogetherapi.mapping.CollectionMapping;
 import com.finalproject.walktogetherapi.mapping.MatchingMapping;
 import com.finalproject.walktogetherapi.service.*;
 import com.finalproject.walktogetherapi.util.ApiResponse;
@@ -14,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -68,8 +70,20 @@ public class CollectionController {
                         HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
-   
-
+    @GetMapping("reward-by-patient/{id}")
+    public ResponseEntity getRewardByIdPatient(HttpServletRequest request, @PathVariable Long id) {
+        List<Collection> collectionList = collectionService.findByPatientId(id);
+        if (collectionList != null)
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
+                    CollectionMapping.getInstance().getRewardList(collectionService.findByPatientId(id)),
+                    HttpStatus.OK.getReasonPhrase()),
+                    HttpStatus.OK);
+        else
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
+                    null,
+                    MessageUtil.NOT_FOUND_CARETAKER),
+                    HttpStatus.OK);
+    }
 
 
 }
