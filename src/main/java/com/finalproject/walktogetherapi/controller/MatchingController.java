@@ -57,7 +57,7 @@ public class MatchingController {
 
     @GetMapping("caretaker-by-patient/{id}")
     public ResponseEntity getCaretakerByIdPatient(HttpServletRequest request, @PathVariable Long id) {
-        List<Matching> matchingList = matchingService.findByCaretakerId(id);
+        List<Matching> matchingList = matchingService.findByPatientId(id);
         if (matchingList != null)
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
                     MatchingMapping.getInstance().getCaretakerList(matchingService.findByPatientId(id)),
