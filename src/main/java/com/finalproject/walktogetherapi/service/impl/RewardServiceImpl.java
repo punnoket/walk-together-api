@@ -15,6 +15,10 @@ import java.util.List;
 public class RewardServiceImpl implements RewardService {
     private RewardRepository rewardRepository;
 
+    @Autowired
+    public RewardServiceImpl(RewardRepository rewardRepository) {
+        this.rewardRepository = rewardRepository;
+    }
 
     @Override
     public List<Reward> findAll() {

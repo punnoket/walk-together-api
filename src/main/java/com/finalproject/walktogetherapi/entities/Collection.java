@@ -1,7 +1,4 @@
 package com.finalproject.walktogetherapi.entities;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
@@ -13,7 +10,7 @@ public class Collection {
     @ManyToOne
     private Patient patient;
     @ManyToOne
-    private Reward Reward;
+    private Reward reward;
 
     public Long getId() {
         return id;
@@ -31,11 +28,11 @@ public class Collection {
         this.patient = patient;
     }
 
-    public com.finalproject.walktogetherapi.entities.Reward getReward() {
-        return Reward;
+    public Reward getReward() {
+        return reward;
     }
 
-    public void setReward(com.finalproject.walktogetherapi.entities.Reward reward) {
-        Reward = reward;
+    public void setReward(Reward reward) {
+        reward = reward;
     }
 }

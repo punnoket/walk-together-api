@@ -1,13 +1,6 @@
 package com.finalproject.walktogetherapi.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.finalproject.walktogetherapi.entities.evaluation.HistoryEvaluationTest;
-import com.finalproject.walktogetherapi.entities.master.*;
-import com.finalproject.walktogetherapi.entities.mission.HistoryMission;
-import com.finalproject.walktogetherapi.util.DateTimeManager;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "Reward")
