@@ -1,0 +1,24 @@
+#customers {
+    color: #505050;
+    border-collapse: collapse;
+    width: 100%;
+    border: none;
+   
+}
+#customers td, #customers th {
+   border: none;
+   border-bottom: 1px solid #ddd;
+    padding: 20px;
+   
+}
+
+#customers th {
+    background-color: #D7EEFE;
+    text-align: center;
+    border-bottom:  2px solid  black;
+   
+}
+
+.fix_weight{
+    width: 250px;
+}
