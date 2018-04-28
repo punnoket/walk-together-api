@@ -15,6 +15,10 @@ import java.util.List;
 public class CollectionServiceImpl implements CollectionService {
     private CollectionRepository collectionRepository;
 
+    @Autowired
+    public CollectionServiceImpl(CollectionRepository collectionRepository) {
+        this.collectionRepository = collectionRepository;
+    }
 
     @Override
     public List<Collection> findAll() {
