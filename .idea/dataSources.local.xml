@@ -10,5 +10,14 @@
       <user-name>postgres</user-name>
       <introspection-schemas>postgres:public</introspection-schemas>
     </data-source>
+    <data-source name="postgres@159.65.128.189" uuid="620eb61d-06ca-45dc-b92b-a79b3ceaf8e0">
+      <database-info product="PostgreSQL" version="9.4.16" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.1.1">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <introspection-schemas>postgres:public</introspection-schemas>
+    </data-source>
   </component>
 </project>

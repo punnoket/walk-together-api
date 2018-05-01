@@ -39,7 +39,7 @@ public class LoginController {
             Patient patient = patientService.findByUserName(data.get("userName").toString());
             if (patient != null) {
                 if (patient.getPassword().equals(data.get("password").toString())) {
-                    if (data.get("deviceToken").toString() != null) {
+                    if (data.get("deviceToken") != null) {
                         patient.setDeviceToken(data.get("deviceToken").toString());
                         patientService.update(patient.getId(), patient);
                     }
