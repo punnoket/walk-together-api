@@ -143,10 +143,10 @@ public class MissionMapping {
     exp = exp + oldExp;
         System.out.println("oldExp" + oldExp);
         System.out.println("exp" + exp);
-        if(exp <= totalExp){
-            exp = oldExp + exp;
+        if(exp < totalExp){
+            exp =  exp;
         }
-        else{
+        else if (exp > totalExp){
             while (exp > totalExp){
                 exp = exp - totalExp;
                 level = level+1;
@@ -155,9 +155,12 @@ public class MissionMapping {
             }
             System.out.println("finalLevel" + level);
             System.out.println("finalExp " + exp);
+        }else {
+            level = level+1;
+            exp =0;
         }
 
-
+        patient.setExpPercent((exp*100)/totalExp);
         patient.setLevel(level);
         patient.setExp(exp);
         patientService.update(patient.getId(),patient);

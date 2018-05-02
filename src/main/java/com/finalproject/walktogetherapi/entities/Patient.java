@@ -45,6 +45,9 @@ public class Patient {
     @Column(name = "exp", columnDefinition = "Decimal(10,2) default '0.00'")
     private double exp;
 
+    @Column(name = "expPercent", columnDefinition = "Decimal(10,2) default '0.00'")
+    private double expPercent;
+
     private String qrCode;
     @Column(columnDefinition = "TEXT")
     private String deviceToken;
@@ -258,6 +261,14 @@ public class Patient {
 
     public void setExp(double exp) {
         this.exp = exp;
+    }
+
+    public double getExpPercent() {
+        return expPercent;
+    }
+
+    public void setExpPercent(double expPercent) {
+        this.expPercent = expPercent;
     }
 
     @JsonIgnore
