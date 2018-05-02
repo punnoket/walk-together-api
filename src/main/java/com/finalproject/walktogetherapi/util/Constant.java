@@ -17,6 +17,8 @@ public class Constant {
     public static final String PATH_QR_CODE_CARETAKER = "image/caretaker/qrcode";
     public static final String PATH_QR_CODE_PATIENT = "image/patient/qrcode";
 
+    public static final String PATH_IMAGE_REWARD = "image/reward";
+
     public static final String TYPE_PATIENT = "patient";
     public static final String TYPE_CARETAKER = "caretaker";
 

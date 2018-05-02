@@ -5,6 +5,7 @@ import com.finalproject.walktogetherapi.entities.evaluation.HistoryEvaluationTes
 import com.finalproject.walktogetherapi.entities.master.*;
 import com.finalproject.walktogetherapi.entities.mission.HistoryMission;
 import com.finalproject.walktogetherapi.util.DateTimeManager;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
@@ -35,10 +36,19 @@ public class Patient {
     private SubDistrict subDistrict;
     private String tell;
     private String occupation;
-    private String level;
+
+    @Column(name = "level", columnDefinition = "Decimal(10,2) default '1'")
+    private int level = 0;
     private String frequency;
     private String email;
     private String image;
+
+    @Column(name = "exp", columnDefinition = "Decimal(10,2) default '0.00'")
+    private double exp;
+
+    @Column(name = "expPercent", columnDefinition = "Decimal(10,2) default '0.00'")
+    private double expPercent;
+
     private String qrCode;
     @Column(columnDefinition = "TEXT")
     private String deviceToken;
@@ -48,6 +58,9 @@ public class Patient {
 
     @OneToMany(mappedBy = "patient", cascade = {CascadeType.ALL})
     private List<HistoryMission> historyMissions;
+
+    @Column(nullable=false, columnDefinition="boolean default false")
+    private Boolean isLevelUp;
 
     public Long getId() {
         return id;
@@ -165,11 +178,11 @@ public class Patient {
         this.occupation = occupation;
     }
 
-    public String getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
@@ -244,6 +257,30 @@ public class Patient {
 
     public void setDeviceToken(String deviceToken) {
         this.deviceToken = deviceToken;
+    }
+
+    public double getExp() {
+        return exp;
+    }
+
+    public void setExp(double exp) {
+        this.exp = exp;
+    }
+
+    public double getExpPercent() {
+        return expPercent;
+    }
+
+    public void setExpPercent(double expPercent) {
+        this.expPercent = expPercent;
+    }
+
+    public Boolean isLevelUp() {
+        return isLevelUp;
+    }
+
+    public void setLevelUp(Boolean levelUp) {
+        isLevelUp = levelUp;
     }
 
     @JsonIgnore

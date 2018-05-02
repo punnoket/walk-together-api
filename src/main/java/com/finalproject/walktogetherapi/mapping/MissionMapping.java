@@ -2,11 +2,14 @@ package com.finalproject.walktogetherapi.mapping;
 
 import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.entities.mission.*;
+import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.mission.*;
 import com.finalproject.walktogetherapi.util.Constant;
 import com.finalproject.walktogetherapi.util.DateTimeManager;
 
 import java.util.*;
+
+import static java.lang.Math.round;
 
 public class MissionMapping {
 
@@ -98,7 +101,7 @@ public class MissionMapping {
                                         MissionService missionService,
                                         PatientMissionService patientMissionService,
                                         PatientGameService patientGameService,
-                                        MapService mapService,
+                                        MapService mapService, PatientService patientService,
                                         PositionService positionService,
                                         Patient patient) {
 
@@ -118,6 +121,7 @@ public class MissionMapping {
             patientMissions.add(patientMissionService.create(patientMission));
             resultScore += Integer.parseInt(mission.get("score").toString());
         }
+
         patientGame.setPatientMissionList(patientMissions);
         patientGame.setResultScore(resultScore);
         patientGame.setRoute(data.get("route").toString());
@@ -125,6 +129,42 @@ public class MissionMapping {
         historyMission.setHistoryDate(DateTimeManager.getInstance().fullDateFormat(new Date()));
         historyMission.setPatientGame(patientGameService.update(patientGame.getId(), patientGame));
         historyMission.setPatient(patient);
+        calculateLevel(patientService, resultScore, patient);
         return historyMissionService.create(historyMission);
     }
+
+    private void calculateLevel(PatientService patientService, double score, Patient patient) {
+        int level = patient.getLevel();
+        double oldExp = patient.getExp();
+        long totalExp = nextLevel(level);
+        double exp = (score * 0.05);
+        exp = exp + oldExp;
+        if (exp < totalExp) {
+            patient.setLevelUp(false);
+        } else if (exp > totalExp) {
+            patient.setLevelUp(true);
+            while (exp > totalExp) {
+                exp = exp - totalExp;
+                level = level + 1;
+                totalExp = nextLevel(level);
+
+            }
+        } else {
+            level = level + 1;
+            exp = 0;
+            patient.setLevelUp(true);
+        }
+        patient.setExpPercent((exp * 100) / totalExp);
+        patient.setLevel(level);
+        patient.setExp(exp);
+        patientService.update(patient.getId(), patient);
+    }
+
+
+    private long nextLevel(int level) {
+        long nextExp = Math.round((4 * (Math.pow(level, 3))) / 5);
+        return nextExp;
+    }
+
+
 }
