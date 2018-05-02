@@ -5,6 +5,7 @@ import com.finalproject.walktogetherapi.entities.evaluation.HistoryEvaluationTes
 import com.finalproject.walktogetherapi.entities.master.*;
 import com.finalproject.walktogetherapi.entities.mission.HistoryMission;
 import com.finalproject.walktogetherapi.util.DateTimeManager;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
@@ -57,6 +58,9 @@ public class Patient {
 
     @OneToMany(mappedBy = "patient", cascade = {CascadeType.ALL})
     private List<HistoryMission> historyMissions;
+
+    @Column(nullable=false, columnDefinition="boolean default false")
+    private Boolean isLevelUp;
 
     public Long getId() {
         return id;
@@ -269,6 +273,14 @@ public class Patient {
 
     public void setExpPercent(double expPercent) {
         this.expPercent = expPercent;
+    }
+
+    public Boolean isLevelUp() {
+        return isLevelUp;
+    }
+
+    public void setLevelUp(Boolean levelUp) {
+        isLevelUp = levelUp;
     }
 
     @JsonIgnore

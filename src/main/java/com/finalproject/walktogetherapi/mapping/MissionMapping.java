@@ -101,7 +101,7 @@ public class MissionMapping {
                                         MissionService missionService,
                                         PatientMissionService patientMissionService,
                                         PatientGameService patientGameService,
-                                        MapService mapService,PatientService patientService,
+                                        MapService mapService, PatientService patientService,
                                         PositionService positionService,
                                         Patient patient) {
 
@@ -129,47 +129,41 @@ public class MissionMapping {
         historyMission.setHistoryDate(DateTimeManager.getInstance().fullDateFormat(new Date()));
         historyMission.setPatientGame(patientGameService.update(patientGame.getId(), patientGame));
         historyMission.setPatient(patient);
-        calculateLevel(patientService,resultScore, patient);
+        calculateLevel(patientService, resultScore, patient);
         return historyMissionService.create(historyMission);
     }
 
     private void calculateLevel(PatientService patientService, double score, Patient patient) {
-        double exp = 0;
-        long  totalExp = 0;
         int level = patient.getLevel();
         double oldExp = patient.getExp();
-        totalExp = nextLevel(level);
-    exp =  (score * 0.05);
-    exp = exp + oldExp;
-        System.out.println("oldExp" + oldExp);
-        System.out.println("exp" + exp);
-        if(exp < totalExp){
-            exp =  exp;
-        }
-        else if (exp > totalExp){
-            while (exp > totalExp){
+        long totalExp = nextLevel(level);
+        double exp = (score * 0.05);
+        exp = exp + oldExp;
+        if (exp < totalExp) {
+            patient.setLevelUp(false);
+        } else if (exp > totalExp) {
+            patient.setLevelUp(true);
+            while (exp > totalExp) {
                 exp = exp - totalExp;
-                level = level+1;
+                level = level + 1;
                 totalExp = nextLevel(level);
 
             }
-            System.out.println("finalLevel" + level);
-            System.out.println("finalExp " + exp);
-        }else {
-            level = level+1;
-            exp =0;
+        } else {
+            level = level + 1;
+            exp = 0;
+            patient.setLevelUp(true);
         }
-
-        patient.setExpPercent((exp*100)/totalExp);
+        patient.setExpPercent((exp * 100) / totalExp);
         patient.setLevel(level);
         patient.setExp(exp);
-        patientService.update(patient.getId(),patient);
+        patientService.update(patient.getId(), patient);
     }
 
 
-    private long  nextLevel(int level) {
-        long nextExp = Math.round((4 * (Math.pow(level,3))) / 5);
-        return  nextExp;
+    private long nextLevel(int level) {
+        long nextExp = Math.round((4 * (Math.pow(level, 3))) / 5);
+        return nextExp;
     }
 
 
