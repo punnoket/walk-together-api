@@ -33,6 +33,6 @@ public class Collection {
     }
 
     public void setReward(Reward reward) {
-        reward = reward;
+        this.reward = reward;
     }
 }

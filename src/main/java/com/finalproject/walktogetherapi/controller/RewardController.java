@@ -1,4 +1,4 @@
-package com.finalproject.walktogetherapi.controller.master;
+package com.finalproject.walktogetherapi.controller;
 
 import com.finalproject.walktogetherapi.entities.Reward;
 import com.finalproject.walktogetherapi.entities.Test;
@@ -30,18 +30,18 @@ public class RewardController {
     }
 
     @GetMapping("getById/{id}")
-    public ResponseEntity getTestId(@PathVariable Long id) {
+    public ResponseEntity getRewardId(@PathVariable Long id) {
         Reward reward = rewardService.findById(id);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, reward, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
 
     @PostMapping("")
-    public ResponseEntity createTest(@RequestBody HashMap<String, Object> data) {
+    public ResponseEntity create(@RequestBody HashMap<String, Object> data) {
         Reward reward = new Reward();
-        reward.setMapId(data.get("mapId").toString());
-        reward.setRewardName(data.get("rewardname").toString());
-        reward.setLevel(data.get("lavel").toString());
+        reward.setRewardName(data.get("rewardName").toString());
+        reward.setDetail(data.get("detail").toString());
+        reward.setLevel(data.get("level").toString());
 
         Reward result = rewardService.create(reward);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, result, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
@@ -55,17 +55,18 @@ public class RewardController {
     }
 
     @PatchMapping("updateTest/{id}")
-    public ResponseEntity updateTest(@RequestBody HashMap<String, Object> data, @PathVariable Long id) {
+    public ResponseEntity update(@RequestBody HashMap<String, Object> data, @PathVariable Long id) {
         Reward reward = rewardService.findById(id);
 
-        if (data.get("mapId") != null) {
-            reward.setMapId(data.get("mapId").toString());
+
+        if (data.get("rewardName") != null) {
+            reward.setRewardName(data.get("rewardName").toString());
         }
-        if (data.get("rewardname") != null) {
-            reward.setRewardName(data.get("rewardname").toString());
+        if (data.get("detail") != null) {
+            reward.setDetail(data.get("detail").toString());
         }
-        if (data.get("lavel") != null) {
-            reward.setLevel(data.get("lavel").toString());
+        if (data.get("level") != null) {
+            reward.setLevel(data.get("level").toString());
         }
 
         Reward result = rewardService.create(reward);
