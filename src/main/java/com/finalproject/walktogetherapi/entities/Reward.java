@@ -9,9 +9,11 @@ public class Reward {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String mapId;
+
     private String rewardName;
+    private String detail;
     private String level;
+    private String image;
 
     public Long getId() {
         return id;
@@ -21,13 +23,6 @@ public class Reward {
         this.id = id;
     }
 
-    public String getMapId() {
-        return mapId;
-    }
-
-    public void setMapId(String mapId) {
-        this.mapId = mapId;
-    }
 
     public String getRewardName() {
         return rewardName;
@@ -43,5 +38,21 @@ public class Reward {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 }

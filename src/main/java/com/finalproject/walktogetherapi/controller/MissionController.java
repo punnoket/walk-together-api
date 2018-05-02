@@ -85,7 +85,7 @@ public class MissionController {
     public ResponseEntity sendMission(HttpServletRequest request, @RequestBody HashMap<String, Object> data, @PathVariable Long id) {
         LogUtil.getInstance().saveLog(request, data, logService);
         Patient patient = patientService.findById(id);
-        HistoryMission historyMission = MissionMapping.getInstance().createHistory(data, historyMissionService, missionService, patientMissionService, patientGameService, mapService, positionService,patient);
+        HistoryMission historyMission = MissionMapping.getInstance().createHistory(data, historyMissionService, missionService, patientMissionService, patientGameService, mapService,patientService, positionService,patient);
         patient.setFrequency(PatientMapping.getInstance().increaseFrequency(patient.getFrequency()));
         if (patient.getHistoryMissions() != null) {
             List<HistoryMission> patientHistoryMissions = patient.getHistoryMissions();

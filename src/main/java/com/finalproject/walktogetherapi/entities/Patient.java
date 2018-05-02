@@ -35,10 +35,16 @@ public class Patient {
     private SubDistrict subDistrict;
     private String tell;
     private String occupation;
-    private String level;
+
+    @Column(name = "level", columnDefinition = "Decimal(10,2) default '1'")
+    private int level = 0;
     private String frequency;
     private String email;
     private String image;
+
+    @Column(name = "exp", columnDefinition = "Decimal(10,2) default '0.00'")
+    private double exp;
+
     private String qrCode;
     @Column(columnDefinition = "TEXT")
     private String deviceToken;
@@ -165,11 +171,11 @@ public class Patient {
         this.occupation = occupation;
     }
 
-    public String getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
@@ -244,6 +250,14 @@ public class Patient {
 
     public void setDeviceToken(String deviceToken) {
         this.deviceToken = deviceToken;
+    }
+
+    public double getExp() {
+        return exp;
+    }
+
+    public void setExp(double exp) {
+        this.exp = exp;
     }
 
     @JsonIgnore

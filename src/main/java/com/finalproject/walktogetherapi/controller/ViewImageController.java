@@ -131,4 +131,21 @@ public class ViewImageController {
         return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(data);
     }
 
+    @GetMapping("/reward/{id}/{fileName:.+}")
+    public ResponseEntity<byte[]> viewImageReward(@PathVariable String id,
+                                                    @PathVariable String fileName) throws IOException {
+
+        String pathString = "image"
+                + "/"
+                + "reward"
+                + "/"
+                + id
+                + "/"
+                + fileName;
+
+        Path path = Paths.get(pathString);
+        byte[] data = Files.readAllBytes(path);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(data);
+    }
+
 }

@@ -2,6 +2,7 @@ package com.finalproject.walktogetherapi.controller;
 
 import com.finalproject.walktogetherapi.entities.Caretaker;
 import com.finalproject.walktogetherapi.entities.Patient;
+import com.finalproject.walktogetherapi.entities.Reward;
 import com.finalproject.walktogetherapi.entities.evaluation.QuestionEvaluation;
 import com.finalproject.walktogetherapi.entities.mission.AnswerMission;
 import com.finalproject.walktogetherapi.entities.mission.Map;
@@ -9,6 +10,7 @@ import com.finalproject.walktogetherapi.entities.mission.Mission;
 import com.finalproject.walktogetherapi.service.CaretakerService;
 import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.QuestionEvaluationService;
+import com.finalproject.walktogetherapi.service.RewardService;
 import com.finalproject.walktogetherapi.service.mission.AnswerMissionService;
 import com.finalproject.walktogetherapi.service.mission.MapService;
 import com.finalproject.walktogetherapi.service.mission.MissionService;
@@ -29,6 +31,7 @@ import static com.finalproject.walktogetherapi.util.Constant.*;
 public class ImageController {
     private PatientService patientService;
     private CaretakerService caretakerService;
+    private RewardService rewardService;
     private QuestionEvaluationService questionEvaluationService;
     private MapService mapService;
     private MissionService missionService;
@@ -40,13 +43,14 @@ public class ImageController {
                            CaretakerService caretakerService,
                            MissionService missionService,
                            AnswerMissionService answerMissionService,
-                           QuestionEvaluationService questionEvaluationService) {
+                           QuestionEvaluationService questionEvaluationService,RewardService rewardService) {
         this.questionEvaluationService = questionEvaluationService;
         this.patientService = patientService;
         this.caretakerService = caretakerService;
         this.mapService = mapService;
         this.missionService = missionService;
         this.answerMissionService = answerMissionService;
+        this.rewardService = rewardService;
     }
 
     @PostMapping("question-evaluation")
@@ -186,6 +190,30 @@ public class ImageController {
         if (resultPathImage != null) {
             caretaker.setImage(resultPathImage);
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.CREATED, caretakerService.update(id, caretaker), HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
+
+        } else {
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
+        }
+    }
+
+
+    @PostMapping("reward")
+    public ResponseEntity uploadRewardImage(@RequestParam("file") MultipartFile file,
+                                               @RequestParam("id") Long id) {
+
+        Reward reward = rewardService.findById(id);
+        String pathString = PATH_IMAGE_REWARD
+                + "/"
+                + reward.getId()
+                + "/";
+
+        if (file.isEmpty())
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
+
+        String resultPathImage = UploadUtil.getInstance().upload(pathString, file);
+        if (resultPathImage != null) {
+            reward.setImage(resultPathImage);
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.CREATED, rewardService.update(id, reward), HttpStatus.CREATED.getReasonPhrase()), HttpStatus.CREATED);
 
         } else {
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, HttpStatus.NOT_FOUND.getReasonPhrase()), HttpStatus.NOT_FOUND);
