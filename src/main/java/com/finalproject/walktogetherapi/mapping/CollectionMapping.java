@@ -46,7 +46,10 @@ public class CollectionMapping {
         for (Reward reward : rewardList) {
                 Collection collection = new Collection();
                 collection.setReceive(false);
-                collection.setLock(true);
+                if (reward.getLevel() == 1)
+                    collection.setLock(false);
+                else
+                    collection.setLock(true);
                 collection.setPatient(patient);
                 collection.setReward(reward);
                 collectionService.create(collection);
