@@ -8,11 +8,9 @@ public class Reward {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-
     private String rewardName;
     private String detail;
-    private String level;
+    private int level;
     private String image;
 
     public Long getId() {
@@ -23,7 +21,6 @@ public class Reward {
         this.id = id;
     }
 
-
     public String getRewardName() {
         return rewardName;
     }
@@ -32,11 +29,11 @@ public class Reward {
         this.rewardName = rewardName;
     }
 
-    public String getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 

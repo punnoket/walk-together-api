@@ -21,8 +21,5 @@ public interface CollectionService {
 
     List<Collection> findByPatientId(Long id);
 
-    List<Collection> findByRewardId(Long id);
-
-
-
+    Collection findByRewardId(Long rewardId, Long patientId);
 }
