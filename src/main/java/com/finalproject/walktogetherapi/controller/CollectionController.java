@@ -2,20 +2,15 @@ package com.finalproject.walktogetherapi.controller;
 
 import com.finalproject.walktogetherapi.entities.*;
 import com.finalproject.walktogetherapi.mapping.CollectionMapping;
-import com.finalproject.walktogetherapi.mapping.MatchingMapping;
 import com.finalproject.walktogetherapi.service.*;
 import com.finalproject.walktogetherapi.util.ApiResponse;
-import com.finalproject.walktogetherapi.util.LogUtil;
 import com.finalproject.walktogetherapi.util.MessageUtil;
-import com.finalproject.walktogetherapi.util.NotificationUtil;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -85,5 +80,16 @@ public class CollectionController {
                     HttpStatus.OK);
     }
 
-
+    @GetMapping("reward-by-level/{id}")
+    public ResponseEntity getRewardByLevelPatient(HttpServletRequest request, @PathVariable Long id) {
+        Patient patient = patientService.findById(id);
+        Reward reward = CollectionMapping.getInstance().randomReward(patient.getLevel(), rewardService.findAll());
+        Collection collection = collectionService.findByRewardId(reward.getId(), patient.getId());
+        collection.setReceive(true);
+        collectionService.update(collection.getId(), collection);
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
+                reward,
+                HttpStatus.OK.getReasonPhrase()),
+                HttpStatus.OK);
+    }
 }

@@ -1,14 +1,14 @@
 package com.finalproject.walktogetherapi.controller;
 
 import com.finalproject.walktogetherapi.entities.Patient;
-import com.finalproject.walktogetherapi.entities.evaluation.HistoryEvaluationTest;
 import com.finalproject.walktogetherapi.entities.mission.HistoryMission;
 import com.finalproject.walktogetherapi.entities.mission.Mission;
-import com.finalproject.walktogetherapi.entities.mission.PatientMission;
 import com.finalproject.walktogetherapi.mapping.MissionMapping;
 import com.finalproject.walktogetherapi.mapping.PatientMapping;
+import com.finalproject.walktogetherapi.service.CollectionService;
 import com.finalproject.walktogetherapi.service.LogService;
 import com.finalproject.walktogetherapi.service.PatientService;
+import com.finalproject.walktogetherapi.service.RewardService;
 import com.finalproject.walktogetherapi.service.mission.*;
 import com.finalproject.walktogetherapi.util.ApiResponse;
 import com.finalproject.walktogetherapi.util.LogUtil;
@@ -35,6 +35,8 @@ public class MissionController {
     private PatientMissionService patientMissionService;
     private LogService logService;
     private PositionService positionService;
+    private RewardService rewardService;
+    private CollectionService collectionService;
 
     @Autowired
     public MissionController(MissionService missionService,
@@ -45,7 +47,9 @@ public class MissionController {
                              LogService logService,
                              PositionService positionService,
                              PatientGameService patientGameService,
-                             PatientMissionService patientMissionService) {
+                             PatientMissionService patientMissionService,
+                             RewardService rewardService,
+                             CollectionService collectionService) {
         this.missionService = missionService;
         this.cognitiveCategoryService = cognitiveCategoryService;
         this.historyMissionService = historyMissionService;
@@ -55,6 +59,8 @@ public class MissionController {
         this.patientMissionService = patientMissionService;
         this.logService = logService;
         this.positionService = positionService;
+        this.rewardService = rewardService;
+        this.collectionService = collectionService;
     }
 
     @GetMapping("/all-map")
@@ -85,7 +91,17 @@ public class MissionController {
     public ResponseEntity sendMission(HttpServletRequest request, @RequestBody HashMap<String, Object> data, @PathVariable Long id) {
         LogUtil.getInstance().saveLog(request, data, logService);
         Patient patient = patientService.findById(id);
-        HistoryMission historyMission = MissionMapping.getInstance().createHistory(data, historyMissionService, missionService, patientMissionService, patientGameService, mapService,patientService, positionService,patient);
+        HistoryMission historyMission = MissionMapping.getInstance().createHistory(data,
+                historyMissionService,
+                missionService,
+                patientMissionService,
+                patientGameService,
+                mapService,
+                patientService,
+                positionService,
+                rewardService,
+                collectionService,
+                patient);
         patient.setFrequency(PatientMapping.getInstance().increaseFrequency(patient.getFrequency()));
         if (patient.getHistoryMissions() != null) {
             List<HistoryMission> patientHistoryMissions = patient.getHistoryMissions();

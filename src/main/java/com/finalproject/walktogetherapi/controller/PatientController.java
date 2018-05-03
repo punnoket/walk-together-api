@@ -2,11 +2,9 @@ package com.finalproject.walktogetherapi.controller;
 
 import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.entities.master.Education;
+import com.finalproject.walktogetherapi.mapping.CollectionMapping;
 import com.finalproject.walktogetherapi.mapping.PatientMapping;
-import com.finalproject.walktogetherapi.service.CaretakerService;
-import com.finalproject.walktogetherapi.service.HistoryEvaluationTestService;
-import com.finalproject.walktogetherapi.service.LogService;
-import com.finalproject.walktogetherapi.service.PatientService;
+import com.finalproject.walktogetherapi.service.*;
 import com.finalproject.walktogetherapi.service.master.*;
 import com.finalproject.walktogetherapi.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +28,8 @@ public class PatientController {
     private SubDistrictServices subDistrictServices;
     private HistoryEvaluationTestService historyEvaluationTestService;
     private EducationServices educationServices;
+    private CollectionService collectionService;
+    private RewardService rewardService;
     private LogService logService;
 
     @Autowired
@@ -39,6 +39,8 @@ public class PatientController {
                              ProvinceServices provinceServices,
                              DistrictServices districtServices,
                              SubDistrictServices subDistrictServices,
+                             CollectionService collectionService,
+                             RewardService rewardService,
                              LogService logService,
                              EducationServices educationServices,
                              HistoryEvaluationTestService historyEvaluationTestService) {
@@ -47,6 +49,8 @@ public class PatientController {
         this.caretakerService = caretakerService;
         this.provinceServices = provinceServices;
         this.districtServices = districtServices;
+        this.rewardService = rewardService;
+        this.collectionService = collectionService;
         this.subDistrictServices = subDistrictServices;
         this.historyEvaluationTestService = historyEvaluationTestService;
         this.educationServices = educationServices;
@@ -97,6 +101,7 @@ public class PatientController {
         if (patient.getUserName() != null) {
             if (patient.getEmail() != null) {
                 if (patient.getTell() != null) {
+                    CollectionMapping.getInstance().addCollection(rewardService, collectionService, patient);
                     return new ResponseEntity<>(ApiResponse.getInstance()
                             .response(HttpStatus.CREATED,
                                     patientService.update(Long.parseLong(data.get("idPatient").toString()), patient),

@@ -1,11 +1,8 @@
 package com.finalproject.walktogetherapi.service.impl;
 
 import com.finalproject.walktogetherapi.entities.Reward;
-import com.finalproject.walktogetherapi.entities.Test;
 import com.finalproject.walktogetherapi.repository.RewardRepository;
-import com.finalproject.walktogetherapi.repository.TestRepository;
 import com.finalproject.walktogetherapi.service.RewardService;
-import com.finalproject.walktogetherapi.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,5 +42,10 @@ public class RewardServiceImpl implements RewardService {
         Reward result = rewardRepository.findOne(id);
         rewardRepository.delete(id);
         return result;
+    }
+
+    @Override
+    public List<Reward> findByLevel(int level) {
+        return rewardRepository.findByLevel(level);
     }
 }
