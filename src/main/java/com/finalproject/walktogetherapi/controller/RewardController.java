@@ -1,15 +1,20 @@
 package com.finalproject.walktogetherapi.controller;
 
+import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.entities.Reward;
 import com.finalproject.walktogetherapi.entities.Test;
+import com.finalproject.walktogetherapi.mapping.CollectionMapping;
+import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.RewardService;
 import com.finalproject.walktogetherapi.service.TestService;
 import com.finalproject.walktogetherapi.util.ApiResponse;
+import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,10 +22,13 @@ import java.util.List;
 @RequestMapping("/api/v1/reward")
 public class RewardController {
     private RewardService rewardService;
+    private PatientService patientService;
 
     @Autowired
-    public RewardController(RewardService rewardService) {
+    public RewardController(RewardService rewardService,
+                            PatientService patientService) {
         this.rewardService = rewardService;
+        this.patientService = patientService;
     }
 
     @GetMapping("")
@@ -41,7 +49,7 @@ public class RewardController {
         Reward reward = new Reward();
         reward.setRewardName(data.get("rewardName").toString());
         reward.setDetail(data.get("detail").toString());
-        reward.setLevel(data.get("level").toString());
+        reward.setLevel(Integer.parseInt(data.get("level").toString()));
 
         Reward result = rewardService.create(reward);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, result, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
@@ -58,7 +66,6 @@ public class RewardController {
     public ResponseEntity update(@RequestBody HashMap<String, Object> data, @PathVariable Long id) {
         Reward reward = rewardService.findById(id);
 
-
         if (data.get("rewardName") != null) {
             reward.setRewardName(data.get("rewardName").toString());
         }
@@ -66,7 +73,7 @@ public class RewardController {
             reward.setDetail(data.get("detail").toString());
         }
         if (data.get("level") != null) {
-            reward.setLevel(data.get("level").toString());
+            reward.setLevel(Integer.parseInt(data.get("level").toString()));
         }
 
         Reward result = rewardService.create(reward);
