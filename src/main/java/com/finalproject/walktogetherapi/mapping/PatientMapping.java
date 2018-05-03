@@ -2,6 +2,7 @@ package com.finalproject.walktogetherapi.mapping;
 
 import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.service.CaretakerService;
+import com.finalproject.walktogetherapi.service.CollectionService;
 import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.master.*;
 import com.finalproject.walktogetherapi.util.QrCodeGenerator;
@@ -91,6 +92,8 @@ public class PatientMapping {
     public Patient createPatient(Patient patient) {
         patient.setPatientNumber(RandomNumberUser.getInstance().getNumberPatient());
         patient.setFrequency("0");
+        patient.setLevel(1);
+        patient.setLevelUp(false);
         patient = generatorQrCode(patient);
         return patient;
     }

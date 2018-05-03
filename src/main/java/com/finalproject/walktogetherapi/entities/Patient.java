@@ -38,7 +38,7 @@ public class Patient {
     private String occupation;
 
     @Column(name = "level", columnDefinition = "Decimal(10,2) default '1'")
-    private int level = 0;
+    private int level;
     private String frequency;
     private String email;
     private String image;
@@ -59,7 +59,7 @@ public class Patient {
     @OneToMany(mappedBy = "patient", cascade = {CascadeType.ALL})
     private List<HistoryMission> historyMissions;
 
-    @Column(nullable=false, columnDefinition="boolean default false")
+    @Column(columnDefinition="boolean default false")
     private Boolean isLevelUp;
 
     public Long getId() {

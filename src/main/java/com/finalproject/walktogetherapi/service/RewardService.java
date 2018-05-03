@@ -19,6 +19,5 @@ public interface RewardService {
 
     Reward delete(Long id);
 
-
-
+    List<Reward> findByLevel(int level);
 }

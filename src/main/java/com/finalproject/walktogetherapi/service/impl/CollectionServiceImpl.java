@@ -53,7 +53,7 @@ public class CollectionServiceImpl implements CollectionService {
     }
 
     @Override
-    public List<Collection> findByRewardId(Long id) {
-        return collectionRepository.findByRewardId(id);
+    public Collection findByRewardId(Long rewardId, Long patientId) {
+        return collectionRepository.findByRewardId(rewardId, patientId);
     }
 }

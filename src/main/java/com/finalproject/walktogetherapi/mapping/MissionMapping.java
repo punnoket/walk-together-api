@@ -2,7 +2,9 @@ package com.finalproject.walktogetherapi.mapping;
 
 import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.entities.mission.*;
+import com.finalproject.walktogetherapi.service.CollectionService;
 import com.finalproject.walktogetherapi.service.PatientService;
+import com.finalproject.walktogetherapi.service.RewardService;
 import com.finalproject.walktogetherapi.service.mission.*;
 import com.finalproject.walktogetherapi.util.Constant;
 import com.finalproject.walktogetherapi.util.DateTimeManager;
@@ -101,8 +103,11 @@ public class MissionMapping {
                                         MissionService missionService,
                                         PatientMissionService patientMissionService,
                                         PatientGameService patientGameService,
-                                        MapService mapService, PatientService patientService,
+                                        MapService mapService,
+                                        PatientService patientService,
                                         PositionService positionService,
+                                        RewardService rewardService,
+                                        CollectionService collectionService,
                                         Patient patient) {
 
         int resultScore = 0;
@@ -129,11 +134,11 @@ public class MissionMapping {
         historyMission.setHistoryDate(DateTimeManager.getInstance().fullDateFormat(new Date()));
         historyMission.setPatientGame(patientGameService.update(patientGame.getId(), patientGame));
         historyMission.setPatient(patient);
-        calculateLevel(patientService, resultScore, patient);
+        calculateLevel(patientService, resultScore, patient, rewardService, collectionService);
         return historyMissionService.create(historyMission);
     }
 
-    private void calculateLevel(PatientService patientService, double score, Patient patient) {
+    private void calculateLevel(PatientService patientService, double score, Patient patient, RewardService rewardService, CollectionService collectionService) {
         int level = patient.getLevel();
         double oldExp = patient.getExp();
         long totalExp = nextLevel(level);
@@ -157,14 +162,13 @@ public class MissionMapping {
         patient.setExpPercent((exp * 100) / totalExp);
         patient.setLevel(level);
         patient.setExp(exp);
+        CollectionMapping.getInstance().unlockReward(collectionService, patient);
         patientService.update(patient.getId(), patient);
     }
-
 
     private long nextLevel(int level) {
         long nextExp = Math.round((4 * (Math.pow(level, 3))) / 5);
         return nextExp;
     }
-
 
 }
