@@ -148,7 +148,6 @@ public class MissionMapping {
             patient.setLevelUp(false);
         } else if (exp > totalExp) {
             patient.setLevelUp(true);
-            CollectionMapping.getInstance().unlockReward(collectionService, patient);
             while (exp > totalExp) {
                 exp = exp - totalExp;
                 level = level + 1;
@@ -159,11 +158,11 @@ public class MissionMapping {
             level = level + 1;
             exp = 0;
             patient.setLevelUp(true);
-            CollectionMapping.getInstance().unlockReward(collectionService, patient);
         }
         patient.setExpPercent((exp * 100) / totalExp);
         patient.setLevel(level);
         patient.setExp(exp);
+        CollectionMapping.getInstance().unlockReward(collectionService, patient);
         patientService.update(patient.getId(), patient);
     }
 

@@ -66,8 +66,10 @@ public class CollectionMapping {
     public void unlockReward(CollectionService collectionService, Patient patient) {
         List<Collection> collectionList = collectionService.findByPatientId(patient.getId());
         for (Collection collection : collectionList) {
-            collection.setLock(false);
-            collectionService.update(collection.getId(), collection);
+            if(patient.getLevel()>= collection.getReward().getLevel()) {
+                collection.setLock(false);
+                collectionService.update(collection.getId(), collection);
+            }
         }
     }
 }
