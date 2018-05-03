@@ -26,8 +26,8 @@ public class CollectionController {
 
     @Autowired
     public CollectionController(RewardService rewardService,
-                              PatientService patientService,
-                              LogService logService, CollectionService collectionService) {
+                                PatientService patientService,
+                                LogService logService, CollectionService collectionService) {
         this.patientService = patientService;
         this.rewardService = rewardService;
         this.collectionService = collectionService;
@@ -49,7 +49,6 @@ public class CollectionController {
                 HttpStatus.OK.getReasonPhrase()),
                 HttpStatus.OK);
     }
-
 
 
     @PostMapping("")
@@ -84,9 +83,7 @@ public class CollectionController {
     public ResponseEntity getRewardByLevelPatient(HttpServletRequest request, @PathVariable Long id) {
         Patient patient = patientService.findById(id);
         Reward reward = CollectionMapping.getInstance().randomReward(patient.getLevel(), rewardService.findAll());
-        Collection collection = collectionService.findByRewardId(reward.getId(), patient.getId());
-        collection.setReceive(true);
-        collectionService.update(collection.getId(), collection);
+        CollectionMapping.getInstance().receiveReward(collectionService, patient, reward);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
                 reward,
                 HttpStatus.OK.getReasonPhrase()),

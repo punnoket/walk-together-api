@@ -53,6 +53,13 @@ public class CollectionMapping {
             }
     }
 
+    public void receiveReward(CollectionService collectionService, Patient patient, Reward reward) {
+        Collection collection = collectionService.findByRewardId(reward.getId(), patient.getId());
+        collection.setReceive(true);
+        collection.setLock(false);
+        collectionService.update(collection.getId(), collection);
+    }
+
     public void unlockReward(CollectionService collectionService, Patient patient) {
         List<Collection> collectionList = collectionService.findByPatientId(patient.getId());
         for (Collection collection : collectionList) {
