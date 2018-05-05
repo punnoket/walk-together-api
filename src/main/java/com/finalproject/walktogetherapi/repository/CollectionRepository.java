@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface CollectionRepository extends JpaRepository<Collection, Long> {
 
-    @Query("select c from Collection c where c.patient.id = ?1 order by c.reward.level asc")
+    @Query("select c from Collection c where c.patient.id = ?1 order by c.reward.id asc")
     List<Collection> findByPatientId(Long id);
 
     @Query("select c from Collection c where c.reward.id = ?1 and c.patient.id = ?2")
