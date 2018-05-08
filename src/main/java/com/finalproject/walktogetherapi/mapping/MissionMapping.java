@@ -110,7 +110,7 @@ public class MissionMapping {
                                         CollectionService collectionService,
                                         Patient patient) {
 
-        int resultScore = 0;
+        double resultScore = 0;
         HistoryMission historyMission = new HistoryMission();
         PatientGame patientGame = patientGameService.create(new PatientGame());
         List<PatientMission> patientMissions = new ArrayList<>();
@@ -121,10 +121,10 @@ public class MissionMapping {
             PatientMission patientMission = new PatientMission();
             patientMission.setMission(missionService.findById(Long.parseLong(mission.get("idMission").toString())));
             patientMission.setPosition(positionService.findById(Long.parseLong(mission.get("idPosition").toString())));
-            patientMission.setScore(Integer.parseInt(mission.get("score").toString()));
+            patientMission.setScore(Double.parseDouble(mission.get("score").toString()));
             patientMission.setPatientGame(patientGame);
             patientMissions.add(patientMissionService.create(patientMission));
-            resultScore += Integer.parseInt(mission.get("score").toString());
+            resultScore += Double.parseDouble(mission.get("score").toString());
         }
 
         patientGame.setPatientMissionList(patientMissions);
@@ -167,7 +167,7 @@ public class MissionMapping {
     }
 
     private long nextLevel(int level) {
-        long nextExp = Math.round((4 * (Math.pow(level, 3))) / 5);
+        long nextExp = Math.round(0.04 * (Math.pow(level, 3)) + 0.8 * (Math.pow(level, 2)) + 2 * level);
         return nextExp;
     }
 

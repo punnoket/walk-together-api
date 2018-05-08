@@ -10,7 +10,7 @@ public class PatientMission {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int score;
+    private double score;
 
     @ManyToOne
     private Mission mission;
@@ -30,11 +30,11 @@ public class PatientMission {
         this.id = id;
     }
 
-    public int getScore() {
+    public double getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(double score) {
         this.score = score;
     }
 

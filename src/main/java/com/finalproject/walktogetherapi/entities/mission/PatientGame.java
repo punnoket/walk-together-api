@@ -8,7 +8,7 @@ public class PatientGame {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int resultScore;
+    private double resultScore;
 
     @ManyToOne
     private Map map;
@@ -27,11 +27,11 @@ public class PatientGame {
         this.id = id;
     }
 
-    public int getResultScore() {
+    public double getResultScore() {
         return resultScore;
     }
 
-    public void setResultScore(int resultScore) {
+    public void setResultScore(double resultScore) {
         this.resultScore = resultScore;
     }
 
