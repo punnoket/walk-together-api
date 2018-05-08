@@ -10,5 +10,6 @@ import java.util.List;
 
 @Repository
 public interface AnswerMissionRepository extends JpaRepository<AnswerMission, Long> {
-
+    @Query("select am from AnswerMission am where am.mission.type = ?1 and am.answer != ?2")
+    List<AnswerMission> findByMissionType(String type, String answer);
 }

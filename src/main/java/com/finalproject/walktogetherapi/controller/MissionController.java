@@ -1,6 +1,8 @@
 package com.finalproject.walktogetherapi.controller;
 
+import com.finalproject.walktogetherapi.entities.Collection;
 import com.finalproject.walktogetherapi.entities.Patient;
+import com.finalproject.walktogetherapi.entities.mission.AnswerMission;
 import com.finalproject.walktogetherapi.entities.mission.HistoryMission;
 import com.finalproject.walktogetherapi.entities.mission.Mission;
 import com.finalproject.walktogetherapi.mapping.MissionMapping;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -37,6 +40,7 @@ public class MissionController {
     private PositionService positionService;
     private RewardService rewardService;
     private CollectionService collectionService;
+    private AnswerMissionService answerMissionService;
 
     @Autowired
     public MissionController(MissionService missionService,
@@ -46,6 +50,7 @@ public class MissionController {
                              MapService mapService,
                              LogService logService,
                              PositionService positionService,
+                             AnswerMissionService answerMissionService,
                              PatientGameService patientGameService,
                              PatientMissionService patientMissionService,
                              RewardService rewardService,
@@ -61,6 +66,7 @@ public class MissionController {
         this.positionService = positionService;
         this.rewardService = rewardService;
         this.collectionService = collectionService;
+        this.answerMissionService = answerMissionService;
     }
 
     @GetMapping("/all-map")
@@ -69,7 +75,7 @@ public class MissionController {
     }
 
     @GetMapping("/history-by-id/{id}")
-    public ResponseEntity getHistoryMission(HttpServletRequest request,@PathVariable Long id) {
+    public ResponseEntity getHistoryMission(HttpServletRequest request, @PathVariable Long id) {
         LogUtil.getInstance().saveLog(request, "", logService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, patientService.findById(id).getHistoryMissions(), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
@@ -78,6 +84,15 @@ public class MissionController {
     public ResponseEntity getMission(HttpServletRequest request, @PathVariable Long id) {
         LogUtil.getInstance().saveLog(request, "", logService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, MissionMapping.getInstance().getMissionByIdMap(id, missionService, positionService), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+    }
+
+    @GetMapping("/answer-by-type/{id}")
+    public ResponseEntity getAnswerByType(HttpServletRequest request, @PathVariable Long id) {
+        AnswerMission answerMission = answerMissionService.findById(id);
+        List<AnswerMission> answerMissions = answerMissionService.findByMissionType(answerMission.getMission().getType(), answerMission.getAnswer());
+        Collections.shuffle(answerMissions);
+        answerMissions = answerMissions.subList(0, 2);
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, answerMissions, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
     @PostMapping("")

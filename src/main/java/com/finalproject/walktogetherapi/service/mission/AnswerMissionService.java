@@ -1,6 +1,5 @@
 package com.finalproject.walktogetherapi.service.mission;
 import com.finalproject.walktogetherapi.entities.mission.AnswerMission;
-import com.finalproject.walktogetherapi.entities.mission.Mission;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,6 +8,8 @@ import java.util.List;
 public interface AnswerMissionService {
 
     List<AnswerMission> findAll();
+
+    List<AnswerMission> findByMissionType(String type, String answer);
 
     AnswerMission findById(Long id);
 

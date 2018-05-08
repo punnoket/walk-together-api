@@ -1,11 +1,8 @@
 package com.finalproject.walktogetherapi.service.impl.mission;
 
 import com.finalproject.walktogetherapi.entities.mission.AnswerMission;
-import com.finalproject.walktogetherapi.entities.mission.Mission;
 import com.finalproject.walktogetherapi.repository.mission.AnswerMissionRepository;
-import com.finalproject.walktogetherapi.repository.mission.MissionRepository;
 import com.finalproject.walktogetherapi.service.mission.AnswerMissionService;
-import com.finalproject.walktogetherapi.service.mission.MissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +21,11 @@ public class AnswerMissionServiceImpl implements AnswerMissionService {
     @Override
     public List<AnswerMission> findAll() {
         return this.repository.findAll();
+    }
+
+    @Override
+    public List<AnswerMission> findByMissionType(String type, String answer) {
+        return repository.findByMissionType(type, answer);
     }
 
     @Override
