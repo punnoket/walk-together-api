@@ -86,6 +86,11 @@ public class MissionController {
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, MissionMapping.getInstance().getMissionByIdMap(id, missionService, positionService), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
+    @GetMapping("/by-id/{id}")
+    public ResponseEntity getMissionById(HttpServletRequest request, @PathVariable Long id) {
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, missionService.findById(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+    }
+
     @GetMapping("/answer-by-type/{id}")
     public ResponseEntity getAnswerByType(HttpServletRequest request, @PathVariable Long id) {
         AnswerMission answerMission = answerMissionService.findById(id);
