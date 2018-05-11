@@ -1,7 +1,6 @@
 package com.finalproject.walktogetherapi.service;
 
 import com.finalproject.walktogetherapi.entities.Collection;
-import com.finalproject.walktogetherapi.entities.Matching;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,4 +21,6 @@ public interface CollectionService {
     List<Collection> findByPatientId(Long id);
 
     Collection findByRewardId(Long rewardId, Long patientId);
+
+    List<Collection> findByRangeLevel(Long id, int beginLevel, int endLevel);
 }

@@ -162,7 +162,7 @@ public class MissionMapping {
         patient.setExpPercent((exp * 100) / totalExp);
         patient.setLevel(level);
         patient.setExp(exp);
-        CollectionMapping.getInstance().unlockReward(collectionService, patient);
+        CollectionMapping.Companion.getInstance().unlockReward(collectionService, patient);
         patientService.update(patient.getId(), patient);
     }
 

@@ -50,7 +50,6 @@ public class CollectionController {
                 HttpStatus.OK);
     }
 
-
     @PostMapping("")
     public ResponseEntity create(@RequestBody HashMap<String, Object> data) {
         Collection collection = new Collection();
@@ -65,11 +64,27 @@ public class CollectionController {
     }
 
     @GetMapping("reward-by-patient/{id}")
-    public ResponseEntity getRewardByIdPatient(HttpServletRequest request, @PathVariable Long id) {
+    public ResponseEntity getRewardByIdPatient(HttpServletRequest request, @PathVariable Long id,
+                                               @RequestParam(required = false, defaultValue = "2", value="range") int range) {
         List<Collection> collectionList = collectionService.findByPatientId(id);
         if (collectionList != null)
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
-                    CollectionMapping.getInstance().getRewardList(collectionService.findByPatientId(id)),
+                    CollectionMapping.Companion.getInstance().getAlbum(patientService.findById(id), collectionService, range),
+                    HttpStatus.OK.getReasonPhrase()),
+                    HttpStatus.OK);
+        else
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
+                    null,
+                    MessageUtil.NOT_FOUND_CARETAKER),
+                    HttpStatus.OK);
+    }
+
+    @GetMapping("{id}/{beginId}/{endId}")
+    public ResponseEntity get(HttpServletRequest request, @PathVariable Long id, @PathVariable int beginId, @PathVariable int endId) {
+        List<Collection> collectionList = collectionService.findByRangeLevel(id, beginId, endId);
+        if (collectionList != null)
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
+                    collectionList,
                     HttpStatus.OK.getReasonPhrase()),
                     HttpStatus.OK);
         else
@@ -82,8 +97,8 @@ public class CollectionController {
     @GetMapping("reward-by-level/{id}")
     public ResponseEntity getRewardByLevelPatient(HttpServletRequest request, @PathVariable Long id) {
         Patient patient = patientService.findById(id);
-        Reward reward = CollectionMapping.getInstance().randomReward(patient.getLevel(), rewardService.findAll());
-        CollectionMapping.getInstance().receiveReward(collectionService, patient, reward);
+        Reward reward = CollectionMapping.Companion.getInstance().randomReward(patient.getLevel(), rewardService.findAll());
+        CollectionMapping.Companion.getInstance().receiveReward(collectionService, patient, reward);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
                 reward,
                 HttpStatus.OK.getReasonPhrase()),
