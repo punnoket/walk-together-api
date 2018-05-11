@@ -1,5 +1,7 @@
 package com.finalproject.walktogetherapi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -27,6 +29,7 @@ public class Collection {
         this.id = id;
     }
 
+    @JsonIgnore
     public Patient getPatient() {
         return patient;
     }

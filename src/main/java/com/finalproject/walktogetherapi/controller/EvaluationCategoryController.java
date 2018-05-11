@@ -16,7 +16,6 @@ public class EvaluationCategoryController {
 
     private EvaluationCategoryService evaluationCategoryService;
 
-
     @Autowired
     public EvaluationCategoryController(EvaluationCategoryService evaluationCategoryService) {
         this.evaluationCategoryService = evaluationCategoryService;

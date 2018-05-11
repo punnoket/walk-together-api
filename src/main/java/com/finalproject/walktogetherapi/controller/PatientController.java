@@ -101,7 +101,7 @@ public class PatientController {
         if (patient.getUserName() != null) {
             if (patient.getEmail() != null) {
                 if (patient.getTell() != null) {
-                    CollectionMapping.getInstance().addCollection(rewardService, collectionService, patient);
+                    CollectionMapping.Companion.getInstance().addCollection(rewardService, collectionService, patient);
                     return new ResponseEntity<>(ApiResponse.getInstance()
                             .response(HttpStatus.CREATED,
                                     patientService.update(Long.parseLong(data.get("idPatient").toString()), patient),

@@ -1,11 +1,8 @@
 package com.finalproject.walktogetherapi.service.impl;
 
 import com.finalproject.walktogetherapi.entities.Collection;
-import com.finalproject.walktogetherapi.entities.Matching;
 import com.finalproject.walktogetherapi.repository.CollectionRepository;
-import com.finalproject.walktogetherapi.repository.MatchingRepository;
 import com.finalproject.walktogetherapi.service.CollectionService;
-import com.finalproject.walktogetherapi.service.MatchingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,5 +52,10 @@ public class CollectionServiceImpl implements CollectionService {
     @Override
     public Collection findByRewardId(Long rewardId, Long patientId) {
         return collectionRepository.findByRewardId(rewardId, patientId);
+    }
+
+    @Override
+    public List<Collection> findByRangeLevel( Long id, int beginLevel, int endLevel) {
+        return collectionRepository.findByRangeLevel(id, beginLevel, endLevel);
     }
 }
