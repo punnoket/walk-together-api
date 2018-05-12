@@ -5,6 +5,7 @@ import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.entities.mission.AnswerMission;
 import com.finalproject.walktogetherapi.entities.mission.HistoryMission;
 import com.finalproject.walktogetherapi.entities.mission.Mission;
+import com.finalproject.walktogetherapi.mapping.MapMissionMapping;
 import com.finalproject.walktogetherapi.mapping.MissionMapping;
 import com.finalproject.walktogetherapi.mapping.PatientMapping;
 import com.finalproject.walktogetherapi.service.CollectionService;
@@ -72,6 +73,12 @@ public class MissionController {
     @GetMapping("/all-map")
     public ResponseEntity getAllMap() {
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, mapService.findAll(), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+    }
+
+    @GetMapping("/all-map/nearness")
+    public ResponseEntity getAllMapNearness(@RequestParam(required = false, defaultValue = "0", value="lat") double lat,
+                                            @RequestParam(required = false, defaultValue = "0", value="lng") double lng) {
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, MapMissionMapping.Companion.getInstance().getMapNearPatient(mapService.findAll(), lat, lng), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
     @GetMapping("/history-by-id/{id}")
