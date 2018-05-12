@@ -7,15 +7,16 @@ class MapMissionMapping {
 
     fun getMapNearPatient(mapList: List<Map>, lat: Double, long: Double): List<Map> {
         for (map in mapList) {
-            map.dist = DistanceUtil.getInstance().calculateDistance(lat, long, map.latitude, map.longitude).toDouble()
-        }
-        val result = mapList.sortedBy { it.dist }
-        result.forEach {
-            if (it.dist.toInt() == 0) {
-                for (map in mapList) {
-                    map.dist = DistanceUtil.getInstance().distance(lat, long, map.latitude, map.longitude)
+            var dist = DistanceUtil.getInstance().calculateDistance(lat, long, map.latitude, map.longitude)
+            if (dist != 0)
+                map.dist = dist.toDouble()
+            else {
+                print("reject")
+                for (m in mapList) {
+                    dist = DistanceUtil.getInstance().distance(lat, long, m.latitude, m.longitude).toInt()
+                    m.dist = dist.toDouble()
                 }
-                return@forEach
+                return mapList.sortedByDescending { it.dist }
             }
         }
         return mapList.sortedBy { it.dist }

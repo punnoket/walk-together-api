@@ -71,6 +71,17 @@ public class LogUtil {
         logService.create(log);
     }
 
+    public void saveLog(HttpServletRequest httpServletRequest, String request, String param, LogService logService) {
+        Log log = new Log();
+        log.setDate(DateTimeManager.getInstance().getCurrentTime());
+        log.setDateCreate(DateTimeManager.getInstance().logDateFormat(DateTimeManager.getInstance().getCurrentTime()));
+        log.setData(request);
+        log.setUrl(httpServletRequest.getRequestURL().toString()+param);
+        log.setMethod(httpServletRequest.getMethod());
+        log.setChanel(httpServletRequest.getHeader("user-agent"));
+        logService.create(log);
+    }
+
     public void saveLogJson(HttpServletRequest httpServletRequest, JSONObject request, LogService logService) {
         Log log = new Log();
         log.setDate(DateTimeManager.getInstance().getCurrentTime());
