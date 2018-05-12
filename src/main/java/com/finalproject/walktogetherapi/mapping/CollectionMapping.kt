@@ -18,9 +18,8 @@ class CollectionMapping {
             val j = i + range
             val objectHashMap = HashMap<String, Any>()
             val rewardList = collectionService.findByRangeLevel(patient.id, i, j).sortedWith(compareBy({ it.reward.level }))
+            objectHashMap["albumName"] = "Level $i-$j"
             objectHashMap["album"] = rewardList
-            objectHashMap["reward"] = "Level $i-$j"
-            objectHashMap["isLock"] = patient.level in i..j
             objectHashMap["isLock"] = patient.level in i..j
             objectHashMap["previewImage"] = rewardList.take(4)
             map.add(objectHashMap)
