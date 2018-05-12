@@ -76,8 +76,10 @@ public class MissionController {
     }
 
     @GetMapping("/all-map/nearness")
-    public ResponseEntity getAllMapNearness(@RequestParam(required = false, defaultValue = "0", value="lat") double lat,
-                                            @RequestParam(required = false, defaultValue = "0", value="lng") double lng) {
+    public ResponseEntity getAllMapNearness(HttpServletRequest request,
+                                            @RequestParam(required = false, defaultValue = "0", value = "lat") double lat,
+                                            @RequestParam(required = false, defaultValue = "0", value = "lng") double lng) {
+        LogUtil.getInstance().saveLog(request, "", "?lat=" + lat + "&lng=" + lng, logService);
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, MapMissionMapping.Companion.getInstance().getMapNearPatient(mapService.findAll(), lat, lng), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
