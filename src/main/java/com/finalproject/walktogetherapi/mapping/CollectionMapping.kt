@@ -1,6 +1,7 @@
 package com.finalproject.walktogetherapi.mapping
 
 import com.finalproject.walktogetherapi.entities.*
+import com.finalproject.walktogetherapi.entities.Collection
 import com.finalproject.walktogetherapi.service.CollectionService
 import com.finalproject.walktogetherapi.service.RewardService
 
@@ -27,6 +28,19 @@ class CollectionMapping {
         }
         return map
     }
+
+    fun getRewardList(collectionList: List<Collection>): List<HashMap<String, Any>> {
+        val map = ArrayList<HashMap<String, Any>>()
+        for (collection in collectionList) {
+            val objectHashMap = HashMap<String, Any>()
+            objectHashMap["reward"] = collection.reward
+            objectHashMap["isReceive"] = collection.isReceive
+            objectHashMap["isLock"] = collection.isLock
+            map.add(objectHashMap);
+        }
+        return map
+    }
+
 
     fun randomReward(level: Int, rewardList: List<Reward>): Reward {
         val result = rewardList.filterTo(ArrayList()) { it.level <= level }
