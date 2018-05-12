@@ -34,7 +34,7 @@ class DistanceUtil {
     fun calculateDistance(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Int {
         val restTemplate = RestTemplate()
         return try {
-            val response = restTemplate.getForObject("https://maps.googleapis.com/maps/api/distancematrix/json?origins=$lat1,$lon1&destinations=$lat2,$lon2&key=${Constant.GOOGLE_API_KEY}", String::class.java)
+            val response = restTemplate.getForObject("https://maps.googleapis.com/maps/api/distancematrix/json?mode=walking&origins=$lat1,$lon1&destinations=$lat2,$lon2&key=${Constant.GOOGLE_API_KEY}", String::class.java)
             val responseJsonObject = Gson().fromJson(response, JsonObject::class.java)
             responseJsonObject.getAsJsonArray("rows").get(0).asJsonObject.getAsJsonArray("elements").get(0).asJsonObject.get("distance").asJsonObject.get("value").asInt
         } catch (e: Exception) {
