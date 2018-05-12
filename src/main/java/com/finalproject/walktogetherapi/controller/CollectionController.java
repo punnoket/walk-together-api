@@ -63,13 +63,28 @@ public class CollectionController {
                         HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
-    @GetMapping("reward-by-patient/{id}")
-    public ResponseEntity getRewardByIdPatient(HttpServletRequest request, @PathVariable Long id,
-                                               @RequestParam(required = false, defaultValue = "2", value="range") int range) {
+    @GetMapping("reward-by-patient/album/{id}")
+    public ResponseEntity getAlbum(HttpServletRequest request, @PathVariable Long id,
+                                   @RequestParam(required = false, defaultValue = "2", value = "range") int range) {
         List<Collection> collectionList = collectionService.findByPatientId(id);
         if (collectionList != null)
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
                     CollectionMapping.Companion.getInstance().getAlbum(patientService.findById(id), collectionService, range),
+                    HttpStatus.OK.getReasonPhrase()),
+                    HttpStatus.OK);
+        else
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
+                    null,
+                    MessageUtil.NOT_FOUND_CARETAKER),
+                    HttpStatus.OK);
+    }
+
+    @GetMapping("reward-by-patient/{id}")
+    public ResponseEntity getRewardByIdPatient(@PathVariable Long id) {
+        List<Collection> collectionList = collectionService.findByPatientId(id);
+        if (collectionList != null)
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
+                    CollectionMapping.Companion.getInstance().getRewardList(collectionList),
                     HttpStatus.OK.getReasonPhrase()),
                     HttpStatus.OK);
         else
