@@ -15,6 +15,9 @@ public class Map {
     private String namePlace;
     private String image;
 
+    @Transient
+    private double dist;
+
     @OneToMany(mappedBy = "map", cascade = {CascadeType.ALL})
     private List<Position> positions;
 
@@ -65,5 +68,14 @@ public class Map {
     @JsonIgnore
     public List<Position> getPositions() {
         return positions;
+    }
+
+    public void setDist(double dist) {
+        this.dist = dist;
+    }
+
+    @JsonIgnore
+    public double getDist() {
+        return dist;
     }
 }

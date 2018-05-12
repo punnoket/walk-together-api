@@ -32,4 +32,6 @@ public class Constant {
     public static final String POSITION_2 = "2";
     public static final String POSITION_3 = "3";
     public static final String POSITION_4 = "4";
+
+    public static final String GOOGLE_API_KEY = "AIzaSyButAs0BAr5u7HX75zLiwr9rqWVSRTCFmc";
 }
