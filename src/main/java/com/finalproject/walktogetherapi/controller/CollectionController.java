@@ -65,7 +65,7 @@ public class CollectionController {
 
     @GetMapping("reward-by-patient/album/{id}")
     public ResponseEntity getAlbum(HttpServletRequest request, @PathVariable Long id,
-                                   @RequestParam(required = false, defaultValue = "2", value = "range") int range) {
+                                   @RequestParam(required = false, defaultValue = "4", value = "range") int range) {
         List<Collection> collectionList = collectionService.findByPatientId(id);
         if (collectionList != null)
             return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK,
