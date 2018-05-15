@@ -203,7 +203,6 @@ public class DateTimeManager {
         lastDateCalendar.set(Calendar.ZONE_OFFSET, TimeZone.getTimeZone("GMT+7").getRawOffset());
         lastDateCalendar.setTime(lastDate);
         lastDateCalendar.add(Calendar.DATE, 3);
-        System.out.println(fullDateFormat(getCurrentTime()) + " " + fullDateFormat(lastDateCalendar.getTime()));
         return getCurrentTime().after(lastDateCalendar.getTime());
     }
 }

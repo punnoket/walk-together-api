@@ -45,4 +45,9 @@ public class HistoryMissionServiceImpl implements HistoryMissionService {
         return result;
     }
 
+    @Override
+    public List<HistoryMission> findHistoryMissionByIdPatient(Long id) {
+        return repository.findHistoryMissionByIdPatient(id);
+    }
+
 }

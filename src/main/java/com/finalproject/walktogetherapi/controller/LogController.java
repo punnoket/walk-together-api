@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
 
 @CrossOrigin
@@ -33,6 +34,12 @@ public class LogController {
         List<Log> logList = logService.findLogLimit();
         return new ResponseEntity<>(logList, HttpStatus.OK);
 
+    }
+
+    @DeleteMapping("")
+    public ResponseEntity deleteAll() {
+        logService.delete();
+        return new ResponseEntity<>(new HashMap<>(), HttpStatus.OK);
     }
 
     @GetMapping("/web/log.html")

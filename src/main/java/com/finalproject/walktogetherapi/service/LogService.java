@@ -14,4 +14,6 @@ public interface LogService {
     Log create(Log log);
 
     List<Log> findLogLimit();
+
+    void delete();
 }

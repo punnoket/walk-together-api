@@ -17,4 +17,6 @@ public interface HistoryMissionService {
     HistoryMission update(Long id, HistoryMission data);
 
     HistoryMission delete(Long id);
+
+    List<HistoryMission> findHistoryMissionByIdPatient(Long id);
 }
