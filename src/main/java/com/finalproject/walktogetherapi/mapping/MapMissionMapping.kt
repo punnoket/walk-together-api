@@ -11,7 +11,6 @@ class MapMissionMapping {
             if (dist != 0)
                 map.dist = dist.toDouble()
             else {
-                print("reject")
                 for (m in mapList) {
                     dist = DistanceUtil.getInstance().distance(lat, long, m.latitude, m.longitude).toInt()
                     m.dist = dist.toDouble()

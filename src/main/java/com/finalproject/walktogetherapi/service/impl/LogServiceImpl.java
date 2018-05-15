@@ -34,4 +34,9 @@ public class LogServiceImpl implements LogService {
     public List<Log> findLogLimit() {
         return logRepository.findLogLimit();
     }
+
+    @Override
+    public void delete() {
+        logRepository.deleteAll();
+    }
 }
