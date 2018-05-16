@@ -2,8 +2,10 @@ package com.finalproject.walktogetherapi.entities.mission;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalproject.walktogetherapi.entities.Patient;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "HistoryMission")
@@ -19,6 +21,11 @@ public class HistoryMission {
     @ManyToOne
     private PatientGame patientGame;
     private String historyDate;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created", updatable = false)
+    private Date created;
 
     public Long getId() {
         return id;
@@ -59,5 +66,13 @@ public class HistoryMission {
 
     public void setHistoryDate(String historyDate) {
         this.historyDate = historyDate;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 }

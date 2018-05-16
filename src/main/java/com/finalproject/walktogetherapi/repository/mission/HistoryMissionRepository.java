@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface HistoryMissionRepository extends JpaRepository<HistoryMission, Long> {
-    @Query("select h from HistoryMission h where h.patient.id = ?1")
+    @Query("select h from HistoryMission h where h.patient.id = ?1 order by h.created desc")
     List<HistoryMission> findHistoryMissionByIdPatient(Long id);
 }
