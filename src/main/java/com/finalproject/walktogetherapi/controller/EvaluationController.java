@@ -439,7 +439,7 @@ public class EvaluationController {
 
         patientService.update(id, patient);
 
-        if (score < 23) {
+        if (score <= 23) {
             if (patient.getUserName() == null) {
                 historyEvaluationTestService.delete(resultHistoryEvaluationTest.getId());
                 patientService.delete(patient.getId());
@@ -448,7 +448,7 @@ public class EvaluationController {
         }
 
         HashMap<String, Object> result = new HashMap<>();
-        result.put("isPass", score >= 23);
+        result.put("isPass", score > 23);
         result.put("score", score);
         result.put("idPatient", patient.getId());
         LogUtil.getInstance().responseAPI(request, result, logService);
