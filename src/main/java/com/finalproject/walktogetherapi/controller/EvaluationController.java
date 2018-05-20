@@ -355,12 +355,8 @@ public class EvaluationController {
             if (i == 17) {
                 map = data.get("no17");
                 questionEvaluation = questionEvaluationService.findById(Long.parseLong(map.get("id").toString()));
-                if (Boolean.valueOf(map.get("answer").toString())) {
-                    score += Integer.parseInt(questionEvaluation.getNumberEvaluation().getScore());
-                    patientTest.setScore(questionEvaluation.getNumberEvaluation().getScore());
-                } else {
-                    patientTest.setScore(String.valueOf(0));
-                }
+                score += Integer.parseInt(map.get("answer").toString());
+                patientTest.setScore(map.get("answer").toString());
                 patientTest.setQuestionEvaluation(questionEvaluation);
                 patientTest.setAnswer(map.get("answer").toString());
                 patientTest.setEvaluationCategory(questionEvaluation.getNumberEvaluation().getEvaluationCategory().getEvaluationCategoryName());
