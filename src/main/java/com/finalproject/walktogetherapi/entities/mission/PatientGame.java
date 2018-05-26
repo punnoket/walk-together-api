@@ -19,6 +19,10 @@ public class PatientGame {
     @Column(columnDefinition = "TEXT")
     private String route;
 
+    @Column(name="distance",columnDefinition = "int default 0")
+    private int distance;
+    private Long time;
+
     public Long getId() {
         return id;
     }
@@ -57,5 +61,21 @@ public class PatientGame {
 
     public void setRoute(String route) {
         this.route = route;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
+    public Long getTime() {
+        return time;
+    }
+
+    public void setTime(Long time) {
+        this.time = time;
     }
 }
