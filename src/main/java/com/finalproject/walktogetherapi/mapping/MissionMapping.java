@@ -40,6 +40,29 @@ public class MissionMapping {
         List<Position> positions = positionService.findByMapId(id);
         HashMap<String, Object> map;
         List<Mission> missions = missionService.findAll();
+
+        List<Mission> box = missionService.findByType("BOX");
+        List<Mission> typeGroup = missionService.findByType("TYPEGROUP");
+        List<Mission> emotion = missionService.findByType("EMOTION");
+        List<Mission> clock = missionService.findByType("CLOCK");
+        List<Mission> proverb = missionService.findByType("PROVERB");
+        List<Mission> resultMission = new ArrayList<>();
+
+
+        Collections.shuffle(box);
+        Collections.shuffle(typeGroup);
+        Collections.shuffle(emotion);
+        Collections.shuffle(clock);
+        Collections.shuffle(proverb);
+
+        resultMission.add(box.get(0));
+        resultMission.add(typeGroup.get(0));
+        resultMission.add(emotion.get(0));
+        resultMission.add(clock.get(0));
+        resultMission.add(proverb.get(0));
+
+        Collections.shuffle(resultMission);
+
         missions = randomMission(missions);
 
         map = new HashMap<>();
@@ -50,7 +73,7 @@ public class MissionMapping {
             }
         }
         map.put("position", randomPosition(positionTemp));
-        map.put("missionDetail", missions.get(0));
+        map.put("missionDetail", resultMission.get(0));
         response.add(map);
 
         map = new HashMap<>();
@@ -61,7 +84,7 @@ public class MissionMapping {
             }
         }
         map.put("position", randomPosition(positionTemp));
-        map.put("missionDetail", missions.get(1));
+        map.put("missionDetail", resultMission.get(1));
         response.add(map);
 
         map = new HashMap<>();
@@ -72,7 +95,7 @@ public class MissionMapping {
             }
         }
         map.put("position", randomPosition(positionTemp));
-        map.put("missionDetail", missions.get(2));
+        map.put("missionDetail", resultMission.get(2));
         response.add(map);
 
         map = new HashMap<>();
@@ -83,7 +106,7 @@ public class MissionMapping {
             }
         }
         map.put("position", randomPosition(positionTemp));
-        map.put("missionDetail", missions.get(3));
+        map.put("missionDetail", resultMission.get(3));
         response.add(map);
 
         return response;

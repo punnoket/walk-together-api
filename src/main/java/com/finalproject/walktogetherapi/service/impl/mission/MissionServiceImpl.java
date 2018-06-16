@@ -45,4 +45,9 @@ public class MissionServiceImpl implements MissionService {
         return result;
     }
 
+    @Override
+    public List<Mission> findByType(String type) {
+        return repository.findByType(type);
+    }
+
 }

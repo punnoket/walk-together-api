@@ -11,4 +11,6 @@ import java.util.List;
 @Repository
 public interface MissionRepository extends JpaRepository<Mission, Long> {
 
+    @Query("select m from Mission m where m.type like %?1%")
+    List<Mission> findByType(String type);
 }

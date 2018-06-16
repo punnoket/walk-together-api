@@ -16,4 +16,6 @@ public interface MissionService {
     Mission update(Long id, Mission mission);
 
     Mission delete(Long id);
+
+    List<Mission> findByType(String type);
 }
