@@ -2,15 +2,14 @@ package com.finalproject.walktogetherapi.mapping;
 
 import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.service.CaretakerService;
-import com.finalproject.walktogetherapi.service.CollectionService;
 import com.finalproject.walktogetherapi.service.PatientService;
 import com.finalproject.walktogetherapi.service.master.*;
 import com.finalproject.walktogetherapi.util.QrCodeGenerator;
 import com.finalproject.walktogetherapi.util.RandomNumberUser;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.HashMap;
 
-import static com.finalproject.walktogetherapi.util.Constant.PATH_QR_CODE_CARETAKER;
 import static com.finalproject.walktogetherapi.util.Constant.PATH_QR_CODE_PATIENT;
 
 public class PatientMapping {
@@ -33,7 +32,8 @@ public class PatientMapping {
                               SubDistrictServices subDistrictServices,
                               EducationServices educationServices,
                               Patient patient,
-                              Boolean isCreate) {
+                              Boolean isCreate,
+                              BCryptPasswordEncoder encoder) {
 
 
         if (data.get("userName") != null)
@@ -45,7 +45,7 @@ public class PatientMapping {
                 return patient;
             }
         if (data.get("password") != null)
-            patient.setPassword(data.get("password").toString());
+            patient.setPassword(encoder.encode(data.get("password").toString()));
         if (data.get("titleName") != null)
             patient.setTitleName(data.get("titleName").toString());
         if (data.get("firstName") != null)

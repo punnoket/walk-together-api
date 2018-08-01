@@ -28,4 +28,6 @@ public class MessageUtil {
     public static final String NOTIFICATION_CARETAKER = "ได้เพิ่มคุณเป็นผู้ดูแล";
     public static final String NOTIFICATION_PATIENT = "ได้เพิ่มคุณเป็นผู้สูงอายุภายใต้การดูแล";
 
+    public static final String PASSWORD_INVALID = "รหัสผ่านเดิมไม่ถูกต้อง";
+
 }

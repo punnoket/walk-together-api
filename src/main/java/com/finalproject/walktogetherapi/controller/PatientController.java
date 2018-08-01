@@ -1,7 +1,6 @@
 package com.finalproject.walktogetherapi.controller;
 
 import com.finalproject.walktogetherapi.entities.Patient;
-import com.finalproject.walktogetherapi.entities.master.Education;
 import com.finalproject.walktogetherapi.mapping.CollectionMapping;
 import com.finalproject.walktogetherapi.mapping.PatientMapping;
 import com.finalproject.walktogetherapi.service.*;
@@ -11,9 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+
+import static com.finalproject.walktogetherapi.util.MessageUtil.PASSWORD_INVALID;
 
 
 @CrossOrigin
@@ -31,6 +33,7 @@ public class PatientController {
     private CollectionService collectionService;
     private RewardService rewardService;
     private LogService logService;
+    private BCryptPasswordEncoder encoder;
 
     @Autowired
     public PatientController(PatientService patientService,
@@ -55,6 +58,7 @@ public class PatientController {
         this.historyEvaluationTestService = historyEvaluationTestService;
         this.educationServices = educationServices;
         this.logService = logService;
+        this.encoder = new BCryptPasswordEncoder();
     }
 
     @GetMapping("")
@@ -97,7 +101,7 @@ public class PatientController {
     @PostMapping("")
     public ResponseEntity create(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
         LogUtil.getInstance().saveLog(request, data, logService);
-        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, educationServices, patientService.findById(Long.parseLong(data.get("idPatient").toString())), false);
+        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, educationServices, patientService.findById(Long.parseLong(data.get("idPatient").toString())), false, encoder);
         if (patient.getUserName() != null) {
             if (patient.getEmail() != null) {
                 if (patient.getTell() != null) {
@@ -130,7 +134,7 @@ public class PatientController {
 
     @PatchMapping("{id}")
     public ResponseEntity update(HttpServletRequest request, @PathVariable Long id, @RequestBody HashMap<String, Object> data) {
-        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, educationServices, patientService.findById(id), false);
+        Patient patient = PatientMapping.getInstance().getPatient(data, caretakerService, patientService, sexServices, provinceServices, districtServices, subDistrictServices, educationServices, patientService.findById(id), false, encoder);
         if (patient.getUserName() != null) {
             if (patient.getEmail() != null) {
                 if (patient.getTell() != null) {
@@ -158,6 +162,18 @@ public class PatientController {
                     .response(HttpStatus.NOT_FOUND,
                             null,
                             MessageUtil.DUPLICATE_USERNAME), HttpStatus.OK);
+        }
+    }
+
+    @PatchMapping("change-password/{id}")
+    public ResponseEntity changePassword(HttpServletRequest request, @PathVariable Long id, @RequestBody HashMap<String, Object> data) {
+        Patient patient = patientService.findById(id);
+        if (encoder.matches(data.get("oldPassword").toString(), patient.getPassword())) {
+            patient.setPassword(encoder.encode(data.get("newPassword").toString()));
+            patientService.update(patient.getId(), patient);
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, patient, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.NOT_FOUND, null, PASSWORD_INVALID), HttpStatus.OK);
         }
     }
 

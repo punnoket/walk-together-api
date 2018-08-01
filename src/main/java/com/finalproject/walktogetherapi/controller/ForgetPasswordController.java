@@ -10,14 +10,12 @@ import com.finalproject.walktogetherapi.service.master.DistrictServices;
 import com.finalproject.walktogetherapi.service.master.ProvinceServices;
 import com.finalproject.walktogetherapi.service.master.SexServices;
 import com.finalproject.walktogetherapi.service.master.SubDistrictServices;
-import com.finalproject.walktogetherapi.util.ApiResponse;
-import com.finalproject.walktogetherapi.util.EmailSender;
-import com.finalproject.walktogetherapi.util.MessageUtil;
-import com.finalproject.walktogetherapi.util.SmsSender;
+import com.finalproject.walktogetherapi.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -32,6 +30,7 @@ public class ForgetPasswordController {
     private CaretakerService caretakerService;
     @Autowired
     private JavaMailSender sender;
+    private BCryptPasswordEncoder encoder;
 
     @Autowired
     public ForgetPasswordController(PatientService patientService,
@@ -40,6 +39,7 @@ public class ForgetPasswordController {
         this.patientService = patientService;
         this.caretakerService = caretakerService;
         this.sender = sender;
+        this.encoder = new BCryptPasswordEncoder();
     }
 
     @PostMapping("")
@@ -63,11 +63,17 @@ public class ForgetPasswordController {
         } else {
             Patient patient = patientService.findByTell(data.get("contact").toString());
             if (patient != null) {
-                return SmsSender.getInstance().sendSMSSimple(patient.getTell(), patient.getPassword());
+                String newPassword = RandomNumberUser.getInstance().resetPassword();
+                patient.setPassword(encoder.encode(newPassword));
+                patientService.update(patient.getId(), patient);
+                return SmsSender.getInstance().sendSMSSimple(patient.getTell(), newPassword);
             } else {
                 Caretaker caretaker = caretakerService.findByTell(data.get("contact").toString());
                 if (caretaker != null) {
-                    return SmsSender.getInstance().sendSMSSimple(caretaker.getTell(), caretaker.getPassword());
+                    String newPassword = RandomNumberUser.getInstance().resetPassword();
+                    caretaker.setPassword(encoder.encode(newPassword));
+                    caretakerService.update(caretaker.getId(), caretaker);
+                    return SmsSender.getInstance().sendSMSSimple(caretaker.getTell(), newPassword);
 
                 } else {
                     return new ResponseEntity<>(ApiResponse.getInstance()
