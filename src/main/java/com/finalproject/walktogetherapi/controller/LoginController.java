@@ -11,6 +11,7 @@ import com.finalproject.walktogetherapi.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,7 @@ public class LoginController {
     private CaretakerService caretakerService;
     private PatientService patientService;
     private LogService logService;
+    private BCryptPasswordEncoder encoder;
 
     @Autowired
     public LoginController(CaretakerService caretakerService,
@@ -30,6 +32,7 @@ public class LoginController {
         this.caretakerService = caretakerService;
         this.patientService = patientService;
         this.logService = logService;
+        this.encoder = new BCryptPasswordEncoder();
     }
 
     @PostMapping("")
@@ -38,7 +41,7 @@ public class LoginController {
         if (data.get("userName").toString() != null && data.get("password").toString() != null) {
             Patient patient = patientService.findByUserName(data.get("userName").toString());
             if (patient != null) {
-                if (patient.getPassword().equals(data.get("password").toString())) {
+                if (encoder.matches(data.get("password").toString(), patient.getPassword())) {
                     if (data.get("deviceToken") != null) {
                         patient.setDeviceToken(data.get("deviceToken").toString());
                         patientService.update(patient.getId(), patient);
@@ -65,8 +68,8 @@ public class LoginController {
             } else {
                 Caretaker caretaker = caretakerService.findByUserName(data.get("userName").toString());
                 if (caretaker != null) {
-                    if (caretaker.getPassword().equals(data.get("password").toString())) {
-                        if (data.get("deviceToken").toString() != null) {
+                    if (encoder.matches(data.get("password").toString(), caretaker.getPassword())) {
+                        if (data.get("deviceToken") != null) {
                             caretaker.setDeviceToken(data.get("deviceToken").toString());
                             caretakerService.update(caretaker.getId(), caretaker);
                         }

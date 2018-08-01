@@ -1,9 +1,7 @@
 package com.finalproject.walktogetherapi.util;
 
-import org.springframework.http.HttpStatus;
-
-import java.util.HashMap;
 import java.util.Random;
+import java.util.UUID;
 
 public class RandomNumberUser {
 
@@ -39,7 +37,11 @@ public class RandomNumberUser {
             length--;
         }
         return "C" + result.toString();
+    }
 
+    public String resetPassword() {
+        String password = UUID.randomUUID().toString();
+        return password.split("-")[0].substring(2);
     }
 }
 
