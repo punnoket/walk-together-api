@@ -125,7 +125,9 @@
     app.controller('myCtrl', function ($scope, $http, $location, $window) {
         $scope.myFunc = function () {
 
-            $http.get("http://159.65.128.189:8181/api/v1/patient")
+            $http.get("http://159.65.128.189:8181/api/v1/patient", {
+                headers: {'Authorization': 'Basic d2Fsay10b2dldGhlci1hcGk6NzJTcEloY3pzQUlNTnNhOHd1QkdYMzVoNWkxOFhB'}
+            })
                 .then(function (response) {
                     console.log(response.data);
                     $scope.patientList = response.data.data;
