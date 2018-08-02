@@ -38,6 +38,9 @@ dependencies {
 	compile group: 'net.glxn', name: 'qrgen', version: '1.4'
 	compile 'com.google.code.gson:gson:2.8.2'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.0.4.RELEASE'
+
 }
 compileKotlin {
     kotlinOptions {
