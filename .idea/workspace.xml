@@ -2,25 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53ffd90e-ebd3-4731-a447-dcbd43974762" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/620eb61d-06ca-45dc-b92b-a79b3ceaf8e0/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/620eb61d-06ca-45dc-b92b-a79b3ceaf8e0/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/620eb61d-06ca-45dc-b92b-a79b3ceaf8e0/_metadata_/metadata.values.at" afterPath="$PROJECT_DIR$/.idea/dataSources/620eb61d-06ca-45dc-b92b-a79b3ceaf8e0/_metadata_/metadata.values.at" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/WalkTogetherApiApplication.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/WalkTogetherApiApplication.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/CaretakerController.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/CaretakerController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/ForgetPasswordController.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/ForgetPasswordController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/LoginController.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/LoginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/PatientController.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/controller/PatientController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/mapping/CaretakerMapping.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/mapping/CaretakerMapping.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/mapping/PatientMapping.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/mapping/PatientMapping.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/util/MessageUtil.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/util/MessageUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/util/RandomNumberUser.class" afterPath="$PROJECT_DIR$/out/production/classes/com/finalproject/walktogetherapi/util/RandomNumberUser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/620eb61d-06ca-45dc-b92b-a79b3ceaf8e0.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/620eb61d-06ca-45dc-b92b-a79b3ceaf8e0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/walk-together-api_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/walk-together-api_main.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/walk-together-api_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/walk-together-api_test.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/DirectionMapping.kt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/resources/application.properties" afterPath="$PROJECT_DIR$/out/production/resources/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/resources/templates/caretaker.html" afterPath="$PROJECT_DIR$/out/production/resources/templates/caretaker.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/resources/templates/log.html" afterPath="$PROJECT_DIR$/out/production/resources/templates/log.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/resources/templates/patient.html" afterPath="$PROJECT_DIR$/out/production/resources/templates/patient.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/MissionController.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/MissionController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/Constant.java" afterPath="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/Constant.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -70,14 +55,6 @@
       </path>
       <path>
         <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="postgres@159.65.128.189" type="e3449647:DbNodeDescriptor" />
-        <item name="postgres" type="e3449647:DbNodeDescriptor" />
-        <item name="public" type="e3449647:DbNodeDescriptor" />
-        <item name="" type="fce03ad6:DatabaseStructure$GroupNode" />
-        <item name="history_evaluation_test" type="e3449647:DbNodeDescriptor" />
-      </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
         <item name="postgres@localhost" type="e3449647:DbNodeDescriptor" />
       </path>
       <path>
@@ -116,41 +93,66 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="MissionController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/MissionController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="108" column="72" lean-forward="false" selection-start-line="108" selection-start-column="72" selection-end-line="108" selection-end-column="72" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DirectionMapping.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/DirectionMapping.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-114">
+              <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+              <folding>
+                <element signature="e#50#181#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constant.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/Constant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="36" column="55" lean-forward="false" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MissionMapping.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/MissionMapping.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1455">
-              <caret line="108" column="46" lean-forward="false" selection-start-line="108" selection-start-column="46" selection-end-line="108" selection-end-column="46" />
+            <state relative-caret-position="160">
+              <caret line="140" column="51" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PatientController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/PatientController.java">
+      <file leaf-file-name="MapMissionMapping.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/MapMissionMapping.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2018">
-              <caret line="12" column="49" lean-forward="false" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
+            <state relative-caret-position="-65">
+              <caret line="9" column="54" lean-forward="false" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
+      <file leaf-file-name="DistanceUtil.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/DistanceUtil.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="log" pinned="false" current-in-tab="false">
-        <entry file="das://table:/3623bc9c/620eb61d-06ca-45dc-b92b-a79b3ceaf8e0/postgres.public.log">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
+            <state relative-caret-position="113">
+              <caret line="39" column="39" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+              <folding>
+                <element signature="e#47#486#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -181,6 +183,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="test" />
+      </map>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
@@ -434,7 +441,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="3049304512000" />
+        <entry key="$PROJECT_DIR$" value="3050204523000" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
         <entry key="$PROJECT_DIR$/build.gradle" value="1704085872" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="3442123891" />
@@ -646,7 +653,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/PatientMapping.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/MessageUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/LogController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/NotificationUtil.java" />
@@ -655,17 +661,14 @@
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/impl/mission/AnswerMissionServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/mission/AnswerMissionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/ImageController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/ViewImageController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/evaluation/AnswerEvaluation.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/mission/AnswerMission.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/mission/MapRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/mission/PositionRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/mission/PositionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/impl/mission/PositionServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/Constant.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/mission/Position.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/mission/Mission.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/MissionController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/mission/Map.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/mission/TypeMission.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Test.java" />
@@ -697,6 +700,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/impl/mission/MissionServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/MissionMapping.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/ViewImageController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/Constant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/DirectionMapping.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/MissionController.java" />
       </list>
     </option>
   </component>
@@ -730,9 +737,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -837,6 +841,17 @@
               <item name="walk-together-api" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="finalproject" type="462c0819:PsiDirectoryNode" />
+              <item name="walktogetherapi" type="462c0819:PsiDirectoryNode" />
+              <item name="mapping" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="walk-together-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="walk-together-api" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -851,6 +866,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -873,6 +891,9 @@
     <property name="settings.editor.selected.configurable" value="database.main" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.finalproject.walktogetherapi.mapping" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.finalproject.walktogetherapi.mapping" />
       <recent name="com.finalproject.walktogetherapi.controller" />
@@ -1135,6 +1156,9 @@
       <workItem from="1528951357638" duration="2364000" />
       <workItem from="1533152460433" duration="212000" />
       <workItem from="1533181033211" duration="335000" />
+      <workItem from="1534084710341" duration="416000" />
+      <workItem from="1534181359640" duration="1538000" />
+      <workItem from="1534183202477" duration="2243000" />
     </task>
     <servers />
   </component>
@@ -1150,7 +1174,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="228798000" />
+    <option name="totallyTimeSpent" value="233373000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1170,7 +1194,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2918455" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08011445" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1181,11 +1205,11 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.50423217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.50423217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13876967" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26180258" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1297,75 +1321,18 @@
           <properties />
           <option name="timeStamp" value="72" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/CollectionMapping.kt</url>
+          <line>21</line>
+          <properties />
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="73" />
+      <option name="time" value="74" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://table:/3623bc9c/89f7aa30-b386-40a3-a959-90ae9c1b3acf/postgres.public.collection">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/89f7aa30-b386-40a3-a959-90ae9c1b3acf/postgres.public.collection">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/89f7aa30-b386-40a3-a959-90ae9c1b3acf/postgres.public.collection">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/89f7aa30-b386-40a3-a959-90ae9c1b3acf/postgres.public.collection">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/89f7aa30-b386-40a3-a959-90ae9c1b3acf/postgres.public.collection">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/89f7aa30-b386-40a3-a959-90ae9c1b3acf/postgres.public.collection">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/89f7aa30-b386-40a3-a959-90ae9c1b3acf/postgres.public.collection">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/89f7aa30-b386-40a3-a959-90ae9c1b3acf/postgres.public.collection">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/3623bc9c/89f7aa30-b386-40a3-a959-90ae9c1b3acf/postgres.public.collection">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://table:/3623bc9c/89f7aa30-b386-40a3-a959-90ae9c1b3acf/postgres.public.collection">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1388,45 +1355,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/3623bc9c/620eb61d-06ca-45dc-b92b-a79b3ceaf8e0/postgres.public.collection">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/CollectionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/CollectionRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="18" column="112" lean-forward="false" selection-start-line="18" selection-start-column="112" selection-end-line="18" selection-end-column="112" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/entities/Collection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/impl/CollectionServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="58" column="52" lean-forward="false" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/CollectionMapping.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="24" column="61" lean-forward="false" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -1483,7 +1415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="56" column="23" lean-forward="false" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1607,13 +1538,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/3623bc9c/620eb61d-06ca-45dc-b92b-a79b3ceaf8e0/postgres.public.patient">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://table:/3623bc9c/620eb61d-06ca-45dc-b92b-a79b3ceaf8e0/postgres.public.evaluation_test">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1647,19 +1571,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/MissionMapping.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1455">
-          <caret line="108" column="46" lean-forward="false" selection-start-line="108" selection-start-column="46" selection-end-line="108" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
           <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1667,6 +1582,133 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2018">
           <caret line="12" column="49" lean-forward="false" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/3623bc9c/620eb61d-06ca-45dc-b92b-a79b3ceaf8e0/postgres.public.patient">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true">
+            <filter text="id = 6032" />
+            <filter text="id = 400" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/3623bc9c/620eb61d-06ca-45dc-b92b-a79b3ceaf8e0/postgres.public.collection">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/CollectionMapping.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/RewardController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/ViewImageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="70" column="20" lean-forward="false" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/CollectionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="24" column="21" lean-forward="false" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/service/impl/CollectionServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/repository/CollectionRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="19" column="37" lean-forward="false" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/3623bc9c/620eb61d-06ca-45dc-b92b-a79b3ceaf8e0/postgres.public.reward">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/3623bc9c/620eb61d-06ca-45dc-b92b-a79b3ceaf8e0/postgres.public.position">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/MissionMapping.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="140" column="51" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/DistanceUtil.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="39" column="39" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <element signature="e#47#486#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/MapMissionMapping.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-65">
+          <caret line="9" column="54" lean-forward="false" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/util/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="36" column="55" lean-forward="false" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/mapping/DirectionMapping.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-114">
+          <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+          <folding>
+            <element signature="e#50#181#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/finalproject/walktogetherapi/controller/MissionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="108" column="72" lean-forward="false" selection-start-line="108" selection-start-column="72" selection-end-line="108" selection-end-column="72" />
           <folding />
         </state>
       </provider>

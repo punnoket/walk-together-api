@@ -34,4 +34,5 @@ public class Constant {
     public static final String POSITION_4 = "4";
 
     public static final String GOOGLE_API_KEY = "AIzaSyADGG6NVbxVPm86x35B2krZZEq9f0vQnMI";
+    public static final String GOOGLE_API_DIRECTION_KEY = "AIzaSyCqCrvJKf3g95PMQL6QsHxby7190-XZFqc";
 }
