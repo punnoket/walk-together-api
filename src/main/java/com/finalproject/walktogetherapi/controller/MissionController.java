@@ -5,6 +5,7 @@ import com.finalproject.walktogetherapi.entities.Patient;
 import com.finalproject.walktogetherapi.entities.mission.AnswerMission;
 import com.finalproject.walktogetherapi.entities.mission.HistoryMission;
 import com.finalproject.walktogetherapi.entities.mission.Mission;
+import com.finalproject.walktogetherapi.mapping.DirectionMapping;
 import com.finalproject.walktogetherapi.mapping.MapMissionMapping;
 import com.finalproject.walktogetherapi.mapping.MissionMapping;
 import com.finalproject.walktogetherapi.mapping.PatientMapping;
@@ -15,6 +16,8 @@ import com.finalproject.walktogetherapi.service.RewardService;
 import com.finalproject.walktogetherapi.service.mission.*;
 import com.finalproject.walktogetherapi.util.ApiResponse;
 import com.finalproject.walktogetherapi.util.LogUtil;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -98,6 +101,13 @@ public class MissionController {
     @GetMapping("/by-id/{id}")
     public ResponseEntity getMissionById(HttpServletRequest request, @PathVariable Long id) {
         return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, missionService.findById(id), HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
+    }
+
+    @PostMapping("/direction")
+    public ResponseEntity direction(HttpServletRequest request, @RequestBody HashMap<String, Object> data) {
+        String response = DirectionMapping.Companion.getInstance().getDirection(data);
+        HashMap responseJsonObject = new Gson().fromJson(response, HashMap.class);
+        return new ResponseEntity<>(ApiResponse.getInstance().response(HttpStatus.OK, responseJsonObject, HttpStatus.OK.getReasonPhrase()), HttpStatus.OK);
     }
 
     @GetMapping("/answer-by-type/{id}")
